@@ -47,13 +47,16 @@ export function CaseStudyPreview() {
             <p className="relative mt-4 leading-8 text-white/95">Case study của SEOSONA tập trung vào các chỉ số có ý nghĩa: khả năng index, tăng trưởng truy cập chất lượng, số lượng cụm nội dung và chuyển đổi thành lead.</p>
             <div className="relative mt-6 grid gap-3">
               {["Audit trước khi lập roadmap", "Đo lường bằng GSC/GA4", "Tối ưu theo mục tiêu kinh doanh"].map((item) => (
-                <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/20 bg-white/18 p-3 font-bold text-white shadow-sm backdrop-blur transition hover:bg-white/24">
+                <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/25 bg-white/18 p-3 font-bold text-white shadow-sm backdrop-blur transition hover:bg-white/24">
                   <CheckCircle2 className="shrink-0" size={19} />
                   <span>{item}</span>
                 </div>
               ))}
             </div>
-            <Link href="/case-study/" className="relative mt-7 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 font-black text-blue-800 shadow-lg shadow-blue-950/10 transition hover:-translate-y-0.5 hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-white/30">Xem tất cả case study <ArrowRight size={18} /></Link>
+            <Link href="/case-study/" className="relative mt-7 inline-flex items-center gap-2 rounded-full border border-slate-900 bg-slate-950 px-5 py-3 font-black text-white shadow-lg shadow-blue-950/25 transition hover:-translate-y-0.5 hover:bg-slate-900 focus:outline-none focus:ring-4 focus:ring-white/30">
+              <span className="text-white">Xem tất cả case study</span>
+              <ArrowRight size={18} className="text-white" />
+            </Link>
           </div>
 
           <div className="grid gap-5 md:grid-cols-3 lg:grid-cols-1">
