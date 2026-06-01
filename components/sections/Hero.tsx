@@ -9,9 +9,9 @@ const metrics = [
 ];
 
 const dashboardItems: Array<{ label: string; value: string; icon: LucideIcon }> = [
-  { label: "Technical Health", value: "96%", icon: Search },
-  { label: "Organic Growth", value: "+184%", icon: BarChart3 },
-  { label: "Content Coverage", value: "12 clusters", icon: ArrowRight }
+  { label: "Sức khỏe kỹ thuật", value: "96%", icon: Search },
+  { label: "Tăng trưởng tự nhiên", value: "+184%", icon: BarChart3 },
+  { label: "Cụm nội dung", value: "12 cụm", icon: ArrowRight }
 ];
 
 export function Hero() {
@@ -51,8 +51,8 @@ export function Hero() {
           <div className="mt-4 rounded-3xl bg-slate-950 p-5 text-white">
             <div className="mb-5 flex items-center justify-between">
               <div>
-                <div className="text-sm text-slate-400">SEOSONA Growth System</div>
-                <div className="text-2xl font-black">SEO Dashboard</div>
+                <div className="text-sm text-slate-400">Hệ thống tăng trưởng SEOSONA</div>
+                <div className="text-2xl font-black">Bảng đo lường SEO</div>
               </div>
               <ShieldCheck className="text-cyan-300" />
             </div>
@@ -61,7 +61,7 @@ export function Hero() {
                 const Icon = item.icon;
                 return (
                   <div key={item.label} className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-4">
                       <div className="flex items-center gap-3"><Icon className="text-cyan-300" size={18} /><span className="text-slate-300">{item.label}</span></div>
                       <strong>{item.value}</strong>
                     </div>
