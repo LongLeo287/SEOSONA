@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BarChart3, Search, ShieldCheck, type LucideIcon } from "lucide-react";
 
@@ -24,7 +25,7 @@ export function Hero() {
             Google Marketing Agency giúp doanh nghiệp <span className="gradient-text">tăng trưởng bền vững</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-            Rebuild website SEOSONA theo hướng sạch mã nguồn, tốc độ cao, chuẩn SEO technical, tối ưu chuyển đổi và bảo toàn tài sản traffic hiện có.
+            SEOSONA giúp doanh nghiệp tăng trưởng khách hàng tiềm năng từ Google thông qua SEO tổng thể, Google Ads, Content SEO và đào tạo đội ngũ nội bộ.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link href="/lien-he/" className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-4 font-bold text-white shadow-xl shadow-blue-600/20 hover:bg-blue-700">
@@ -43,23 +44,26 @@ export function Hero() {
             ))}
           </div>
         </div>
-        <div className="card p-6">
-          <div className="rounded-3xl bg-slate-950 p-6 text-white">
-            <div className="mb-8 flex items-center justify-between">
+        <div className="card overflow-hidden p-4">
+          <div className="relative aspect-[5/4] overflow-hidden rounded-3xl bg-slate-50">
+            <Image src="/images/legacy/hero/home-begin.png" alt="SEOSONA Google Marketing Agency" fill priority className="object-contain p-4" sizes="(min-width: 1024px) 45vw, 100vw" />
+          </div>
+          <div className="mt-4 rounded-3xl bg-slate-950 p-5 text-white">
+            <div className="mb-5 flex items-center justify-between">
               <div>
                 <div className="text-sm text-slate-400">SEOSONA Growth System</div>
                 <div className="text-2xl font-black">SEO Dashboard</div>
               </div>
               <ShieldCheck className="text-cyan-300" />
             </div>
-            <div className="grid gap-4">
+            <div className="grid gap-3">
               {dashboardItems.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.label} className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                  <div key={item.label} className="rounded-2xl border border-white/10 bg-white/5 p-4">
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3"><Icon className="text-cyan-300" size={20} /><span className="text-slate-300">{item.label}</span></div>
-                      <strong className="text-xl">{item.value}</strong>
+                      <div className="flex items-center gap-3"><Icon className="text-cyan-300" size={18} /><span className="text-slate-300">{item.label}</span></div>
+                      <strong>{item.value}</strong>
                     </div>
                   </div>
                 );
