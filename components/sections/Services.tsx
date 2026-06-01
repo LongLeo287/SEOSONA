@@ -11,25 +11,25 @@ const services: Array<{ title: string; href: string; desc: string; icon: LucideI
 
 export function Services() {
   return (
-    <section className="py-20">
+    <section className="py-14 sm:py-16 lg:py-20">
       <div className="container">
-        <div className="mb-10 max-w-3xl">
+        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-10 lg:mx-0 lg:text-left">
           <span className="font-bold text-blue-600">Dịch vụ trọng tâm</span>
-          <h2 className="mt-3 text-4xl font-black tracking-tight text-slate-950 md:text-5xl">Một hệ sinh thái Google Marketing thống nhất</h2>
-          <p className="mt-4 text-lg leading-8 text-slate-600">SEOSONA kết hợp SEO tổng thể, tư vấn chiến lược, Google Ads và đào tạo để giúp doanh nghiệp tăng trưởng khách hàng tiềm năng từ Google.</p>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl md:text-5xl">Một hệ sinh thái Google Marketing thống nhất</h2>
+          <p className="mt-4 text-base leading-8 text-slate-600 sm:text-lg">SEOSONA kết hợp SEO tổng thể, tư vấn chiến lược, Google Ads và đào tạo để giúp doanh nghiệp tăng trưởng khách hàng tiềm năng từ Google.</p>
         </div>
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
           {services.map((service) => {
             const Icon = service.icon;
             return (
               <Link key={service.href} href={service.href} className="card group overflow-hidden transition hover:-translate-y-1 hover:border-blue-200">
-                <div className="relative aspect-square bg-blue-50">
-                  <Image src={service.image} alt={service.title} fill className="object-contain p-8 transition group-hover:scale-105" sizes="(min-width: 1024px) 25vw, 50vw" />
+                <div className="relative aspect-[4/3] bg-blue-50 sm:aspect-square">
+                  <Image src={service.image} alt={service.title} fill className="object-contain p-6 transition group-hover:scale-105 sm:p-8" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" />
                 </div>
-                <div className="p-6">
-                  <Icon className="mb-5 text-blue-600" size={30} />
-                  <h3 className="text-xl font-black text-slate-950">{service.title}</h3>
-                  <p className="mt-3 min-h-24 text-slate-600">{service.desc}</p>
+                <div className="p-5 sm:p-6">
+                  <Icon className="mb-4 text-blue-600 sm:mb-5" size={30} />
+                  <h3 className="text-lg font-black text-slate-950 sm:text-xl">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-600 sm:min-h-24 sm:text-base">{service.desc}</p>
                   <span className="mt-5 inline-flex items-center gap-2 font-bold text-blue-600">Xem chi tiết <ArrowRight size={16} /></span>
                 </div>
               </Link>
