@@ -1,0 +1,35 @@
+name: Fetch legacy SEOSONA assets
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "data/legacy-assets.json"
+      - "scripts/fetch-legacy-assets.mjs"
+      - ".github/workflows/fetch-legacy-assets.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Download legacy assets
+        run: node scripts/fetch-legacy-assets.mjs
+
+      - name: Commit downloaded assets
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: import legacy SEOSONA image assets"
+          file_pattern: "public/images/legacy data/legacy-assets.json"
