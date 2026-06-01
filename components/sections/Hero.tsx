@@ -1,10 +1,16 @@
 import Link from "next/link";
-import { ArrowRight, BarChart3, Search, ShieldCheck } from "lucide-react";
+import { ArrowRight, BarChart3, Search, ShieldCheck, type LucideIcon } from "lucide-react";
 
 const metrics = [
   { label: "Dự án SEO", value: "300+" },
   { label: "Học viên", value: "1.000+" },
   { label: "Năm kinh nghiệm", value: "10+" }
+];
+
+const dashboardItems: Array<{ label: string; value: string; icon: LucideIcon }> = [
+  { label: "Technical Health", value: "96%", icon: Search },
+  { label: "Organic Growth", value: "+184%", icon: BarChart3 },
+  { label: "Content Coverage", value: "12 clusters", icon: ArrowRight }
 ];
 
 export function Hero() {
@@ -47,18 +53,17 @@ export function Hero() {
               <ShieldCheck className="text-cyan-300" />
             </div>
             <div className="grid gap-4">
-              {[
-                ["Technical Health", "96%", Search],
-                ["Organic Growth", "+184%", BarChart3],
-                ["Content Coverage", "12 clusters", ArrowRight]
-              ].map(([label, value, Icon]) => (
-                <div key={String(label)} className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3"><Icon className="text-cyan-300" size={20} /><span className="text-slate-300">{label as string}</span></div>
-                    <strong className="text-xl">{value as string}</strong>
+              {dashboardItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.label} className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3"><Icon className="text-cyan-300" size={20} /><span className="text-slate-300">{item.label}</span></div>
+                      <strong className="text-xl">{item.value}</strong>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
