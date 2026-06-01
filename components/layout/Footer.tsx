@@ -16,8 +16,8 @@ export function Footer() {
       <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
       <div className="container relative grid gap-10 py-14 lg:grid-cols-[1.35fr_.85fr_.85fr_1fr]">
         <div>
-          <div className="mb-5 inline-flex rounded-2xl bg-white p-3">
-            <BrandLogo />
+          <div className="mb-5 inline-flex rounded-2xl bg-white px-3 py-2">
+            <BrandLogo size="footer" />
           </div>
           <p className="max-w-md leading-7 text-slate-300">{siteConfig.description}</p>
           <Link href="/lien-he/" className="mt-6 inline-flex rounded-full bg-white px-5 py-3 text-sm font-black text-blue-700 transition hover:-translate-y-0.5 hover:bg-blue-50">Đăng ký tư vấn</Link>
