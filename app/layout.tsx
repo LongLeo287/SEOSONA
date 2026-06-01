@@ -3,6 +3,7 @@ import { Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { FloatingActions } from "@/components/layout/FloatingActions";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
@@ -34,12 +35,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="vi">
+    <html lang="vi" id="top">
       <body className={beVietnam.variable}>
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <Header />
         {children}
         <Footer />
+        <FloatingActions />
       </body>
     </html>
   );
