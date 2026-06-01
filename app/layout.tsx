@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
+import { Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
+
+const beVietnam = Be_Vietnam_Pro({
+  subsets: ["vietnamese", "latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-be-vietnam"
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.domain),
@@ -27,7 +35,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="vi">
-      <body>
+      <body className={beVietnam.variable}>
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <Header />
         {children}
