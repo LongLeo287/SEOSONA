@@ -10,24 +10,24 @@ const points = [
 
 export function AboutPreview() {
   return (
-    <section className="bg-white py-16 lg:py-20">
-      <div className="container grid items-center gap-10 lg:grid-cols-2">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-[32px] bg-blue-50 shadow-xl shadow-blue-900/5">
-          <Image src="/images/legacy/about/about-img.png" alt="Về SEOSONA" fill className="object-contain p-8" sizes="(min-width: 1024px) 50vw, 100vw" />
+    <section className="bg-white py-14 sm:py-16 lg:py-20">
+      <div className="container grid items-center gap-8 lg:grid-cols-2 lg:gap-10">
+        <div className="card group relative mx-auto aspect-[4/3] w-full max-w-[560px] overflow-hidden rounded-[28px] bg-gradient-to-br from-blue-50 to-cyan-50 shadow-xl shadow-blue-900/5 sm:rounded-[32px] lg:max-w-none">
+          <Image src="/images/legacy/about/about-img.png" alt="Về SEOSONA" fill className="object-contain p-6 transition duration-300 group-hover:scale-105 sm:p-8" sizes="(min-width: 1024px) 50vw, 100vw" />
         </div>
-        <div>
-          <span className="font-bold text-blue-600">Về SEOSONA</span>
-          <h2 className="mt-3 text-4xl font-black tracking-tight text-slate-950 md:text-5xl">Đồng hành cùng doanh nghiệp tăng trưởng từ Google</h2>
-          <p className="mt-5 text-lg leading-8 text-slate-600">SEOSONA tập trung vào Google Marketing: SEO tổng thể, Google Ads, Content SEO và đào tạo. Mục tiêu là giúp doanh nghiệp xây hệ thống tăng trưởng organic và paid search có thể đo lường.</p>
-          <div className="mt-6 grid gap-3">
+        <div className="text-center lg:text-left">
+          <span className="font-bold text-blue-700">Về SEOSONA</span>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl md:text-5xl">Đồng hành cùng doanh nghiệp tăng trưởng từ Google</h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-700 sm:text-lg lg:mx-0">SEOSONA tập trung vào Google Marketing: SEO tổng thể, Google Ads, Content SEO và đào tạo. Mục tiêu là giúp doanh nghiệp xây hệ thống tăng trưởng organic và paid search có thể đo lường.</p>
+          <div className="mx-auto mt-6 grid max-w-xl gap-3 text-left lg:mx-0">
             {points.map((point) => (
-              <div key={point} className="flex gap-3 text-slate-700">
-                <CheckCircle2 className="mt-1 shrink-0 text-blue-600" size={20} />
+              <div key={point} className="flex gap-3 rounded-2xl bg-slate-50 p-3 text-slate-800 transition hover:-translate-y-0.5 hover:bg-blue-50">
+                <CheckCircle2 className="mt-1 shrink-0 text-blue-700" size={20} />
                 <span>{point}</span>
               </div>
             ))}
           </div>
-          <Link href="/ve-seosona/" className="mt-8 inline-flex items-center gap-2 rounded-full bg-slate-950 px-6 py-4 font-bold text-white">Tìm hiểu SEOSONA <ArrowRight size={18} /></Link>
+          <Link href="/ve-seosona/" className="btn-secondary mt-8">Tìm hiểu SEOSONA <ArrowRight size={18} /></Link>
         </div>
       </div>
     </section>
