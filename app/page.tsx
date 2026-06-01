@@ -1,4 +1,7 @@
+import { ClientLogoGrid } from "@/components/sections/ClientLogoGrid";
+import { FeaturedPosts } from "@/components/sections/FeaturedPosts";
 import { Hero } from "@/components/sections/Hero";
+import { PressLogoGrid } from "@/components/sections/PressLogoGrid";
 import { Services } from "@/components/sections/Services";
 import Link from "next/link";
 
@@ -10,13 +13,14 @@ export default function HomePage() {
   return (
     <main>
       <Hero />
+      <ClientLogoGrid />
       <Services />
       <section className="bg-white py-20">
         <div className="container grid gap-10 lg:grid-cols-[.9fr_1.1fr]">
           <div>
             <span className="font-bold text-blue-600">Knowledge hub</span>
-            <h2 className="mt-3 text-4xl font-black tracking-tight text-slate-950">Xây lại topical map SEO sạch và dễ mở rộng</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">Các hub cũ sẽ được chuẩn hóa URL, redirect 301, thêm breadcrumb, TOC, schema và hệ thống related posts để giữ internal link equity.</p>
+            <h2 className="mt-3 text-4xl font-black tracking-tight text-slate-950">Thư viện kiến thức SEO có hệ thống</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">SEOSONA xây dựng các cụm nội dung SEO từ nền tảng đến chuyên sâu: keyword research, onpage, content, technical, offpage, công cụ SEO và thuật toán Google.</p>
             <Link href="/seo/" className="mt-7 inline-flex rounded-full bg-slate-950 px-6 py-4 font-bold text-white">Xem thư viện SEO</Link>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -24,10 +28,12 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <PressLogoGrid />
+      <FeaturedPosts />
       <section className="py-20">
         <div className="container rounded-[32px] bg-gradient-to-br from-blue-600 via-cyan-500 to-violet-600 p-10 text-white md:p-16">
-          <h2 className="max-w-3xl text-4xl font-black tracking-tight md:text-5xl">Rebuild không copy lỗi cũ: sạch spam, sạch shortcode, sạch 404.</h2>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-blue-50">Ưu tiên của bản mới là bảo mật, hiệu suất, SEO technical, conversion và migration an toàn từ WordPress sang Next.js/Vercel.</p>
+          <h2 className="max-w-3xl text-4xl font-black tracking-tight md:text-5xl">Sẵn sàng tăng trưởng khách hàng tiềm năng từ Google?</h2>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-blue-50">Đăng ký tư vấn để SEOSONA audit nhanh hiện trạng website, xác định cơ hội SEO/Google Ads và đề xuất roadmap phù hợp với mục tiêu kinh doanh.</p>
           <Link href="/lien-he/" className="mt-8 inline-flex rounded-full bg-white px-6 py-4 font-black text-blue-700">Bắt đầu tư vấn</Link>
         </div>
       </section>
