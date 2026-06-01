@@ -1,10 +1,12 @@
 import { AboutPreview } from "@/components/sections/AboutPreview";
+import { CaseStudyPreview } from "@/components/sections/CaseStudyPreview";
 import { ClientLogoGrid } from "@/components/sections/ClientLogoGrid";
 import { FeaturedPosts } from "@/components/sections/FeaturedPosts";
 import { Hero } from "@/components/sections/Hero";
 import { PressLogoGrid } from "@/components/sections/PressLogoGrid";
 import { Services } from "@/components/sections/Services";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { WhyChoose } from "@/components/sections/WhyChoose";
 import Link from "next/link";
 
 const hubs = [
@@ -17,7 +19,9 @@ export default function HomePage() {
       <Hero />
       <ClientLogoGrid />
       <Services />
+      <WhyChoose />
       <AboutPreview />
+      <CaseStudyPreview />
       <section className="bg-white py-20">
         <div className="container grid gap-10 lg:grid-cols-[.9fr_1.1fr]">
           <div>
