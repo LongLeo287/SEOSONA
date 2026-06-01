@@ -10,7 +10,7 @@ import { WhyChoose } from "@/components/sections/WhyChoose";
 import Link from "next/link";
 
 const hubs = [
-  "SEO cơ bản", "SEO tổng hợp", "Keyword Research", "SEO Onpage", "Content SEO", "SEO Technical", "SEO Offpage", "Công cụ SEO", "Thuật ngữ SEO", "Thuật toán Google"
+  "SEO cơ bản", "SEO tổng hợp", "Nghiên cứu từ khóa", "SEO Onpage", "Content SEO", "SEO Technical", "SEO Offpage", "Công cụ SEO", "Thuật ngữ SEO", "Thuật toán Google"
 ];
 
 export default function HomePage() {
@@ -25,9 +25,9 @@ export default function HomePage() {
       <section className="bg-white py-20">
         <div className="container grid gap-10 lg:grid-cols-[.9fr_1.1fr]">
           <div>
-            <span className="font-bold text-blue-600">Knowledge hub</span>
-            <h2 className="mt-3 text-4xl font-black tracking-tight text-slate-950">Thư viện kiến thức SEO có hệ thống</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">SEOSONA xây dựng các cụm nội dung SEO từ nền tảng đến chuyên sâu: keyword research, onpage, content, technical, offpage, công cụ SEO và thuật toán Google.</p>
+            <span className="font-bold text-blue-600">Thư viện SEO</span>
+            <h2 className="mt-3 text-4xl font-black tracking-tight text-slate-950">Kiến thức SEO có hệ thống</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">SEOSONA xây dựng các cụm nội dung SEO từ nền tảng đến chuyên sâu, giúp doanh nghiệp hiểu và triển khai SEO bài bản hơn.</p>
             <Link href="/seo/" className="mt-7 inline-flex rounded-full bg-slate-950 px-6 py-4 font-bold text-white">Xem thư viện SEO</Link>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
