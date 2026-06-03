@@ -1,16 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BarChart3, Search, ShieldCheck, type LucideIcon } from "lucide-react";
+import { ArrowRight, BarChart3, Search, ShieldCheck, TrendingUp, type LucideIcon } from "lucide-react";
 import { CountUp } from "@/components/ui/CountUp";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
+/**
+ * Hero Section — SEOSONA Brand (Guideline v2)
+ * 
+ * Agent: [Visual & Motion Designer] activated
+ * Skills loaded: react_best_practices, ui_ux_pro_max, nextjs_app_router_patterns
+ * Design ref: SEOSONA Guideline.png
+ * 
+ * Brand rules applied:
+ * - Primary color: Dark Navy #003566 (NOT Neon Green)
+ * - Neon Green #46FF00 = accent/glow only
+ * - Typography: Poppins (headings), Inter (body)
+ * - Border radius: 16px cards, 25px hero wrappers, pill buttons
+ * - Shadow: 5px 5px 10px spec from Guideline §08
+ */
 
 const metrics = [
-  { label: "Dự án SEO", value: 300, suffix: "+" },
-  { label: "Học viên", value: 1000, suffix: "+" },
-  { label: "Năm kinh nghiệm", value: 10, suffix: "+" }
+  { label: "Dự án SEO", value: 300, suffix: "+", icon: TrendingUp },
+  { label: "Học viên", value: 1000, suffix: "+", icon: BarChart3 },
+  { label: "Năm kinh nghiệm", value: 10, suffix: "+", icon: ShieldCheck }
 ];
-
 
 const dashboardItems: Array<{ label: string; value: string; icon: LucideIcon }> = [
   { label: "Sức khỏe kỹ thuật", value: "96%", icon: Search },
@@ -20,63 +33,165 @@ const dashboardItems: Array<{ label: string; value: string; icon: LucideIcon }> 
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white py-14 sm:py-16 md:py-20 lg:py-28">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(21,94,239,.16),transparent_30%),radial-gradient(circle_at_80%_10%,rgba(6,182,212,.14),transparent_26%),radial-gradient(circle_at_70%_70%,rgba(124,58,237,.10),transparent_28%)]" />
-      <div className="absolute left-1/2 top-10 h-56 w-56 -translate-x-1/2 rounded-full bg-cyan-200/20 blur-3xl md:h-72 md:w-72" />
-      <div className="container relative grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-12">
-        <RevealOnScroll className="reveal text-center lg:text-left" direction="left">
-          <div className="badge mb-5 max-w-full justify-center text-xs sm:text-sm">SEO • Google Ads • Content SEO • Đào tạo SEO</div>
-          <h1 className="mx-auto max-w-4xl text-4xl font-black tracking-[-0.04em] text-slate-950 sm:text-5xl md:text-6xl lg:mx-0 lg:text-7xl">
-            Google Marketing Agency giúp doanh nghiệp <span className="gradient-text">tăng trưởng bền vững</span>
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg lg:mx-0">
-            SEOSONA giúp doanh nghiệp tăng trưởng khách hàng tiềm năng từ Google thông qua SEO tổng thể, Google Ads, Content SEO và đào tạo đội ngũ nội bộ.
-          </p>
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start">
-            <Link href="/lien-he/" className="btn-primary w-full sm:w-auto">
-              Đăng ký tư vấn <ArrowRight size={18} />
-            </Link>
-            <Link href="/case-study/" className="btn-secondary w-full sm:w-auto">
-              Xem case study
-            </Link>
-          </div>
-          <div className="mx-auto mt-8 grid max-w-xl grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 lg:mx-0">
-            {metrics.map((item, index) => (
-              <div key={item.label} className="rounded-3xl border border-slate-200 bg-white/80 p-4 text-center shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl sm:p-5" style={{ animationDelay: `${index * 80}ms` }}>
-                <div className="text-2xl font-black text-slate-950 sm:text-3xl">
-                  <CountUp end={item.value} suffix={item.suffix} />
-                </div>
-                <div className="mt-1 text-sm text-slate-500">{item.label}</div>
-              </div>
-            ))}
+    <section
+      className="relative overflow-hidden py-20 sm:py-24 lg:py-32"
+      style={{ background: "linear-gradient(160deg, #003566 0%, #002244 60%, #001833 100%)" }}
+    >
+      {/* Subtle Glow orb — accent only (Guideline §08: Glow 140px blur) */}
+      <div
+        className="pointer-events-none absolute -top-32 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full opacity-10"
+        style={{ background: "radial-gradient(circle, #46FF00 0%, transparent 70%)", filter: "blur(80px)" }}
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 right-0 h-[300px] w-[300px] rounded-full opacity-15"
+        style={{ background: "radial-gradient(circle, #0077CE 0%, transparent 70%)", filter: "blur(60px)" }}
+      />
+
+      <div className="container relative">
+        {/* Tagline */}
+        <RevealOnScroll direction="up" className="mb-10 text-center">
+          <div className="badge-accent mx-auto inline-flex">
+            Share To Be Shared More &nbsp;·&nbsp; SEO • Google Ads • Content
           </div>
         </RevealOnScroll>
-        <div className="card pulse-glow mx-auto w-full max-w-[560px] overflow-hidden p-3 sm:p-4 lg:max-w-none">
-          <div className="relative aspect-[5/4] overflow-hidden rounded-3xl bg-gradient-to-br from-blue-50 to-cyan-50">
-            <Image src="/images/legacy/hero/home-begin.png" alt="SEOSONA Google Marketing Agency" fill priority className="float-slow object-contain p-3 sm:p-4" sizes="(min-width: 1024px) 45vw, 100vw" />
-          </div>
-          <div className="mt-4 rounded-3xl bg-slate-950 p-4 text-white sm:p-5">
-            <div className="mb-5 flex items-center justify-between gap-4">
-              <div>
-                <div className="text-xs text-slate-400 sm:text-sm">Hệ thống tăng trưởng SEOSONA</div>
-                <div className="text-xl font-black sm:text-2xl">Bảng đo lường SEO</div>
-              </div>
-              <ShieldCheck className="shrink-0 text-cyan-300" />
+
+        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+
+          {/* ─── Left Column ─── */}
+          <RevealOnScroll direction="left">
+            <h1
+              className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl xl:text-7xl"
+              style={{ fontFamily: "var(--font-poppins, Poppins, sans-serif)", color: "#FFFFFF" }}
+            >
+              Share.{" "}
+              <span className="text-accent" style={{ textShadow: "0 0 30px rgba(70,255,0,0.4)" }}>
+                Search.
+              </span>
+              {" "}Connect.
+            </h1>
+
+            <p
+              className="mt-6 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg"
+              style={{ fontFamily: "var(--font-inter, Inter, sans-serif)" }}
+            >
+              SEOSONA là Tech-Agency hàng đầu Việt Nam, kết hợp chiến lược chuyên sâu và
+              tư duy dữ liệu để tăng trưởng khách hàng tiềm năng từ Google bền vững và
+              đột phá.
+            </p>
+
+            {/* CTAs — Primary = Dark Navy button, per Guideline §6 */}
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href="/lien-he/" className="btn-primary">
+                Nhận tư vấn chiến lược <ArrowRight size={18} />
+              </Link>
+              <Link href="/case-study/" className="btn-secondary" style={{ color: "#FFFFFF", borderColor: "rgba(255,255,255,0.3)" }}>
+                Xem Case Study
+              </Link>
             </div>
-            <div className="grid gap-3">
-              {dashboardItems.map((item) => {
+
+            {/* Metric counters */}
+            <div className="mt-12 grid grid-cols-3 gap-4 sm:gap-6">
+              {metrics.map((item, i) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.label} className="rounded-2xl border border-white/10 bg-white/5 p-3 transition hover:bg-white/10 sm:p-4">
-                    <div className="flex items-center justify-between gap-3 text-sm sm:text-base">
-                      <div className="flex min-w-0 items-center gap-3"><Icon className="shrink-0 text-cyan-300" size={18} /><span className="truncate text-slate-300">{item.label}</span></div>
-                      <strong className="shrink-0">{item.value}</strong>
+                  <div
+                    key={item.label}
+                    className="card-dark rounded-2xl p-5 text-center"
+                    style={{ animationDelay: `${i * 80}ms` }}
+                  >
+                    <Icon className="mx-auto mb-2 text-accent" size={22} />
+                    <div
+                      className="text-3xl font-bold text-white sm:text-4xl"
+                      style={{ fontFamily: "var(--font-poppins, Poppins, sans-serif)" }}
+                    >
+                      <CountUp end={item.value} suffix={item.suffix} />
+                    </div>
+                    <div
+                      className="mt-1 text-sm text-slate-400"
+                      style={{ fontFamily: "var(--font-inter, Inter, sans-serif)" }}
+                    >
+                      {item.label}
                     </div>
                   </div>
                 );
               })}
             </div>
-          </div>
+          </RevealOnScroll>
+
+          {/* ─── Right Column: SEO Dashboard Card ─── */}
+          <RevealOnScroll direction="right">
+            <div
+              className="card-dark overflow-hidden"
+              style={{ borderRadius: "25px", boxShadow: "5px 5px 10px rgba(3, 256, 0, 0.05), 0 30px 80px rgba(0,0,0,0.35)" }}
+            >
+              {/* Hero image */}
+              <div
+                className="relative aspect-[4/3] overflow-hidden"
+                style={{ borderRadius: "20px 20px 0 0", background: "linear-gradient(135deg, #003566 0%, #004080 100%)" }}
+              >
+                <Image
+                  src="/images/legacy/hero/home-begin.png"
+                  alt="SEOSONA Google Marketing Agency Dashboard"
+                  fill
+                  priority
+                  className="float-slow object-contain p-6"
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                />
+              </div>
+
+              {/* Dashboard data strip */}
+              <div className="p-5">
+                <div className="mb-4 flex items-center justify-between">
+                  <div>
+                    <p
+                      className="text-xs text-slate-400"
+                      style={{ fontFamily: "var(--font-inter, Inter, sans-serif)" }}
+                    >
+                      Hệ thống tăng trưởng SEOSONA
+                    </p>
+                    <p
+                      className="text-lg font-bold text-white"
+                      style={{ fontFamily: "var(--font-poppins, Poppins, sans-serif)" }}
+                    >
+                      Bảng đo lường Hiệu Suất
+                    </p>
+                  </div>
+                  <ShieldCheck className="shrink-0 text-accent" size={28} />
+                </div>
+
+                <div className="grid gap-3">
+                  {dashboardItems.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <div
+                        key={item.label}
+                        className="card-dark rounded-xl p-3.5"
+                      >
+                        <div className="flex items-center justify-between gap-3 text-sm">
+                          <div className="flex min-w-0 items-center gap-2.5">
+                            <Icon className="shrink-0 text-accent" size={17} />
+                            <span
+                              className="truncate text-slate-300"
+                              style={{ fontFamily: "var(--font-inter, Inter, sans-serif)" }}
+                            >
+                              {item.label}
+                            </span>
+                          </div>
+                          <strong
+                            className="shrink-0 text-white"
+                            style={{ fontFamily: "var(--font-poppins, Poppins, sans-serif)" }}
+                          >
+                            {item.value}
+                          </strong>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </RevealOnScroll>
+
         </div>
       </div>
     </section>
