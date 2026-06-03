@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, BarChart3, CheckCircle2, TrendingUp } from "lucide-react";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+
 
 const cases = [
   {
@@ -31,14 +33,15 @@ export function CaseStudyPreview() {
       <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-blue-100/60 blur-3xl" />
       <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-cyan-100/60 blur-3xl" />
       <div className="container relative">
-        <div className="mx-auto mb-10 max-w-4xl text-center">
+        <RevealOnScroll className="mx-auto mb-10 max-w-4xl text-center">
           <span className="inline-flex rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-black text-blue-700 shadow-sm">Case study</span>
           <h2 className="mt-5 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl md:text-5xl">Kết quả SEO đến từ chiến lược có hệ thống</h2>
           <p className="mx-auto mt-4 max-w-3xl text-base leading-8 text-slate-700 sm:text-lg">Mỗi ngành có mức độ cạnh tranh, hành trình tìm kiếm và cơ hội chuyển đổi khác nhau. SEOSONA xây roadmap theo dữ liệu thay vì triển khai theo cảm tính.</p>
-        </div>
+        </RevealOnScroll>
 
         <div className="grid gap-5 lg:grid-cols-[.9fr_1.1fr]">
-          <div className="relative overflow-hidden rounded-[32px] border border-blue-300/30 bg-gradient-to-br from-blue-700 via-blue-600 to-cyan-500 p-7 text-white shadow-2xl shadow-blue-900/15 sm:p-8">
+          <RevealOnScroll direction="left">
+            <div className="relative overflow-hidden rounded-[32px] border border-blue-300/30 bg-gradient-to-br from-blue-700 via-blue-600 to-cyan-500 p-7 text-white shadow-2xl shadow-blue-900/15 sm:p-8">
             <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
             <div className="relative grid h-14 w-14 place-items-center rounded-2xl border border-white/20 bg-white/20 text-white shadow-lg shadow-blue-950/10 backdrop-blur">
               <BarChart3 size={28} />
@@ -57,11 +60,13 @@ export function CaseStudyPreview() {
               <span className="text-white">Xem tất cả case study</span>
               <ArrowRight size={18} className="text-white" />
             </Link>
-          </div>
+            </div>
+          </RevealOnScroll>
 
           <div className="grid gap-5 md:grid-cols-3 lg:grid-cols-1">
-            {cases.map((item) => (
-              <Link href="/case-study/" key={item.industry} className="group relative overflow-hidden rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl lg:grid lg:grid-cols-[150px_1fr_auto] lg:items-center lg:gap-5">
+            {cases.map((item, index) => (
+              <RevealOnScroll key={item.industry} delay={index * 100} direction="right">
+                <Link href="/case-study/" className="group relative overflow-hidden rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl lg:grid lg:grid-cols-[150px_1fr_auto] lg:items-center lg:gap-5">
                 <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-blue-50 transition duration-500 group-hover:scale-150 group-hover:bg-cyan-50" />
                 <div className="relative mb-5 flex items-center justify-between lg:mb-0 lg:block">
                   <div className="grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-blue-700 transition group-hover:bg-blue-600 group-hover:text-white">
@@ -75,8 +80,9 @@ export function CaseStudyPreview() {
                   <p className="mt-2 text-sm leading-7 text-slate-600 sm:text-base">{item.detail}</p>
                   <div className="mt-3 inline-flex rounded-full bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-600">{item.focus}</div>
                 </div>
-                <span className="relative mt-5 inline-flex items-center gap-2 font-black text-blue-700 lg:mt-0">Xem chi tiết <ArrowRight size={16} /></span>
-              </Link>
+                  <span className="relative mt-5 inline-flex items-center gap-2 font-black text-blue-700 lg:mt-0">Xem chi tiết <ArrowRight size={16} /></span>
+                </Link>
+              </RevealOnScroll>
             ))}
           </div>
         </div>

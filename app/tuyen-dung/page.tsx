@@ -3,8 +3,10 @@ import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
 
 export const metadata: Metadata = {
-  title: "Tuyển dụng",
-  description: "Cơ hội nghề nghiệp tại SEOSONA cho SEO, Content SEO, Google Ads và Growth Marketing."
+  title: "Tuyển dụng SEO và Google Marketing | SEOSONA",
+  description:
+    "Cơ hội nghề nghiệp tại SEOSONA: SEO Executive, Content SEO, Technical SEO, Google Ads Specialist. Môi trường thực chiến, học hỏi từ dự án thật.",
+  alternates: { canonical: "/tuyen-dung/" }
 };
 
 const jobs = ["SEO Executive", "Content SEO Writer", "Technical SEO Specialist", "Google Ads Specialist"];

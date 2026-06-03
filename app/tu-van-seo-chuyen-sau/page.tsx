@@ -4,10 +4,15 @@ import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { Process } from "@/components/sections/Process";
 import { Faq } from "@/components/sections/Faq";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { siteConfig } from "@/lib/site";
+
 
 export const metadata: Metadata = {
-  title: "Tư vấn SEO chuyên sâu",
-  description: "Dịch vụ tư vấn SEO chuyên sâu cho doanh nghiệp cần audit, roadmap và cố vấn triển khai SEO."
+  title: "Tư vấn SEO chuyên sâu cho doanh nghiệp | SEOSONA",
+  description:
+    "Dịch vụ tư vấn SEO chuyên sâu: audit hiện trạng, lập SEO roadmap, cố vấn triển khai và review định kỳ cho đội marketing in-house muốn tăng trưởng bền vững.",
+  alternates: { canonical: "/tu-van-seo-chuyen-sau/" }
 };
 
 const deliverables = [
@@ -33,8 +38,30 @@ const faq = [
 ];
 
 export default function Page() {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Tư vấn SEO chuyên sâu",
+    description:
+      "Dịch vụ tư vấn SEO: audit hiện trạng, lập SEO roadmap, cố vấn triển khai và review định kỳ cho đội marketing in-house.",
+    provider: { "@type": "Organization", name: siteConfig.name, url: siteConfig.domain },
+    areaServed: "Việt Nam",
+    serviceType: "SEO Consulting"
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer }
+    }))
+  };
+
   return (
     <main>
+      <JsonLd data={[serviceSchema, faqSchema]} />
       <PageHero eyebrow="Tư vấn SEO chuyên sâu" title="Cố vấn SEO cho doanh nghiệp cần chiến lược rõ ràng" description="SEOSONA hỗ trợ audit, lập roadmap, review triển khai và cố vấn đội in-house để SEO đi đúng hướng, tránh làm nhiều nhưng không tạo tăng trưởng." secondaryCta="Xem dịch vụ SEO" secondaryHref="/dich-vu-seo/" />
       <FeatureGrid eyebrow="Deliverables" title="Bạn nhận được gì sau quá trình tư vấn?" features={deliverables} />
       <Process steps={steps} description="Quy trình tư vấn tập trung vào chẩn đoán đúng vấn đề, ưu tiên đúng việc và giúp team nội bộ triển khai hiệu quả hơn." />

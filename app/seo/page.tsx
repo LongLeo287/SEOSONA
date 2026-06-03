@@ -3,8 +3,10 @@ import Link from "next/link";
 import { seoHubs } from "@/data/seo-hubs";
 
 export const metadata: Metadata = {
-  title: "Kiến thức SEO",
-  description: "Thư viện kiến thức SEO: cơ bản, technical, onpage, content, offpage, keyword research, công cụ và thuật toán Google."
+  title: "Thư viện kiến thức SEO có hệ thống | SEOSONA",
+  description:
+    "Thư viện kiến thức SEO từ cơ bản đến nâng cao: technical SEO, onpage, content, offpage, keyword research, công cụ SEO và cập nhật thuật toán Google.",
+  alternates: { canonical: "/seo/" }
 };
 
 export default function Page() {

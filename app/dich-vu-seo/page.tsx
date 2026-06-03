@@ -9,8 +9,10 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Dịch vụ SEO tổng thể",
-  description: "Dịch vụ SEO tổng thể SEOSONA: technical SEO, content SEO, entity, offpage và đo lường tăng trưởng."
+  title: "Dịch vụ SEO tổng thể chuyên nghiệp | SEOSONA",
+  description:
+    "Dịch vụ SEO tổng thể SEOSONA: technical SEO, content SEO, entity, authority, offpage và đo lường tăng trưởng organic bền vững cho doanh nghiệp tại Việt Nam.",
+  alternates: { canonical: "/dich-vu-seo/" }
 };
 
 const features = [

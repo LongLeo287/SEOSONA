@@ -1,0 +1,37 @@
+# SEOSONA Project Rules
+
+This project enforces the rules and guidelines of the global skill **custom-dev-suite**.
+
+## 1. Governance & Rules Loading (Mandatory Boot)
+On every session startup, the agent must check and align with:
+1. Global Agent Personality: [SOUL.md](file:///C:/Users/Admin/AntigravitySystem/SOUL.md)
+2. Global Master SOP: [SKILL.md](file:///C:/Users/Admin/AntigravitySystem/skills/custom-dev-suite/SKILL.md)
+
+## 2. Enforced Modular Guidelines
+All edits, reviews, and refactoring on this project must strictly comply with:
+
+*   **Security & Audits:**
+    *   Perform secret scanning before committing using [Security Regex Rules](file:///C:/Users/Admin/AntigravitySystem/brain/security_regex_rules.md).
+    *   Run dependency scans using [Dependency Audit Rules](file:///C:/Users/Admin/AntigravitySystem/brain/dependency_audit_rules.md).
+    *   Validate exports against contract files using [Interface Contract Validation](file:///C:/Users/Admin/AntigravitySystem/brain/interface_contract_validation.md).
+*   **Memory & Context Layout:**
+    *   Log progress spatial-wise in wings, rooms, and drawers using [Mempalace Spatial Memory](file:///C:/Users/Admin/AntigravitySystem/memory/mempalace_spatial_memory.md).
+    *   Clean context logs prior to submission using [Context Cleaning & Optimization](file:///C:/Users/Admin/AntigravitySystem/memory/context_cleaning_optimization.md).
+    *   Track task states (`PENDING` -> `PROCESSING` -> `IN_REVIEW` -> `DONE`) and human-in-the-loop validation using [OmniClaw Blackboard Protocol](file:///C:/Users/Admin/AntigravitySystem/memory/omniclaw_blackboard_protocol.md).
+*   **Coding Standards:**
+    *   Avoid overengineering and make minimal, surgical style edits using [Karpathy Coding Standards](file:///C:/Users/Admin/AntigravitySystem/skills/custom-dev-suite/karpathy_coding_standards.md).
+    *   Avoid placeholders; write complete code blocks using [Completeness Output Enforcement](file:///C:/Users/Admin/AntigravitySystem/skills/custom-dev-suite/completeness_output_enforcement.md).
+*   **Visual Aesthetics & Layouts:**
+    *   Organize bento grid structures and layout rhythm using [MagicUI Bento Patterns](file:///C:/Users/Admin/AntigravitySystem/skills/custom-dev-suite/magicui_bento_patterns.md).
+    *   Constrain animations and use hardware acceleration via [Tailwind Motion Design](file:///C:/Users/Admin/AntigravitySystem/skills/custom-dev-suite/tailwind_motion_design.md).
+    *   Align display headers sizes and spacing using [UI/UX Pro Max Typography](file:///C:/Users/Admin/AntigravitySystem/skills/custom-dev-suite/ui_ux_pro_max_typography.md).
+    *   Enforce Poppins/Lora typography and B&W palettes using [Anthropic Brand Styling](file:///C:/Users/Admin/AntigravitySystem/skills/custom-dev-suite/anthropic_brand_styling.md).
+*   **CI/CD & Autoresearch Loops:**
+    *   Always verify static compilation and run unit test checks via [Harness CI Verification](file:///C:/Users/Admin/AntigravitySystem/skills/custom-dev-suite/harness_ci_verification.md).
+    *   Implement self-modifying error correction loop for build failures using [Swarms Autoresearch Loop](file:///C:/Users/Admin/AntigravitySystem/skills/custom-dev-suite/swarms_autoresearch_loop.md).
+
+## 3. The 4-Phase Master Flow
+1. **Intake & Scope:** Prune context buffer, set up visual dials (variance/density), write task checklist in `task.md`.
+2. **Retrieve:** Load `.aaak` closets and index specs.
+3. **Execute & Auto-Heal:** Surgical modifications matching local style, verify compile checks (2-Strike failsafe limit).
+4. **Deliver:** Switch sub-personas (Designer, DevOps, Auditor), output raw code files, and request CEO approval.

@@ -3,8 +3,10 @@ import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
 
 export const metadata: Metadata = {
-  title: "Đội ngũ SEOSONA",
-  description: "Đội ngũ chuyên gia SEO, Google Ads, Content SEO và đào tạo của SEOSONA."
+  title: "Đội ngũ chuyên gia SEOSONA — Google Marketing",
+  description:
+    "Đội ngũ chuyên gia SEO, Google Ads, Content SEO và đào tạo của SEOSONA. Nhiều năm kinh nghiệm triển khai dự án thực chiến cho doanh nghiệp Việt Nam.",
+  alternates: { canonical: "/doi-ngu-nhan-su/" }
 };
 
 const team = [
