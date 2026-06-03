@@ -20,7 +20,7 @@ export const pressLogos = [
 ];
 
 export const featuredPosts = [
-  { title: "SEO là gì?", category: "SEO cơ bản", href: "/seo-la-gi/", image: "/images/legacy/blog/seo-la-gi.jpg" },
+  { title: "SEO là gì?", category: "SEO cơ bản", href: "/seo/co-ban/", image: "/images/legacy/blog/seo-la-gi.jpg" },
   { title: "Nghiên cứu từ khóa", category: "Keyword Research", href: "/seo/keyword-research/", image: "/images/legacy/blog/nghien-cuu-tu-khoa.jpg" },
   { title: "SEO Onpage", category: "SEO Onpage", href: "/seo/onpage/", image: "/images/legacy/blog/seo-onpage.jpg" },
   { title: "Technical SEO", category: "SEO Technical", href: "/seo/technical/", image: "/images/legacy/blog/technical-seo.jpg" }

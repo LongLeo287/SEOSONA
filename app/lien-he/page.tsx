@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site";
+import { ContactForm } from "@/components/sections/ContactForm";
 
 export const metadata: Metadata = {
   title: "Liên hệ",
@@ -16,12 +17,7 @@ export default function Page() {
           <p className="mt-3 text-lg text-slate-600">Email: {siteConfig.email}</p>
           <p className="mt-3 text-lg text-slate-600">Địa chỉ: {siteConfig.address}</p>
         </div>
-        <form className="card grid gap-4 p-8">
-          <input className="rounded-2xl border border-slate-200 p-4" placeholder="Họ tên" />
-          <input className="rounded-2xl border border-slate-200 p-4" placeholder="Email/Số điện thoại" />
-          <textarea className="min-h-32 rounded-2xl border border-slate-200 p-4" placeholder="Nhu cầu tư vấn" />
-          <button className="rounded-full bg-blue-600 px-6 py-4 font-bold text-white">Gửi thông tin</button>
-        </form>
+        <ContactForm />
       </div>
     </main>
   );

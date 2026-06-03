@@ -2,16 +2,16 @@ import Link from "next/link";
 import { ArrowRight, BookOpenCheck, FileText, SearchCheck, Sparkles } from "lucide-react";
 
 const hubs = [
-  { title: "SEO cơ bản", desc: "Nền tảng cho người mới", icon: BookOpenCheck },
-  { title: "SEO tổng hợp", desc: "Chiến lược & quy trình", icon: Sparkles },
-  { title: "Nghiên cứu từ khóa", desc: "Intent, topic, mapping", icon: SearchCheck },
-  { title: "SEO Onpage", desc: "Title, heading, internal link", icon: FileText },
-  { title: "Content SEO", desc: "Brief, entity, topical map", icon: FileText },
-  { title: "SEO Technical", desc: "Crawl, index, schema", icon: SearchCheck },
-  { title: "SEO Offpage", desc: "Authority & digital PR", icon: Sparkles },
-  { title: "Công cụ SEO", desc: "GSC, GA4, audit tools", icon: BookOpenCheck },
-  { title: "Thuật ngữ SEO", desc: "Từ điển SEO dễ hiểu", icon: FileText },
-  { title: "Thuật toán Google", desc: "Update & ứng dụng", icon: Sparkles }
+  { title: "SEO cơ bản", desc: "Nền tảng cho người mới", slug: "co-ban", icon: BookOpenCheck },
+  { title: "SEO tổng hợp", desc: "Chiến lược & quy trình", slug: "tong-hop", icon: Sparkles },
+  { title: "Nghiên cứu từ khóa", desc: "Intent, topic, mapping", slug: "keyword-research", icon: SearchCheck },
+  { title: "SEO Onpage", desc: "Title, heading, internal link", slug: "onpage", icon: FileText },
+  { title: "Content SEO", desc: "Brief, entity, topical map", slug: "content", icon: FileText },
+  { title: "SEO Technical", desc: "Crawl, index, schema", slug: "technical", icon: SearchCheck },
+  { title: "SEO Offpage", desc: "Authority & digital PR", slug: "offpage", icon: Sparkles },
+  { title: "Công cụ SEO", desc: "GSC, GA4, audit tools", slug: "cong-cu", icon: BookOpenCheck },
+  { title: "Thuật ngữ SEO", desc: "Từ điển SEO dễ hiểu", slug: "thuat-ngu", icon: FileText },
+  { title: "Thuật toán Google", desc: "Update & ứng dụng", slug: "thuat-toan-google", icon: Sparkles }
 ];
 
 export function KnowledgeHubPreview() {
@@ -48,7 +48,7 @@ export function KnowledgeHubPreview() {
               {hubs.map((hub) => {
                 const Icon = hub.icon;
                 return (
-                  <Link key={hub.title} href="/seo/" className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl">
+                  <Link key={hub.title} href={`/seo/${hub.slug}/`} className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl">
                     <div className="absolute -right-8 -top-8 h-20 w-20 rounded-full bg-blue-50 transition group-hover:scale-150 group-hover:bg-cyan-50" />
                     <div className="relative flex items-start gap-4">
                       <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-blue-50 text-blue-700 transition group-hover:bg-blue-600 group-hover:text-white">

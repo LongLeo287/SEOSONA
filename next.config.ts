@@ -3,12 +3,12 @@ import type { NextConfig } from "next";
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
 
 const nextConfig: NextConfig = {
+  trailingSlash: true,
   ...(isGitHubPages
     ? {
         output: "export",
         basePath: "/SEOSONA",
-        assetPrefix: "/SEOSONA/",
-        trailingSlash: true
+        assetPrefix: "/SEOSONA/"
       }
     : {}),
   experimental: {
@@ -25,6 +25,7 @@ const nextConfig: NextConfig = {
     : {
         async redirects() {
           return [
+            { source: "/seo-la-gi/", destination: "/seo/co-ban/", permanent: true },
             { source: "/seo-onpage/", destination: "/seo/onpage/", permanent: true },
             { source: "/content-seo/", destination: "/seo/content/", permanent: true },
             { source: "/seo-offpage/", destination: "/seo/offpage/", permanent: true },

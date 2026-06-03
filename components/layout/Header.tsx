@@ -1,8 +1,19 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { BrandLogo } from "@/components/layout/BrandLogo";
 import { navItems } from "@/lib/site";
 
 export function Header() {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 shadow-sm shadow-slate-900/[0.03] backdrop-blur-xl">
       <div className="container flex h-[76px] items-center justify-between gap-4">
@@ -25,7 +36,7 @@ export function Header() {
           <Link href="/lien-he/" className="hidden rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-5 py-3 text-sm font-black text-white shadow-lg shadow-blue-600/20 transition duration-200 hover:-translate-y-0.5 hover:from-blue-500 hover:to-cyan-400 hover:shadow-xl hover:shadow-blue-600/25 focus:outline-none focus:ring-4 focus:ring-blue-100 sm:inline-flex">
             Đăng ký tư vấn
           </Link>
-          <details className="group relative lg:hidden">
+          <details className="group relative lg:hidden" open={open} onToggle={(e) => setOpen(e.currentTarget.open)}>
             <summary className="grid h-11 w-11 cursor-pointer list-none place-items-center rounded-2xl border border-slate-200 bg-white text-slate-950 shadow-sm transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-100">
               <span className="sr-only">Mở menu</span>
               <span className="relative block h-4 w-5">
