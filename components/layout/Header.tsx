@@ -20,16 +20,27 @@ export function Header() {
         <BrandLogo />
 
         <nav className="hidden items-center rounded-full border border-slate-200/80 bg-slate-50/80 p-1 text-sm font-bold text-slate-700 shadow-inner shadow-white/70 lg:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="group relative whitespace-nowrap rounded-full px-4 py-2.5 transition duration-200 hover:bg-white hover:text-blue-700 hover:shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-100"
-            >
-              <span className="relative z-10">{item.label}</span>
-              <span className="absolute inset-x-4 bottom-1 h-0.5 scale-x-0 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 transition-transform duration-200 group-hover:scale-x-100" />
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`group relative whitespace-nowrap rounded-full px-4 py-2.5 transition duration-200 focus:outline-none focus:ring-4 focus:ring-blue-100 ${
+                  isActive
+                    ? "bg-white text-blue-700 shadow-sm"
+                    : "hover:bg-white hover:text-blue-700 hover:shadow-sm"
+                }`}
+              >
+                <span className="relative z-10">{item.label}</span>
+                <span
+                  className={`absolute inset-x-4 bottom-1 h-0.5 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 transition-transform duration-200 ${
+                    isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-3">

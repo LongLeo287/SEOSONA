@@ -42,8 +42,8 @@ export function Footer() {
       <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
       <div className="container relative grid gap-10 py-14 lg:grid-cols-[1.35fr_.85fr_.85fr_1fr]">
         <div>
-          <div className="mb-5 inline-flex rounded-2xl border border-white/10 bg-white/95 px-3 py-2 shadow-xl shadow-black/10">
-            <BrandLogo size="footer" />
+          <div className="mb-5">
+            <BrandLogo variant="light" size="footer" />
           </div>
           <p className="max-w-md leading-8 text-slate-200">{siteConfig.description}</p>
           <Link
@@ -120,7 +120,7 @@ export function Footer() {
         </div>
       </div>
       <div className="relative border-t border-white/10 py-5 text-center text-sm text-slate-300">
-        © 2026 SEOSONA. Google Marketing Agency — Tăng trưởng bền vững từ Google.
+        © {new Date().getFullYear()} SEOSONA. Google Marketing Agency — Tăng trưởng bền vững từ Google.
       </div>
     </footer>
   );

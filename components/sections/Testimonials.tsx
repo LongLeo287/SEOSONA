@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 const testimonials = [
@@ -52,6 +55,35 @@ function StarRating({ count }: { count: number }) {
   );
 }
 
+function Avatar({ src, name }: { src: string; name: string }) {
+  const [error, setError] = useState(false);
+  const initials = name
+    .split(" ")
+    .slice(-2)
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase();
+
+  if (error) {
+    return (
+      <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 text-base font-black text-white ring-4 ring-blue-50 sm:h-16 sm:w-16">
+        {initials}
+      </div>
+    );
+  }
+
+  return (
+    <Image
+      src={src}
+      alt={name}
+      width={64}
+      height={64}
+      onError={() => setError(true)}
+      className="h-14 w-14 rounded-full object-cover ring-4 ring-blue-50 transition group-hover:ring-blue-100 sm:h-16 sm:w-16"
+    />
+  );
+}
+
 export function Testimonials() {
   return (
     <section className="py-14 sm:py-16 lg:py-20">
@@ -69,13 +101,7 @@ export function Testimonials() {
                 <StarRating count={item.rating} />
                 <p className="mt-4 text-base leading-8 text-slate-800 sm:text-lg">"{item.quote}"</p>
                 <div className="mt-6 flex items-center gap-4">
-                  <Image
-                    src={item.avatar}
-                    alt={item.name}
-                    width={64}
-                    height={64}
-                    className="h-14 w-14 rounded-full object-cover ring-4 ring-blue-50 transition group-hover:ring-blue-100 sm:h-16 sm:w-16"
-                  />
+                    <Avatar src={item.avatar} name={item.name} />
                   <div>
                     <div className="font-black text-slate-950">{item.name}</div>
                     <div className="text-sm font-medium text-slate-600">{item.role}</div>

@@ -48,7 +48,7 @@ export function Services() {
                     </div>
                   ))}
                 </div>
-                <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-600 px-5 py-3 font-black text-white shadow-lg shadow-blue-600/20 transition group-hover:bg-blue-700">Tìm hiểu dịch vụ SEO <ArrowRight size={18} /></span>
+                <span className="btn-primary mt-6 inline-flex">Tìm hiểu dịch vụ SEO <ArrowRight size={18} /></span>
               </div>
               <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-blue-50 to-cyan-50 p-4">
                 <Image src={featured.image} alt={featured.title} width={420} height={320} className="mx-auto h-auto w-full max-w-xs object-contain transition duration-500 group-hover:scale-105 md:max-w-sm" />

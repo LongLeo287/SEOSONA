@@ -37,12 +37,12 @@ export function KnowledgeHubPreview() {
                   <div className="text-xs font-semibold text-slate-600">Chủ đề</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-black text-slate-950">SEO</div>
-                  <div className="text-xs font-semibold text-slate-600">Bài bản</div>
+                  <div className="text-2xl font-black text-slate-950">200+</div>
+                  <div className="text-xs font-semibold text-slate-600">Bài viết</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-black text-slate-950">Hub</div>
-                  <div className="text-xs font-semibold text-slate-600">Dễ mở rộng</div>
+                  <div className="text-2xl font-black text-slate-950">100%</div>
+                  <div className="text-xs font-semibold text-slate-600">Miễn phí</div>
                 </div>
               </div>
               <Link href="/seo/" className="btn-primary mt-7 w-full sm:w-auto">Xem thư viện SEO <ArrowRight size={18} /></Link>
