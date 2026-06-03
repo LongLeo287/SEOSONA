@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { coreRoutes, siteConfig } from "@/lib/site";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return coreRoutes.map((route) => ({
     url: `${siteConfig.domain}${route}`,
