@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   /* SEOSONA Brand Radii (from Guideline: 0, 4, 8, 12, 16, 25px) */
