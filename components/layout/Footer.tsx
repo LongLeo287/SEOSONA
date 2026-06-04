@@ -37,29 +37,31 @@ function LinkedInIcon() {
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-slate-800 bg-[#020617] text-white">
-      <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl" />
-      <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
+    <footer className="relative overflow-hidden border-t border-white/5 bg-[#001833] text-white">
+      {/* Brand Ambient Glow */}
+      <div className="absolute -left-24 top-0 h-72 w-72 rounded-full opacity-10" style={{ background: "radial-gradient(circle, #46FF00 0%, transparent 70%)", filter: "blur(80px)" }} />
+      <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full opacity-10" style={{ background: "radial-gradient(circle, #0055AA 0%, transparent 70%)", filter: "blur(80px)" }} />
+      
       <div className="container relative grid gap-10 py-14 lg:grid-cols-[1.35fr_.85fr_.85fr_1fr]">
         <div>
           <div className="mb-5">
             <BrandLogo variant="light" size="footer" />
           </div>
-          <p className="max-w-md leading-8 text-slate-200">{siteConfig.description}</p>
+          <p className="max-w-md leading-8 text-slate-300">{siteConfig.description}</p>
           <Link
             href="/lien-he/"
-            className="mt-6 inline-flex rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-5 py-3 text-sm font-black text-white shadow-lg shadow-blue-950/30 transition hover:-translate-y-0.5 hover:from-blue-400 hover:to-cyan-300 focus:outline-none focus:ring-4 focus:ring-cyan-300/25"
+            className="mt-6 inline-flex rounded-full border border-[#46FF00]/40 bg-[#46FF00]/10 px-5 py-3 text-sm font-black text-[#46FF00] shadow-lg transition hover:-translate-y-0.5 hover:bg-[#46FF00] hover:text-[#003566] focus:outline-none focus:ring-4 focus:ring-[#46FF00]/25"
           >
             Đăng ký tư vấn
           </Link>
           {/* Social icons */}
-          <div className="mt-6 flex items-center gap-3">
+          <div className="mt-8 flex items-center gap-3">
             <a
               href={siteConfig.socials.facebook}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="SEOSONA Facebook"
-              className="grid h-10 w-10 place-items-center rounded-2xl border border-white/10 bg-white/5 text-slate-300 transition hover:border-blue-500/40 hover:bg-blue-600 hover:text-white"
+              className="grid h-10 w-10 place-items-center rounded-2xl border border-white/10 bg-white/5 text-slate-300 transition hover:border-blue-500/40 hover:bg-[#003566] hover:text-white"
             >
               <FacebookIcon />
             </a>
@@ -68,7 +70,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="SEOSONA YouTube"
-              className="grid h-10 w-10 place-items-center rounded-2xl border border-white/10 bg-white/5 text-slate-300 transition hover:border-red-500/40 hover:bg-red-600 hover:text-white"
+              className="grid h-10 w-10 place-items-center rounded-2xl border border-white/10 bg-white/5 text-slate-300 transition hover:border-red-500/40 hover:bg-[#003566] hover:text-white"
             >
               <YoutubeIcon />
             </a>
@@ -77,7 +79,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="SEOSONA LinkedIn"
-              className="grid h-10 w-10 place-items-center rounded-2xl border border-white/10 bg-white/5 text-slate-300 transition hover:border-blue-400/40 hover:bg-[#0077b5] hover:text-white"
+              className="grid h-10 w-10 place-items-center rounded-2xl border border-white/10 bg-white/5 text-slate-300 transition hover:border-blue-400/40 hover:bg-[#003566] hover:text-white"
             >
               <LinkedInIcon />
             </a>
@@ -85,9 +87,9 @@ export function Footer() {
         </div>
         <div>
           <div className="mb-4 font-black text-white">Dịch vụ</div>
-          <div className="grid gap-3 text-slate-200">
+          <div className="grid gap-3 text-slate-300">
             {serviceLinks.map((item) => (
-              <Link className="transition hover:text-cyan-300" key={item.href} href={item.href}>
+              <Link className="transition hover:text-[#46FF00]" key={item.href} href={item.href}>
                 {item.label}
               </Link>
             ))}
@@ -95,31 +97,31 @@ export function Footer() {
         </div>
         <div>
           <div className="mb-4 font-black text-white">Điều hướng</div>
-          <div className="grid gap-3 text-slate-200">
+          <div className="grid gap-3 text-slate-300">
             {navItems.slice(4).map((item) => (
-              <Link className="transition hover:text-cyan-300" key={item.href} href={item.href}>
+              <Link className="transition hover:text-[#46FF00]" key={item.href} href={item.href}>
                 {item.label}
               </Link>
             ))}
-            <Link className="transition hover:text-cyan-300" href="/ve-seosona/">Về SEOSONA</Link>
-            <Link className="transition hover:text-cyan-300" href="/doi-ngu-nhan-su/">Đội ngũ</Link>
-            <Link className="transition hover:text-cyan-300" href="/tuyen-dung/">Tuyển dụng</Link>
+            <Link className="transition hover:text-[#46FF00]" href="/ve-seosona/">Về SEOSONA</Link>
+            <Link className="transition hover:text-[#46FF00]" href="/doi-ngu-nhan-su/">Đội ngũ</Link>
+            <Link className="transition hover:text-[#46FF00]" href="/tuyen-dung/">Tuyển dụng</Link>
           </div>
         </div>
         <div>
           <div className="mb-4 font-black text-white">Liên hệ</div>
-          <div className="grid gap-3 leading-7 text-slate-200">
-            <a className="transition hover:text-cyan-300" href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}>
+          <div className="grid gap-3 leading-7 text-slate-300">
+            <a className="transition hover:text-[#46FF00]" href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}>
               📞 {siteConfig.phone}
             </a>
-            <a className="transition hover:text-cyan-300" href={`mailto:${siteConfig.email}`}>
+            <a className="transition hover:text-[#46FF00]" href={`mailto:${siteConfig.email}`}>
               ✉️ {siteConfig.email}
             </a>
             <span>📍 {siteConfig.address}</span>
           </div>
         </div>
       </div>
-      <div className="relative border-t border-white/10 py-5 text-center text-sm text-slate-300">
+      <div className="relative border-t border-white/5 py-5 text-center text-sm text-slate-400">
         © {new Date().getFullYear()} SEOSONA. Google Marketing Agency — Tăng trưởng bền vững từ Google.
       </div>
     </footer>
