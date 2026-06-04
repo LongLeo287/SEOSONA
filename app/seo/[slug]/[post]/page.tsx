@@ -15,15 +15,16 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string, post: string } }): Metadata {
-  const post = getPostBySlug(params.post);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string, post: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const post = getPostBySlug(resolvedParams.post);
   if (!post) return {};
   
   // Apply SEO Skill: Dynamic SEO tags and Canonical URL
   return {
-    title: `${post.meta.title} | SEOSONA`,
+    title: post.meta.title,
     description: post.meta.excerpt || post.meta.title,
-    alternates: { canonical: `/seo/${params.slug}/${params.post}/` }
+    alternates: { canonical: `/seo/${resolvedParams.slug}/${resolvedParams.post}/` }
   };
 }
 
@@ -44,16 +45,17 @@ const mdxComponents = {
   )
 };
 
-export default function BlogPostPage({ params }: { params: { slug: string, post: string } }) {
-  const post = getPostBySlug(params.post);
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string, post: string }> }) {
+  const resolvedParams = await params;
+  const post = getPostBySlug(resolvedParams.post);
   if (!post) notFound();
 
   // Validate that the post belongs to the category slug
-  if (post.meta.categorySlug !== params.slug) {
+  if (post.meta.categorySlug !== resolvedParams.slug) {
     // Optionally redirect to the correct slug or return 404. Let's just render it for now.
   }
 
-  const hubName = seoHubs[params.slug as HubSlug]?.title || 'Kiến thức SEO';
+  const hubName = seoHubs[resolvedParams.slug as HubSlug]?.title || 'Kiến thức SEO';
 
   // Apply SEO Skill: Generate JSON-LD Article Schema
   const jsonLd = {
@@ -76,7 +78,7 @@ export default function BlogPostPage({ params }: { params: { slug: string, post:
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="container py-12 lg:py-20">
-        <Link href={`/seo/${params.slug}/`} className="inline-flex items-center gap-2 text-sm font-bold text-[#6B7280] hover:text-[#003566] transition-colors mb-10">
+        <Link href={`/seo/${resolvedParams.slug}/`} className="inline-flex items-center gap-2 text-sm font-bold text-[#6B7280] hover:text-[#003566] transition-colors mb-10">
           <ArrowLeft size={16} /> Quay lại {hubName}
         </Link>
         
@@ -113,7 +115,7 @@ export default function BlogPostPage({ params }: { params: { slug: string, post:
           )}
 
           <div className="prose prose-lg prose-slate max-w-none prose-headings:font-black prose-headings:text-[#091338] prose-h2:text-3xl prose-h3:text-2xl prose-a:text-[#003566] prose-img:rounded-2xl prose-img:shadow-md">
-            <MDXRemote source={post.content} components={mdxComponents} />
+            <MDXRemote source={post.content} components={mdxComponents} options={{ mdxOptions: { format: 'md' } }} />
           </div>
         </article>
       </div>

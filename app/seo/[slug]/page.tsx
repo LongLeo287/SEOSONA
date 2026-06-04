@@ -10,23 +10,25 @@ export function generateStaticParams() {
   return Object.keys(seoHubs).map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const hub = seoHubs[params.slug as HubSlug];
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const hub = seoHubs[resolvedParams.slug as HubSlug];
   if (!hub) return {};
 
   return {
-    title: `${hub.title} | SEOSONA`,
+    title: hub.title,
     description: hub.description,
-    alternates: { canonical: `/seo/${params.slug}/` }
+    alternates: { canonical: `/seo/${resolvedParams.slug}/` }
   };
 }
 
-export default function HubPage({ params }: { params: { slug: string } }) {
-  const hub = seoHubs[params.slug as HubSlug];
+export default async function HubPage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const hub = seoHubs[resolvedParams.slug as HubSlug];
   if (!hub) notFound();
 
   // The WP categories might not perfectly match, but we mapped them in migrate script
-  const posts = getPostsByCategory(params.slug);
+  const posts = getPostsByCategory(resolvedParams.slug);
 
   return (
     <main className="container py-20">
@@ -43,7 +45,7 @@ export default function HubPage({ params }: { params: { slug: string } }) {
         {posts.length > 0 ? (
           posts.map((post) => (
             <Link
-              href={`/seo/${params.slug}/${post.slug}/`}
+              href={`/seo/${resolvedParams.slug}/${post.slug}/`}
               key={post.slug}
               className="group flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[#003566]/30 hover:shadow-xl hover:shadow-[#003566]/10"
             >

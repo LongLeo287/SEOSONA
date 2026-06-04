@@ -13,13 +13,14 @@ export function generateStaticParams() {
   return files.map((file) => ({ slug: file.replace(/\.mdx$/, "") }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const page = getPageBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const page = getPageBySlug(resolvedParams.slug);
   if (!page) return {};
   
   return {
-    title: `${page.meta.title} | SEOSONA`,
-    alternates: { canonical: `/p/${params.slug}/` }
+    title: page.meta.title,
+    alternates: { canonical: `/p/${resolvedParams.slug}/` }
   };
 }
 
@@ -40,8 +41,9 @@ const mdxComponents = {
   )
 };
 
-export default function StaticPage({ params }: { params: { slug: string } }) {
-  const page = getPageBySlug(params.slug);
+export default async function StaticPage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const page = getPageBySlug(resolvedParams.slug);
   if (!page) notFound();
 
   return (
@@ -68,7 +70,7 @@ export default function StaticPage({ params }: { params: { slug: string } }) {
           )}
 
           <div className="prose prose-lg prose-slate max-w-none prose-headings:font-black prose-headings:text-[#091338] prose-h2:text-3xl prose-h3:text-2xl prose-a:text-[#003566] prose-img:rounded-2xl prose-img:shadow-md">
-            <MDXRemote source={page.content} components={mdxComponents} />
+            <MDXRemote source={page.content} components={mdxComponents} options={{ mdxOptions: { format: 'md' } }} />
           </div>
         </article>
       </div>
