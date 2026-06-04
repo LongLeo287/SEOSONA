@@ -17,51 +17,37 @@ const hubs = [
 
 export function KnowledgeHubPreview() {
   return (
-    <section
-      className="relative overflow-hidden py-14 sm:py-16 lg:py-20"
-      style={{ background: "linear-gradient(160deg, #002244 0%, #001833 100%)" }}
-    >
-      {/* Ambient glow */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-32 opacity-20"
-        style={{ background: "linear-gradient(180deg, #46FF00 0%, transparent 100%)" }}
-      />
-      <div
-        className="pointer-events-none absolute right-0 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full opacity-10"
-        style={{ background: "radial-gradient(circle, #46FF00 0%, transparent 70%)", filter: "blur(120px)" }}
-      />
-
+    <section className="relative overflow-hidden bg-[#F4F6F8] py-16 lg:py-24">
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white to-transparent" />
+      
       <div className="container relative">
-        <div
-          className="overflow-hidden rounded-[32px] border border-white/10 p-5 shadow-2xl sm:p-8 lg:p-10"
-          style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)", backdropFilter: "blur(24px)" }}
-        >
+        <div className="overflow-hidden rounded-[32px] border border-slate-200 bg-white p-6 shadow-xl shadow-[#003566]/5 sm:p-8 lg:p-10">
           <div className="grid items-center gap-8 lg:grid-cols-[.78fr_1.22fr] lg:gap-10">
             <RevealOnScroll className="text-center lg:text-left" direction="left">
-              <div className="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-2xl border border-[#46FF00]/30 bg-[#003566] text-[#46FF00] shadow-lg shadow-black/20 lg:mx-0">
+              <div className="mx-auto mb-6 grid h-14 w-14 place-items-center rounded-2xl bg-[#003566] text-[#46FF00] shadow-lg shadow-[#003566]/20 lg:mx-0">
                 <BookOpenCheck size={28} />
               </div>
               
-              <span className="badge-accent">Thư viện SEO</span>
-              <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl md:text-5xl">
+              <span className="badge-accent bg-white shadow-sm">Thư viện SEO</span>
+              <h2 className="mt-4 text-3xl font-black tracking-tight text-[#091338] sm:text-4xl md:text-5xl">
                 Kiến thức SEO có hệ thống
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg lg:mx-0">
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[#6B7280] sm:text-lg lg:mx-0">
                 Các cụm nội dung được xây theo hành trình học và triển khai SEO: từ nền tảng, nghiên cứu từ khóa, tối ưu onpage, content, technical đến thuật toán Google.
               </p>
               
-              <div className="mt-6 grid grid-cols-3 gap-3 rounded-3xl border border-white/10 bg-white/5 p-4 shadow-sm backdrop-blur">
+              <div className="mt-8 grid grid-cols-3 gap-3 rounded-3xl border border-slate-200 bg-[#F4F6F8] p-4 shadow-sm">
                 <div className="text-center">
-                  <div className="text-2xl font-black text-white">10+</div>
-                  <div className="text-xs font-semibold text-[#46FF00]/80">Chủ đề</div>
+                  <div className="text-2xl font-black text-[#091338]">10+</div>
+                  <div className="text-xs font-semibold text-[#6B7280]">Chủ đề</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-black text-white">200+</div>
-                  <div className="text-xs font-semibold text-[#46FF00]/80">Bài viết</div>
+                  <div className="text-2xl font-black text-[#091338]">200+</div>
+                  <div className="text-xs font-semibold text-[#6B7280]">Bài viết</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-black text-white">100%</div>
-                  <div className="text-xs font-semibold text-[#46FF00]/80">Miễn phí</div>
+                  <div className="text-2xl font-black text-[#091338]">100%</div>
+                  <div className="text-xs font-semibold text-[#6B7280]">Miễn phí</div>
                 </div>
               </div>
               
@@ -77,18 +63,17 @@ export function KnowledgeHubPreview() {
                   <RevealOnScroll key={hub.title} delay={index * 60} direction="up">
                     <Link
                       href={`/seo/${hub.slug}/`}
-                      className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:border-[#46FF00]/40 hover:bg-white/10 hover:shadow-xl hover:shadow-[#46FF00]/5"
+                      className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:border-[#003566]/30 hover:shadow-xl hover:shadow-[#003566]/5"
                     >
-                      {/* Glow effect on hover */}
-                      <div className="absolute -right-8 -top-8 h-20 w-20 rounded-full bg-[#46FF00]/5 transition duration-500 group-hover:scale-150 group-hover:bg-[#46FF00]/10 blur-xl" />
+                      <div className="absolute -right-8 -top-8 h-20 w-20 rounded-full bg-[#003566]/5 transition duration-500 group-hover:scale-150 group-hover:bg-[#46FF00]/10" />
                       
                       <div className="relative flex items-start gap-4">
-                        <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-white/10 bg-[#003566] text-[#46FF00] transition group-hover:border-[#46FF00]/50 group-hover:bg-[#46FF00] group-hover:text-[#003566] shadow-sm">
+                        <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F4F6F8] text-[#003566] transition group-hover:bg-[#003566] group-hover:text-[#46FF00]">
                           <Icon size={20} />
                         </div>
                         <div className="min-w-0">
-                          <h3 className="font-black text-white">{hub.title}</h3>
-                          <p className="mt-1 text-sm leading-6 text-slate-400 transition group-hover:text-slate-300">{hub.desc}</p>
+                          <h3 className="font-black text-[#091338]">{hub.title}</h3>
+                          <p className="mt-1 text-sm leading-6 text-[#6B7280]">{hub.desc}</p>
                         </div>
                       </div>
                     </Link>

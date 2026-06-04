@@ -5,49 +5,44 @@ import { ArrowRight } from "lucide-react";
 
 export function FeaturedPosts() {
   return (
-    <section
-      className="relative overflow-hidden py-16 lg:py-20"
-      style={{ background: "linear-gradient(160deg, #001833 0%, #002244 100%)" }}
-    >
-      <div className="container relative">
+    <section className="bg-white py-16 lg:py-24">
+      <div className="container">
         <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div className="max-w-3xl">
-            <span className="badge-accent">Kiến thức SEO</span>
-            <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl">
+            <span className="badge-accent bg-white shadow-sm">Kiến thức SEO</span>
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-[#091338] sm:text-4xl">
               Tài nguyên SEO dành cho marketer và doanh nghiệp
             </h2>
           </div>
           <Link
             href="/seo/"
-            className="group inline-flex items-center gap-2 font-bold text-[#46FF00] transition hover:text-white"
+            className="group inline-flex items-center gap-2 font-bold text-[#003566] transition hover:text-[#46FF00]"
           >
             Xem tất cả <ArrowRight size={16} className="transition group-hover:translate-x-1" />
           </Link>
         </div>
         
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {featuredPosts.map((post) => (
             <Link
               href={post.href}
               key={post.title}
-              className="card-dark group overflow-hidden border border-white/10 transition duration-300 hover:-translate-y-1 hover:border-[#46FF00]/40 hover:shadow-xl hover:shadow-[#46FF00]/5"
+              className="card group overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-[#003566]/30 hover:shadow-xl hover:shadow-[#003566]/10"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-[#001833]">
+              <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
                 <Image
                   src={post.image}
                   alt={post.title}
                   fill
-                  className="object-cover transition duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100 mix-blend-screen"
+                  className="object-cover transition duration-500 group-hover:scale-105"
                   sizes="(min-width: 1024px) 25vw, 50vw"
                 />
-                {/* Brand navy overlay to keep images consistent with dark theme */}
-                <div className="absolute inset-0 bg-[#003566]/20 transition duration-300 group-hover:bg-transparent" />
               </div>
-              <div className="p-5 backdrop-blur-md bg-white/5">
-                <div className="text-xs font-bold uppercase tracking-wider text-[#46FF00]">
+              <div className="p-6">
+                <div className="text-xs font-bold uppercase tracking-wider text-[#003566]">
                   {post.category}
                 </div>
-                <h3 className="mt-3 text-lg font-black text-white leading-snug group-hover:text-[#46FF00] transition">
+                <h3 className="mt-3 text-lg font-black text-[#091338] leading-snug group-hover:text-[#003566] transition">
                   {post.title}
                 </h3>
               </div>
