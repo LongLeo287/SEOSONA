@@ -44,7 +44,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link href="/lien-he/" className="hidden rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-5 py-3 text-sm font-black text-white shadow-lg shadow-blue-600/20 transition duration-200 hover:-translate-y-0.5 hover:from-blue-500 hover:to-cyan-400 hover:shadow-xl hover:shadow-blue-600/25 focus:outline-none focus:ring-4 focus:ring-blue-100 sm:inline-flex">
+          <Link href="/lien-he/" className="hidden btn-primary px-5 py-3 text-sm sm:inline-flex">
             Đăng ký tư vấn
           </Link>
           <details className="group relative lg:hidden" open={open} onToggle={(e) => setOpen(e.currentTarget.open)}>

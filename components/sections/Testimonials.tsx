@@ -15,7 +15,7 @@ const testimonials = [
       "SEOSONA hỗ trợ doanh nghiệp nhìn rõ hơn chiến lược SEO, cách đo lường và các ưu tiên cần triển khai để tăng trưởng bền vững. Đội ngũ rất chuyên sâu và minh bạch trong báo cáo."
   },
   {
-    name: "Ms. Linh",
+    name: "Ms. Thúy Linh",
     role: "SEO Manager",
     company: "Khách hàng SEOSONA",
     avatar: "/images/legacy/testimonials/thuy-linh.jpg",
@@ -66,7 +66,7 @@ function Avatar({ src, name }: { src: string; name: string }) {
 
   if (error) {
     return (
-      <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 text-base font-black text-white ring-4 ring-blue-50 sm:h-16 sm:w-16">
+      <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#003566] text-base font-black text-[#46FF00] ring-2 ring-[#46FF00]/30 sm:h-16 sm:w-16">
         {initials}
       </div>
     );
@@ -79,33 +79,54 @@ function Avatar({ src, name }: { src: string; name: string }) {
       width={64}
       height={64}
       onError={() => setError(true)}
-      className="h-14 w-14 rounded-full object-cover ring-4 ring-blue-50 transition group-hover:ring-blue-100 sm:h-16 sm:w-16"
+      className="h-14 w-14 rounded-full object-cover ring-2 ring-[#46FF00]/30 transition group-hover:ring-[#46FF00]/60 sm:h-16 sm:w-16"
     />
   );
 }
 
 export function Testimonials() {
   return (
-    <section className="py-14 sm:py-16 lg:py-20">
-      <div className="container">
-        <RevealOnScroll className="mx-auto mb-8 max-w-3xl text-center sm:mb-10 lg:mx-0 lg:text-left">
-          <span className="font-bold text-blue-700">Khách hàng nói gì</span>
-          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">
+    <section
+      className="relative overflow-hidden py-14 sm:py-16 lg:py-20"
+      style={{ background: "linear-gradient(160deg, #001833 0%, #002244 60%, #001833 100%)" }}
+    >
+      {/* Glow orbs */}
+      <div
+        className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] rounded-full opacity-10"
+        style={{ background: "radial-gradient(circle, #46FF00 0%, transparent 70%)", filter: "blur(100px)" }}
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 left-0 h-[400px] w-[400px] rounded-full opacity-10"
+        style={{ background: "radial-gradient(circle, #0077CE 0%, transparent 70%)", filter: "blur(80px)" }}
+      />
+
+      <div className="container relative">
+        <RevealOnScroll className="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
+          <span className="badge-accent">Khách hàng nói gì</span>
+          <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl">
             Niềm tin đến từ kết quả và cách làm minh bạch
           </h2>
         </RevealOnScroll>
+
         <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
           {testimonials.map((item, index) => (
             <RevealOnScroll key={item.name} delay={index * 80}>
-              <div className="card group h-full p-5 transition hover:-translate-y-1 hover:border-blue-200 sm:p-7">
-                <StarRating count={item.rating} />
-                <p className="mt-4 text-base leading-8 text-slate-800 sm:text-lg">"{item.quote}"</p>
-                <div className="mt-6 flex items-center gap-4">
+              <div className="group relative h-full overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-5 backdrop-blur-xl shadow-lg transition duration-300 hover:-translate-y-1 hover:border-[#46FF00]/30 hover:bg-white/8 hover:shadow-2xl sm:p-7">
+                {/* Decorative glow */}
+                <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#46FF00]/5 transition duration-500 group-hover:scale-150 group-hover:bg-[#46FF00]/10 blur-2xl" />
+
+                <div className="relative">
+                  <StarRating count={item.rating} />
+                  <p className="mt-4 text-base leading-8 text-slate-300 sm:text-lg">
+                    &ldquo;{item.quote}&rdquo;
+                  </p>
+                  <div className="mt-6 flex items-center gap-4">
                     <Avatar src={item.avatar} name={item.name} />
-                  <div>
-                    <div className="font-black text-slate-950">{item.name}</div>
-                    <div className="text-sm font-medium text-slate-600">{item.role}</div>
-                    <div className="text-xs text-slate-400">{item.company}</div>
+                    <div>
+                      <div className="font-black text-white">{item.name}</div>
+                      <div className="text-sm font-medium text-slate-400">{item.role}</div>
+                      <div className="text-xs text-[#46FF00]/70">{item.company}</div>
+                    </div>
                   </div>
                 </div>
               </div>
