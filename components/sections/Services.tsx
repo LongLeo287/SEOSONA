@@ -23,11 +23,11 @@ export function Services() {
 
   return (
     <section className="relative overflow-hidden bg-[#003566] py-14 sm:py-16 lg:py-20 font-inter">
-      <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-[#46FF00]/10 blur-3xl" />
-      <div className="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-blue-400/10 blur-3xl" />
-      <div className="container relative z-10">
+      <div className="absolute right-0 top-0 hidden h-96 w-96 rounded-full bg-[#46FF00]/10 blur-3xl md:block" />
+      <div className="absolute bottom-0 left-0 hidden h-96 w-96 rounded-full bg-blue-400/10 blur-3xl md:block" />
+      <div className="container relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-12 max-w-4xl text-center">
-          <span className="inline-flex rounded-full border border-[#46FF00]/30 bg-[#46FF00]/10 px-4 py-2 text-sm font-bold text-[#46FF00] shadow-sm backdrop-blur-md">
+          <span className="badge-accent">
             Dịch vụ trọng tâm
           </span>
           <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl font-poppins">
@@ -43,7 +43,7 @@ export function Services() {
             <div className="absolute -right-20 -top-20 h-52 w-52 rounded-full bg-[#46FF00]/10 transition duration-500 group-hover:scale-125 blur-2xl" />
             <div className="grid items-center gap-6 md:grid-cols-[1fr_.9fr] lg:grid-cols-[1.05fr_.75fr]">
               <div className="relative">
-                <span className="inline-flex rounded-full bg-[#46FF00]/10 px-4 py-2 text-sm font-bold text-[#46FF00]">
+                <span className="inline-flex rounded-full border border-[#46FF00]/20 bg-[#46FF00]/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#46FF00]">
                   {featured.label}
                 </span>
                 <h3 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl font-poppins">

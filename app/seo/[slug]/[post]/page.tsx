@@ -30,13 +30,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 const mdxComponents = {
   img: (props: any) => (
-    <span className="block relative aspect-video w-full my-8 overflow-hidden rounded-2xl bg-slate-100">
-      <Image
+    // Instead of forcing aspect-video and full width which blows up SVG icons,
+    // we use max-w-full and h-auto so images respect their natural aspect ratio.
+    <span className="block w-full my-8 text-center flex justify-center">
+      <img
         src={props.src}
         alt={props.alt || "SEOSONA Image"}
-        fill
-        className="object-cover"
-        sizes="(min-width: 1024px) 768px, 100vw"
+        className="max-w-full h-auto max-h-[700px] object-contain rounded-2xl shadow-lg border border-slate-100"
+        loading="lazy"
       />
     </span>
   ),
@@ -114,7 +115,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
           )}
 
-          <div className="prose prose-lg prose-slate max-w-none prose-headings:font-black prose-headings:text-[#091338] prose-h2:text-3xl prose-h3:text-2xl prose-a:text-[#003566] prose-img:rounded-2xl prose-img:shadow-md">
+          <div className="prose prose-lg prose-slate max-w-none 
+            prose-headings:font-black prose-headings:text-[#091338] 
+            prose-h2:text-3xl prose-h2:border-b prose-h2:border-slate-200 prose-h2:pb-4 prose-h2:mt-12
+            prose-h3:text-2xl prose-h3:text-[#003566]
+            prose-a:text-[#003566] prose-a:no-underline prose-a:font-bold hover:prose-a:text-[#46FF00] hover:prose-a:underline
+            prose-img:rounded-2xl prose-img:shadow-md
+            prose-table:w-full prose-table:border-collapse prose-table:rounded-xl prose-table:overflow-hidden prose-table:shadow-sm
+            prose-th:bg-[#091338] prose-th:text-white prose-th:p-4
+            prose-td:border prose-td:border-slate-200 prose-td:p-4
+            prose-blockquote:border-l-4 prose-blockquote:border-[#46FF00] prose-blockquote:bg-slate-50 prose-blockquote:p-6 prose-blockquote:italic prose-blockquote:rounded-r-xl
+            prose-li:marker:text-[#003566] prose-ul:list-disc
+          ">
             <MDXRemote source={post.content} components={mdxComponents} options={{ mdxOptions: { format: 'md' } }} />
           </div>
         </article>

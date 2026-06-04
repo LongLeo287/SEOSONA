@@ -1,14 +1,14 @@
 export const clientLogos = [
-  { name: "Decordi", src: "/images/legacy/clients/decordi.png" },
-  { name: "Kim Quốc Tiến", src: "/images/legacy/clients/kimquoctien.png" },
-  { name: "Tân Nhất Hương", src: "/images/legacy/clients/tannhathuong.png" },
-  { name: "Thiên Sơn", src: "/images/legacy/clients/thienson.png" },
-  { name: "POS365", src: "/images/legacy/clients/pos365.png" },
-  { name: "TSCHEM", src: "/images/legacy/clients/tschem.png" },
-  { name: "Vietmap", src: "/images/legacy/clients/vietmap.png" },
-  { name: "MISA", src: "/images/legacy/clients/misa.png" },
-  { name: "Mạnh Hệ", src: "/images/legacy/clients/manhhe.png" },
-  { name: "An Thiên Hương", src: "/images/legacy/clients/anthienhuong.png" }
+  { name: "Decordi", src: "/images/legacy/clients/decordi.png", href: "https://decordi.vn" },
+  { name: "Kim Quốc Tiến", src: "/images/legacy/clients/kimquoctien.png", href: "https://kimquoctien.com" },
+  { name: "Tân Nhất Hương", src: "/images/legacy/clients/tannhathuong.png", href: "https://tannhathuong.com" },
+  { name: "Thiên Sơn", src: "/images/legacy/clients/thienson.png", href: "https://thienson.com.vn" },
+  { name: "POS365", src: "/images/legacy/clients/pos365.png", href: "https://www.pos365.vn" },
+  { name: "TSCHEM", src: "/images/legacy/clients/tschem.png", href: "https://tschem.com.vn" },
+  { name: "Vietmap", src: "/images/legacy/clients/vietmap.png", href: "https://vietmap.vn" },
+  { name: "MISA", src: "/images/legacy/clients/misa.png", href: "https://www.misa.vn" },
+  { name: "Mạnh Hệ", src: "/images/legacy/clients/manhhe.png", href: "https://noithatmanhhe.vn" },
+  { name: "An Thiên Hương", src: "/images/legacy/clients/anthienhuong.png", href: "https://anthienhuong.vn" }
 ];
 
 export const pressLogos = [

@@ -35,21 +35,21 @@ export function CaseStudyPreview() {
     >
       {/* Glow orbs */}
       <div
-        className="pointer-events-none absolute left-0 top-0 h-[400px] w-[400px] rounded-full opacity-10"
+        className="pointer-events-none absolute left-0 top-0 hidden h-[400px] w-[400px] rounded-full opacity-10 md:block"
         style={{ background: "radial-gradient(circle, #46FF00 0%, transparent 70%)", filter: "blur(100px)" }}
       />
       <div
-        className="pointer-events-none absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full opacity-10"
+        className="pointer-events-none absolute bottom-0 right-0 hidden h-[400px] w-[400px] rounded-full opacity-10 md:block"
         style={{ background: "radial-gradient(circle, #0055AA 0%, transparent 70%)", filter: "blur(100px)" }}
       />
 
-      <div className="container relative">
+      <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <RevealOnScroll className="mx-auto mb-10 max-w-4xl text-center">
           <span className="badge-accent">Case study</span>
-          <h2 className="mt-5 text-3xl font-black tracking-tight text-white sm:text-4xl md:text-5xl">
+          <h2 className="mt-5 text-3xl font-black tracking-tight text-white sm:text-4xl md:text-5xl font-poppins">
             Kết quả SEO đến từ chiến lược có hệ thống
           </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-base leading-8 text-slate-300 sm:text-lg">
+          <p className="mx-auto mt-4 max-w-3xl text-base leading-8 text-slate-300 sm:text-lg font-inter">
             Mỗi ngành có mức độ cạnh tranh, hành trình tìm kiếm và cơ hội chuyển đổi khác nhau. SEOSONA xây roadmap theo dữ liệu thay vì triển khai theo cảm tính.
           </p>
         </RevealOnScroll>
@@ -68,10 +68,10 @@ export function CaseStudyPreview() {
               <div className="relative grid h-14 w-14 place-items-center rounded-2xl border border-[#46FF00]/20 bg-[#46FF00]/10 text-[#46FF00] shadow-lg">
                 <BarChart3 size={28} />
               </div>
-              <h3 className="relative mt-6 text-3xl font-black tracking-tight text-white sm:text-4xl">
+              <h3 className="relative mt-6 text-3xl font-black tracking-tight text-white sm:text-4xl font-poppins">
                 Không chỉ tăng traffic, mà tăng đúng cơ hội kinh doanh
               </h3>
-              <p className="relative mt-4 leading-8 text-slate-300">
+              <p className="relative mt-4 leading-8 text-slate-300 font-inter">
                 Case study của SEOSONA tập trung vào các chỉ số có ý nghĩa: khả năng index, tăng trưởng truy cập chất lượng, số lượng cụm nội dung và chuyển đổi thành lead.
               </p>
               <div className="relative mt-6 grid gap-3">
@@ -114,8 +114,8 @@ export function CaseStudyPreview() {
 
                   <div className="relative">
                     <div className="text-xs font-black uppercase tracking-[0.18em] text-[#46FF00]/80">{item.industry}</div>
-                    <h3 className="mt-2 text-xl font-black text-white sm:text-2xl">{item.result}</h3>
-                    <p className="mt-2 text-sm leading-7 text-slate-400 sm:text-base">{item.detail}</p>
+                    <h3 className="mt-2 text-xl font-black text-white sm:text-2xl font-poppins">{item.result}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400 sm:text-base font-inter">{item.detail}</p>
                     <div className="mt-3 inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-bold text-slate-400">
                       {item.focus}
                     </div>

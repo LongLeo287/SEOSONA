@@ -96,7 +96,8 @@ a { color: inherit; text-decoration: none; }
 }
 .btn-primary:hover {
   background: var(--primary-surface);
-  box-shadow: 0px 0px 20px rgba(0, 53, 102, 0.35);
+  border-color: var(--accent);
+  box-shadow: 0px 0px 20px rgba(70, 255, 0, 0.25);
   transform: translateY(-1px);
 }
 
@@ -117,10 +118,12 @@ a { color: inherit; text-decoration: none; }
 }
 .btn-secondary:hover {
   background: var(--primary);
-  color: #FFFFFF;
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0px 0px 15px rgba(70, 255, 0, 0.15);
 }
 
-/* Neon Accent Badge (for tag, labels) */
+/* Neon Accent Badge (for tag, labels) — dark backgrounds */
 .badge-accent {
   display: inline-flex;
   align-items: center;
@@ -132,6 +135,21 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.8125rem;
   font-weight: 700;
   color: #46FF00;
+  font-family: var(--font-heading);
+}
+
+/* Navy Badge — light backgrounds */
+.badge-accent-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(0, 53, 102, 0.2);
+  background: rgba(0, 53, 102, 0.06);
+  padding: 6px 14px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #003566;
   font-family: var(--font-heading);
 }
 
@@ -177,10 +195,10 @@ a { color: inherit; text-decoration: none; }
   min-width: max-content;
   will-change: transform;
   transform: translate3d(0,0,0);
-  animation: marquee-left 18s linear infinite;
+  animation: marquee-left 30s linear infinite;
 }
 .logo-marquee:hover { animation-play-state: paused; }
-.logo-marquee-slow { animation-duration: 28s; }
+.logo-marquee-slow { animation-duration: 45s; }
 .logo-marquee-reverse { animation-name: marquee-right; }
 
 /* Animations */
@@ -204,11 +222,41 @@ a { color: inherit; text-decoration: none; }
   to { transform: translate3d(0, 0, 0); }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-  }
+/* AI / Tech Animations */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; filter: blur(60px); transform: scale(1); }
+  50% { opacity: 0.6; filter: blur(80px); transform: scale(1.1); }
 }
+.animate-pulse-glow { animation: pulse-glow 5s ease-in-out infinite; }
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+.animate-scanline { animation: scanline 4s linear infinite; }
+
+@keyframes grid-move {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(40px); }
+}
+.bg-grid-tech {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  animation: grid-move 3s linear infinite;
+}
+
+@keyframes text-shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+.animate-text-shimmer {
+  background: linear-gradient(90deg, #46FF00 0%, #00FF9D 20%, #46FF00 40%, #0077CE 60%, #46FF00 80%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shimmer 4s linear infinite;
+}
+
+/* End of animations */

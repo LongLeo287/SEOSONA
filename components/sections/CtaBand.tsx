@@ -7,22 +7,22 @@ export function CtaBand() {
       className="relative overflow-hidden py-10 sm:py-12"
       style={{ background: "linear-gradient(160deg, #002244 0%, #001833 100%)" }}
     >
-      <div className="container">
+      <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
           className="relative overflow-hidden rounded-[32px] border border-[#46FF00]/20 p-8 text-white shadow-2xl sm:rounded-[36px] sm:p-12 md:p-14"
           style={{ background: "linear-gradient(135deg, rgba(0,53,102,0.9) 0%, rgba(0,34,68,0.95) 100%)", backdropFilter: "blur(20px)" }}
         >
           {/* Neon glow */}
           <div
-            className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full opacity-20"
+            className="pointer-events-none absolute -right-20 -top-20 hidden h-64 w-64 rounded-full opacity-20 md:block"
             style={{ background: "radial-gradient(circle, #46FF00 0%, transparent 70%)", filter: "blur(60px)" }}
           />
           <div className="relative mx-auto max-w-3xl text-center">
             <span className="badge-accent mb-4 inline-flex">Tư vấn chiến lược miễn phí</span>
-            <h2 className="text-3xl font-black tracking-tight text-white sm:text-4xl md:text-5xl">
+            <h2 className="text-3xl font-black tracking-tight text-white sm:text-4xl md:text-5xl font-poppins">
               Cần một kế hoạch SEO/Growth rõ ràng hơn?
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg font-inter">
               SEOSONA sẽ audit hiện trạng, xác định cơ hội tăng trưởng và đề xuất roadmap triển khai phù hợp với nguồn lực doanh nghiệp.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">

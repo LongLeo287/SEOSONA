@@ -20,34 +20,34 @@ export function KnowledgeHubPreview() {
     <section className="relative overflow-hidden bg-[#F4F6F8] py-16 lg:py-24">
       <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white to-transparent" />
       
-      <div className="container relative">
-        <div className="overflow-hidden rounded-[32px] border border-slate-200 bg-white p-6 shadow-xl shadow-[#003566]/5 sm:p-8 lg:p-10">
+      <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="overflow-hidden rounded-[32px] border border-slate-200 bg-white p-6 shadow-lg shadow-[#003566]/5 sm:p-8 lg:p-10">
           <div className="grid items-center gap-8 lg:grid-cols-[.78fr_1.22fr] lg:gap-10">
             <RevealOnScroll className="text-center lg:text-left" direction="left">
               <div className="mx-auto mb-6 grid h-14 w-14 place-items-center rounded-2xl bg-[#003566] text-[#46FF00] shadow-lg shadow-[#003566]/20 lg:mx-0">
                 <BookOpenCheck size={28} />
               </div>
               
-              <span className="badge-accent bg-white shadow-sm">Thư viện SEO</span>
-              <h2 className="mt-4 text-3xl font-black tracking-tight text-[#091338] sm:text-4xl md:text-5xl">
+              <span className="badge-accent-light mb-4 inline-flex">Thư viện SEO</span>
+              <h2 className="mt-4 text-3xl font-black tracking-tight text-[#091338] sm:text-4xl md:text-5xl font-poppins">
                 Kiến thức SEO có hệ thống
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[#6B7280] sm:text-lg lg:mx-0">
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg lg:mx-0 font-inter">
                 Các cụm nội dung được xây theo hành trình học và triển khai SEO: từ nền tảng, nghiên cứu từ khóa, tối ưu onpage, content, technical đến thuật toán Google.
               </p>
               
               <div className="mt-8 grid grid-cols-3 gap-3 rounded-3xl border border-slate-200 bg-[#F4F6F8] p-4 shadow-sm">
                 <div className="text-center">
-                  <div className="text-2xl font-black text-[#091338]">10+</div>
-                  <div className="text-xs font-semibold text-[#6B7280]">Chủ đề</div>
+                  <div className="text-2xl font-black text-[#003566] font-poppins">10+</div>
+                  <div className="text-xs font-semibold text-slate-500 font-inter uppercase tracking-wider mt-1">Chủ đề</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-black text-[#091338]">200+</div>
-                  <div className="text-xs font-semibold text-[#6B7280]">Bài viết</div>
+                  <div className="text-2xl font-black text-[#003566] font-poppins">200+</div>
+                  <div className="text-xs font-semibold text-slate-500 font-inter uppercase tracking-wider mt-1">Bài viết</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-black text-[#091338]">100%</div>
-                  <div className="text-xs font-semibold text-[#6B7280]">Miễn phí</div>
+                  <div className="text-2xl font-black text-[#46FF00] font-poppins" style={{ WebkitTextStroke: "1px #003566" }}>100%</div>
+                  <div className="text-xs font-semibold text-slate-500 font-inter uppercase tracking-wider mt-1">Miễn phí</div>
                 </div>
               </div>
               
@@ -63,7 +63,7 @@ export function KnowledgeHubPreview() {
                   <RevealOnScroll key={hub.title} delay={index * 60} direction="up">
                     <Link
                       href={`/seo/${hub.slug}/`}
-                      className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:border-[#003566]/30 hover:shadow-xl hover:shadow-[#003566]/5"
+                      className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:border-[#003566]/30 hover:shadow-xl hover:shadow-[#003566]/8"
                     >
                       <div className="absolute -right-8 -top-8 h-20 w-20 rounded-full bg-[#003566]/5 transition duration-500 group-hover:scale-150 group-hover:bg-[#46FF00]/10" />
                       
@@ -72,8 +72,8 @@ export function KnowledgeHubPreview() {
                           <Icon size={20} />
                         </div>
                         <div className="min-w-0">
-                          <h3 className="font-black text-[#091338]">{hub.title}</h3>
-                          <p className="mt-1 text-sm leading-6 text-[#6B7280]">{hub.desc}</p>
+                          <h3 className="font-black text-[#091338] font-poppins">{hub.title}</h3>
+                          <p className="mt-1 text-sm leading-6 text-slate-500 font-inter">{hub.desc}</p>
                         </div>
                       </div>
                     </Link>

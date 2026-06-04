@@ -137,9 +137,9 @@ Logo icon được dùng ở 3 trạng thái biến thể:
 ### Buttons
 | Variant | Background | Text | Border | Hover |
 |---|---|---|---|---|
-| **Primary** | `#003566` | White | None | Lighter navy + shadow |
-| **Secondary** | Transparent | `#003566` | `1.5px #003566` | Fill navy, text white |
-| **Accent (Ghost)** | `rgba(70,255,0,0.08)` | `#46FF00` | `1px rgba(70,255,0,0.35)` | Stronger glow |
+| **Primary** | `#003566` | White | None | Bg Navy surface + Border Neon Green + Glow |
+| **Secondary** | Transparent | `#003566` | `1.5px #003566` | Bg Navy + Text Neon Green + Border Neon Green |
+| **Accent (Ghost)** | `rgba(70,255,0,0.08)` | `#46FF00` | `1px rgba(70,255,0,0.35)` | Fill Neon Green + Text Charcoal (`#091338`) + Strong glow |
 | **Icon Button** | Transparent | Inherit | None | Bg tint |
 
 - Border radius: `9999px` (pill) — mọi button
@@ -152,6 +152,12 @@ Logo icon được dùng ở 3 trạng thái biến thể:
 | **Light Card** | `#FFFFFF` | `rgba(0,0,0,0.06)` | Light section content |
 | **Dark Card** | `rgba(255,255,255,0.05)` + `backdrop-blur` | `rgba(255,255,255,0.10)` | Dark section, glassmorphism |
 | **Dark Card Hover** | `rgba(255,255,255,0.10)` | `rgba(70,255,0,0.30)` | Hover state |
+| **3D Flip Card** | Container `perspective` | `preserve-3d` | Thẻ tính năng kép (Click lật mặt) |
+
+### Micro-interactions & Animations (Tech-Vibe)
+- **Click-to-flip**: Các thẻ chức năng kép (như Dashboard -> Ecosystem) dùng css `rotateY(180deg)` khi click, kết hợp hover để nổi lên (zoom 1.02x) và tăng bóng đổ ánh sáng Neon. Tách biệt rõ ràng hành vi xem trước (Hover) và hành vi chọn (Click).
+- **Tech Ambient**: Sử dụng CSS keyframes nhúng trực tiếp (`float-dynamic`, `scanline-anim`, `bg-grid-anim`) để tạo cảm giác các khối UI lơ lửng trong không gian 3D, quét laser kỹ thuật số mà không làm nặng trang.
+- **Focus Glow & Contrast Rule**: Khi hover, nút CTA Accent sẽ đảo màu thành Nền Neon (`bg-[#46FF00]`). Lúc này, **chữ bắt buộc phải đổi sang màu tối nhất** là Charcoal (`#091338`) hoặc Dark Navy. Tuyệt đối KHÔNG dùng chữ màu trắng trên nền Neon Green vì sẽ gây lóa và mất tương phản (Contrast fail).
 
 ### Border Radius Scale
 | Token | Value | Dùng ở |
@@ -215,16 +221,27 @@ Logo icon được dùng ở 3 trạng thái biến thể:
 ## 07. APPLICATIONS
 
 ### Website Hero
-- Headline: **"Share. Search. Connect."** — 3 verbs, 3 propositions
+- Headline: **"Share. Search. Connect."** — (Chữ "Search" có hiệu ứng text-shimmer gradient 7 màu ánh sáng).
 - Sub-headline: benefit-focused, max 2 lines
 - CTA Primary: "Nhận tư vấn chiến lược"
 - CTA Secondary: "Xem Case Study"
-- Background: Dark navy gradient `#003566 → #001833`
+- Background: Dark navy gradient `#003566 → #001833` kết hợp lưới tọa độ chuyển động `bg-grid-anim`.
+- Visual Elements:
+  - Background: Hào quang Neon tinh tế, không quá gắt (`opacity: 10%`, `blur: 30px`).
+  - Floating UI: Các Card Công nghệ (Network, AI Bot, Chart) trôi nổi 3D lệch nhịp xung quanh màn hình.
+  - Interactive Dashboard: Nằm bên phải. Hover để sáng viền và zoom lên, Click để lật thẻ (3D Flip) hé lộ quảng cáo Hệ sinh thái Sonatools.io mặt sau.
 
-### Mobile UI
-- Navigation: Bottom tab hoặc hamburger slide-in
-- Typography scale giảm: H1 = 32px, H2 = 24px, body = 15px
-- Touch target min: 44px × 44px
+### Mobile UI & Responsive UX
+- **Navigation:** Bottom tab hoặc hamburger slide-in
+- **Typography Scale:** Giảm H1 = 32px, H2 = 24px, body = 15px.
+- **Dynamic Scale:** Tagline/Badge hạ xuống `text-xs` trên Mobile để không vỡ layout.
+- **Touch target:** Min `44px × 44px`
+- **Visual Clutter Control:** BẮT BUỘC ẩn (`hidden md:block`) toàn bộ các icon lơ lửng, vật thể trang trí background 3D trên màn hình Mobile để dọn dẹp không gian.
+- **Grid Layout (Metrics):** Cấu trúc Grid 3 ô số liệu chuyển thành 2 cột trên Mobile (ô lẻ cuối cùng dàn ngang `col-span-2`), và trở về 3 cột trên `sm:`.
+
+### Safe Area & Container Constraint
+- Container chuẩn: `container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8`
+- Mục đích: Khoá cứng chiều rộng khung đọc tối đa ở 1280px (`max-w-7xl`) để UI không bị dàn trải, bẹp ngang trên màn hình Ultrawide 4K. Tâm trang luôn cân bằng (`mx-auto`).
 
 ### Social Post (2 mẫu chuẩn)
 | Loại | Format | Nội dung |
@@ -319,13 +336,13 @@ Nếu SEOSONA là người: **Chuyên gia dữ liệu trẻ trung, thẳng thắ
 ```
 
 ### 10 Quy tắc Vàng
-1. **Primary Button = Dark Navy `#003566`** — KHÔNG dùng Neon Green làm màu button.
-2. **Neon Green `#46FF00` = Accent Only** — badge, glow, icon accent, CTA underline.
+1. **Primary Button = Dark Navy `#003566`** — KHÔNG dùng Neon Green làm màu nền mặc định, nhưng BẮT BUỘC có viền Xanh Neon và Glow khi Hover.
+2. **Neon Green `#46FF00` = Accent Only** — badge, glow, icon accent, CTA underline, Hover focus.
 3. **Không dùng `#000000` thuần** — dùng `#091338` (Charcoal) cho text tối.
 4. **Heading = Poppins**, Body = Inter — không ngoại lệ.
 5. **Spacing phải là bội số của 8px** — 8, 16, 24, 32, 44...
 6. **Dark section background tối thiểu `#001833`** — không dùng black thuần.
-7. **Glassmorphism cards**: `bg-white/5 + backdrop-blur-xl + border-white/10`.
+7. **Glassmorphism cards**: `bg-white/5 + backdrop-blur-xl + border-white/10`. Áp dụng thêm Micro-interactions (Hover to Zoom, Click to Flip) cho các Card chiến lược.
 8. **Logo không được kéo dài, bóp méo** — giữ nguyên tỉ lệ gốc.
 9. **Ảnh trong dark section phải có navy overlay** — không để ảnh "nổi" mất brand tone.
 10. **Border radius button = pill (9999px)** — không dùng rectangular button.

@@ -90,20 +90,20 @@ export function Testimonials() {
       className="relative overflow-hidden py-14 sm:py-16 lg:py-20"
       style={{ background: "linear-gradient(160deg, #001833 0%, #002244 60%, #001833 100%)" }}
     >
-      {/* Glow orbs */}
+      {/* Glow orbs - hidden on mobile */}
       <div
-        className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] rounded-full opacity-10"
+        className="pointer-events-none absolute right-0 top-0 hidden h-[500px] w-[500px] rounded-full opacity-10 md:block"
         style={{ background: "radial-gradient(circle, #46FF00 0%, transparent 70%)", filter: "blur(100px)" }}
       />
       <div
-        className="pointer-events-none absolute bottom-0 left-0 h-[400px] w-[400px] rounded-full opacity-10"
+        className="pointer-events-none absolute bottom-0 left-0 hidden h-[400px] w-[400px] rounded-full opacity-10 md:block"
         style={{ background: "radial-gradient(circle, #0077CE 0%, transparent 70%)", filter: "blur(80px)" }}
       />
 
-      <div className="container relative">
+      <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <RevealOnScroll className="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
           <span className="badge-accent">Khách hàng nói gì</span>
-          <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl">
+          <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl font-poppins">
             Niềm tin đến từ kết quả và cách làm minh bạch
           </h2>
         </RevealOnScroll>
@@ -117,7 +117,7 @@ export function Testimonials() {
 
                 <div className="relative">
                   <StarRating count={item.rating} />
-                  <p className="mt-4 text-base leading-8 text-slate-300 sm:text-lg">
+                  <p className="mt-4 text-base leading-8 text-slate-300 sm:text-lg font-inter">
                     &ldquo;{item.quote}&rdquo;
                   </p>
                   <div className="mt-6 flex items-center gap-4">

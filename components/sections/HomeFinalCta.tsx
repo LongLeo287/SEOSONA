@@ -48,18 +48,19 @@ export function HomeFinalCta() {
 
   return (
     <section className="py-14 sm:py-16 lg:py-20">
-      <div className="container overflow-hidden rounded-[28px] bg-slate-950 text-white shadow-2xl shadow-slate-900/20 sm:rounded-[36px]">
+      <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="overflow-hidden rounded-[28px] bg-gradient-to-br from-[#002244] to-[#001833] border border-white/10 text-white shadow-2xl sm:rounded-[36px]">
         <div className="grid gap-0 lg:grid-cols-[1.05fr_.95fr]">
           <div className="relative p-6 sm:p-10 md:p-12 lg:p-16">
-            <div className="absolute left-8 top-8 h-40 w-40 rounded-full bg-blue-500/20 blur-3xl sm:h-48 sm:w-48" />
+            <div className="absolute left-8 top-8 hidden h-40 w-40 rounded-full bg-[#46FF00]/20 blur-3xl sm:h-48 sm:w-48 md:block" />
             <div className="relative text-center lg:text-left">
-              <span className="inline-flex rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-xs font-bold text-cyan-200 sm:text-sm">Tư vấn chiến lược miễn phí</span>
-              <h2 className="mt-5 max-w-3xl text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">Sẵn sàng tăng trưởng khách hàng tiềm năng từ Google?</h2>
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg lg:mx-0">Đăng ký tư vấn để SEOSONA audit nhanh hiện trạng website, xác định cơ hội SEO/Google Ads và đề xuất roadmap phù hợp với mục tiêu kinh doanh.</p>
+              <span className="badge-accent mb-4 inline-flex">Tư vấn chiến lược miễn phí</span>
+              <h2 className="mt-5 max-w-3xl text-3xl font-black tracking-tight sm:text-4xl md:text-5xl font-poppins">Sẵn sàng tăng trưởng khách hàng tiềm năng từ Google?</h2>
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg lg:mx-0 font-inter">Đăng ký tư vấn để SEOSONA audit nhanh hiện trạng website, xác định cơ hội SEO/Google Ads và đề xuất roadmap phù hợp với mục tiêu kinh doanh.</p>
               <div className="mx-auto mt-7 grid max-w-xl gap-3 text-left lg:mx-0">
                 {benefits.map((item) => (
                   <div key={item} className="flex items-start gap-3 text-slate-200">
-                    <CheckCircle2 className="mt-0.5 shrink-0 text-cyan-300" size={20} />
+                    <CheckCircle2 className="mt-0.5 shrink-0 text-[#46FF00]" size={20} />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -76,7 +77,7 @@ export function HomeFinalCta() {
             <div className="rounded-3xl border border-white/10 bg-white/10 p-5 backdrop-blur sm:p-6 w-full max-w-md">
               {success ? (
                 <div className="text-center py-6">
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-cyan-500/20 text-cyan-300 mx-auto mb-4 font-black">
+                  <div className="grid h-12 w-12 place-items-center rounded-full bg-[#46FF00]/20 text-[#46FF00] mx-auto mb-4 font-black">
                     ✓
                   </div>
                   <h3 className="text-xl font-black">Gửi yêu cầu thành công!</h3>
@@ -86,7 +87,7 @@ export function HomeFinalCta() {
                   <button
                     type="button"
                     onClick={() => setSuccess(null)}
-                    className="mt-4 text-xs font-bold text-cyan-300 hover:underline"
+                    className="mt-4 text-xs font-bold text-[#46FF00] hover:underline"
                   >
                     Gửi thêm yêu cầu
                   </button>
@@ -102,7 +103,7 @@ export function HomeFinalCta() {
                       disabled={loading}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full rounded-2xl border border-white/10 bg-white px-4 py-4 text-slate-950 outline-none transition focus:border-cyan-300 disabled:opacity-75"
+                      className="w-full rounded-2xl border border-white/10 bg-white px-4 py-4 text-slate-950 outline-none transition focus:border-[#46FF00] focus:ring-2 focus:ring-[#46FF00]/30 disabled:opacity-75"
                       placeholder="Họ và tên"
                     />
                     <input
@@ -111,14 +112,14 @@ export function HomeFinalCta() {
                       disabled={loading}
                       value={formData.contact}
                       onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
-                      className="w-full rounded-2xl border border-white/10 bg-white px-4 py-4 text-slate-950 outline-none transition focus:border-cyan-300 disabled:opacity-75"
+                      className="w-full rounded-2xl border border-white/10 bg-white px-4 py-4 text-slate-950 outline-none transition focus:border-[#46FF00] focus:ring-2 focus:ring-[#46FF00]/30 disabled:opacity-75"
                       placeholder="Số điện thoại / Email"
                     />
                     <textarea
                       disabled={loading}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="min-h-28 w-full rounded-2xl border border-white/10 bg-white px-4 py-4 text-slate-950 outline-none transition focus:border-cyan-300 disabled:opacity-75"
+                      className="min-h-28 w-full rounded-2xl border border-white/10 bg-white px-4 py-4 text-slate-950 outline-none transition focus:border-[#46FF00] focus:ring-2 focus:ring-[#46FF00]/30 disabled:opacity-75"
                       placeholder="Website hoặc nhu cầu tư vấn"
                     />
                     {success === false && (
@@ -139,6 +140,7 @@ export function HomeFinalCta() {
               )}
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>

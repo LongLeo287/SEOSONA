@@ -17,6 +17,7 @@ export function BrandLogo({ variant = "dark", size = "header" }: BrandLogoProps)
         width={180}
         height={58}
         priority
+        unoptimized
         className={`${widthClass} h-auto max-h-12 object-contain ${variant === "light" ? "brightness-0 invert" : ""}`}
       />
     </Link>
