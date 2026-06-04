@@ -1,0 +1,389 @@
+---
+title: "Canonical là gì? Cách sử dụng thẻ Canonical URL hiệu quả trong SEO"
+slug: "canonical"
+date: "2024-04-24T13:44:06"
+coverImage: "/images/blog/canonical-a8211d7a.jpg"
+excerpt: "Canonical URL không phải là một khái niệm gì mới mẻ đối với dân làm SEO nữa. Kể từ năm 2009 thẻ Canonical này đã được các công cụ tìm kiếm hàng đầu như Google, Bing (Microsoft) và Yahoo phát triển để hỗ trợ chủ sở hữu website giải quyết vấn đề nội dung trùng…"
+---
+
+[**Canonical URL**](https://seosona.com/seo/technical/canonical/) không phải là một khái niệm gì mới mẻ đối với dân làm SEO nữa. Kể từ năm 2009 thẻ Canonical này đã được các công cụ tìm kiếm hàng đầu như Google, Bing (Microsoft) và Yahoo phát triển để hỗ trợ chủ sở hữu website giải quyết vấn đề nội dung trùng lặp một cách nhanh chóng và hiệu quả.
+
+Hãy cùng SEOSONA tìm hiểu Canonical là gì? cách sử dụng thẻ canonical hiệu quả cho website trong bài viết sau đây.
+
+## **Canonical là gì?**
+
+Thẻ Canonical URL hay “Rel=canonical” là một đoạn mã HTML giúp xác định phiên bản chính của các trang trùng lặp, tương tự và gần giống nhau.
+
+![](/images/blog/canonical-d36efb60.jpg)
+
+Nói cách khác đơn giản hơn, nếu website của bạn có nhiều nội dung giống hệt hoặc tương tự có sẵn trên các URL khác nhau, bạn có thể sử dụng thẻ canonical để chỉ định phiên bản chính mà Google nên ưu tiên xếp hạng.
+
+## **Thẻ Canonical Tag có cấu trúc như thế nào?**
+
+Thẻ HTML Canonical thường được đặt trong phần <head> của trang web, nó sử dụng cú pháp đơn giản và nhất quán như sau:
+
+**<link rel=”canonical” href=”https://example.com/sample-page/” />**
+
+Ý nghĩa từng phần cấu trúc của thẻ Canonical trong đoạn HTML trên được hiểu như sau:
+
+*   **link rel=”canonical”:** Liên kết trong thẻ này là phiên bản chính (canonical) của trang này.
+*   **href=”https://example.com/sample-page/”:** Phiên bản chính có thể được tìm thấy tại URL này.
+
+## **Vai trò của thẻ Canonical trong SEO ảnh hưởng đến thứ hạng website**
+
+Mục đích chính của Canonical là giúp cho công cụ tìm kiếm biết trang nào là phiên bản chính gốc và trang nào sẽ là trang có nội dung trùng lặp.
+
+Trang trùng lặp là các trang web thường chứa nội dung giống nhau nhưng khác nhau về URL.
+
+![](/images/blog/canonical-0095b66f.jpg)
+
+Vai trò của Canonical trong SEO
+
+Google lúc này phải quyết định chọn trang nào cho mục đích lập chỉ mục trong sitemap và xếp hạng – Google sẽ không sử dụng tất cả các trang trùng lặp trên website của bạn để làm kết quả hiển thị cho Google tìm kiếm vì tất cả chúng đều trông giống nhau.
+
+**Ví dụ:** Đối với các trang sản phẩm sẽ không hiển thị 1 URL chính. Chúng cũng có thể được hiển thị với các tham số URL khác nhau (chẳng hạn: đơn vị tiền tệ, kích thước,…):
+
+*   https://www.domain.com/clothes/shirts.html
+*   https://www.domain.com/clothes/shirst.html?Size=X
+*   htttps://www.domain.com/clothes/shirts.html?Sixe=X&color=red 
+
+Trong ví dụ trên, sản phẩm có thể được hiển thị trong danh mục chính – **/clothes/**, nhưng chúng cũng có hiển thị với các thông số kích thước và màu sắc. Do đó, cùng một sản phẩm nhưng lại có đến 3 URL khác nhau.
+
+Thẻ Canonical lúc này trở nên cần thiết – chúng sẽ cho Google biết rằng bạn muốn lập chỉ mục danh mục URL chính **/clothes/**, sử dụng nó làm kết quả tìm kiếm và bỏ đi các phần còn lại của URL.
+
+[**Martin Splitter đã nói rằng**](https://www.youtube.com/watch?t=121&v=gEWkYTPSEjs&feature=youtu.be)**:**
+
+“Được rồi, hãy bắt đầu với ý tưởng rằng đó là một chỉ thị vì thực tế có phải vậy không?”
+
+Bởi vì Google coi thẻ Canonical như là một tín hiệu – không phải chỉ làm một chỉ thị. Và nếu có một trang khác phù hợp để lập chỉ mục và xếp hạng thay vì trang chuẩn thì công cụ tìm kiếm có thể bỏ qua chúng.
+
+Và thẻ chuẩn mang lại một số lợi ích SEO quan trọng.
+
+### **Hợp nhất sức mạnh PageRank từ các trang trùng lặp.**
+
+Thẻ Canonical SEO là giải pháp giúp hợp nhất giá trị liên kết (**PageRank**) từ cả các trang trùng lặp về một trang chính chuẩn được chọn.
+
+Từ đó, tất cả các giá trị SEO thuộc các URL khác đều được hợp nhất về một URL gốc. Các giá trị (value) này bao gồm cả các Backlink, traffic, …
+
+Do đó, sẽ không còn tình trạng ăn thịt từ khóa (Keyword Cannibalization) giữa các URL SEO
+
+### **Giúp quản lý nội dung được cung cấp**
+
+Vì trong một số trường hợp, các chủ sở hữu trang web có thể xuất bản nội dung của họ trên các trang web khác, chẳng hạn như các trang web của bên thứ ba hoặc các trang web quảng cáo.
+
+Điều này có thể gây ra vấn đề cho Google, nó sẽ không biết được đâu là nội dung chính và là trang gốc cho nội dung đó.
+
+Ví dụ bạn là trang web du lịch đẹp tại Huế. Sau đó bạn **viết content chuẩn seo** và đăng lại trên trang web quảng cáo khác liên quan đến du lịch.
+
+Trong trường hợp này, Google cần phải xác định trang web nào là nguồn gốc của bài báo và nên xếp hạng cao hơn trong kết quả tìm kiếm.
+
+Việc bạn thiết lập thẻ chuẩn trên các trang web giúp giải quyết vấn đề này và xác định phiên bản chính của trang trong Google tìm kiếm và sẽ chỉ xếp hạng cho trang chính.
+
+### **Tăng khả năng thu thập thông tin của bot Google**
+
+Tag Canonical giúp các công cụ tìm kiếm như Google thu thập dữ liệu các trang mà bạn thực sự muốn thu thập dữ liệu và lập chỉ mục một cách hiệu quả.
+
+Khi có nhiều trang trùng lặp gây lãng phí tài nguyên và thời gian của Google vì phải thu thập dữ liệu nhưng không lập chỉ mục.
+
+Khi bạn cài đặt thẻ Canonical, Google sẽ tập trung nhiều hơn vào các trang quan trọng và do đó tiết kiệm được “ngân sách thu thập dữ liệu”.
+
+[**Google đã tuyên bố**](https://developers.google.com/search/docs/advanced/crawling/consolidate-duplicate-urls?hl=en&visit_id=637782960147834858-654044296&rd=1)**:**
+
+“Trang chuẩn sẽ được thu thập thông tin thường xuyên nhất; các bản sao được thu thập dữ liệu ít thường xuyên hơn để giảm tải việc thu thập dữ liệu của Google trên trang web của bạn”
+
+## **Khi nào nên sử dụng thẻ Canonical**
+
+Làm sao để biết khi nào có thể nên sử dụng thẻ Canonical?
+
+![](/images/blog/canonical-98a3aeda.jpg)
+
+Khi nào nên triển khai Canonical?
+
+Bạn nên ưu tiên sử dụng thẻ Canonical trong các trường hợp sau:
+
+*   Các trang có thể truy cập bằng đường dẫn có hoặc không có Dấu gạch chéo cuối (“/”) và có phân biệt giữa chữ hoa và chữ thường.
+
+**Ví dụ:** https://seosona.com/Home-page và https://seosona.com/home-page/ đều cùng dẫn về trang chính của website.
+
+*   Khi một trang web có nhiều phiên bản khác nhau nhưng có cùng một nội dung.
+
+Ví dụ: Phiên bản nội dung dành cho máy tính và phiên bản nội dung dành cho thiết bị di động, bạn nên ưu tiên chọn thẻ canonical trên một thiết bị
+
+*   Khi một trang web xuất bản nội dung của bạn nằm trên các trang web khác
+
+Ví dụ như là bạn đặt các bài viết của mình trên trang web quảng cáo hay là trang web thứ ba.
+
+*   Nội dung được trình bày dưới nhiều phiên bản khác nhau
+
+**Ví dụ:** Phiên bản in, PDF,…
+
+## **Cách triển khai thẻ Canonical đơn giản cho website wordpress**
+
+Để thêm thẻ chuẩn Canonical trong HTML, bạn có thể thêm rel=”canonical” vào phần <head> của trang.
+
+Phần <head> là đoạn chứa về thông tin của trang web chẳng hạn như tiêu đề, mô tả, từ khóa, và các thẻ meta.
+
+> <link rel=”canonical” href=”https://example.com/sample-page/” />
+
+Bạn có thể triển khai thẻ tag Canonical bằng cách thêm trên thẻ này và phần **<head>** trên từng trang. Nhưng theo cá nhân tôi đánh giá điều này sẽ phải mất nhiều thời gian, tài nguyên đối với các trang web lớn và có nhiều dữ liệu.
+
+Hoặc nếu trang web bạn đang sử dụng WordPress SEO, gợi ý của tôi là bạn có thể cài đặt hai plugin phổ biến là **[Yoast SEO](https://yoast.com/)** và Rank Math SEO.
+
+### **Plugin Yoast SEO**
+
+**Bước 1:** Sau khi đăng nhập vào WordPress, cài đặt Plugin Yoast SEO và kích hoạt nó.
+
+![](/images/blog/canonical-c569f0bd.jpg)
+
+Yoast SEO
+
+**Bước 2:** Tiếp đến bạn chọn vào mục “**Advanced**“
+
+Bạn sẽ tìm thấy trường “**URL Canonical**” nơi bạn có thể chỉ định URL chuẩn cho trang.
+
+![](/images/blog/canonical-9c2a1d21.jpg)
+
+Cài đặt Advanced
+
+### **Plugin Rank Math SEO** 
+
+**Bước 1:** Sau khi đăng nhập vào tài khoản WordPress, bạn chọn mục Plugin Rank Math SEO.
+
+**Bước 2:** Chọn và mở tab “**Advanced**”. Trường “**URL Canonical**” cho phép bạn chỉ định URL chuẩn cho trang.
+
+![](/images/blog/canonical-5f52f493.jpg)
+
+Cài đặt RankMath
+
+### **Wix**
+
+Theo như mặc định, các trang Wix sử dụng thẻ chuẩn tự tham chiếu. Bạn có thể thay đổi cấu trúc của thẻ chuẩn bằng cách vào cài đặt SEO.
+
+Đầu tiên chọn vào mục Marketing & SEO chọn vào mục SEO  và SEO Settings. Và sau đó chọn loại trang mà bạn muốn chỉnh sửa.
+
+Đối với việc cài đặt thẻ Canonical này, chúng tôi chọn “**Main Page**”.
+
+![](/images/blog/canonical-fb157783.jpg)
+
+Cài đặt trong Wix
+
+Sau khi đã chọn loại trang, nhấp vào nút “**Edit**” trong phần Additional meta tags.
+
+![](/images/blog/canonical-c21cc0fe.jpg)
+
+Cài đặt Main Pages
+
+Thêm biến thể vào trong phần “**Canonical**” bằng cách nhấp vào “**Add Variable**”. Và lựa chọn các mục liên quan từ danh sách có sẵn.
+
+![](/images/blog/canonical-32cf9a44.jpg)
+
+Thêm phần meta tag
+
+Ngoài ra bạn cũng có thể chỉnh sửa các tag Canonical cho từng trang. Chỉ cần nhấp vào tab “**Edit by Page**” và chọn trang có thẻ chuẩn mà bạn muốn chỉnh sửa. 
+
+Sau đó, nhấp vào tab “**Advanced**” trong thanh bên. Và đi đến “**Additional tags**”.
+
+![](/images/blog/canonical-bafde093.jpg)
+
+Thêm tags
+
+Cuối cùng, chỉnh sửa liên kết xuất hiện trong trường “**Canonical**”
+
+![](/images/blog/canonical-a8012481.jpg)
+
+Tuy nhiên việc sử dụng các plugin có làm cho trang web của bạn phải mất nhiều thời gian để load dữ liệu và dung lượng để lưu trữ, làm cho trải nghiệm của người dùng kém.
+
+## **Phương pháp tối ưu thẻ Canonical cho website của bạn**
+
+Thẻ tag canonical mang lại lợi ích cho SEO tuy nhiên cần phải có cách triển khai phù hợp, nếu không Google sẽ bỏ qua chúng. Sau đây tôi giới thiệu bạn những phương pháp hay nhất.
+
+### **Chỉ định một URL chuẩn cho mỗi trang**
+
+Nếu bạn không muốn Google bị nhầm lẫn trang chính của bạn với nhiều phiên bản trùng lặp cho một nội dung bạn nên cài đặt thẻ chuẩn cho một trang chính. 
+
+Tuy nhiên bạn hãy cẩn thận để tránh vô tình đưa hai thẻ chuẩn vào mã HTML của trang bạn. Nếu đặt thẻ chuẩn bằng cách sử dụng cài đặt trong CMS thì đừng thêm thẻ chuẩn bổ sung vào HTML theo cách thủ công.
+
+Và trong trường hợp bạn thêm rel=”canonical” vào HTML thì không thêm nó vào tiêu đề HTTP.
+
+### **Chỉ định giao thức Domain chính xác**
+
+Hãy đảm bảo xác định đâu là URL chuẩn của bạn nếu trang web của bạn nằm trên giao thức HTTPS. Và trong trường hợp nếu URL của bạn đang nằm trên giao thức HTTPS, thì URL Canonical của bạn cũng phải sử dụng giao thức HTTPS.
+
+Lý do là vì **[Google ưu tiên các trang HTTPS](https://support.google.com/domains/answer/7630973?hl=en)** hơn các trang HTTP.
+
+Ví dụ: nếu URL của trang web của bạn là https://example.com/, thì URL chuẩn của bạn cũng phải là https://example.com/
+
+### **Chỉ định các URL có dấu gạch chéo hoặc không có dấu gạch chéo**
+
+Bạn hãy chú ý xem các trang của bạn có sử dụng dấu gạch chéo ở cuối hay không ( ký hiệu “**/**” ở cuối URL).
+
+Ví dụ:
+
+*   Dấu gạch chéo cuối: https://example.com/
+*   Dấu gạch chéo không có ở cuối URL: https://example.com
+
+Google có thể xem xét hai URL có dấu gạch chéo và không có dấu gạch chéo là hai URL riêng biệt. Hãy đảm bảo xác định chính xác URL chuẩn của bạn bằng cách bao gồm cả dấu gạch chéo.
+
+Nhất quán một loại đường dẫn có dấu gạch chéo hay không có dấu gạch chéo trên toàn web.
+
+### **Chuyển hướng URL không phải www hoặc có www**
+
+Các URL có chứa www và không có www được các công cụ tìm kiếm coi là các trang trùng lặp.
+
+Ví dụ:
+
+*   Không có www: https://seosona.com. 
+*   Có chứa www: https://www.seosona.com 
+
+Hiện tại công ty chúng tôi lựa chọn sử dụng phiên bản không có **www** và thống nhất mẫu đó trên toàn trang web.
+
+![](/images/blog/canonical-bc955e7e.jpg)
+
+Thống nhất URL trên các trang
+
+### **Sử dụng URL tuyệt đối**
+
+Khi sử dụng thẻ canonical, bạn nên sử dụng URL tuyệt đối thay vì URL tương đối. URL tuyệt đối là URL đầy đủ, bao gồm cả tên miền của bạn. URL tương đối là URL chỉ bao gồm một phần của URL.
+
+**Ví dụ:**
+
+> **URL tuyệt đối:** 
+> 
+> <link rel=”canonical” href=”https://seosona.com/kien-thuc-seo/”  />
+> 
+> **URL tương đối:** 
+> 
+> <link rel=”canonical” href=”/blog/” />
+
+Khi bạn sử URL tuyệt đối cho thẻ canonical, Google sẽ hiểu rõ hơn về trang của bạn và đánh giá xếp hạng cho trang đó.
+
+## **Cách kiểm tra tag Canonical trên trang web**
+
+### **Kiểm tra bằng cách xem View Page Source**
+
+Các bước đơn giản khi kiểm tra Canonical tag bằng ViewPage Source là:
+
+**Bước 1:** Bạn di chuyển đến khoảng trống bất kỳ của trang, nhấn chuột phải và chọn View page source/Xem nguồn trang. Có thể sử dụng phím Ctrl + U để xem nhanh page source trong một tab mới.
+
+![](/images/blog/canonical-ec7a96f0.jpg)
+
+Kiểm tra bằng View page source
+
+**Bước 2:** Nhấn tổ hợp phím Ctrl + F. Hộp thoại tìm kiếm mở ra, bạn gõ “canonical”
+
+**Bước 3:** Tất cả rel=”canonical” sẽ hiện ra. Sau khi đăng nhập, bạn tìm kiếm một URL ở trên cùng. Lúc này bạn đánh giá URL có trong đoạn mã có phải URL chuẩn có đúng hay không.
+
+![](/images/blog/canonical-aeebe0f0.jpg)
+
+Mã trong View page source
+
+### **Sử dụng công cụ hỗ trợ SEO**
+
+Hiện nay có nhiều **công cụ SEO miễn phí** sử dụng để kiểm tra Canonical tag ở đây tôi sẽ nói đến SEOQuake đây là công cụ hoàn toàn miễn phí.
+
+**Bước 1:** Bạn cài đặt tiện ích SeoQuake vào trình duyệt web.
+
+![](/images/blog/canonical-15037848.jpg)
+
+SEOquake
+
+**Bước 2:** Bạn muốn kiểm tra thẻ tag Canonical. Tiếp đó, chọn vào biểu tượng tiện ích SeoQuake trong danh mục tiện ích ở góc phải màn hình và chọn DIAGNOSIS. 
+
+![](/images/blog/canonical-53386095.jpg)
+
+Thẻ canonical trong SEOquake
+
+### **Kiểm tra bằng Google Search Console**
+
+Google Search Console giúp bạn tìm hiểu và xác định đâu là URL chuẩn trên trang web. 
+
+![](/images/blog/canonical-b52df0c6.jpg)
+
+Tìm kiếm URL trên Google Search Consloe
+
+Sau khi báo cáo “**URL Inspection**” đã sẵn sàng, hãy mở phần “**Page indexing**”.
+
+Cuộn xuống để xem “**Google-selected canonical**”.
+
+![](/images/blog/canonical-494c644e.jpg)
+
+Kiểm tra các trang chính tắc
+
+Nếu đây không phải là URL tiêu chuẩn của bạn, bạn có thể cần xem lại chiến lược loại bỏ trùng lặp trên trang của mình.
+
+Để bắt đầu, hãy đảm bảo rằng “**User-declared canonical**” đã có và chính xác. Quá trình kiểm tra hoàn tất.
+
+![](/images/blog/canonical-25e3e477.jpg)
+
+## **Một số lưu ý khi thực hiện với tag Canonical**
+
+### **Đặt nhiều thẻ Canonical trong một trang**
+
+Bạn cần phải chú ý đến nhiều thẻ chuẩn có thể vô tình xuất hiện trong HTML của một trang.
+
+Nếu khi các trang gồm nhiều rel=canonical, có thể gây nhầm lẫn cho công cụ tìm kiếm và Google có thể bỏ qua tín hiệu chuẩn này.
+
+[**Google đã nói rằng**](https://developers.google.com/search/blog/2013/04/5-common-mistakes-with-relcanonical#mistake-3:-unintended-or-multiple-declarations-of-rel=canonical):
+
+> “Trong trường hợp có nhiều khai báo rel=”canonical”, Google sẽ bỏ qua các gợi ý rel=”canonical”. Bất kỳ lợi ích nào mà rel=”canonical” hợp pháp có thể mang lại sẽ bị mất.”
+
+Có nghĩa là với một trang web chỉ nên đặt duy nhất một thẻ Canonical.
+
+### **Sử dụng tag canonical trên những nội dung không trùng lặp**
+
+Hãy chắc chắn rằng nội dung trên các trang trùng lặp và trang chuẩn có nội dung giống hệt nhau hoặc ít nhất gần giống nhau khi mà áp dụng thẻ canonical.
+
+Vì nếu bạn triển khai thẻ chuẩn trên các trang nội dung khác nhau có thể gây nhầm lẫn cho công cụ tìm kiếm hoặc bị bỏ qua hoàn toàn.
+
+Như [**Martin Splitter đã giải thích**](https://www.youtube.com/watch?t=583&v=gEWkYTPSEjs&feature=youtu.be):
+
+> “…nếu nội dung hoàn toàn khác biệt hoặc đủ khác biệt các thuật toán quyết định rằng đây không phải là nội dung trùng lặp thì nội dung canonical là vô nghĩa”
+
+### **Đặt thẻ Canonical trên các trang được phân trang**
+
+Đối với trang web được phân trang có rel=”next” và rel=”prev”, thì mỗi trang phải tham chiếu đến chính nó thông qua thẻ canonical.
+
+Ví dụ: Đối với môt số trang web có cấu trúc phân trang “1”, “2”, “3”,…cần phải cài thẻ canonical theo trình tự từ trang 1, trang 2 đến trang 3, và không được bỏ trang nào.
+
+Trong trường hợp này, bạn cần phải sử dụng thẻ chuẩn để tự xác định trên mỗi trang riêng lẻ và không liên kết đến trang “1” từ các phần còn lại của các trang bị phân trang:  
+
+### **Tuyệt đối không được sử dụng canonical trong <body>**
+
+Thẻ chuẩn không thể nằm vị trí nào cũng được mà nó chỉ luôn được áp dụng trong <head> phần trang của bạn.
+
+### **Tránh việc các vòng lặp và chuỗi trang Canonical**
+
+Hãy cố gắng sử dụng các thẻ chuẩn trực tiếp đến trang chính để tránh các vòng lặp chuẩn (điều này tương tự như vòng lặp chuyển hướng).
+
+**Ví dụ:** Sử dụng thẻ Canonical từ trang A đến trang B rồi từ trang B đến trang C sẽ tạo nên một chuỗi, làm cho công cụ tìm kiếm bị nhầm lẫn và lãng phí tài nguyên cũng như thời gian để quét dữ liệu.
+
+### **Không kết hợp thẻ Canonical với Noindex**
+
+Tag Canonical và tag Noindex là hai loại tag được sử dụng để kiểm soát cách thức các công cụ tìm kiếm lập chỉ mục cho các trang web.
+
+Thẻ Noindex cho phép quản trị viên web yêu cầu các công cụ tìm kiếm không lập chỉ mục cho một trang cụ thể. Còn thẻ Canonical cho phép quản trị viên web chỉ định một trang là phiên bản chính của một trang có nội dung trùng lặp.
+
+Trong trường hợp bạn sử dụng kết hợp cả hai tag này sẽ làm cho các công cụ tìm kiếm bị nhầm lẫn và khó hiểu cho các công cụ tìm kiếm.
+
+### **Không kết hợp thẻ Canonical với Hreflang**
+
+Như đã nói thẻ Canonical cho biết một trang nào là phiên bản chính của một nội dung trùng lặp. Thẻ hreflang là cho phép quản trị viên web chỉ đinh các phiên bản trang với nhiều ngôn ngữ khác nhau của một trang.
+
+Và nếu bạn kết hợp hai thẻ này trong một đường dẫn URL sẽ gây ra vấn đề cho các công cụ tìm kiếm là khó xác định trang chính.
+
+Cụ thể, thẻ chuẩn sẽ cho các công cụ tìm kiếm biết rằng trang này là trang chính, trong khi thẻ hreflang sẽ cho các công cụ tìm kiếm biết rằng có một phiên bản ngôn ngữ khác của trang này là phiên bản chính.
+
+## **Kết luận**
+
+Thẻ Canonical không quá phức tạp, bạn chỉ cần nhớ rằng nó không phải là chỉ thị mà là tín hiệu cho công cụ tìm kiếm. Việc cài đặt tag Canonical là một trong những phương pháp nhằm tối ưu SEO.
+
+Mong rằng, thông tin trên hữu ích cho bạn trong việc kiểm tra và triển khai thẻ Canonical. Ngoài ra, nếu bạn mong muốn biết thêm kiến thức về SEO có thể tham khảo các tài liệu khác hoặc tham gia khóa học [**Đào tạo SEO**](https://seosona.com/dao-tao-seo/) của [**Seosona**](https://seosona.com/) chúng tôi.
+
+Bên cạnh đó, chúng tôi còn cung cấp **[dịch vụ SEO uy tín](https://seosona.com/dich-vu-seo/)** bạn có thể tham khảo thêm để nâng cao thứ hạng từ khóa của mình
+
+**Xem thêm:**
+
+*   [**Sitemap là gì? Cách tạo và khai báo Google dễ dàng nhất**](https://seosona.com/seo/technical/sitemap/)
+*   [**Slug là gì? Hướng dẫn từ lý thuyết đến thực hành**](https://seosona.com/seo/technical/slug/)
+*   [**Breadcrumbs là gì? Lợi ích của Breadcrumb trong SEO**](https://seosona.com/seo/technical/breadcrumb/)
+*   [**Hướng dẫn cài đặt AMP cho website WordPress A- Z**](https://seosona.com/seo/technical/huong-dan-cai-dat-amp/)

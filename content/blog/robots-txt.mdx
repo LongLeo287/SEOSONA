@@ -1,0 +1,390 @@
+---
+title: "Robots.txt là gì? 3 bước tạo file robot.txt cho website wordpress"
+slug: "robots-txt"
+date: "2023-12-12T16:23:32"
+coverImage: "/images/blog/robots-txt-c70b6c44.jpg"
+excerpt: "Bạn đang quản trị một website trên wordpress nhưng Google index quá nhiều nội dung không cần thiết trên website? Bạn đang muốn google bỏ qua một vài trang trên website của bạn khi thu thập dữ liệu? Vậy làm sao để giải quyết các vấn đề trên Tôi có thể lập tức trả lời…"
+---
+
+Bạn đang quản trị một website trên wordpress nhưng
+
+Google index quá nhiều nội dung không cần thiết trên website?
+
+Bạn đang muốn google bỏ qua một vài trang trên website của bạn khi thu thập dữ liệu?
+
+Vậy làm sao để giải quyết các vấn đề trên
+
+Tôi có thể lập tức trả lời cho bạn rằng: file robot txt có thể giải quyết cho bạn các vấn đề này
+
+Bài viết dưới đây tôi sẽ giới thiệu cho bạn tất cả về file [**robot.txt**](https://seosona.com/seo/technical/robots-txt/) từ khái niệm đến cách tạo file robot txt.
+
+## **File robots.txt là gì?**
+
+Robots.txt là một tệp tin đơn giản với định dạng txt, thường được các trang web sử dụng để cho công cụ tìm kiếm biết trang nào nên và không nên thu thập dữ liệu. 
+
+Chẳng hạn, chủ sở hữu website thường sử dụng robots.txt để ngăn các công cụ tìm kiếm index các trang thanh toán và trang dữ liệu cá nhân,… để những trang này không xuất hiện trực tiếp trên kết quả tìm kiếm của Google.
+
+Một tệp robots.txt trông như thế này:
+
+![Robots.txt là gì ](/images/blog/robots-txt-e6677dd9.jpg)
+
+Robots.txt là gì
+
+Ví dụ tệp robots.txt của Seosona
+
+Trên hình là một ví dụ về một tệp robots.txt hoàn chỉnh của trang web **[seosona.com](https://seosona.com/).** Tôi sẽ giải thích chi tiết đến bạn về cấu trúc của tệp ở phần tiếp theo.
+
+## **Cấu trúc của file robots.txt**
+
+Một tệp robots.txt được tạo thành từ:
+
+*   **User-agent:** Được gọi là tác nhân người dùng, đây là tên các trình thu thập thông tin của công cụ tìm kiếm ví dụ trình thu thập dữ liệu của google sẽ là: User – agent: Googlebot.
+*   **Disallow:** Thông báo cho các User-agent, cụ thể là Bot của các công cụ tìm kiếm bỏ qua không thu thập bất kỳ dữ liệu trên các URL. ví dụ: Disallow: /admin, cấm tất cả các trình thu thập dữ liệu truy cập vào thư mục “/admin”
+*   **Allow:** (chỉ áp dụng cho bộ tìm kiếm Googlebot): Lệnh thực hiện thông báo cho Googlebot rằng nó có thể truy cập một trang hoặc thư mục con. ví dụ Allow: /keyword/\*, cho phép bot truy cập vào các URL có chứa từ khóa “keyword”.
+
+Một khối đơn giản sẽ trông như thế này:
+
+![Một tệp robots.txt ](/images/blog/robots-txt-34adc6a4.jpeg)
+
+Một tệp robots.txt
+
+Tuy nhiên, ngoài 3 thành phần chính trên. Tệp robots.txt có thể chứa thêm các thành phần sau:
+
+*   **Sitemap:** chỉ định vị trí sơ đồ sitemap cho website để Bot thu thập thông tin.
+*   **Crawl-deley:** Thông báo cho các Web Crawler biết rằng chúng phải đợi bao nhiêu giây trước khi tải và thu thập nội dung của trang. Tuy nhiên, Googlebot không thừa nhận lệnh này và bạn cần cài đặt tốc độ thu thập dữ liệu trong Google Search Console
+
+Ngoài ra, file robots.txt cũng cho phép sử dụng tính năng Pattern-Matching để bao quát một loạt các tùy chọn của URL.
+
+### **Pattern-Matching**
+
+Tệp robots.txt sử dụng pattern-matching (so khớp mẫu) để xác định các URL mà các lệnh Allow và Disallow áp dụng. Điều này cho phép bạn sử dụng một lệnh duy nhất để chặn hoặc cho phép truy cập vào nhiều URL cùng một lúc.
+
+Có hai loại pattern-matching thường được sử dụng trong robots.txt:
+
+*   Kí tự Dấu sao (\*) thông báo với tất cả các Bot của các công cụ tìm kiếm như Google, Bing, Yahoo,… ví dụ: User-agent: \*, thông báo tới tất cả các trình thu thập thông tin khi thu thập thông tin trên website cuả bạn.
+*   Kí tự $ cho biết sự kết thúc của URL. Ví dụ: Disallow: /\*.jpg$, chặn công cụ tìm kiếm thu thập dữ liệu tất cả các tệp .jpg trên trang web của mình.
+
+Ngoài 2 kí tự trên, Ký tự # đánh dấu điểm bắt đầu của một nhận xét. Các nhận xét sẽ bị bỏ qua trong quá trình xử lý cũng được nhiều SEOer sử dụng.
+
+### **Ví dụ về một tệp txt chuẩn** 
+
+Nếu bạn muốn cho phép tất các công cụ tìm kiếm thu thập thông tin trên trang web của bạn ngoại trừ phần comment của người dùng thì tệp txt sẽ như sau:
+
+![Thông báo cho tất cả bot](/images/blog/robots-txt-d8a46914.jpeg)
+
+Thông báo cho tất cả bot
+
+Tương tự nếu bạn chỉ muốn một công cụ tìm kiếm như Googlebot truy cập mọi bài đăng trên blog của mình ngoại trừ một bài đăng, lệnh của bạn có thể giống như sau:
+
+![Chỉ thông báo tới google bot](/images/blog/robots-txt-52a22110.jpeg)
+
+Chỉ thông báo tới google bot
+
+Tuy nhiên, đừng nên vội vàng viết tệp robots.txt, vì Google đưa ra một số nguyên tắc viết mà bạn cần tuân thủ. Tôi có liệt kê ra các nguyên tắc ở phần tiếp theo.
+
+### **Nguyên tắc trong viết tệp robots.txt**
+
+Các nguyên tắc trong tệp robots.txt đóng vai trò hướng dẫn các công cụ tìm kiếm về cách thu thập dữ liệu trên website của bạn.
+
+![Nguyên tắc trong viết tệp robots.txt](/images/blog/robots-txt-ba0e5dce.jpg)
+
+Nguyên tắc trong viết tệp robots.txt
+
+[Google đã đưa ra bộ quy tắc](https://developers.google.com/search/docs/crawling-indexing/robots/create-robots-txt?hl=vi#create_rules) cần tuân theo khi viết tệp robots.txt như sau:
+
+*   Tệp robots.txt bao gồm một hoặc nhiều nhóm các bộ quy tắc.
+*   Mỗi một nhóm sẽ bao gồm nhiều quy tắc khác nhau và thường bắt đầu bằng User-agent để nêu rõ mục tiêu của nhóm đó
+*   Một nhóm thường bao gồm các thành phần sau: User-agent, Disallow và allow
+*   Trình thu thập dữ liệu sẽ xử lý các nhóm từ trên xuống, một User – agent chỉ sử dụng cho một nhóm.
+*   Nếu nhiều nhóm cùng một user – agent, thì sẽ kết hợp lại thành một 
+*   Các quy tắc có phân biệt chữ hoa chữ thường. Ví dụ: disallow: /comment/ áp dụng cho https://www.example.com/comment nhưng không áp dụng cho https://www.example.com/COMMENT.
+*   Ký tự # đánh dấu điểm bắt đầu của một nhận xét. Các nhận xét sẽ bị bỏ qua trong quá trình xử lý.
+*   Ký tự (\*) dùng để gán lệnh cho mọi user – agent, áp dụng quy tắc cho tất cả các bot.
+*   Mỗi lệnh nên nằm trên một dòng mới.
+
+Khi bạn triển khai SEO tổng thể cho một website, bạn cần SEO Audit cho robots.txt dựa trên các thông tin phía trên để có kế hoạch cải thiện cho phù hợp.
+
+### **Một vài định dạng cơ bản của file robots.txt**
+
+Sau đây là một định dạng cơ bản và hữu ích trong tệp robots.txt:
+
+**STT**
+
+**ý nghĩa**
+
+**Định dạng**
+
+1
+
+Để chặn tất cả các bot không được thu thập bất kì dữ liệu nào trên toàn bộ website.
+
+User-agent: \*
+
+Disallow: /
+
+2
+
+Chặn tất cả các con bot thu thập dữ liệu vào mục calendar trên website.
+
+User-agent: \*
+
+Disallow: /calendar/
+
+3
+
+Chỉ cho phép Googlebot-news thu thập toàn bộ dữ liệu website
+
+User-agent: Googlebot-news
+
+Allow: /
+
+4
+
+Unnecessarybot không được thu thập dữ liệu trên trang web, mọi bot khác có thể thu thập dữ liệu trên trang web.
+
+User-agent: Unnecessarybot
+
+Disallow: /
+
+User-agent: \*
+
+Allow: 
+
+5
+
+Không cho phép thu thập dữ liệu trang useless\_file.html trong thư mục junk của website
+
+User-agent: \*
+
+Disallow: /useless\_file.html
+
+Disallow: /junk/other\_useless\_file.html
+
+6
+
+Không cho phép thu thập dữ liệu trên toàn bộ trang web, ngoại trừ một thư mục con public
+
+User-agent: \*
+
+Disallow: /
+
+Allow: /public/
+
+7
+
+Chặn một hình ảnh mang tên /images/dogs.jpg ra khỏi Google Hình ảnh
+
+User-agent: Googlebot-Image
+
+Disallow: /images/dogs.jpg
+
+8
+
+Chặn mọi hình ảnh trên trang web khỏi Google Hình ảnh
+
+User-agent: Googlebot-Image
+
+Disallow: /
+
+9
+
+Không cho phép thu thập dữ liệu trong các tệp thuộc một loại cụ thể. Ví dụ gif
+
+User-agent: Googlebot
+
+Disallow: /\*.gif$
+
+10
+
+Không cho phép các bot thu thập dữ liệu trên toàn bộ trang web, nhưng cho phép Mediapartners-Google phân tích những trang đó để quyết định xem nên hiển thị quảng cáo nào cho khách truy cập trang web của bạn.
+
+User-agent: \*
+
+Disallow: /
+
+User-agent: Mediapartners-Google
+
+Allow: /
+
+11
+
+Sử dụng ký tự đại diện \* và $ để khớp với những URL kết thúc bằng một chuỗi cụ thể ( ví dụ URL đuôi xls)
+
+User-agent: Googlebot
+
+Disallow: /\*.xls$
+
+## **File robots.txt hoạt động như thế nào?**
+
+Để hiểu hoạt động của file robots.txt, bạn cần hiểu cách mà các công cụ tìm kiếm thu thập dữ liệu trên website của bạn.
+
+Vì chức năng chính của robots.txt là giúp bot công cụ tìm kiếm hiểu những URL nào có thể thu thập dữ liệu và những URL nào cần bỏ qua.
+
+![File robots.txt hoạt động](/images/blog/robots-txt-b9cd96a8.jpg)
+
+File robots.txt hoạt động
+
+Các công cụ tìm kiếm thường sẽ thực hiện hai nhiệm vụ chính trên 1 website:
+
+*   Thu thập dữ liệu trên web để khám phá nội dung và lập chỉ mục
+*   Phân phối nội dung cho người tìm kiếm thông tin.
+
+Các con bot của các công cụ tìm kiếm như google bot sẽ khám phá một trang web, khi nhận thấy có liên kết trỏ qua các trang khác các con bot sẽ nhân bản, 1 con ở lại thu thập dữ liệu, 1 con đi theo các liên kết để thu thập dữ liệu trang khác.
+
+Quá trình này đưa các con bot từ trang A đến trang B đến trang C qua hàng triệu liên kết, trang và trang web.
+
+Tuy nhiên, khi các con bot đến một URL nó sẽ tìm đọc tệp robots.txt trước khi tiến hành bất kỳ hoạt động nào khác.
+
+Cú pháp rất đơn giản, nó sẽ đọc tệp từ User – agent trước và theo sau đó là các lệnh.
+
+Ví dụ, hướng dẫn dưới đây cho phép tất cả các bot, ngoại trừ google bot, thu thập dữ liệu trang web:
+
+![Ví dụ](/images/blog/robots-txt-10b68773.jpeg)
+
+Ví dụ
+
+Tuy nhiên, tệp robots.txt chỉ cung cấp hướng dẫn và không thể thực thi. Bot tốt sẽ tuân theo quy tắc, trong khi bot xấu có thể bỏ qua chúng. 
+
+## **File Robots.txt quan trọng ra sao?**
+
+Tệp robots.txt được sử dụng để quản lý các hoạt động của các trình thu thập dữ liệu trên web.
+
+Ngăn chúng tải quá nhiều dữ liệu từ trang web của bạn hoặc lập chỉ mục những trang không công khai.
+
+![File Robots.txt quan trọng ra sao?](/images/blog/robots-txt-b8eebb25.jpg)
+
+File Robots.txt quan trọng ra sao?
+
+Dưới đây là một số lý do nên sử dụng tệp robots.txt:
+
+*   Tối ưu hóa ngân sách thu thập dữ liệu đề cập đến số trang mà google có thể thu thập dữ liệu trên một khoảng thời gian, nếu vượt quá ngân sách này một số trang web của bạn có thể không được index
+*   Ngăn chặn nội dung trùng lặp (Duplicate Content) xuất hiện trong website 
+*   Giúp các trang nội bộ riêng tư không hiển thị trên kết quả tìm kiếm
+*   Chỉ định vị trí của Sitemap.
+*    Ẩn tài nguyên (khi bạn muốn ẩn các tệp PDF, video và hình ảnh,… khỏi kết quả tìm kiếm.)
+*   Ngăn việc máy chủ của bạn bị quá tải khi các trình thu thập dữ liệu tải nhiều nội dung cùng một lúc.
+
+## **Những hạn chế của file robots.txt**
+
+Tuy có nhiều ưu điểm nhưng tệp robots.txt cũng có một vài hạn chế như:
+
+*   Tệp robots.txt có thể không được tất cả các công cụ tìm kiếm hỗ trợ
+*    Nó chỉ là một gợi ý cho các công cụ tìm kiếm chứ không đảm bảo rằng các trang sẽ không được lập chỉ mục
+*   Tệp Robots.txt không cung cấp bất kỳ bảo mật hoặc mật khẩu bảo vệ nào cho các trang bị chặn, vì vậy bất kỳ ai cũng có thể biết chúng nếu họ có URL.
+*   Google vẫn có thể index trang có tệp robots.txt nếu có một trang web liên kết đến nó.
+
+## **3 Cách tạo file robots.txt WordPress đơn giản**
+
+Tệp robots.txt được lưu trữ trên máy chủ của bạn, giống như bất kỳ tệp nào khác trên trang web của bạn.
+
+Vì vậy tạo tệp Robots.txt cho website rất đơn giản, dưới đây là 3 cách thường được sử dụng
+
+### **Cách 1: Sử dụng Yoast SEO**
+
+**Bước 1:** Đăng nhập vào wordpress
+
+**Bước 2:** Chọn mục SEO > Chọn Tools.
+
+![Chọn mục SEO > Chọn Tools.](/images/blog/robots-txt-cacf08b5.jpg)
+
+robots.txt
+
+**Bước 3:** Nhấp vào ‘File editor' trên giao diện wordpress
+
+Menu này sẽ không xuất hiện nếu cài đặt WordPress của bạn tắt tính năng chỉnh sửa tệp, Vui lòng kích hoạt chỉnh sửa tệp hoặc chỉnh sửa tệp qua FTP để tiếp tục.
+
+![Nhấp vào 'File editor' trên giao diện wordpress](/images/blog/robots-txt-81ec9894.jpg)
+
+Nhấp vào ‘File editor' trên giao diện wordpress
+
+**Bước 4:** Nhấp vào nút “ create robots.txt file “ Bây giờ bạn có thể tạo tệp robots.txt riêng của mình.
+
+![Nhấp vào nút “ create robots.txt file “](/images/blog/robots-txt-da3731a9.jpg)
+
+Nhấp vào nút “ create robots.txt file “
+
+### **Cách 2: Tạo file robots.txt qua bộ Rank Math SEO**
+
+**Bước 1:** Đăng nhập vào wordpress
+
+**Bước 2:** Chọn Rank math SEO và click chuột General Sittings
+
+![ Chọn Rank math SEO và click chuột General Sittings](/images/blog/robots-txt-2089fd96.jpg)
+
+robots.txt
+
+**Bước 3:** Chọn file robots.txt để chỉnh sửa
+
+![Chọn file robots.txt để chỉnh sửa](/images/blog/robots-txt-c1bd9317.jpg)
+
+Chọn file robots.txt để chỉnh sửa
+
+**Bước 4:** Chỉnh sửa file robots.txt của bạn trực tiếp trên wordpress
+
+### **Cách 3: Tạo rồi upload file robots.txt thủ công qua FTP**
+
+FTP là một cách tiêu chuẩn để chuyển tập tin từ máy tính sang tài khoản lưu trữ website của bạn.
+
+**Bước 1:** Tạo một tệp và đặt tên là Robots.txt
+
+Để tạo file đuôi .txt bạn có thể mở notepad hoặc Textedit trên máy tính của mình.
+
+![ tạo file đuôi .txt ](/images/blog/robots-txt-01c92045.jpeg)
+
+tạo file đuôi .txt
+
+Sau đó bạn lưu tệp về máy đặt tên là Robots.txt
+
+**Bước 2:**  Mở FTP > Chọn thư mục public\_html > Chọn file robots.txt > Chọn Upload.
+
+![Upload file robots.txt](/images/blog/robots-txt-fd89f1b5.jpg)
+
+Upload file robots.txt
+
+Sau khi bạn đã tải lên tệp robots.txt, các trình thu thập dữ liệu của Google sẽ tự động tìm và bắt đầu sử dụng tệp robots.txt của bạn.
+
+## **Kiểm tra tệp Robots.txt trên thanh tìm kiếm**
+
+Tệp robots.txt được lưu trữ trên máy chủ của bạn, giống như bất kỳ tệp nào khác trên trang web của bạn.
+
+Xem tệp robots.txt cho bất kỳ trang web cụ thể nào bằng cách nhập URL đầy đủ của trang chủ và thêm “/robots.txt” vào cuối.
+
+Ví dụ: Trang chủ của công ty Seosona là Seosona.com. Để kiểm tra tệp robots.txt của seosona, bạn có thể gõ https://Sesona.com/robots.txt lên thanh kết quả tìm kiếm.
+
+![Kiểm tra tệp robots.txt của seosona](/images/blog/robots-txt-ae20eced.jpg)
+
+Kiểm tra tệp robots.txt của seosona
+
+**Lưu ý:** Tệp robots.txt phải luôn tồn tại ở trên tên miền gốc.  Đặt nó ở bất kỳ nơi nào khác và trình thu thập thông tin có thể cho rằng bạn không có. 
+
+## **Lưu ý khi tạo file Robots.txt**
+
+Một vài lưu ý khi bạn tạo file robots.txt
+
+*   Sau khi tải xong tệp bạn cần kiểm tra tệp đó để đảm bảo tệp hoạt động chính xác. 
+*   Kiểm tra xem tất cả các trang bạn muốn chặn có thực sự bị chặn hay không.
+*   Trong một số trường hợp, Google vẫn có thể lập chỉ mục các URL thuộc trang web mặc dù chưa thu thập dữ liệu những URL đó.
+*   Bạn không nên dùng tệp robots.txt để chặn truy cập vào nội dung riêng tư, hãy sử dụng phương thức xác thực phù hợp bởi mọi người đều có thể biết file robot.txt của bạn khi có URL.
+*   Công cụ tìm kiếm lưu trữ nội dung file robots.txt và thường cập nhật bộ nhớ cache hằng ngày. Để cập nhật nhanh hơn sau khi thay đổi tệp, sử dụng chức năng “Gửi” trong Trình kiểm tra tệp robots.txt.
+*   Link juice sẽ không được truyền từ các trang bị chặn đến các trang đích.
+
+## **Kết luận**
+
+Mặc dù không phải tất cả bot đều tuân thủ các hướng dẫn trong tệp Robots.txt, nhưng đây là một công cụ quan trọng trong chiến lược SEO. 
+
+Nó giúp bạn hướng dẫn bot của các công cụ tìm kiếm về những nội dung nên và không nên được lập chỉ mục trên trang web. 
+
+Tuy nhiên, điều quan trọng là phải thận trọng khi sử dụng nó vì việc định cấu hình sai có thể dẫn đến việc hủy lập chỉ mục hoàn toàn trang web của bạn.
+
+Hy vọng bài viết trên giúp ích đến bạn trên con đường SEO của mình.
+
+Bên cạnh đó, Seosona có cung cấp [**khóa học SEO**](https://seosona.com/dao-tao-seo/) thực chiến mang tên SEO All IN ONE và [**dịch vụ SEO tổng thể**](https://seosona.com/dich-vu-seo/) **từ khóa** đến quý khách hàng. Nếu bạn có nhu cầu bạn có thể tham khảo thêm.
+
+Xin cảm ơn! Chúc bạn thành công!
+
+**Xem thêm:**
+
+*   [**Technical SEO là gì? Hướng dẫn từng bước tối ưu website cho SEO**](https://seosona.com/seo/technical/cach-toi-uu/)
+*   [**Website chuẩn SEO là gì? Các tiêu chí đánh giá mới nhất 2024**](https://seosona.com/seo/technical/website-chuan-seo/)
+*   [**Core Web Vitals là gì? Cách tối ưu Core Web Vitals chuẩn SEO**](https://seosona.com/seo/technical/core-web-vitals/)
+*   [**URL là gì? Hướng dẫn tối ưu URL chuẩn SEO 2024**](https://seosona.com/seo/technical/url/)

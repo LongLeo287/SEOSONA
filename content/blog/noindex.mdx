@@ -1,0 +1,120 @@
+---
+title: "Noindex là gì? Hướng dẫn sử dụng thẻ noindex hiệu quả trong SEO 2025"
+slug: "noindex"
+date: "2024-03-18T09:05:19"
+coverImage: "/images/blog/noindex-a84302a9.jpg"
+excerpt: "Bạn đang gặp vấn đề trong việc kiểm soát các trang index trên kết quả Google? Hay có những trang bị trùng lặp nội dung nhưng bạn không muốn xóa chúng khỏi website của mình. Để giải quyết vấn đề trên bạn có thể sử dụng Noindex là một giải pháp tốt nhất, và việc…"
+---
+
+Bạn đang gặp vấn đề trong việc kiểm soát các trang index trên kết quả Google? Hay có những trang bị trùng lặp nội dung nhưng bạn không muốn xóa chúng khỏi website của mình.
+
+Để giải quyết vấn đề trên bạn có thể sử dụng Noindex là một giải pháp tốt nhất, và việc sử dụng [**thẻ Noindex**](https://seosona.com/seo/technical/noindex/) cũng là một phần quan trọng trong chiến lược SEO website.
+
+Cùng tìm hiểu về niệm cũng như cách sử dụng thẻ Noindex trong bài viết này của SEOSONA nhé.!
+
+## **Thẻ Noindex là gì?**
+
+Thẻ noindex (Noindex Tag) là một chỉ thị trong thẻ meta robots của HTML, được sử dụng để báo cho các công cụ tìm kiếm biết rằng bạn không muốn được index trang đó trên kết quả tìm kiếm.
+
+![](/images/blog/noindex-330afcbd.jpg)
+
+Khi bot của công cụ tìm kiếm gặp thẻ noindex trên một trang web, nó sẽ bỏ qua việc lập chỉ mục cho trang đó và không hiển thị nó trong kết quả tìm kiếm.
+
+Thẻ noindex được đặt trong phần **<head>** của trang web, thường được sử dụng cho các trang không muốn xuất hiện trong kết quả tìm kiếm, như trang quản trị, trang cảm ơn sau khi đăng ký hoặc đăng nhập.
+
+Hoặc là khi bạn có các trang trùng lặp mà bạn không muốn xóa đi, có thể sử dụng Noindex để tránh bị cannibalization với phiên bản khác có cùng một nội dung.
+
+Đây là ví dụ về cách sử dụng thẻ noindex trong mã HTML:
+
+**<head>**
+
+**<meta name=”robots” content=”noindex”>**
+
+**</head>**
+
+Ngoài ra bạn cũng có thể thêm thẻ Noindex trong HTTP dưới dạng x-robots-tag như sau:
+
+**x-robots-tag: noindex**
+
+**Lưu ý:** Dù bạn đã đưa ra hướng dẫn cho các công cụ tìm kiếm, không phải mọi bot đều theo dõi chúng một cách đồng nhất. Tuy nhiên, đa số bot của các công cụ tìm kiếm, đặc biệt là từ Google, thường sẽ tuân thủ chỉ thị noindex.
+
+Nếu bạn muốn đảm bảo rằng các trang của mình không được index bởi bất kỳ bot tìm kiếm nào, bạn có thể cân nhắc sử dụng tệp robots.txt để cấm truy cập hoàn toàn đối với các bot đó.
+
+Đọc bài viết robots.txt là gì? 3 bước tạo file robot.txt cho website wordpress, nếu bạn chưa biết cách sử dụng tệp robots.txt này.
+
+## **Tại sao thẻ “noindex” lại quan trọng?**
+
+Việc sử dụng thẻ “noindex” ngăn các trang và tài nguyên xuất hiện trong kết quả tìm kiếm một cách hiệu quả. 
+
+Ngoài ra, noindex còn giúp tối ưu hoá sitemap cho website, đồng nghĩa với việc Google Bot sẽ dễ dàng lập chỉ mục và thu thập các thông tin quan trọng.
+
+Chúng có thể bao gồm các trang “cảm ơn”, trang đích của quảng cáo, các trang chất lượng kém hoặc chất lượng thấp, các trang lưu trữ blog, các trang về tác giả và thẻ, các trang đăng nhập, v.v. Tuy nhiên, nếu bị lạm dụng, thẻ “noindex” có thể gây hại cho trang web của bạn.
+
+![noindex](/images/blog/noindex-fad8795a.jpg)
+
+## **Các phương pháp hay nhất để sử dụng “noindex”**
+
+Nếu bạn đã quyết định rằng bạn cần “ngăn index” một số trang, đây là một số phương pháp hay nhất.
+
+### **Đảm bảo rằng trang không được phép trong tệp robots.txt**
+
+Các trang không được phép trong robots.txt vẫn có thể được đưa vào chỉ mục của công cụ tìm kiếm. Đôi khi các trang có thể được lập chỉ mục mà không cần thu thập thông tin nội dung của chúng.
+
+Và khi bạn thêm thẻ “noindex” vào một trang, Google phải thu thập dữ liệu lại trang để đọc chỉ thị này. Vì vậy, bạn phải đảm bảo rằng trình thu thập thông tin có thể truy cập trang.
+
+### **“noindex” dài hạn dẫn đến “nofollow”**
+
+Bạn nên lưu ý rằng các trang có thẻ “noindex” về lâu dài sẽ không chuyển bất kỳ giá trị liên kết nào đến các trang khác. John Mueller từ Google giải thích rằng khi Google nhìn thấy “noindex” trong một thời gian dài , các trang sẽ bị xóa hoàn toàn khỏi chỉ mục và các liên kết trên chúng sẽ không còn được thu thập thông tin nữa.
+
+Vì vậy, ngay cả khi trang là “noindex, follow”, thì về lâu dài, nó sẽ không khác với “noindex, nofollow” đối với Google. Tuy nhiên, “dài hạn” ở đây có nghĩa là gì không rõ ràng và điều đó phụ thuộc vào nhiều yếu tố.
+
+![noindex dai han dan den nofollow](/images/blog/noindex-b0abf7b6.jpg)
+
+### **Không sử dụng “noindex” trên nội dung trùng lặp**
+
+Sử dụng thẻ “noindex” không phải là cách tốt nhất để đối phó với nội dung trùng lặp trên trang web của bạn.
+
+Để hợp nhất các trang trùng lặp trên trang web của bạn, hãy sử dụng thẻ chuẩn. Chuẩn hóa thích hợp hướng dẫn các công cụ tìm kiếm chỉ index phiên bản chính (chuẩn) của trang. Nhưng các tín hiệu liên kết từ tất cả các phiên bản không chuẩn của một trang sẽ được hợp nhất, do đó tạo ra sự thúc đẩy cho phiên bản chuẩn.
+
+Ví dụ tôi có bài viết về content seo và cấu trúc bài viết chuẩn seo đang bị trùng lặp, tôi sẽ ưu tiên sử dụng thẻ Canonical về một bài chính chứ không dùng “noindex”
+
+### **Thường xuyên theo dõi website của bạn để biết các vấn đề về SEO**
+
+Việc giám sát trang web của bạn để tìm các vấn đề về SEO có thể giúp bạn tránh khỏi những tổn thất về lưu lượng truy cập liên quan đến khả năng index. Ví dụ: các trang hoặc toàn bộ các phần của trang web có thể bị “không lập chỉ mục” do nhầm lẫn.
+
+Bạn có thể sử dụng công cụ Site Audit của **phần mềm SEO chuyên nghiệp** Ahrefs để theo dõi tình trạng SEO của trang web của bạn.
+
+## **Câu hỏi thường gặp về Noindex**
+
+**Các trang noindex có vượt qua PageRank không?**
+
+Các trang không được index sẽ bị xóa khỏi chỉ mục của Google. Cuối cùng, Google sẽ ngừng thu thập dữ liệu các trang này và do đó PageRank (nguồn liên kết) sẽ không được chuyển sang các trang khác.
+
+Sử dụng lệnh “noindex, follow” sẽ không hữu ích.
+
+Thẻ <meta> hoặc X-Robots-Tag – cái nào tốt hơn cho noindex?
+
+Cả thẻ <meta> và X-Robots-Tag đều hoạt động tốt như nhau. Tuy nhiên, việc thêm thẻ meta “noindex” vào trang sẽ dễ dàng hơn nhiều, đặc biệt là trong WordPress.
+
+**Làm cách nào để “noindex” một trang trong WordPress?**
+
+Bạn có thể thêm thẻ “noindex” vào bất kỳ trang nào trong WordPress bằng **plugin YoastSEO**. Đây là cách bạn có thể làm điều đó:
+
+*   Trong trình chỉnh sửa WordPress, cuộn xuống phần “Yoast SEO”.
+*   Nhấp vào “Advanced”.
+*   Trong “Allow search engines to show this post in search results?”, Hãy thay đổi câu trả lời từ “Yes” thành “No”.
+
+![noindex](/images/blog/noindex-b12413cd.jpg)
+
+Sẽ mất một thời gian để thẻ “noindex” có hiệu lực và trang biến mất khỏi kết quả tìm kiếm.
+
+Vậy là bạn đã biết được các kiến thức liên quan đến noindex là gì? Nếu có thắc mắc nào thì bạn có thể liên hệ với Quyết hoặc truy cập vào website [**seosona.com**](https://seosona.com/) để được giải đáp nhanh chóng và chính xác nhất. 
+
+Qua bài viết, Quyết hy vọng bạn đã có thể hiểu rõ hơn về Noindex. Bên cạnh đó, Quyết cũng xin 30s giới thiệu [**dịch vụ seo tổng thể**](https://seosona.com/dich-vu-seo/) **website** uy tín của seosona đã giúp cải thiện hơn 500 website của khách hàng cho các bạn có nhu cầu hãy tham khảo và liên hệ nhé.
+
+**Xem thêm:**
+
+*   [**Crawler là gì? 7 yếu tố ảnh hưởng đến Crawler website**](https://seosona.com/seo/technical/crawl/)
+*   [**Lỗi error 404 là gì? Error 404 có ảnh hưởng đến SEO hay không?**](https://seosona.com/seo/technical/error-404/)
+*   [**Redirect 301 là gì? Cách hoạt động và chuyển hướng 301 hiệu quả**](https://seosona.com/seo/technical/redirect-301/)
+*   [**Rel Nofollow là gì? Điều cần biết về cách đặt thẻ nofollow trong SEO**](https://seosona.com/seo/technical/rel-nofollow/)

@@ -1,0 +1,377 @@
+---
+title: "Lỗi error 404 là gì? Error 404 có ảnh hưởng đến SEO hay không?"
+slug: "error-404"
+date: "2024-03-27T09:10:14"
+coverImage: "/images/blog/error-404-51cf724f.jpg"
+excerpt: "Thông thường, bạn không chú ý nhiều đến lỗi này nhưng bạn sẽ thất vọng khi bắt gặp trang error 404 và phải nhất nút quay lại hoặc đóng tab. Tuy nhiên, nếu bạn là nhà quản trị web thì sẽ cảm thấy khá lo lắng bởi vì không biết liệu error 404 có ảnh…"
+---
+
+Thông thường, bạn không chú ý nhiều đến lỗi này nhưng bạn sẽ thất vọng khi bắt gặp trang **error 404** và phải nhất nút quay lại hoặc đóng tab.
+
+Tuy nhiên, nếu bạn là nhà quản trị web thì sẽ cảm thấy khá lo lắng bởi vì không biết liệu **error 404** có ảnh hưởng đến SEO và thứ hạng trang theo bất kỳ cách nào hay không?
+
+Trong bài viết này, Quyết sẽ chia sẻ đến bạn các kiến thức sau: 
+
+*   Mã **[lỗi 404](https://seosona.com/seo/technical/error-404/) là gì**?
+*   Nguyên nhân dẫn đến **error 404** 
+*   Các trang 404 ảnh hưởng đến SEO không?
+*   Xây dựng liên kết bằng phương pháp broken links 
+
+Bạn có thể tham khảo qua các kinh nghiệm thực chiến của Quyết khi áp dụng kiến thức sau vào dự án và đạt được nhiều kết quả tốt. 
+
+## **Error 404 là gì?**
+
+Error 404 là mã trạng thái HTTP tiêu chuẩn (còn được gọi là mã phản hồi). Khi bạn cố gắng truy cập vào URL hoặc server, server sẽ trả về mã trạng thái để bạn biết hoạt động tải trang đang diễn ra như thế nào.
+
+Giả sử hầu hết website đều hoạt động tốt thì mã trạng thái trả về sẽ là 200.
+
+Nếu bạn đang đọc được bài viết này bây giờ thì có nghĩa là trình duyệt của bạn có thể truy cập server của Quyết và server tìm được tài nguyên mà bạn yêu cầu nên đã trả lại mã phản hồi là 200. 
+
+![error 404](/images/blog/error-404-e13f4a09.jpg)
+
+_Error 404 là mã trạng thái HTTP tiêu chuẩn_
+
+Khi khách hàng có thể thiết lập liên kết với server nhưng không thể tìm thấy tài nguyên được yêu cầu, server sẽ trả về mã trạng thái error 404.
+
+Về cơ bản, error 404 có nghĩa là bất kỳ tài nguyên nào được yêu cầu không thể tìm thấy tại địa chỉ cụ thể đó. 
+
+Để kiểm tra mã phản hồi của trang, bạn có thể nhấp chuột phải vào bất kỳ chỗ nào trên trang trình duyệt của bạn, chọn “Inspect” và chuyển đến phần Network.
+
+Nếu bạn không thể thấy mã trạng thái thì hãy nhấn F5 hoặc làm mới trang trong khi trình kiểm tra vẫn mở. 
+
+Bạn sẽ thường thấy một loạt các mã trạng thái ở đó bởi vì một trang sẽ được tải từ nhiều nguồn tài nguyên.
+
+Ví dụ tệp HTML/HP được yêu cầu có thể tìm thấy nhưng một số tài nguyên hình ảnh đã bị sai chính tả hoặc bị xóa.
+
+Trong trường hợp này, loại tài liệu trang sẽ trả về mã phản hồi 200 trong khi các tài nguyên hình ảnh bị thiếu sẽ trả về mã error 404. 
+
+Mã trạng thái 404 trong trình duyệt của bạn sẽ trông giống như thế này:
+
+![error 404](/images/blog/error-404-3ce63c97.jpg)
+
+_Hiển thị thông báo mã trạng thái 404 trong trình duyệt của bạn_
+
+Ngoài ra, bạn có thể sử dụng công cụ https://httpstatus.io/ để kiểm tra mã trạng thái HTTP của chúng.
+
+Điều này chỉ giúp bạn tìm được mã trạng thái của tài liệu chứ không bao gồm bất kỳ tài nguyên nào khác.
+
+Tuy nhiên bạn có thể thêm URL nguồn vào để kiểm tra. 
+
+Có những mã phản hồi khác bạn có thể nghe nói đến như 500, 501 và 503 giúp chỉ ra lỗi của máy chủ trong khi 301, 302 dùng để chuyển hướng.
+
+Những mã phản hồi kể trên với 200 và 404 tạo thành các mã trạng thái phổ biến nhất của website. 
+
+“Điều thực sự quan trọng đối với một trang/tài nguyên không tồn tại để trả về mã trạng thái 404. Nếu nó trả về một mã 200, Google có thể index cho nó.” 
+
+Tuy nhiên, để ngăn chặn điều này, Google đã tạo ra nhãn “Soft 404”.
+
+Về cơ bản, trang không có nội dung nhưng mã trạng thái HTTP là 200 thì bạn sẽ được gắn nhãn “soft 404”.
+
+Bạn có thể tìm thấy các lỗi này trong Google’s Search Console (Former Webmaster Tools) ở mục Crawl Errors.
+
+Nếu bạn đã ở phiên bản mới của Search Console thì cách dễ nhất là tạm thời chuyển sang phiên bản cũ. 
+
+Soft 404s không hẳn là mã lỗi nhưng là nhãn được thêm bởi Google để báo hiệu sự cố này hoặc một trong bị thiếu nội dung trả lại mã 200. 
+
+### **Cách thêm/tùy chỉnh trang 404**
+
+Thông thường, máy chủ website của bạn đã xử lý trang 404 nên nếu bạn cố gắng truy cập vào URL không tồn tại, máy chủ sẽ trả về trang error 404.
+
+![error 404](/images/blog/error-404-950da190.jpg)
+
+_Kết quả máy chủ sẽ trả về trang khi gặp lỗi error 404_
+
+Tuy nhiên, đôi khi nền tảng không trả lại mã 404 mà là trang 200 trống. Ngoài ra, như bạn có thể thấy ở trên, trang 404 thường có thiết kế không thân thiện với người dùng. 
+
+Vì vậy, thiết kế website tùy chỉnh cho trang 404 là một ý tưởng rất hay bởi nó có thể tạo ra trải nghiệm tốt hơn cho người dùng của bạn.
+
+Bởi vì người dùng không tìm thấy trang họ muốn sẽ cảm thấy khó chịu nhưng nếu bạn tạo ra một trang thu hút hoặc hài hước đem đến lợi ích cho người dùng thì họ sẽ cảm thấy dễ chịu hơn.  
+
+“Điều quan trọng nhất trên trang 404 là phải bao gồm CTA (call to action)”
+
+Nếu không có lời kêu gọi hành động, người dùng sẽ có thể rời đi khi họ thấy trang 404.
+
+Bằng cách chèn một số liên kết đến các trang liên quan, bạn có thể thu thập được một số lưu lượng truy cập vào các trang chính của bạn. 
+
+Bạn có thể xem qua ví dụ sau về trang 404. Rất khác biệt phải không? Nó thực sự có thể thuyết phục bạn không cảm thấy khó chịu.
+
+Ngoài ra, Quyết còn chèn một số CTA khá rõ ràng để bạn nhấp vào. Nó liên kết đến trang chủ hoặc một số trang quan trọng và phù hợp nhất với website của Quyết. 
+
+Tuy nhiên, bạn không phải giới hạn bản thân về điều này. Bạn có thể thêm các liên kết đến các trang danh mục có liên quan hoặc các phần khác của website.
+
+Một thanh tìm kiếm cũng sẽ là một ý tưởng tuyệt vời. 
+
+Hãy thiết kế web 404 thật sáng tạo và phù hợp với doanh nghiệp của bạn.
+
+Nếu thiết kế trang của bạn có thể khiến người dùng thoải mái thì nó thậm chí có thể tốt hơn so với khi họ truy cập đúng trang.
+
+Bạn có thể xem một vài ví dụ trong bài viết này, để có thể áp dụng cho dự án của mình. 
+
+![error 404](/images/blog/error-404-78cd5ca2.jpg)
+
+_Một ví dụ về việc thiết kế web 404 sáng tạo và phù hợp với doanh nghiệp_
+
+Hầu hết các CMS phổ biến (hệ thống quản lý nội dung), như WordPress đã có một số loại thiết kế được triển khai.
+
+Bạn có thể dễ dàng thêm một thiết kế tùy chỉnh bằng plugin. 
+
+### **Cách tìm lỗi 404**
+
+Một cách dễ dàng để tìm 404 lỗi là đăng nhập vào Google Search Console (Former Webmaster Tools).
+
+Nếu bạn thấy các lỗi Soft 404, như đã đề cập ở trên trong bài viết, bạn phải đảm bảo rằng trang 404 thực sự trả về mã lỗi 404.
+
+Nếu không, đó là một ý tưởng tốt để khắc phục điều đó.
+
+Có nhiều cách khác để tìm lỗi 404. Nếu bạn đang tìm kiếm các liên kết bị hỏng trong website của riêng bạn hoặc liên kết đến website khác từ website của bạn, bạn có thể sử dụng **Screaming Frog**. 
+
+Quyết sẽ hướng dẫn bạn cách sử dụng các **phầm mềm SEO** này một cách chi tiết bên dưới.
+
+![error 404](/images/blog/error-404-dba6598a.jpg)
+
+_Sử dụng Screaming Frog để hỗ trợ tìm ra lỗi 404_
+
+## **Nguyên nhân dẫn đến error 404**
+
+Trình kích hoạt điển hình cho thông báo error 404 là khi nội dung trang web đã bị xóa hoặc chuyển sang URL khác.
+
+Ngoài ra còn có những lý do khác tại sao một thông báo lỗi có thể xuất hiện như:
+
+*   URL hoặc nội dung của nó (như tệp hoặc hình ảnh) đã bị xóa hoặc di chuyển (mà không điều chỉnh bất kỳ internal link nào tương ứng).
+*   URL đã được viết không chính xác (trong quá trình tạo hoặc thiết kế lại), liên kết hoặc đánh chữ trong trình duyệt không chính xác.
+*   Máy chủ chịu trách nhiệm cho website không chạy hoặc kết nối bị hỏng
+*   Tên miền được yêu cầu không thể được chuyển đổi thành IP bởi domain name system (DNS)
+*   Tên miền được nhập vào không còn tồn tại nữa 
+
+![error 404](/images/blog/error-404-7012beab.jpg)
+
+_Trang web đã bị xóa hoặc chuyển sang URL khác là nguyên nhân dẫn đến error 404_
+
+Các liên kết chết thường được để lại trong thời gian dài vì các nhà quản trị web không biết rằng nội dung được liên kết đã bị xóa hoặc di chuyển.
+
+Nhiều website vẫn xuất hiện trong các trang SERPs mặc dù chúng không còn hoạt động nữa (hoặc ít nhất là không ở URL được chỉ định).
+
+Các website được liên kết khác như blog, cổng tin tức, vv thường không được thông báo rằng website đã bị xóa hoặc bây giờ có thể được tìm thấy dưới một URL mới.
+
+Nhiều nhà quản trị website không kiểm tra external link của họ thường xuyên và do đó một liên kết hoạt động có thể dễ dàng trở thành một liên kết đã chết.
+
+## **Các trang 404 ảnh hưởng đến SEO không?**
+
+Có rất nhiều người làm SEO nói rằng 404s sẽ ảnh hưởng thứ hạng của bạn nên bạn cần sửa chúng càng sớm càng tốt.
+
+Tuy nhiên có một sự thật rằng trang 404 là một phần bình thường của web và chúng thực sự hữu ích. 
+
+Bạn có thể tưởng tượng rằng nếu một địa điểm cụ thể không tồn tại, bạn sẽ muốn biết tại sao thay vì được chuyển hướng đến một nơi ngẫu nhiên nào đó.
+
+Vì vậy bạn không nên chuyển hướng tất cả trang 404 đến trang chủ của bạn.
+
+Tuy nhiên, Quyết đã thấy một số website chuyển hướng người dùng của họ sau khi đếm ngược thời gian, Quyết nghĩ đây là một ý tưởng tốt. 
+
+Về lý thuyết, trang 404 có tác động đến thứ hạng nhưng không phải là thứ hạng của toàn bộ website.
+
+Nếu một trang trả về mã error 404, điều đó có nghĩa là nó không tồn tại, vì vậy Google và các công cụ tìm kiếm khác sẽ không cần index.
+
+Khá đơn giản, phải không? Vì vậy bạn hãy chắc chắn rằng các trang của bạn tồn tại nếu bạn muốn chúng được xếp hạng. 
+
+Vậy các SEOers đã cường điệu về ảnh hưởng của trang 404? Vâng, nếu bạn có hàng ngàn trang 404 thì mới có thể tác động đến website của bạn. 
+
+Bạn thấy đấy, các liên kết này tạo ra một trải nghiệm không tốt cho người dùng. Chúng được gọi là liên kết bị hỏng.
+
+Nếu không có liên kết bị hỏng, thậm chí sẽ không có bất kỳ lỗi 404 nào.
+
+Trong thực tế, có vô số trang 404s. Chỉ cần thêm một dấu gạch chéo sau tên miền của bạn, nhập một cái gì đó ngẫu nhiên và nhấn enter.
+
+Mã error 404 sẽ xuất hiện. Nhưng nếu các công cụ tìm kiếm không thể tìm thấy bất kỳ liên kết nào chỉ vào trang 404 thì có nghĩa là các trang này đều không tồn tại. 
+
+Quyết sẽ giải thích mọi thứ chi tiết hơn trong phần sau, vì vậy bạn hãy tiếp tục theo dõi nhé.
+
+### **Google nói gì về 404s?**
+
+Google luôn chỉ ra rằng 404 là bình thường. Họ dường như cũng khá tha thứ với các trang error 404. Bởi vì Google cũng có các trang 404 của riêng họ. 
+
+![error 404](/images/blog/error-404-e66f7dfa.jpg)
+
+_Google luôn chỉ ra rằng lỗi 404 là bình thường_
+
+Trên thực tế, họ đã chỉ ra những điều này trong một bài báo từ năm 2011 và cả trong video được đăng gần đây hơn này:
+
+[https://www.youtube.com/watch?v=FbjYkpdjorA](https://www.youtube.com/watch?v=FbjYkpdjorA) 
+
+Ngoài ra còn có nguồn này cũng xử lý vấn đề:
+
+[https://support.google.com/webmasters/answer/2445990?hl=en](https://support.google.com/webmasters/answer/2445990?hl=en) 
+
+Tuy nhiên, hãy giải thích mọi thứ chi tiết hơn. Mọi người thường quên rằng có hai loại 404 trang.
+
+Một loại trang 404 trên website của bạn và một loại trên website của người khác.
+
+Cả hai đều có thể ảnh hưởng đến website của bạn nhưng loại thứ 2 sẽ ảnh hưởng nhiều hơn. 
+
+Nếu website của bạn liên kết đến website trả về mã error 404, nó có thể tác động tiêu cực đến thứ hạng của bạn.
+
+Vì vậy bạn nên hạn chế liên kết đến các trang trả về mã 404. 
+
+Bạn có thể tham khảo bài viết Sitemap là gì? Cách tạo và khai báo Google dễ dàng nhất để cập nhật thêm thông tin nhé.
+
+### **404s Incoming** 
+
+404 Incoming là URL từ các website khác trỏ vào website của bạn nhưng trả về mã error 404. 404 Incoming không phải lúc nào cũng dễ dàng sửa chữa.
+
+Đó là bởi vì bạn không thể thay đổi URL trên các website khác nếu bạn không sở hữu chúng.
+
+Tuy nhiên, bạn có thể sử dụng redirect 301 để giải quyết vấn đề này. Cách này nên được giữ lại cho đến cuối cùng trong trường hợp bạn không thể sửa URL. 
+
+Những điều này không thực sự ảnh hưởng đến bạn một cách tiêu cực. Có thể ai đó đã viết sai chính tả, hoặc có thể bạn đã xóa trang vì nó không còn hữu ích nữa.
+
+Bạn có nên bị trừng phạt vì điều đó? Thông thường lỗi này bạn không nên bị phạt và Google đồng ý về vấn đề này. 
+
+Tuy nhiên điều này ảnh hưởng không tốt đến lưu lượng truy cập của bạn.
+
+Bởi vì khi ai đó liên kết đến website của bạn, người dùng truy cập vào website đó cũng có thể đổ về website của bạn.
+
+Nếu website của họ gặp lỗi 404, trải nghiệm người dùng sẽ không tốt và làm ảnh hưởng đến bạn. 
+
+Hầu hết các webmasters sẽ rất vui khi sửa lỗi error 404 bởi vì lỗi này sẽ gây ảnh hưởng không tốt đến website của họ.
+
+Nếu bạn đưa người dùng vào một trang không tồn tại trên web thì sẽ gây ra trải nghiệm xấu cho họ. 
+
+Khi bạn muốn xóa trang có các backlink chỉ vào nó thì bạn cần đảm bảo rằng đã redirect 301 cho trang đó bởi nếu không thì tất cả các backlink đều sẽ biến mất.
+
+Bên cạnh đó, internal link bị hỏng trên website cũng cần được sửa chữa ngay lập tức để không làm ảnh hưởng đến người dùng trên trang. 
+
+### **Cách sửa lỗi 404 Incoming**
+
+Sửa lỗi URL 404 incoming không phải là điều dễ dàng bởi bạn không có đủ quyền kiểm soát cho URL đó.
+
+Nếu ai đó vô tình dẫn sai một liên kết đến website của bạn thì phải phải thuyết phục họ chỉnh sửa nó.
+
+Cách thay thế tốt nhất là chuyển hướng liên kết bị hỏng đến đúng tài nguyên.
+
+Tuy nhiên, một số tài sản có thể bị mất trong quá trình này nên nếu bạn có thể khiến họ thay đổi liên kết thì sẽ đem lại hiệu quả cao hơn.
+
+Tuy nhiên, bạn cần thực hiện 301 để đảm bảo quyền lợi của mình. 
+
+Nếu bạn muốn xóa trang thì bạn nên thông báo cho webmasters biết và chuyển liên kết sang nguồn tài nguyên mới.
+
+Có thể webmaster có thể không thích điều này và quyết định liên kết với tài nguyên khác nên bạn phải đảm bảo rằng tài nguyên mới là lựa chọn tốt nhất của họ. 
+
+Để tìm các liên kết incoming bị hỏng, bạn có thể sử dụng Screaming Frog để kiểm tra. 
+
+Tuy nhiên phương pháp tốt nhất là liên hệ với các chủ sở hữu của các lĩnh vực và chỉ ra rằng đã có lỗi trên website của họ.
+
+Bạn nên cho họ xem tài nguyên chính xác/mới và cho họ biết về khả năng tạo trải nghiệm tồi tệ cho người dùng của họ khi liên kết đến một trang bị hỏng.
+
+Hầu hết trong số họ sẽ vui vẻ chỉnh sửa theo ý bạn. 
+
+Cho dù bạn có cho họ liên kết đến đúng trang hay không, bạn nên chuyển trang bị hỏng đến một vị trí có liên quan. Quyết nhấn mạnh lại rằng là một vị trí có liên quan.
+
+Bạn không nên chuyển hướng ngẫu nhiên các trang hoặc lúc nào cũng chuyển hướng đến trang chủ. 
+
+Bạn chỉ cần chuyển hướng khi trang có lưu lượng truy cập hoặc có backlink trỏ vào chúng.
+
+Nếu bạn thay đổi URL hoặc xóa một trang không có backlink và lượt truy cập (kiểm tra bằng Google Analytics) thì bạn cứ yên tâm để chúng ở mã error 404. 
+
+### **Outgoing 404s (bao gồm internal 404)** 
+
+Outgoing 404s thường dễ chỉnh sửa hơn bởi vì chúng ở trên website của bạn và bạn có toàn quyền kiểm soát chúng.
+
+Bạn là người liên kết với các trang bên ngoài. Chắc chắn ai đó có thể làm ảnh hưởng đến bạn bằng cách xóa một trang hoặc thay đổi URL của nó nhưng bạn vẫn chịu trách nhiệm về chất lượng website của bạn. 
+
+![error 404](/images/blog/error-404-edf01f52.jpg)
+
+_Outgoing 404s thường dễ chỉnh sửa_
+
+Tuy nhiên, bạn cần lưu ý rằng không nên liên kết đến các trang chết sẽ làm ảnh hưởng đến website.
+
+Liên kết hỏng sẽ tạo ra trải nghiệm không tốt cho người dùng và bạn biết rằng Google (và các công cụ tìm kiếm khác) rất quan tâm đến trải nghiệm người dùng.   
+
+Đó là lý do tại sao bạn nên kiểm tra thường xuyên xem bạn có liên kết có bị 404 hay không.
+
+Bạn không bao giờ biết khi một trang 404 xuất hiện.
+
+Cách tốt nhất để làm điều đó là sử dụng một số phần mềm thu thập dữ liệu website của bạn.
+
+### **Cách sửa lỗi outgoing 404** 
+
+Cách sửa lỗi outgoing 404 dễ hơn bởi vì bạn có toàn quyền kiểm soát chúng bởi vì chúng ở trên trang của bạn và bạn có thể thay đổi chúng. 
+
+Để tìm chúng, bạn có thể sử dụng Screaming Frog để crawl dữ liệu website.
+
+Phiên bản miễn phí hỗ trợ 500 URL, nhưng một trang web mới có dưới 500 URL hiếm khi bị hỏng.
+
+Sau khi crawl dữ liệu xong (có thể mất hàng giờ hoặc thậm chí vài ngày cho các trang web lớn), hãy kiểm tra tab mã phản hồi và sau đó lọc nó bằng cách tìm kiếm 404.
+
+Ở phía dưới, hãy đi đến phần Inlinks để tìm vị trí của URL bị hỏng trên trang web của bạn.
+
+![error 404](/images/blog/error-404-53f05d9b.jpg)
+
+_Có thể sử dụng Screaming Frog để crawl dữ liệu website để tìm trang 404_
+
+Một cách khác để thực hiện là bạn đi đến tab External nhưng ở đây bạn sẽ không tìm thấy các internal link bị hỏng.
+
+Để tìm được vị trí của nó, bạn vào tab Inlinks.
+
+Sau khi bạn xác định được các liên kết bằng Screaming Frog, hãy chỉnh sửa chúng trong phần quản trị viên để trỏ chúng về URL đang hoạt động.
+
+Bạn cũng có thể 301 chúng nhưng một số tài sản sẽ bị mất. Bạn nên nhớ rằng redirect 301 chỉ dùng khi thật sự cần thiết. 
+
+## **Xây dựng liên kết bằng phương pháp broken links** 
+
+Các trang 404 luôn luôn là vấn đề phải không anh em? Điều này là sự thật nhưng vẫn có những điều rất thú vị về trang 404.
+
+Thực tế là bạn có thể khai thác chúng để xây dựng liên kết mới. 
+
+Quyết sẽ giải thích rõ hơn về vấn đề này như sau:
+
+Bạn có muốn ai đó trỏ một liên kết bị hỏng trên trang của bạn không? Như Quyết là Quyết rất thích điều đó.
+
+Nhưng điều gì sẽ xảy ra tiếp theo nếu họ cung cấp cho bạn một tài nguyên mới để liên kết tốt hơn cả tài nguyên trước đây.
+
+Bạn có thể cân nhắc để quyết định liên kết hay không?
+
+Nếu bạn tìm một số trang liên quan để liên kết đến các trang bị hỏng thì bạn có thể sẽ giúp họ. Vậy bạn làm điều đó như thế nào?
+
+Bạn có thể sử dụng Broken Pages của CognitiveSEO’s Site Explorer. 
+
+![error 404](/images/blog/error-404-450e44e5.jpg)
+
+_Sử dụng Broken Pages của CognitiveSEO’s Site Explorer để tìm một số trang liên quan để liên kết đến các trang bị hỏng_
+
+Tuy nhiên, bạn cũng sẽ cần một số nội dung tuyệt vời để người khác liên kết đến bạn. Nếu bạn không có điều đó, họ sẽ không bận tâm đến việc liên kết với bạn.
+
+Họ sẽ chỉ xóa liên kết bị hỏng và cảm ơn bạn đã chỉ ra nó. Vì vậy, nếu bạn chưa làm việc trên một chiến lược tạo nội dung tuyệt vời, bạn nên bắt đầu.
+
+Khi bạn tìm thấy một website liên kết đến một trang hỏng, bạn sẽ phải viết email cho họ như sau:
+
+“Chào bạn, tôi đã kiểm tra website của bạn và theo một liên kết nhưng nó dẫn đến một trang không tồn tại.
+
+Bạn có thể muốn sửa nó, vì nó tạo ra trải nghiệm không tốt cho người dùng của bạn. Ngoài ra, nếu bạn thấy nó phù hợp, tôi có một nguồn tài nguyên khá tốt về chủ đề mà bạn có thể liên kết đến.
+
+Hãy cho tôi biết nếu bạn thích nó.” 
+
+Điều này sẽ giúp Quyết có thêm được backlink tốt trỏ về từ trang uy tín và hỗ trợ cho quá trình làm SEO của mình.
+
+Tuy nhiên bạn cần đảm bảo rằng tài nguyên của bạn tốt hơn tài nguyên cũ thì người khác mới có thể yên tâm trỏ link về. 
+
+Phương pháp liên kết bị hỏng là một trong những chiến lược SEO tốt nhất để xây dựng liên kết.
+
+Nếu bạn muốn tìm hiểu thêm về phương pháp này và cách áp dụng nó một cách hiệu quả, thì bạn có thể theo dõi website của Seosona để cập nhật các bài viết mới nhất. 
+
+Vì vậy, nếu bạn đang tự hỏi nếu error 404 có làm ảnh hưởng đến SEO, bây giờ bạn biết câu trả lời. Dù sao, hãy để Quyết tóm tắt lại nội dung chính: 
+
+Error 404 không thực sự làm ảnh hưởng đến SEO nhưng chắc chắn có rất nhiều điều bạn có thể bỏ lỡ nếu bạn không sửa chúng.
+
+Nếu bạn có backlink chỉ vào trang 404 thì hãy cố gắng sửa lỗi chúng và redirect 301 các URL bị hỏng của bạn đến vị trí có liên quan.
+
+Nếu bạn có liên kết trên trang web của mình chỉ vào các trang bị hỏng, hãy đảm bảo bạn sửa chúng càng sớm càng tốt, để tối đa hóa sức mạnh liên kết và trải nghiệm người dùng. 
+
+Hy vọng qua bài viết, bạn đã có thêm nhiều kiến thức về Error 404. Ngoài ra, nếu bạn muốn nâng cao thứ hạng từ khóa của mình, bạn có thể tham khảo **[dịch vụ seo web](https://seosona.com/dich-vu-seo/)** uy tín hiệu quả tại Seosona
+
+Cảm ơn bạn chúc bạn thành công
+
+**Xem thêm:**
+
+*   [**Crawler là gì? 7 yếu tố ảnh hưởng đến Crawler website**](https://seosona.com/seo/technical/crawl/)
+*   [**Redirect 301 là gì? Cách hoạt động và chuyển hướng 301 hiệu quả**](https://seosona.com/seo/technical/redirect-301/)
+*   [**Rel Nofollow là gì? Điều cần biết về cách đặt thẻ nofollow trong SEO**](https://seosona.com/seo/technical/rel-nofollow/)
+*   [**Noindex là gì? Hướng dẫn sử dụng thẻ noindex hiệu quả trong SEO**](https://seosona.com/seo/technical/noindex/)
