@@ -1,28 +1,28 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
-import { getPostBySlug, getAllPosts } from "@/lib/mdx";
+import { getPageBySlug } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import fs from "fs";
+import path from "path";
 
 export function generateStaticParams() {
-  const posts = getAllPosts();
-  return posts.map((post) => ({ slug: post.slug }));
+  const pagesDirectory = path.join(process.cwd(), "content/pages");
+  if (!fs.existsSync(pagesDirectory)) return [];
+  const files = fs.readdirSync(pagesDirectory);
+  return files.map((file) => ({ slug: file.replace(/\.mdx$/, "") }));
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const post = getPostBySlug(params.slug);
-  if (!post) return {};
+  const page = getPageBySlug(params.slug);
+  if (!page) return {};
   
   return {
-    title: `${post.meta.title} | SEOSONA Blog`,
-    description: post.meta.excerpt,
-    alternates: { canonical: `/blog/${params.slug}/` }
+    title: `${page.meta.title} | SEOSONA`,
+    alternates: { canonical: `/p/${params.slug}/` }
   };
 }
 
-// Custom components to pass to MDXRemote
 const mdxComponents = {
   img: (props: any) => (
     <span className="block relative aspect-video w-full my-8 overflow-hidden rounded-2xl bg-slate-100">
@@ -40,41 +40,25 @@ const mdxComponents = {
   )
 };
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug);
-  if (!post) notFound();
+export default function StaticPage({ params }: { params: { slug: string } }) {
+  const page = getPageBySlug(params.slug);
+  if (!page) notFound();
 
   return (
     <main className="bg-white">
       <div className="container py-12 lg:py-20">
-        <Link href="/blog/" className="inline-flex items-center gap-2 text-sm font-bold text-[#6B7280] hover:text-[#003566] transition-colors mb-10">
-          <ArrowLeft size={16} /> Quay lại Blog
-        </Link>
-        
         <article className="mx-auto max-w-3xl">
           <header className="mb-12 text-center">
-            <time className="text-sm font-bold uppercase tracking-widest text-[#003566]">
-              {new Date(post.meta.date).toLocaleDateString("vi-VN", {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}
-            </time>
-            <h1 className="mt-4 text-3xl font-black text-[#091338] sm:text-4xl md:text-5xl leading-tight tracking-tight">
-              {post.meta.title}
+            <h1 className="text-3xl font-black text-[#091338] sm:text-4xl md:text-5xl leading-tight tracking-tight">
+              {page.meta.title}
             </h1>
-            {post.meta.excerpt && (
-              <p className="mt-6 text-lg text-[#6B7280] leading-8">
-                {post.meta.excerpt}
-              </p>
-            )}
           </header>
 
-          {post.meta.coverImage && (
+          {page.meta.coverImage && (
             <div className="relative aspect-[21/9] w-full overflow-hidden rounded-[32px] bg-slate-100 mb-12 shadow-2xl shadow-[#003566]/10">
               <Image
-                src={post.meta.coverImage}
-                alt={post.meta.title}
+                src={page.meta.coverImage}
+                alt={page.meta.title}
                 fill
                 className="object-cover"
                 priority
@@ -84,7 +68,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           )}
 
           <div className="prose prose-lg prose-slate max-w-none prose-headings:font-black prose-headings:text-[#091338] prose-h2:text-3xl prose-h3:text-2xl prose-a:text-[#003566] prose-img:rounded-2xl prose-img:shadow-md">
-            <MDXRemote source={post.content} components={mdxComponents} />
+            <MDXRemote source={page.content} components={mdxComponents} />
           </div>
         </article>
       </div>
