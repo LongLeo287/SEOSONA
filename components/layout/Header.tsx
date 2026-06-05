@@ -33,8 +33,8 @@ export function Header() {
       <header
         className={`sticky top-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "border-b border-white/10 bg-white/5 shadow-lg shadow-black/10 backdrop-blur-2xl"
-            : "border-b border-transparent bg-transparent backdrop-blur-md"
+            ? "border-b border-white/10 bg-[#091338]/80 shadow-lg shadow-black/20 backdrop-blur-2xl"
+            : "border-b border-transparent bg-transparent"
         }`}
       >
         <div className="container relative mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
@@ -43,7 +43,7 @@ export function Header() {
           <BrandLogo variant="light" />
 
           {/* Desktop Nav */}
-          <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Menu chính">
+          <nav className="hidden items-center gap-1 lg:flex" aria-label="Menu chính">
             {navItems.filter(i => i.href !== "/lien-he/").map((item) => {
               const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
               return (
@@ -72,9 +72,9 @@ export function Header() {
           <div className="flex items-center gap-3">
             <Link
               href="/lien-he/"
-              className={`hidden items-center gap-2 rounded-full border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-bold text-white transition duration-200 hover:-translate-y-0.5 hover:border-[#46FF00]/70 hover:bg-[#46FF00]/20 hover:text-[#46FF00] hover:shadow-[0_0_20px_rgba(70,255,0,0.2)] focus:outline-none focus:ring-2 focus:ring-[#46FF00]/30 sm:inline-flex backdrop-blur-sm`}
+              className="hidden sm:inline-flex btn-primary"
             >
-              Đăng ký tư vấn <ArrowRight size={15} />
+              Đăng ký tư vấn
             </Link>
 
             {/* Mobile hamburger */}
@@ -82,6 +82,7 @@ export function Header() {
               type="button"
               aria-label={open ? "Đóng menu" : "Mở menu"}
               aria-expanded={open}
+              aria-controls="mobile-menu"
               onClick={() => setOpen(!open)}
               className="grid h-10 w-10 place-items-center rounded-2xl border border-white/15 bg-white/10 text-white transition hover:border-[#46FF00]/40 hover:bg-[#46FF00]/10 hover:text-[#46FF00] focus:outline-none focus:ring-2 focus:ring-[#46FF00]/30 lg:hidden"
             >
@@ -102,6 +103,7 @@ export function Header() {
 
       {/* Mobile Menu Drawer */}
       <div
+        id="mobile-menu"
         className={`fixed right-0 top-0 z-50 flex h-full w-[min(85vw,360px)] flex-col bg-[#091338] border-l border-white/10 shadow-2xl transition-transform duration-300 ease-out lg:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
@@ -155,20 +157,17 @@ export function Header() {
           <Link
             href="/lien-he/"
             onClick={() => setOpen(false)}
-            className="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#003566] px-5 py-4 text-base font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:border-[#46FF00] hover:shadow-[0_0_20px_rgba(70,255,0,0.2)] border border-[#46FF00]/20"
+            className="flex w-full items-center justify-center gap-2 btn-primary"
           >
             Đăng ký tư vấn miễn phí <ArrowRight size={18} />
           </Link>
-          <p className="mt-3 text-center text-xs text-slate-500 font-inter">
+          <p className="mt-4 text-center text-xs text-slate-500 font-sans">
             Hoặc gọi trực tiếp:{" "}
             <a href="tel:0909346660" className="font-bold text-slate-300 hover:text-[#46FF00] transition">
               0909 34 66 60
             </a>
           </p>
         </div>
-
-        {/* Subtle neon glow at bottom */}
-        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#46FF00]/5 to-transparent" />
       </div>
     </>
   );

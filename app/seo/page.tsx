@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { seoHubs } from "@/data/seo-hubs";
+import { PageHero } from "@/components/sections/PageHero";
 
 export const metadata: Metadata = {
   title: "Thư viện kiến thức SEO có hệ thống | SEOSONA",
@@ -11,21 +12,25 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <main className="container py-20">
-      <h1 className="text-5xl font-black">Kiến thức SEO</h1>
-      <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
-        Hub mới gom lại toàn bộ topical map SEO, tránh URL rời rạc và giúp mở rộng content lâu dài.
-      </p>
-      <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {Object.entries(seoHubs).map(([slug, hub]) => (
-          <Link href={`/seo/${slug}/`} key={slug} className="card p-6 group hover:-translate-y-1 hover:border-blue-200">
-            <h2 className="text-2xl font-black text-slate-950 group-hover:text-blue-600 transition">{hub.title}</h2>
-            <p className="mt-3 text-slate-600 leading-7">{hub.description}</p>
-            <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-blue-600 group-hover:underline">
-              Xem chi tiết →
-            </span>
-          </Link>
-        ))}
+    <main>
+      <PageHero
+        eyebrow="Kiến thức SEO"
+        title="Thư Viện Kiến Thức SEO Hệ Thống"
+        accentWord="SEO Hệ Thống"
+        description="Hub tài liệu từ cơ bản đến nâng cao: technical SEO, onpage, content, offpage, keyword research và Google Algorithms."
+      />
+      <div className="container py-20">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {Object.entries(seoHubs).map(([slug, hub]) => (
+            <Link href={`/seo/${slug}/`} key={slug} className="card-dark p-6 group block">
+              <h2 className="text-2xl font-black text-white group-hover:text-[#46FF00] transition">{hub.title}</h2>
+              <p className="mt-3 text-slate-400 leading-7">{hub.description}</p>
+              <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-[#46FF00] group-hover:underline">
+                Xem chi tiết →
+              </span>
+            </Link>
+          ))}
+        </div>
       </div>
     </main>
   );

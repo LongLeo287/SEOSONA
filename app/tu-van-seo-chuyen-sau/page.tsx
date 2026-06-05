@@ -62,8 +62,8 @@ export default function Page() {
   return (
     <main>
       <JsonLd data={[serviceSchema, faqSchema]} />
-      <PageHero eyebrow="Tư vấn SEO chuyên sâu" title="Cố vấn SEO cho doanh nghiệp cần chiến lược rõ ràng" description="SEOSONA hỗ trợ audit, lập roadmap, review triển khai và cố vấn đội in-house để SEO đi đúng hướng, tránh làm nhiều nhưng không tạo tăng trưởng." secondaryCta="Xem dịch vụ SEO" secondaryHref="/dich-vu-seo/" />
-      <FeatureGrid eyebrow="Deliverables" title="Bạn nhận được gì sau quá trình tư vấn?" features={deliverables} />
+      <PageHero eyebrow="Tư vấn SEO chuyên sâu" title="Cố vấn SEO cho doanh nghiệp cần chiến lược rõ ràng" accentWord="chiến lược rõ ràng" description="SEOSONA hỗ trợ audit, lập roadmap, review triển khai và cố vấn đội in-house để SEO đi đúng hướng, tránh làm nhiều nhưng không tạo tăng trưởng." secondaryCta="Xem dịch vụ SEO" secondaryHref="/dich-vu-seo/" />
+      <FeatureGrid eyebrow="Deliverables" title="Bạn nhận được gì sau quá trình tư vấn?" features={deliverables} variant="dark" />
       <Process steps={steps} description="Quy trình tư vấn tập trung vào chẩn đoán đúng vấn đề, ưu tiên đúng việc và giúp team nội bộ triển khai hiệu quả hơn." />
       <Faq items={faq} />
       <CtaBand />

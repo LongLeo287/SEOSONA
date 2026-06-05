@@ -64,6 +64,7 @@ export default function Page() {
       <PageHero
         eyebrow="Google Ads"
         title="Tăng trưởng khách hàng tiềm năng từ Google Ads"
+        accentWord="khách hàng tiềm năng"
         description="Kết hợp SEO dài hạn với Google Ads để tạo dòng lead ngắn hạn, đo lường rõ ràng và tối ưu theo chi phí chuyển đổi thực tế."
         secondaryCta="Xem dịch vụ SEO"
         secondaryHref="/dich-vu-seo/"
@@ -73,6 +74,7 @@ export default function Page() {
         title="Từ setup tracking đến tối ưu chuyển đổi"
         description="SEOSONA triển khai Google Ads toàn diện: từ cấu trúc chiến dịch, tối ưu từ khóa đến landing page và đo lường kết quả thực tế."
         features={features}
+        variant="dark"
       />
       <Process
         steps={steps}
