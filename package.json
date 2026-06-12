@@ -6,8 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "seosona:doctor": "node scripts/seosona-project.mjs doctor",
+    "seosona:sync-rules": "node scripts/seosona-project.mjs sync-rules",
+    "seosona:log": "node scripts/seosona-project.mjs log"
   },
   "dependencies": {
     "@next/mdx": "latest",

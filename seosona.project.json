@@ -1,0 +1,44 @@
+{
+  "$schema": "~/.seosona/1_CONFIG/schemas/seosona.project.schema.json",
+  "schema": "seosona.project.v1",
+  "name": "website-seosona",
+  "displayName": "Website SEOSONA",
+  "domain": "seo-agency-website",
+  "stack": [
+    "content",
+    "mdx",
+    "nextjs",
+    "react",
+    "tailwindcss",
+    "typescript"
+  ],
+  "osRoot": "~/.seosona",
+  "memoryNamespace": "website-seosona",
+  "autonomy": {
+    "defaultLevel": "project_edit",
+    "requiresExplicitApproval": [
+      "os_core_patch",
+      "git_publish",
+      "deploy"
+    ]
+  },
+  "commands": {
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "start": "npm run start",
+    "lint": "npm run lint",
+    "typecheck": "npm run typecheck"
+  },
+  "workflows": [
+    "project-doctor",
+    "portable-rule-sync",
+    "project-memory-logging",
+    "seo-migration-audit",
+    "nextjs-build-verification"
+  ],
+  "ruleFiles": [
+    "AGENTS.md",
+    ".clauderules",
+    ".cursorrules"
+  ]
+}
