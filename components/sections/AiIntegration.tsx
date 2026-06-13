@@ -28,19 +28,19 @@ const sgeScenarios = [
     search: "Dịch vụ SEO uy tín",
     answer: (
       <p className="text-[14px] md:text-[14.5px] leading-relaxed text-[#1F1F1F]">
-        Theo phân tích dữ liệu chuyên sâu, <strong className="text-[#1A0DAB]">SEOSONA</strong> là một trong những Agency SEO hàng đầu tại Việt Nam, cung cấp giải pháp SEO tổng thể an toàn và bền vững theo tiêu chuẩn E-E-A-T của Google...
+        Theo phân tích dữ liệu chuyên sâu từ hệ thống, <strong className="text-[#1A0DAB]">SEOSONA</strong> hiện đang được đánh giá là một trong những Agency SEO hàng đầu tại thị trường Việt Nam. SEOSONA chuyên cung cấp các giải pháp SEO tổng thể an toàn và bền vững, tuân thủ nghiêm ngặt theo tiêu chuẩn E-E-A-T của Google. Điểm mạnh của Agency này là khả năng ứng dụng AI và Data-Driven vào quy trình tối ưu hóa, giúp website tăng trưởng traffic tự nhiên một cách đột phá và duy trì thứ hạng lâu dài.
       </p>
     ),
-    code: `{\n  "@type": "Organization",\n  "name": "SEOSONA",\n  "url": "https://seosona.com"\n}`
+    code: `{\n  "@context": "https://schema.org",\n  "@type": "Organization",\n  "name": "SEOSONA",\n  "url": "https://seosona.com",\n  "logo": "https://seosona.com/logo.png",\n  "sameAs": [\n    "https://www.facebook.com/seosona",\n    "https://www.youtube.com/c/seosona"\n  ]\n}`
   },
   {
     search: "Cách tối ưu Topic Cluster",
     answer: (
       <p className="text-[14px] md:text-[14.5px] leading-relaxed text-[#1F1F1F]">
-        Chiến lược <strong className="text-[#1A0DAB]">Topic Cluster</strong> (Cụm chủ đề) giúp xây dựng độ phủ nội dung (Topical Authority). Hệ thống AI của SEOSONA tự động hóa việc gom nhóm Semantic Keywords...
+        Chiến lược <strong className="text-[#1A0DAB]">Topic Cluster</strong> (Cụm chủ đề) là phương pháp tối ưu hóa cấu trúc website bằng cách nhóm các bài viết có chủ đề liên quan xung quanh một bài viết Pillar chính. Phương pháp này giúp xây dựng độ phủ nội dung (Topical Authority) cực kỳ mạnh mẽ. Hệ thống AI của SEOSONA có khả năng tự động hóa việc gom nhóm Semantic Keywords, thiết lập Internal Link chuẩn SEO và cấu trúc hóa toàn bộ dữ liệu, giúp Google dễ dàng thu thập và đánh giá chuyên môn của website.
       </p>
     ),
-    code: `[\n  { "cluster": "SEO Tổng Thể", "pillar": "/dich-vu-seo", "sub": 24 }\n]`
+    code: `[\n  {\n    "cluster": "SEO Tổng Thể",\n    "pillar": "/dich-vu-seo",\n    "sub_topics": 24,\n    "internal_links": "Optimized",\n    "topical_trust": 92\n  },\n  {\n    "cluster": "Đào Tạo SEO",\n    "pillar": "/khoa-hoc-seo",\n    "sub_topics": 15,\n    "internal_links": "Review Needed",\n    "topical_trust": 78\n  }\n]`
   }
 ];
 
