@@ -65,7 +65,19 @@ export function CustomerJourney() {
   }, []);
 
   return (
-    <section className="bg-[#F8FAFC] py-16 lg:py-24">
+    <section className="bg-[#F8FAFC] py-16 lg:py-24 relative overflow-hidden">
+      <style>{`
+        @keyframes gradient-flow {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .live-line {
+          background-size: 200% 200%;
+          animation: gradient-flow 3s ease infinite;
+        }
+      `}</style>
+
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         <RevealOnScroll direction="up" className="mb-16 flex flex-col items-center text-center">
@@ -84,20 +96,20 @@ export function CustomerJourney() {
           
           {/* Desktop Progress Line */}
           <div className="hidden md:block absolute top-[26px] left-[12%] right-[12%] h-2 bg-slate-200/60 rounded-full z-0 overflow-hidden">
-            <div className="journey-progress-line-x absolute top-0 left-0 h-full w-0 bg-gradient-to-r from-[#3BA6F1] to-[#2589D0] rounded-full"></div>
+            <div className="journey-progress-line-x live-line absolute top-0 left-0 h-full w-0 bg-gradient-to-r from-[#3BA6F1] via-[#7DD3FC] to-[#3BA6F1] rounded-full shadow-[0_0_12px_rgba(59,166,241,0.6)]"></div>
           </div>
 
           {/* Mobile Progress Line */}
           <div className="md:hidden absolute top-[30px] bottom-[30px] left-[34px] w-1.5 bg-slate-200/60 rounded-full z-0 overflow-hidden">
-            <div className="journey-progress-line-y absolute top-0 left-0 w-full h-0 bg-gradient-to-b from-[#3BA6F1] to-[#2589D0] rounded-full"></div>
+            <div className="journey-progress-line-y live-line absolute top-0 left-0 w-full h-0 bg-gradient-to-b from-[#3BA6F1] via-[#7DD3FC] to-[#3BA6F1] rounded-full shadow-[0_0_12px_rgba(59,166,241,0.6)]"></div>
           </div>
 
           <div className="relative z-10 flex flex-col md:flex-row justify-between gap-12 md:gap-4">
             {steps.map((step, index) => (
-              <div key={index} className="flex flex-row md:flex-col items-start md:items-center gap-6 md:gap-6 flex-1">
+              <div key={index} className="group/step flex flex-row md:flex-col items-start md:items-center gap-6 md:gap-6 flex-1">
                 
                 {/* Timeline Node */}
-                <div className="journey-node relative flex shrink-0 h-[60px] w-[60px] items-center justify-center rounded-full border-[6px] border-[#F8FAFC] bg-slate-100 text-[22px] font-black text-slate-400 z-10">
+                <div className="journey-node cursor-pointer relative flex shrink-0 h-[60px] w-[60px] items-center justify-center rounded-full border-[6px] border-[#F8FAFC] bg-slate-100 text-[22px] font-black text-slate-400 z-10 transition-transform duration-300 hover:scale-110 hover:-translate-y-1 active:scale-95 hover:shadow-[0_0_20px_rgba(59,166,241,0.4)]">
                   {index + 1}
                 </div>
                 
