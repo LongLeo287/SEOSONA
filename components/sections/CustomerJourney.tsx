@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { Route } from "lucide-react";
 import { SectionBadge } from "@/components/ui/SectionBadge";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { createScope, onScroll, createTimeline } from "animejs";
+import { createScope, createTimeline } from "animejs";
 
 const steps = [
   { title: "Nghiên cứu thị trường", desc: "Đào sâu vào hành vi khách hàng và dữ liệu tìm kiếm để tìm ra cơ hội." },
@@ -23,23 +23,21 @@ export function CustomerJourney() {
 
     scope.add(() => {
       const timeline = createTimeline({
-        autoplay: onScroll({
-          target: containerRef.current,
-        }),
+        autoplay: false,
       });
 
       timeline
         .add({
           targets: containerRef.current.querySelectorAll('.journey-progress-line-x'),
           width: ['0%', '100%'],
-          duration: 1000,
-          ease: 'linear'
+          duration: 1500,
+          ease: 'easeInOutQuad'
         }, 0)
         .add({
           targets: containerRef.current.querySelectorAll('.journey-progress-line-y'),
           height: ['0%', '100%'],
-          duration: 1000,
-          ease: 'linear'
+          duration: 1500,
+          ease: 'easeInOutQuad'
         }, 0)
         .add({
           targets: containerRef.current.querySelectorAll('.journey-node'),
@@ -47,18 +45,31 @@ export function CustomerJourney() {
           backgroundColor: ['#F1F5F9', '#3BA6F1'],
           color: ['#94A3B8', '#FFFFFF'],
           boxShadow: ['0 0 0px rgba(59,166,241,0)', '0 0 20px rgba(59,166,241,0.5)'],
-          delay: (el: any, i: number) => (i * 330),
-          duration: 300,
+          delay: (el: any, i: number) => (i * 400),
+          duration: 400,
           ease: 'spring(1, 80, 10, 0)'
         }, 0)
         .add({
           targets: containerRef.current.querySelectorAll('.journey-content'),
           opacity: [0, 1],
           translateY: [30, 0],
-          delay: (el: any, i: number) => (i * 330) + 100,
-          duration: 500,
+          delay: (el: any, i: number) => (i * 400) + 100,
+          duration: 600,
           ease: 'outCubic'
         }, 0);
+
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          timeline.play();
+          observer.disconnect();
+        }
+      }, { threshold: 0.3 });
+      
+      if (containerRef.current) {
+        observer.observe(containerRef.current);
+      }
+      
+      return () => observer.disconnect();
     });
 
     return () => scope.revert();
@@ -75,6 +86,18 @@ export function CustomerJourney() {
         .live-line {
           background-size: 200% 200%;
           animation: gradient-flow 3s ease infinite;
+        }
+        @keyframes light-beam-x {
+          0% { left: -30%; opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { left: 130%; opacity: 0; }
+        }
+        @keyframes light-beam-y {
+          0% { top: -30%; opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { top: 130%; opacity: 0; }
         }
       `}</style>
 
@@ -97,11 +120,15 @@ export function CustomerJourney() {
           {/* Desktop Progress Line */}
           <div className="hidden md:block absolute top-[26px] left-[12%] right-[12%] h-2 bg-slate-200/60 rounded-full z-0 overflow-hidden">
             <div className="journey-progress-line-x live-line absolute top-0 left-0 h-full w-0 bg-gradient-to-r from-[#3BA6F1] via-[#7DD3FC] to-[#3BA6F1] rounded-full shadow-[0_0_12px_rgba(59,166,241,0.6)]"></div>
+            {/* The Beam */}
+            <div className="absolute top-0 h-full w-1/4 bg-gradient-to-r from-transparent via-white to-transparent opacity-80 mix-blend-overlay z-10" style={{ animation: 'light-beam-x 2.5s linear infinite' }}></div>
           </div>
 
           {/* Mobile Progress Line */}
           <div className="md:hidden absolute top-[30px] bottom-[30px] left-[34px] w-1.5 bg-slate-200/60 rounded-full z-0 overflow-hidden">
             <div className="journey-progress-line-y live-line absolute top-0 left-0 w-full h-0 bg-gradient-to-b from-[#3BA6F1] via-[#7DD3FC] to-[#3BA6F1] rounded-full shadow-[0_0_12px_rgba(59,166,241,0.6)]"></div>
+            {/* The Beam */}
+            <div className="absolute left-0 w-full h-1/4 bg-gradient-to-b from-transparent via-white to-transparent opacity-80 mix-blend-overlay z-10" style={{ animation: 'light-beam-y 2.5s linear infinite' }}></div>
           </div>
 
           <div className="relative z-10 flex flex-col md:flex-row justify-between gap-12 md:gap-4">
