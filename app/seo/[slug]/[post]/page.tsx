@@ -123,37 +123,19 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {/* Main Content */}
           <article className="flex-1 min-w-0 mx-auto max-w-3xl w-full">
             <header className="mb-12 text-center">
-            <time className="text-sm font-bold uppercase tracking-widest text-[#003566]">
-              {new Date(post.meta.date).toLocaleDateString("vi-VN", {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}
-            </time>
-            <h1 className="mt-4 text-3xl font-black text-[#091338] sm:text-4xl md:text-5xl leading-tight tracking-tight text-balance">
-              {post.meta.title}
-            </h1>
-            {post.meta.excerpt && (
-              <p className="mt-6 text-lg text-[#6B7280] leading-8 text-pretty">
-                {post.meta.excerpt}
-              </p>
-            )}
-          </header>
+              <time className="text-sm font-bold uppercase tracking-widest text-[#003566]">
+                {new Date(post.meta.date).toLocaleDateString("vi-VN", {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
+              <h1 className="mt-4 text-3xl font-black text-[#091338] sm:text-4xl md:text-5xl leading-tight tracking-tight text-balance">
+                {post.meta.title}
+              </h1>
+            </header>
 
-          {post.meta.coverImage && (
-            <div className="relative aspect-[21/9] w-full overflow-hidden rounded-[32px] bg-slate-100 mb-12 shadow-2xl shadow-[#003566]/10">
-              <Image
-                src={post.meta.coverImage}
-                alt={post.meta.title}
-                fill
-                className="object-cover"
-                priority
-                sizes="(min-width: 1024px) 1024px, 100vw"
-              />
-            </div>
-          )}
-
-          <div className="prose prose-lg prose-slate max-w-none 
+            <div className="prose prose-lg prose-slate max-w-none 
             prose-headings:font-black prose-headings:text-[#091338] 
             prose-h2:text-3xl prose-h2:border-b prose-h2:border-slate-200 prose-h2:pb-4 prose-h2:mt-12
             prose-h3:text-2xl prose-h3:text-[#003566]
