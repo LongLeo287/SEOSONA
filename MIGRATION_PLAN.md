@@ -72,7 +72,7 @@ Nguồn URL cần crawl:
 
 ## Phase 6 - Launch
 
-- Deploy production on Vercel
+- Deploy production after an explicit hosting decision
 - Attach domain
 - Submit sitemap in GSC
 - Monitor index/ranking/errors for 2-4 weeks

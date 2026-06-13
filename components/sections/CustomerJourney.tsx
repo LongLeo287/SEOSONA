@@ -22,54 +22,92 @@ export function CustomerJourney() {
     const scope = createScope(containerRef.current);
 
     scope.add(() => {
+      const nodes = containerRef.current?.querySelectorAll('.journey-node');
+      const contents = containerRef.current?.querySelectorAll('.journey-content');
+      const lineX = containerRef.current?.querySelector('.journey-progress-line-x');
+      const lineY = containerRef.current?.querySelector('.journey-progress-line-y');
+
+      if (!nodes || nodes.length === 0) return;
+
       const timeline = createTimeline({
-        autoplay: false,
+        autoplay: true,
+        loop: true,
       });
 
-      timeline
-        .add({
-          targets: containerRef.current.querySelectorAll('.journey-progress-line-x'),
-          width: ['0%', '100%'],
-          duration: 1500,
-          ease: 'easeInOutQuad'
-        }, 0)
-        .add({
-          targets: containerRef.current.querySelectorAll('.journey-progress-line-y'),
-          height: ['0%', '100%'],
-          duration: 1500,
-          ease: 'easeInOutQuad'
-        }, 0)
-        .add({
-          targets: containerRef.current.querySelectorAll('.journey-node'),
-          scale: [0.8, 1],
+      let time = 500;
+
+      // Đặt lại trạng thái ban đầu cho line
+      if (lineX) {
+        timeline.add({ targets: lineX, width: '0%', duration: 10 }, 0);
+      }
+      if (lineY) {
+        timeline.add({ targets: lineY, height: '0%', duration: 10 }, 0);
+      }
+      // Đặt lại trạng thái ban đầu cho các node
+      timeline.add({
+        targets: nodes,
+        backgroundColor: '#F1F5F9',
+        color: '#94A3B8',
+        scale: 1,
+        boxShadow: '0 0 0px rgba(59,166,241,0)',
+        duration: 10,
+      }, 0);
+
+      nodes.forEach((node, i) => {
+        // 1. Node sáng lên
+        timeline.add({
+          targets: node,
           backgroundColor: ['#F1F5F9', '#3BA6F1'],
           color: ['#94A3B8', '#FFFFFF'],
-          boxShadow: ['0 0 0px rgba(59,166,241,0)', '0 0 20px rgba(59,166,241,0.5)'],
-          delay: (el: any, i: number) => (i * 400),
-          duration: 400,
-          ease: 'spring(1, 80, 10, 0)'
-        }, 0)
-        .add({
-          targets: containerRef.current.querySelectorAll('.journey-content'),
-          opacity: [0, 1],
-          translateY: [30, 0],
-          delay: (el: any, i: number) => (i * 400) + 100,
-          duration: 600,
-          ease: 'outCubic'
-        }, 0);
+          scale: [1, 1.15, 1],
+          boxShadow: ['0 0 0px rgba(59,166,241,0)', '0 0 25px rgba(59,166,241,0.6)'],
+          duration: 500,
+          ease: 'outBack'
+        }, time);
 
-      const observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          timeline.play();
-          observer.disconnect();
+        // (Tuỳ chọn) Content cũng nảy nhẹ theo
+        if (contents && contents[i]) {
+          timeline.add({
+            targets: contents[i],
+            translateY: [5, 0],
+            opacity: [0.7, 1],
+            duration: 500,
+            ease: 'outQuad'
+          }, time);
         }
-      }, { threshold: 0.3 });
-      
-      if (containerRef.current) {
-        observer.observe(containerRef.current);
-      }
-      
-      return () => observer.disconnect();
+
+        time += 500;
+
+        // 2. Đường line chạy sang Node tiếp theo
+        if (i < nodes.length - 1) {
+          const nextPercent = ((i + 1) / (nodes.length - 1)) * 100;
+          const currentPercent = (i / (nodes.length - 1)) * 100;
+          
+          if (lineX) {
+            timeline.add({
+              targets: lineX,
+              width: [`${currentPercent}%`, `${nextPercent}%`],
+              duration: 800,
+              ease: 'easeInOutQuad'
+            }, time);
+          }
+          if (lineY) {
+            timeline.add({
+              targets: lineY,
+              height: [`${currentPercent}%`, `${nextPercent}%`],
+              duration: 800,
+              ease: 'easeInOutQuad'
+            }, time);
+          }
+          time += 800;
+        }
+      });
+
+      // Dừng lại 2 giây trước khi vòng lặp lặp lại
+      timeline.add({
+        targets: nodes[0],
+        duration: 3000,
+      }, time);
     });
 
     return () => scope.revert();
