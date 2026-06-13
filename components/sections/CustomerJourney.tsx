@@ -30,19 +30,19 @@ export function CustomerJourney() {
 
       timeline
         .add({
-          targets: '.journey-progress-line-x',
+          targets: containerRef.current.querySelectorAll('.journey-progress-line-x'),
           width: ['0%', '100%'],
           duration: 1000,
           ease: 'linear'
         }, 0)
         .add({
-          targets: '.journey-progress-line-y',
+          targets: containerRef.current.querySelectorAll('.journey-progress-line-y'),
           height: ['0%', '100%'],
           duration: 1000,
           ease: 'linear'
         }, 0)
         .add({
-          targets: '.journey-node',
+          targets: containerRef.current.querySelectorAll('.journey-node'),
           scale: [0.8, 1],
           backgroundColor: ['#F1F5F9', '#3BA6F1'],
           color: ['#94A3B8', '#FFFFFF'],
@@ -52,7 +52,7 @@ export function CustomerJourney() {
           ease: 'spring(1, 80, 10, 0)'
         }, 0)
         .add({
-          targets: '.journey-content',
+          targets: containerRef.current.querySelectorAll('.journey-content'),
           opacity: [0, 1],
           translateY: [30, 0],
           delay: (el: any, i: number) => (i * 330) + 100,
@@ -102,7 +102,7 @@ export function CustomerJourney() {
                 </div>
                 
                 {/* Timeline Content */}
-                <div className="journey-content text-left md:text-center mt-1 md:mt-0 opacity-0 transform translate-y-6">
+                <div className="journey-content text-left md:text-center mt-1 md:mt-0">
                   <h3 className="mb-2.5 text-[20px] font-black text-[#04091A]">{step.title}</h3>
                   <p className="text-[15px] font-medium text-slate-500 leading-relaxed text-pretty md:px-4">
                     {step.desc}
