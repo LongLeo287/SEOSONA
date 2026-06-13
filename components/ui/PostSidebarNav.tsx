@@ -148,8 +148,8 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
                 className={cn(
                   "block px-3 py-2 rounded-lg text-[13px] font-medium transition-all duration-200",
                   slug === categorySlug 
-                    ? "bg-[#F0F6FF] text-[#3BA6F1] cursor-default" 
-                    : "text-[#64748B] hover:bg-[#F8FAFC] hover:text-[#3BA6F1] hover:translate-x-0.5"
+                    ? "bg-[#F0F6FF] !text-[#3BA6F1] cursor-default" 
+                    : "!text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#3BA6F1] hover:translate-x-0.5"
                 )}
               >
                 {hub.title}
