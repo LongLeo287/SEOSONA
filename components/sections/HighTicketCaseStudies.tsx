@@ -63,19 +63,19 @@ export function HighTicketCaseStudies() {
   return (
     <section className="relative overflow-hidden bg-white py-16 lg:py-24">
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        
+
         <RevealOnScroll direction="up" className="mb-12 flex flex-col items-center text-center">
           <SectionBadge live={true} icon={<TrendingUp className="h-3.5 w-3.5" />}>
             Premium Case Studies
           </SectionBadge>
-          
+
           <h2 className="mx-auto mb-5 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
-            Tăng Traffic là bề nổi, <br className="hidden sm:block"/>
+            Tăng Traffic là bề nổi, <br className="hidden sm:block" />
             Tăng <span className="text-[#3BA6F1]">Doanh Thu</span> mới là cốt lõi
           </h2>
-          
+
           <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
-            Chúng tôi không chạy theo metric ảo. Mọi chiến lược tại SEOSONA đều được thiết kế để tối ưu hóa Conversion Rate và ROI cho khách hàng.
+            Chúng tôi không chạy theo metric ảo. Mọi chiến lược tại SEOSONA đều được thiết kế để tối ưu hóa Conversion Rate và ROI cho khách hàng
           </p>
 
           <div className="mt-8 flex items-center justify-center h-[44px]">

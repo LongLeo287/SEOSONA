@@ -28,7 +28,7 @@ export function CoreSolutions() {
   return (
     <section className="bg-white py-12 lg:py-16">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        
+
         <RevealOnScroll direction="up" className="mb-10 flex flex-col items-center text-center">
           <SectionBadge live={true} icon={<Target className="h-3.5 w-3.5" />}>
             Giải pháp cốt lõi
@@ -37,7 +37,7 @@ export function CoreSolutions() {
             Tối đa hóa ROI với các <span className="text-[#3BA6F1]">giải pháp chuyên sâu</span>
           </h2>
           <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
-            Mỗi doanh nghiệp có một bài toán riêng. Chúng tôi cung cấp các gói dịch vụ được thiết kế đo ni đóng giày để giải quyết chính xác điểm nghẽn tăng trưởng của bạn.
+            Mỗi doanh nghiệp có một bài toán riêng. Chúng tôi cung cấp các gói dịch vụ được thiết kế đo ni đóng giày để giải quyết chính xác điểm nghẽn tăng trưởng của bạn
           </p>
         </RevealOnScroll>
 
@@ -71,7 +71,7 @@ export function CoreSolutions() {
             );
           })}
         </div>
-        
+
       </div>
     </section>
   );

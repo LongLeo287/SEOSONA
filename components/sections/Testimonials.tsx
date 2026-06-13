@@ -90,17 +90,17 @@ export function Testimonials() {
   return (
     <section className="bg-white py-12 lg:py-16">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        
+
         <RevealOnScroll direction="up" className="mb-12 flex flex-col items-center text-center">
           <SectionBadge live={true} icon={<MessageCircle className="h-3.5 w-3.5" aria-hidden="true" />}>
             Khách hàng nói gì
           </SectionBadge>
           <h2 className="mx-auto mb-5 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
-            Niềm tin đến từ <span className="text-[#3BA6F1]">kết quả thực tế</span> <br className="hidden sm:block"/>
+            Niềm tin đến từ <span className="text-[#3BA6F1]">kết quả thực tế</span> <br className="hidden sm:block" />
             và quy trình minh bạch
           </h2>
           <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
-            Hàng trăm doanh nghiệp B2B và B2C đã tin tưởng giao phó ngân sách marketing cho SEOSONA và nhận về tỷ suất hoàn vốn ấn tượng.
+            Hàng trăm doanh nghiệp B2B và B2C đã tin tưởng giao phó ngân sách marketing cho SEOSONA và nhận về tỷ suất hoàn vốn ấn tượng
           </p>
         </RevealOnScroll>
 
