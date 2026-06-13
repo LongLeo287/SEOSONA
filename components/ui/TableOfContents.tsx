@@ -49,39 +49,65 @@ export function TableOfContents() {
   if (headings.length === 0) return null;
 
   return (
-    <div className="w-full">
-      <h4 className="mb-4 text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">
-        Nội dung bài viết
-      </h4>
-      <nav className="flex flex-col gap-2.5">
+    <div className="relative group flex flex-col pt-2 h-full z-50 items-end">
+      {/* Collapsed View (Dashes) */}
+      <div className="flex flex-col items-end gap-3 transition-all duration-300 opacity-100 group-hover:opacity-0 group-hover:invisible w-8">
         {headings.map((heading) => {
           const isActive = activeId === heading.id;
           return (
-            <a
+            <div
               key={heading.id}
-              href={`#${heading.id}`}
               className={cn(
-                "block text-[14px] transition-all duration-200 hover:text-[#3BA6F1]",
-                heading.level === 3 ? "pl-4 text-slate-500" : "font-bold",
-                isActive 
-                  ? "text-[#3BA6F1] translate-x-1" 
-                  : heading.level === 2 ? "text-[#04091A]" : "text-slate-500"
+                "h-1.5 rounded-full transition-all duration-300 cursor-pointer shadow-sm",
+                isActive ? "w-8 bg-[#3BA6F1]" : "w-4 bg-slate-200 hover:w-6 hover:bg-slate-300"
               )}
-              onClick={(e) => {
-                e.preventDefault();
+              onClick={() => {
                 const target = document.getElementById(heading.id);
                 if (target) {
-                  // Scroll mượt đến vị trí, trừ đi header sticky
                   const y = target.getBoundingClientRect().top + window.scrollY - 100;
                   window.scrollTo({ top: y, behavior: "smooth" });
                 }
               }}
-            >
-              {heading.text}
-            </a>
+              title={heading.text}
+            />
           );
         })}
-      </nav>
+      </div>
+
+      {/* Expanded View (Table) */}
+      <div className="absolute right-0 top-0 w-[280px] bg-white/95 backdrop-blur-md shadow-2xl ring-1 ring-slate-200/60 rounded-2xl p-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-x-4 group-hover:translate-x-0 z-50 origin-top-right">
+        <h4 className="mb-4 text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">
+          Nội dung bài viết
+        </h4>
+        <nav className="flex flex-col gap-1 max-h-[calc(100vh-12rem)] overflow-y-auto pr-2 custom-scrollbar">
+          {headings.map((heading) => {
+            const isActive = activeId === heading.id;
+            return (
+              <a
+                key={heading.id}
+                href={`#${heading.id}`}
+                className={cn(
+                  "block px-3 py-2 rounded-lg text-[14px] transition-all duration-200 leading-snug",
+                  heading.level === 3 ? "ml-4 text-[13px]" : "",
+                  isActive
+                    ? "bg-[#F0F6FF] text-[#3BA6F1] font-bold"
+                    : "text-slate-600 hover:bg-slate-50 hover:text-[#04091A]"
+                )}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.getElementById(heading.id);
+                  if (target) {
+                    const y = target.getBoundingClientRect().top + window.scrollY - 100;
+                    window.scrollTo({ top: y, behavior: "smooth" });
+                  }
+                }}
+              >
+                {heading.text}
+              </a>
+            );
+          })}
+        </nav>
+      </div>
     </div>
   );
 }

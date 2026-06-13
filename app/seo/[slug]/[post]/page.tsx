@@ -3,10 +3,11 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { getPostBySlug, getAllPosts } from "@/lib/mdx";
+import { getPostBySlug, getAllPosts, getPostsByCategory } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { seoHubs, HubSlug } from "@/data/seo-hubs";
 import { TableOfContents } from "@/components/ui/TableOfContents";
+import { PostSidebarNav } from "@/components/ui/PostSidebarNav";
 
 export function generateStaticParams() {
   const posts = getAllPosts();
@@ -81,6 +82,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   const hubName = seoHubs[resolvedParams.slug as HubSlug]?.title || 'Kiến thức SEO';
+  const relatedPosts = getPostsByCategory(resolvedParams.slug);
 
   // Apply SEO Skill: Generate JSON-LD Article Schema
   const jsonLd = {
@@ -107,7 +109,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <ArrowLeft size={16} /> Quay lại {hubName}
         </Link>
         
-        <div className="flex flex-col lg:flex-row lg:items-start gap-12">
+        <div className="flex flex-col lg:flex-row lg:items-start gap-12 relative">
+          {/* Left Sidebar (Global Nav) */}
+          <aside className="hidden lg:block w-[260px] shrink-0 sticky top-24 z-40">
+            <PostSidebarNav 
+              posts={relatedPosts} 
+              currentSlug={resolvedParams.post} 
+              categorySlug={resolvedParams.slug} 
+              categoryName={hubName} 
+            />
+          </aside>
+
+          {/* Main Content */}
           <article className="flex-1 min-w-0 mx-auto max-w-3xl w-full">
             <header className="mb-12 text-center">
             <time className="text-sm font-bold uppercase tracking-widest text-[#003566]">
@@ -156,7 +169,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
         </article>
 
-        <aside className="hidden lg:block w-64 shrink-0 sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto overflow-x-hidden">
+        <aside className="hidden lg:block w-12 shrink-0 sticky top-24 z-50">
           <TableOfContents />
         </aside>
         </div>

@@ -110,7 +110,7 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
           </div>
         </article>
         
-        <aside className="hidden lg:block w-64 shrink-0 sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto overflow-x-hidden">
+        <aside className="hidden lg:block w-12 shrink-0 sticky top-24 z-50">
           <TableOfContents />
         </aside>
       </div>
