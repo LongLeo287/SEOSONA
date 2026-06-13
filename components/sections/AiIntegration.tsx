@@ -19,6 +19,10 @@ const aiFeatures = [
   {
     title: "Data-Driven Technical",
     description: "Sử dụng Machine Learning để audit website hàng triệu trang, phát hiện và tự động báo cáo lỗi Technical SEO theo thời gian thực.",
+    icon: Cpu
+  }
+];
+
 const terminalData = [
   // 1. SGE (AI Search)
   [
