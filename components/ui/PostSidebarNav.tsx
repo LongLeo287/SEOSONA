@@ -40,11 +40,12 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
               key={post.slug}
               href={`/seo/${categorySlug}/${post.slug}`}
               className={cn(
-                "block px-2.5 py-[6px] rounded-md text-[13px] transition-colors duration-150 leading-relaxed",
+                "block px-2.5 py-[6px] rounded-md text-[13px] transition-colors duration-150",
                 isActive
-                  ? "bg-[#F1F5F9] !text-[#04091A] font-medium"
-                  : "!text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#04091A] font-normal"
+                  ? "bg-[#F1F5F9] !text-[#04091A] font-medium leading-snug"
+                  : "truncate !text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#04091A] font-normal"
               )}
+              title={post.title}
             >
               {post.title}
             </Link>
