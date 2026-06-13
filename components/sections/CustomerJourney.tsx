@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef } from "react";
 import { Route } from "lucide-react";
 import { SectionBadge } from "@/components/ui/SectionBadge";
