@@ -135,6 +135,22 @@ a { color: inherit; text-decoration: none; }
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.logo-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+.logo-marquee:hover {
+  animation-play-state: paused;
+}
+.logo-marquee-slow {
+  animation-duration: 60s;
+}
+
 @layer utilities {
   .glass-card {
     background: rgba(255, 255, 255, 0.4);

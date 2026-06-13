@@ -16,11 +16,11 @@ export function FeaturedPosts() {
             Kiến thức chuyên môn
           </SectionBadge>
           <h2 className="mx-auto mb-5 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
-            Cập nhật xu hướng SEO & <br className="hidden sm:block"/>
+            Cập nhật xu hướng SEO & <br className="hidden sm:block" />
             <span className="text-[#3BA6F1]">Digital Marketing</span> mới nhất
           </h2>
           <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
-            Khám phá các bài viết, case study và hướng dẫn chi tiết từ đội ngũ chuyên gia của chúng tôi.
+            Khám phá các bài viết, case study và hướng dẫn chi tiết từ đội ngũ chuyên gia của chúng tôi
           </p>
         </RevealOnScroll>
 
