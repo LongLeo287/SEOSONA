@@ -82,10 +82,15 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
   }, [currentSlug, groupedPosts]);
 
   const toggleGroup = (idx: number) => {
-    setExpandedGroups(prev => ({
-      ...prev,
-      [idx]: !prev[idx]
-    }));
+    setExpandedGroups(prev => {
+      if (prev[idx]) {
+        // Nếu đang mở thì đóng lại
+        return { [idx]: false };
+      } else {
+        // Nếu đang đóng thì mở cái này và ĐÓNG TẤT CẢ các cái khác
+        return { [idx]: true };
+      }
+    });
   };
 
   return (
@@ -110,21 +115,21 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
           return (
             <div key={groupIdx} className="flex flex-col">
               <div 
-                className="flex items-center justify-between px-2 py-2 cursor-pointer hover:bg-[#F8FAFC] rounded-md transition-colors group/header"
+                className="flex items-center justify-between px-2.5 py-2 cursor-pointer hover:bg-[#F8FAFC] rounded-lg transition-colors group/header"
                 onClick={() => toggleGroup(groupIdx)}
               >
-                <span className="text-[11px] font-black uppercase tracking-[0.15em] !text-[#94A3B8] group-hover/header:!text-[#64748B] transition-colors select-none">
+                <span className="text-[13px] font-bold !text-[#04091A] select-none">
                   {group.name}
                 </span>
                 {isExpanded ? (
-                  <ChevronDown className="w-3.5 h-3.5 !text-[#94A3B8] group-hover/header:!text-[#64748B] transition-colors" />
+                  <ChevronDown className="w-4 h-4 !text-[#64748B] transition-colors" />
                 ) : (
-                  <ChevronRight className="w-3.5 h-3.5 !text-[#94A3B8] group-hover/header:!text-[#64748B] transition-colors" />
+                  <ChevronRight className="w-4 h-4 !text-[#64748B] transition-colors" />
                 )}
               </div>
               
               {isExpanded && (
-                <nav className="flex flex-col gap-0.5 mt-0.5 mb-2 pl-2 border-l border-[#F1F5F9] ml-2">
+                <nav className="flex flex-col gap-0.5 mt-1 mb-2 pl-3 border-l border-[#E2E8F0] ml-3">
                   {group.posts.map((post) => {
                     const isActive = currentSlug === post.slug;
                     return (
