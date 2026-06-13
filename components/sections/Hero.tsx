@@ -63,7 +63,7 @@ function Typewriter({ words }: { words: string[] }) {
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white pt-32 pb-16 lg:pt-40 lg:pb-24">
+    <section className="relative overflow-hidden bg-white py-12 lg:py-16">
       {/* Premium Tech Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800A_1px,transparent_1px),linear-gradient(to_bottom,#8080800A_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
       
