@@ -104,7 +104,7 @@ export function CustomerJourney() {
   }, []);
 
   return (
-    <section className="bg-[#F8FAFC] py-12 lg:py-16 relative overflow-hidden">
+    <section className="bg-[#F8FAFC] py-16 lg:py-24 relative overflow-hidden border-b border-slate-100">
       <style>{`
         @keyframes gradient-flow {
           0% { background-position: 0% 50%; }
@@ -129,13 +129,13 @@ export function CustomerJourney() {
         }
       `}</style>
 
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
         
-        <RevealOnScroll direction="up" className="mb-10 lg:mb-12 flex flex-col items-center text-center">
+        <RevealOnScroll direction="up" className="mb-14 flex flex-col items-center text-center">
           <SectionBadge live={true} icon={<Route className="h-3.5 w-3.5" />}>
             Quy trình làm việc
           </SectionBadge>
-          <h2 className="mx-auto mb-5 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
+          <h2 className="mx-auto mt-6 mb-5 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
             Hành trình hợp tác <span className="text-[#3BA6F1]">minh bạch</span>
           </h2>
           <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
@@ -143,7 +143,7 @@ export function CustomerJourney() {
           </p>
         </RevealOnScroll>
         
-        <div ref={containerRef} className="relative mx-auto max-w-5xl px-2 md:px-0">
+        <div ref={containerRef} className="relative mx-auto max-w-6xl px-2 md:px-0">
           
           {/* Desktop Progress Line */}
           <div className="hidden md:block absolute top-[26px] left-[12%] right-[12%] h-2 bg-slate-200/60 rounded-full z-0 overflow-hidden">
@@ -153,25 +153,28 @@ export function CustomerJourney() {
           </div>
 
           {/* Mobile Progress Line */}
-          <div className="md:hidden absolute top-[30px] bottom-[30px] left-[34px] w-1.5 bg-slate-200/60 rounded-full z-0 overflow-hidden">
+          <div className="md:hidden absolute top-[30px] bottom-[30px] left-[27px] w-1.5 bg-slate-200/60 rounded-full z-0 overflow-hidden">
             <div className="journey-progress-line-y live-line absolute top-0 left-0 w-full h-0 bg-gradient-to-b from-[#3BA6F1] via-[#7DD3FC] to-[#3BA6F1] rounded-full shadow-[0_0_12px_rgba(59,166,241,0.6)]"></div>
             {/* The Beam */}
             <div className="absolute left-0 w-full h-1/4 bg-gradient-to-b from-transparent via-white to-transparent opacity-80 mix-blend-overlay z-10" style={{ animation: 'light-beam-y 2.5s linear infinite' }}></div>
           </div>
 
-          <div className="relative z-10 flex flex-col md:flex-row justify-between gap-12 md:gap-4">
+          <div className="relative z-10 flex flex-col md:flex-row justify-between gap-10 md:gap-6">
             {steps.map((step, index) => (
-              <div key={index} className="group/step flex flex-row md:flex-col items-start md:items-center gap-6 md:gap-6 flex-1">
+              <div key={index} className="group/step flex flex-row md:flex-col items-start md:items-center gap-6 md:gap-8 flex-1">
                 
                 {/* Timeline Node */}
-                <div className="journey-node cursor-pointer relative flex shrink-0 h-[60px] w-[60px] items-center justify-center rounded-full border-[6px] border-[#F8FAFC] bg-slate-100 text-[22px] font-black text-slate-400 z-10 transition-transform duration-300 hover:scale-110 hover:-translate-y-1 active:scale-95 hover:shadow-[0_0_20px_rgba(59,166,241,0.4)]">
+                <div className="journey-node cursor-pointer relative flex shrink-0 h-[60px] w-[60px] items-center justify-center rounded-2xl border border-slate-200/80 bg-white text-[22px] font-black text-slate-400 z-10 transition-transform duration-300 hover:scale-110 hover:-translate-y-1 active:scale-95 shadow-sm">
                   {index + 1}
                 </div>
                 
-                {/* Timeline Content */}
-                <div className="journey-content text-left md:text-center mt-1 md:mt-0">
-                  <h3 className="mb-2.5 text-[20px] font-black text-[#04091A]">{step.title}</h3>
-                  <p className="text-[15px] font-medium text-slate-500 leading-relaxed text-pretty md:px-4">
+                {/* Timeline Content Card */}
+                <div className="journey-content relative w-full flex-1 flex flex-col rounded-[24px] bg-white p-6 sm:p-8 border border-slate-200/80 shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:border-[#3BA6F1]/30 overflow-hidden text-left md:text-center mt-1 md:mt-0">
+                  {/* Glowing Sweep on Hover */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent transition-all duration-500 group-hover/step:w-full opacity-0 group-hover/step:opacity-100" />
+                  
+                  <h3 className="mb-3 text-[20px] font-black text-[#04091A] text-balance transition-colors group-hover/step:text-[#3BA6F1]">{step.title}</h3>
+                  <p className="text-[15px] font-medium text-slate-500 leading-relaxed text-pretty">
                     {step.desc}
                   </p>
                 </div>
