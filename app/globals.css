@@ -11,17 +11,17 @@
   --radius-xl: 24px;
   --radius-pill: 9999px;
 
-  /* SEOSONA B2B Premium Dark Theme Tokens */
-  --color-canvas-base: #04091A;       /* Deepest Navy for background */
-  --color-canvas-surface: #0A132B;    /* Elevated surface */
-  --color-canvas-elevated: #111C3D;   /* Higher elevated surface */
+  /* SEOSONA B2B Premium Light Theme Tokens */
+  --color-canvas-base: #FFFFFF;       /* Pure white for background */
+  --color-canvas-surface: #F8FAFC;    /* Elevated surface */
+  --color-canvas-elevated: #F1F5F9;   /* Higher elevated surface */
   
   --color-signal-primary: #3BA6F1;    /* Signal Blue: technical, trustworthy */
   --color-signal-hover: #2B8FD4;
 
-  --color-text-ink: #FFFFFF;          /* Pure white for strong contrast */
-  --color-text-slate: #94A3B8;        /* Slate 400 for secondary text */
-  --color-text-muted: #64748B;        /* Slate 500 for tertiary text */
+  --color-text-ink: #04091A;          /* Dark Navy/Black for strong contrast */
+  --color-text-slate: #64748B;        /* Neutral Gray for secondary text */
+  --color-text-muted: #94A3B8;        /* Lighter gray for tertiary text */
 
   --color-border-fog: rgba(255, 255, 255, 0.06);   /* Barely visible 1px border */
   --color-border-pearl: rgba(255, 255, 255, 0.12); /* Standard 1px border */
