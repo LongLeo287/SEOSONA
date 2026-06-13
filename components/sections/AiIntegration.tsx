@@ -230,7 +230,7 @@ function TechnicalUI({ activeLines, scenarioIndex }: { activeLines: number[], sc
           <div className="text-slate-300 animate-pulse mt-1">_</div>
         )}
         {activeLines.length === currentLines.length && (
-          <div className="text-slate-300 mt-4 animate-pulse">> Standing by for next command _</div>
+          <div className="text-slate-300 mt-4 animate-pulse">{">"} Standing by for next command _</div>
         )}
       </div>
     </div>
