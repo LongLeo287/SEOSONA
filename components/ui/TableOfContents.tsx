@@ -59,7 +59,7 @@ export function TableOfContents() {
               key={heading.id}
               className={cn(
                 "h-1.5 rounded-full transition-all duration-300 cursor-pointer shadow-sm",
-                isActive ? "w-5 bg-[#04091A]" : "w-3 bg-[#E2E8F0] hover:w-4 hover:bg-[#94A3B8]"
+                isActive ? "w-5 bg-[#3BA6F1]" : "w-3 bg-[#E2E8F0] hover:w-4 hover:bg-[#94A3B8]"
               )}
               onClick={() => {
                 const target = document.getElementById(heading.id);
