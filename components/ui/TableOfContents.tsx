@@ -79,7 +79,7 @@ export function TableOfContents() {
         <h4 className="mb-3 pl-2 text-[10px] font-black uppercase tracking-[0.15em] text-[#94A3B8]">
           Nội dung bài viết
         </h4>
-        <nav className="flex flex-col gap-0.5 max-h-[65vh] overflow-y-auto pr-1.5 custom-scrollbar">
+        <nav className="flex flex-col gap-0.5 max-h-[50vh] overflow-y-auto pr-1.5 custom-scrollbar">
           {headings.map((heading) => {
             const isActive = activeId === heading.id;
             return (
