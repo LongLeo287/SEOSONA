@@ -52,35 +52,35 @@ export function EcosystemProof() {
             const Icon = item.icon;
             return (
               <RevealOnScroll key={item.title} direction="up" delay={i * 100}>
-                <div className="group relative flex h-full flex-col rounded-[24px] bg-[#F8FAFC]/50 p-6 sm:p-8 border border-slate-200/60 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:border-[#3BA6F1]/30 hover:bg-white overflow-hidden">
+                <div className="group relative flex h-full flex-col rounded-[32px] bg-white p-6 sm:p-8 border border-slate-200/80 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:border-[#3BA6F1]/30 overflow-hidden">
                   
-                  {/* Glowing Sweep on Hover (Matches Hero metrics) */}
+                  {/* Glowing Sweep on Hover */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100" />
                   
-                  <div className="mb-6 flex items-center justify-between z-10">
-                    <span className="text-[44px] font-black text-[#04091A] leading-none tracking-tight transition-colors duration-500 group-hover:text-[#3BA6F1]">
+                  <div className="mb-6 flex items-start justify-between z-10">
+                    <span className="text-[54px] font-black text-[#3BA6F1] leading-none tracking-tight">
                       {item.metric}
                     </span>
-                    <div className="flex h-14 w-14 items-center justify-center rounded-[16px] bg-white text-[#3BA6F1] shadow-sm transition-transform duration-500 group-hover:scale-110 group-hover:bg-[#3BA6F1] group-hover:text-white border border-slate-100">
-                      <Icon size={24} aria-hidden="true" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#F8FAFC] text-[#3BA6F1] border border-slate-200/60 shadow-sm transition-transform duration-500 group-hover:scale-110 group-hover:bg-[#3BA6F1] group-hover:text-white group-hover:border-[#3BA6F1]">
+                      <Icon size={28} aria-hidden="true" />
                     </div>
                   </div>
                   
-                  <h3 className="mb-3 text-[20px] font-black text-[#04091A] text-balance transition-colors group-hover:text-[#3BA6F1]">
+                  <h3 className="mb-3 text-[22px] font-black text-[#04091A] text-balance transition-colors group-hover:text-[#3BA6F1]">
                     {item.title}
                   </h3>
                   
-                  <p className="mb-8 flex-1 text-[15px] font-medium leading-relaxed text-slate-500 text-pretty">
+                  <p className="mb-8 flex-1 text-[16px] font-medium leading-relaxed text-slate-500 text-pretty">
                     {item.desc}
                   </p>
                   
-                  <div className="mt-auto border-t border-slate-200/60 pt-5">
+                  <div className="mt-auto border-t border-slate-200/80 pt-6">
                     <a href={item.href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between group/link">
-                      <span className="text-[14px] font-bold uppercase tracking-wide text-[#04091A] transition-colors group-hover/link:text-[#3BA6F1]">
+                      <span className="text-[14px] font-bold uppercase tracking-widest text-[#04091A] transition-colors group-hover/link:text-[#3BA6F1]">
                         Khám phá
                       </span>
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition-all duration-300 group-hover/link:bg-[#F0F6FF] group-hover/link:text-[#3BA6F1]" aria-hidden="true">
-                        <ArrowRight size={16} className="transition-transform duration-300 group-hover/link:translate-x-1" />
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition-all duration-300 group-hover/link:border-[#3BA6F1] group-hover/link:bg-[#F0F6FF] group-hover/link:text-[#3BA6F1]" aria-hidden="true">
+                        <ArrowRight size={18} className="transition-transform duration-300 group-hover/link:translate-x-1" />
                       </div>
                     </a>
                   </div>
