@@ -104,7 +104,7 @@ export function CustomerJourney() {
   }, []);
 
   return (
-    <section className="bg-[#F8FAFC] py-16 lg:py-24 relative overflow-hidden">
+    <section className="bg-[#F8FAFC] py-12 lg:py-16 relative overflow-hidden">
       <style>{`
         @keyframes gradient-flow {
           0% { background-position: 0% 50%; }
@@ -131,7 +131,7 @@ export function CustomerJourney() {
 
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
-        <RevealOnScroll direction="up" className="mb-16 flex flex-col items-center text-center">
+        <RevealOnScroll direction="up" className="mb-10 lg:mb-12 flex flex-col items-center text-center">
           <SectionBadge live={true} icon={<Route className="h-3.5 w-3.5" />}>
             Quy trình làm việc
           </SectionBadge>
