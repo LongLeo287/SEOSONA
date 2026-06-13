@@ -33,7 +33,7 @@ export function FeatureGrid({
 
   return (
     <section
-      className={`relative py-16 sm:py-20 lg:py-24 ${
+      className={`relative py-12 lg:py-16 ${
         isDark ? "bg-[#091338] overflow-hidden" : "bg-[#F4F6F8]"
       }`}
     >

@@ -22,11 +22,11 @@ const benefits = [
 
 export function AcademyBenefits() {
   return (
-    <section className="bg-slate-50 py-16 lg:py-24 overflow-hidden">
+    <section className="bg-slate-50 py-12 lg:py-16 overflow-hidden">
       <div className="container">
         
         {/* Part 1: What you will learn - Bento Grid Light */}
-        <div className="mb-24">
+        <div className="mb-12">
           <RevealOnScroll className="mx-auto max-w-3xl text-center">
             <span className="inline-flex rounded-full bg-blue-100/50 px-3 py-1 text-sm font-bold text-blue-700">Nội dung Khóa học</span>
             <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl md:text-5xl">
@@ -74,7 +74,7 @@ export function AcademyBenefits() {
             </h2>
           </RevealOnScroll>
 
-          <div className="relative z-10 mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+          <div className="relative z-10 mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
             {benefits.map((item, index) => (
               <RevealOnScroll key={index} delay={index * 50} className={item.className}>
                 <div className="group relative h-full w-full overflow-hidden rounded-[32px] border border-slate-700/50 bg-slate-800/20 p-8 backdrop-blur-xl transition-all duration-300 ease-in-out hover:-translate-y-1 hover:border-cyan-500/40 hover:bg-slate-800/40 hover:shadow-[0_8px_30px_-12px_rgba(6,182,212,0.15)]">

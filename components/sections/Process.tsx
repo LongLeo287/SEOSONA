@@ -14,7 +14,7 @@ interface ProcessProps {
 
 export function Process({ eyebrow, title, description, steps }: ProcessProps) {
   return (
-    <section className="bg-[#001D3D] py-16 lg:py-24">
+    <section className="bg-[#001D3D] py-12 lg:py-16">
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           {eyebrow && (
@@ -32,7 +32,7 @@ export function Process({ eyebrow, title, description, steps }: ProcessProps) {
           </p>
         </div>
 
-        <div className="mx-auto mt-14 grid max-w-5xl gap-6 grid-cols-1 sm:grid-cols-2 lg:mt-20">
+        <div className="mx-auto mt-14 grid max-w-5xl gap-6 grid-cols-1 sm:grid-cols-2 lg:mt-12">
           {steps.map((step, index) => (
             <RevealOnScroll key={step.title} delay={index * 100} direction="up">
               <div className="group relative flex flex-col justify-between overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-8 backdrop-blur-xl shadow-lg transition duration-300 hover:-translate-y-1 hover:border-[#46FF00]/40 hover:bg-white/10 hover:shadow-2xl hover:shadow-[#46FF00]/10">

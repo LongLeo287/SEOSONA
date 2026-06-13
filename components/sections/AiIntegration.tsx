@@ -503,11 +503,11 @@ export function AiIntegration() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="relative overflow-hidden bg-[#04091A] py-16 lg:py-24">
+    <section className="relative overflow-hidden bg-[#04091A] py-12 lg:py-16">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[500px] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#3BA6F1]/20 via-[#04091A]/0 to-transparent blur-3xl opacity-50 pointer-events-none" />
 
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <RevealOnScroll direction="up" className="mb-12 lg:mb-16 flex flex-col items-center text-center">
+        <RevealOnScroll direction="up" className="mb-12 lg:mb-10 flex flex-col items-center text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#3BA6F1]/30 bg-[#3BA6F1]/10 px-4 py-1.5 shadow-sm">
             <span className="relative flex h-2 w-2 shrink-0">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#3BA6F1] opacity-75"></span>
@@ -570,7 +570,7 @@ export function AiIntegration() {
         </div>
 
         {/* Sonatools CTA */}
-        <RevealOnScroll direction="up" delay={400} className="mt-16 sm:mt-24 flex justify-center">
+        <RevealOnScroll direction="up" delay={400} className="mt-10 sm:mt-12 flex justify-center">
           <div className="relative group">
             <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#3BA6F1] to-[#00D4FF] opacity-30 blur transition duration-500 group-hover:opacity-60"></div>
             <a href="https://sonatools.io/" target="_blank" rel="noreferrer" className="relative flex items-center gap-3 rounded-full bg-[#0B1530] border border-[#3BA6F1]/30 px-8 py-4 text-[16px] font-bold text-white transition-all hover:bg-[#111F45] hover:scale-105 active:scale-95 shadow-xl">

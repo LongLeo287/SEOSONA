@@ -15,7 +15,7 @@ const stats = [
 
 export function AboutPreview() {
   return (
-    <section className="relative overflow-hidden bg-white py-14 sm:py-16 lg:py-24">
+    <section className="relative overflow-hidden bg-white py-14 sm:py-12 lg:py-16">
       <div className="absolute -left-20 top-20 hidden h-72 w-72 rounded-full bg-[#003566]/5 blur-3xl md:block" />
       <div className="absolute -right-20 bottom-0 hidden h-72 w-72 rounded-full bg-[#46FF00]/5 blur-3xl md:block" />
 

@@ -6,7 +6,7 @@ import { CountUp } from "@/components/ui/CountUp";
 
 export function AcademyInstructor() {
   return (
-    <section className="relative overflow-hidden bg-slate-50 py-16 lg:py-24">
+    <section className="relative overflow-hidden bg-slate-50 py-12 lg:py-16">
       {/* Decorative Background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(37,99,235,0.05),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(6,182,212,0.05),transparent_50%)]"></div>

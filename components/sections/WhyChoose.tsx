@@ -11,7 +11,7 @@ const reasons = [
 
 export function WhyChoose() {
   return (
-    <section className="relative overflow-hidden bg-[#F4F6F8] py-14 sm:py-16 lg:py-20">
+    <section className="relative overflow-hidden bg-[#F4F6F8] py-12 lg:py-16">
       {/* Subtle light orbs */}
       <div
         className="pointer-events-none absolute -left-32 top-0 hidden h-[400px] w-[400px] rounded-full opacity-30 md:block"

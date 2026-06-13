@@ -22,7 +22,7 @@ export function Services() {
   const [featured, ...rest] = services;
 
   return (
-    <section className="relative overflow-hidden bg-[#003566] py-14 sm:py-16 lg:py-20 font-inter">
+    <section className="relative overflow-hidden bg-[#003566] py-12 lg:py-16 font-inter">
       <div className="absolute right-0 top-0 hidden h-96 w-96 rounded-full bg-[#46FF00]/10 blur-3xl md:block" />
       <div className="absolute bottom-0 left-0 hidden h-96 w-96 rounded-full bg-blue-400/10 blur-3xl md:block" />
       <div className="container relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

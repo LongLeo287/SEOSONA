@@ -30,7 +30,7 @@ const cases = [
 export function CaseStudyPreview() {
   return (
     <section
-      className="relative overflow-hidden py-14 sm:py-16 lg:py-20"
+      className="relative overflow-hidden py-12 lg:py-16"
       style={{ background: "linear-gradient(160deg, #003566 0%, #002244 60%, #001833 100%)" }}
     >
       {/* Glow orbs */}

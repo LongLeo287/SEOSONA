@@ -4,7 +4,7 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 export function ConsultingCta() {
   return (
-    <section className="bg-[#04091A] py-16 lg:py-24 relative overflow-hidden">
+    <section className="bg-[#04091A] py-12 lg:py-16 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#3BA6F1]/20 via-[#04091A]/0 to-transparent pointer-events-none"></div>
 

@@ -20,7 +20,7 @@ interface PricingTableProps {
 
 export function PricingTable({ eyebrow, title, description, plans }: PricingTableProps) {
   return (
-    <section className="bg-slate-50 py-16 sm:py-24">
+    <section className="bg-slate-50 py-12 lg:py-16">
       <div className="container">
         <div className="mx-auto max-w-2xl text-center">
           {eyebrow && <span className="badge mb-4">{eyebrow}</span>}
@@ -32,7 +32,7 @@ export function PricingTable({ eyebrow, title, description, plans }: PricingTabl
           )}
         </div>
 
-        <div className="mx-auto mt-16 grid max-w-6xl gap-8 lg:grid-cols-3">
+        <div className="mx-auto mt-10 grid max-w-6xl gap-8 lg:grid-cols-3">
           {plans.map((plan, index) => (
             <div
               key={index}

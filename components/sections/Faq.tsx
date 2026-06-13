@@ -24,7 +24,7 @@ export function Faq({ items }: FaqProps) {
   };
 
   return (
-    <section className="bg-white py-16 lg:py-20">
+    <section className="bg-white py-12 lg:py-16">
       <JsonLd data={schema} />
       <div className="container">
         <div className="mb-10 max-w-3xl">

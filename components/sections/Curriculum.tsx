@@ -14,7 +14,7 @@ type CurriculumProps = {
 
 export function Curriculum({ eyebrow, title, description, modules }: CurriculumProps) {
   return (
-    <section className="bg-white py-16 lg:py-24 border-y border-slate-100">
+    <section className="bg-white py-12 lg:py-16 border-y border-slate-100">
       <div className="container">
         <div className="mb-12 max-w-3xl">
           {eyebrow && <span className="badge mb-4">{eyebrow}</span>}
