@@ -65,7 +65,7 @@ export function Header() {
           <div className="flex items-center gap-4">
             <Link
               href="/lien-he/"
-              className="hidden sm:flex h-11 items-center justify-center gap-2 rounded-full bg-[#04091A] px-6 text-[14px] font-bold text-white transition-all hover:bg-[#3BA6F1] hover:shadow-lg hover:shadow-blue-500/25 group"
+              className="hidden sm:flex h-11 items-center justify-center gap-2 rounded-full bg-[#3BA6F1] px-6 text-[14px] font-bold text-white transition-all hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25 group"
             >
               Liên hệ chuyên gia
             </Link>
