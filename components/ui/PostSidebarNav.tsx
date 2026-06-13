@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { PostMeta } from "@/lib/mdx";
 import { ChevronDown, ChevronRight, FolderOpen } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
+import { seoHubs } from "@/data/seo-hubs";
 
 interface PostSidebarNavProps {
   posts: PostMeta[];
@@ -93,19 +94,69 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
     });
   };
 
+  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
+
+  // Đóng dropdown khi click ra ngoài
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.category-dropdown')) {
+        setIsCategoryDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
     <div className="w-full">
-      {/* Fake Dropdown Header for Category */}
-      <div className="mb-6 flex items-center justify-between px-3 py-2 border border-[#E2E8F0] rounded-xl shadow-sm bg-white cursor-pointer hover:bg-[#F8FAFC] transition-colors">
-        <div className="flex items-center gap-2.5">
-          <div className="w-6 h-6 rounded-md bg-[#F0F6FF] text-[#3BA6F1] flex items-center justify-center">
-            <FolderOpen className="w-3.5 h-3.5" />
+      {/* Real Dropdown Header for Category */}
+      <div className="relative mb-6 category-dropdown">
+        <div 
+          className="flex items-center justify-between px-3 py-2 border border-[#E2E8F0] rounded-xl shadow-sm bg-white cursor-pointer hover:bg-[#F0F6FF] transition-all duration-200 group"
+          onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
+        >
+          <div className="flex items-center gap-2.5">
+            <div className="w-6 h-6 rounded-md bg-[#F0F6FF] text-[#3BA6F1] flex items-center justify-center group-hover:bg-white transition-colors">
+              <FolderOpen className="w-3.5 h-3.5" />
+            </div>
+            <span className="text-[14px] font-bold !text-[#04091A]">
+              {categoryName}
+            </span>
           </div>
-          <span className="text-[14px] font-semibold !text-[#04091A]">
-            {categoryName}
-          </span>
+          <ChevronDown className={cn("w-4 h-4 !text-[#94A3B8] transition-transform duration-200 group-hover:!text-[#3BA6F1]", isCategoryDropdownOpen ? "rotate-180" : "")} />
         </div>
-        <ChevronDown className="w-4 h-4 !text-[#94A3B8]" />
+
+        {/* Dropdown Menu */}
+        <div 
+          className={cn(
+            "absolute top-full left-0 right-0 mt-2 bg-white border border-[#E2E8F0] shadow-xl rounded-xl overflow-hidden z-50 py-1.5 transition-all duration-200 origin-top",
+            isCategoryDropdownOpen ? "opacity-100 scale-100 visible" : "opacity-0 scale-95 invisible"
+          )}
+        >
+          <div className="px-3 pb-2 pt-1">
+            <span className="text-[10px] font-black uppercase tracking-[0.15em] text-[#94A3B8]">
+              CÁC CHỦ ĐỀ KHÁC
+            </span>
+          </div>
+          <div className="max-h-[300px] overflow-y-auto custom-scrollbar px-1.5">
+            {Object.entries(seoHubs).map(([slug, hub]) => (
+              <Link
+                key={slug}
+                href={`/seo/${slug}`}
+                onClick={() => setIsCategoryDropdownOpen(false)}
+                className={cn(
+                  "block px-3 py-2 rounded-lg text-[13px] font-medium transition-all duration-200",
+                  slug === categorySlug 
+                    ? "bg-[#F0F6FF] text-[#3BA6F1] cursor-default" 
+                    : "text-[#64748B] hover:bg-[#F8FAFC] hover:text-[#3BA6F1] hover:translate-x-0.5"
+                )}
+              >
+                {hub.title}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="max-h-[calc(100vh-14rem)] overflow-y-auto custom-scrollbar pr-2 flex flex-col gap-1">
