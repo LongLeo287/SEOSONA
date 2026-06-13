@@ -15,6 +15,7 @@ The color system aims for a professional, clean (Clean/Corporate), and reliable 
 *   **Text Primary:** Dark Navy/Black (`#04091A`). Applied to Headings and prominent text.
 *   **Text Secondary:** Neutral Gray (`#64748B` or `text-slate-500`). Applied to paragraphs and descriptions.
 *   **Accent Color:** Electric Blue (`#3BA6F1`). Applied to Icons, Category Tags, emphasized phrases in Headings, and Hover states.
+*   **Brand Consistency (Strict):** Do not use random multi-color gradients (e.g., Purple, Orange, Cyan) for primary UI elements like backgrounds, grids, or standard cards. Stick exclusively to the SEOSONA Blue (`#3BA6F1`) for all glows, highlights, and hover effects to maintain a cohesive, professional agency identity. 
 *   **Borders:** Extremely subtle borders, typically `border-slate-200/80` to separate areas within a Component.
 
 ---
@@ -77,6 +78,9 @@ Cards are the heart of the interface. They should feel light and premium, yet hi
     *   *For Icons:* A large icon enclosed in a soft-rounded square box (`h-16 w-16 bg-white rounded-2xl text-[#3BA6F1] shadow-sm`).
 *   **Tags & Classification:** Placed above the card title, uppercase, blue color. Or placed below as a thin-bordered pill (`bg-white border border-slate-200 px-4 py-1.5`).
 *   **Divider:** The footer of the card is always separated by a faint horizontal border line above it (`border-t border-slate-200/80 pt-6`).
+*   **Standard Hover Effects:**
+    *   *Hover Glow (Glowing Sweep):* Standard cards should feature a subtle horizontal gradient line that sweeps across the top border on hover: `absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100`.
+    *   *Elevation & Shadow:* On hover, cards should translate up slightly (`hover:-translate-y-1.5`), cast a deep blue-tinted shadow (`hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]`), and lightly tint the border (`hover:border-[#3BA6F1]/30`).
 *   **Card Action (Footer):**
     *   Left: A text-based call to action (e.g., `View Project Report` / `Download Now`).
     *   Right: A circular button (`h-10 w-10 rounded-full border border-slate-200 bg-white`) containing an arrow.
