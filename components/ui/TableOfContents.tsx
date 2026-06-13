@@ -75,8 +75,8 @@ export function TableOfContents() {
       </div>
 
       {/* Expanded View (Table) */}
-      <div className="absolute right-0 top-0 w-[280px] bg-white/95 backdrop-blur-md shadow-2xl ring-1 ring-slate-200/60 rounded-2xl p-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-x-4 group-hover:translate-x-0 z-50 origin-top-right">
-        <h4 className="mb-4 text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">
+      <div className="absolute right-0 top-0 w-[280px] bg-[#FFFFFF]/95 backdrop-blur-md shadow-2xl ring-1 ring-[#E2E8F0]/60 rounded-2xl p-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-x-4 group-hover:translate-x-0 z-50 origin-top-right">
+        <h4 className="mb-4 text-[11px] font-black uppercase tracking-[0.2em] text-[#94A3B8]">
           Nội dung bài viết
         </h4>
         <nav className="flex flex-col gap-1 max-h-[calc(100vh-12rem)] overflow-y-auto pr-2 custom-scrollbar">
@@ -90,8 +90,8 @@ export function TableOfContents() {
                   "block px-3 py-2 rounded-lg text-[14px] transition-all duration-200 leading-snug",
                   heading.level === 3 ? "ml-4 text-[13px]" : "",
                   isActive
-                    ? "bg-[#F8FAFC] text-[#04091A] font-bold ring-1 ring-slate-200/60"
-                    : "text-slate-500 hover:bg-slate-50 hover:text-[#3BA6F1]"
+                    ? "bg-[#F8FAFC] !text-[#04091A] font-bold ring-1 ring-[#E2E8F0]/60"
+                    : "!text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#3BA6F1]"
                 )}
                 onClick={(e) => {
                   e.preventDefault();

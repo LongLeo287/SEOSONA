@@ -14,7 +14,7 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
 
   return (
     <div className="w-full">
-      <h4 className="mb-4 text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">
+      <h4 className="mb-4 text-[11px] font-black uppercase tracking-[0.2em] text-[#94A3B8]">
         {categoryName}
       </h4>
       <nav className="flex flex-col gap-1 pr-4 max-h-[calc(100vh-10rem)] overflow-y-auto custom-scrollbar">
@@ -27,8 +27,8 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
               className={cn(
                 "block px-3 py-2 rounded-lg text-[14px] transition-all duration-200 leading-snug",
                 isActive
-                  ? "bg-[#F8FAFC] text-[#04091A] font-bold ring-1 ring-slate-200/60"
-                  : "text-slate-500 hover:bg-slate-50 hover:text-[#3BA6F1] font-medium"
+                  ? "bg-[#F8FAFC] !text-[#04091A] font-bold ring-1 ring-[#E2E8F0]/60"
+                  : "!text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#3BA6F1] font-medium"
               )}
             >
               {post.title}
