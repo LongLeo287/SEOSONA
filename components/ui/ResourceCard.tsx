@@ -18,7 +18,7 @@ export function ResourceCard({
 
   return (
     <article
-      className={`group relative flex h-full flex-col overflow-hidden rounded-[32px] bg-[#F8FAFC] p-8 md:p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/50 ${className || ""}`}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-[32px] bg-white shadow-sm ring-1 ring-slate-200/50 p-8 md:p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/50 ${className || ""}`}
     >
       <div className="mb-5 flex flex-col gap-3">
         <Icon className="h-[60px] w-[60px] text-[#3BA6F1] transition-transform duration-300 group-hover:scale-110" strokeWidth={2} />
