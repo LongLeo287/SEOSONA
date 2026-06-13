@@ -90,8 +90,8 @@ export function TableOfContents() {
                   "block px-3 py-2 rounded-lg text-[14px] transition-all duration-200 leading-snug",
                   heading.level === 3 ? "ml-4 text-[13px]" : "",
                   isActive
-                    ? "bg-[#F0F6FF] text-[#3BA6F1] font-bold"
-                    : "text-slate-600 hover:bg-slate-50 hover:text-[#04091A]"
+                    ? "bg-[#F8FAFC] text-[#04091A] font-bold ring-1 ring-slate-200/60"
+                    : "text-slate-500 hover:bg-slate-50 hover:text-[#3BA6F1]"
                 )}
                 onClick={(e) => {
                   e.preventDefault();
