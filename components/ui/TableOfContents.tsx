@@ -75,11 +75,11 @@ export function TableOfContents() {
       </div>
 
       {/* Expanded View (Table) */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[300px] bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] ring-1 ring-slate-200/60 rounded-2xl p-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-x-4 group-hover:translate-x-0 origin-right">
-        <h4 className="mb-4 text-[11px] font-black uppercase tracking-[0.15em] text-[#94A3B8]">
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[260px] bg-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] ring-1 ring-slate-200/60 rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-x-4 group-hover:translate-x-0 origin-right">
+        <h4 className="mb-3 pl-2 text-[10px] font-black uppercase tracking-[0.15em] text-[#94A3B8]">
           Nội dung bài viết
         </h4>
-        <nav className="flex flex-col gap-0.5 max-h-[70vh] overflow-y-auto pr-2 custom-scrollbar">
+        <nav className="flex flex-col gap-0.5 max-h-[65vh] overflow-y-auto pr-1.5 custom-scrollbar">
           {headings.map((heading) => {
             const isActive = activeId === heading.id;
             return (
@@ -87,11 +87,11 @@ export function TableOfContents() {
                 key={heading.id}
                 href={`#${heading.id}`}
                 className={cn(
-                  "block px-3 py-2 rounded-lg text-[13px] transition-all duration-200 leading-snug",
-                  heading.level === 3 ? "ml-4 border-l border-slate-100" : "font-medium",
+                  "block px-2.5 py-1.5 rounded-md text-[12px] transition-all duration-200 leading-snug",
+                  heading.level === 3 ? "ml-3 border-l border-slate-100" : "font-medium",
                   isActive
                     ? "bg-[#F0F6FF] !text-[#3BA6F1] font-semibold"
-                    : "!text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#3BA6F1] hover:translate-x-1"
+                    : "!text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#3BA6F1] hover:translate-x-0.5"
                 )}
                 onClick={(e) => {
                   e.preventDefault();
