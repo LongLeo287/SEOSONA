@@ -27,7 +27,7 @@ function Typewriter({ words }: { words: string[] }) {
 
       if (isDeleting) {
         setText(fullText.substring(0, text.length - 1));
-        setTypingSpeed(30); 
+        setTypingSpeed(30);
       } else {
         setText(fullText.substring(0, text.length + 1));
         setTypingSpeed(80);
@@ -47,8 +47,8 @@ function Typewriter({ words }: { words: string[] }) {
   }, [text, isDeleting, loopNum, typingSpeed, words]);
 
   return (
-    <span 
-      className="inline-block border-r-[2px] border-[#3BA6F1] pr-1 text-[#3BA6F1]" 
+    <span
+      className="inline-block border-r-[2px] border-[#3BA6F1] pr-1 text-[#3BA6F1]"
       style={{ animation: "cursor-blink 1s step-end infinite" }}
     >
       {text}
@@ -69,19 +69,21 @@ export function Hero() {
 
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <RevealOnScroll direction="up" className="flex flex-col items-center text-center">
-          
+
           <SectionBadge live={true}>
             Hệ sinh thái Digital hàng đầu
           </SectionBadge>
 
-          <h1 className="mx-auto mt-6 max-w-5xl text-4xl font-black leading-tight tracking-tight text-[#04091A] sm:text-5xl md:text-[54px] lg:text-[64px] text-balance">
+          <h1 className="mx-auto mt-6 max-w-5xl text-4xl font-black leading-tight tracking-tight text-[#04091A] sm:text-5xl md:text-[54px] lg:text-[64px]">
             Share. Search. Connect. <br className="hidden md:block" />
-            Tăng trưởng từ <Typewriter words={["SEO Tổng thể", "Google Ads", "Content Marketing", "Thiết kế Website", "Data Analytics"]} />
+            <span className="inline-block">
+              Tăng trưởng từ <Typewriter words={["SEO Tổng thể", "Google Ads", "Content Marketing", "Thiết kế Website", "Data Analytics"]} />
+            </span>
           </h1>
 
           <p className="mx-auto mt-8 max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
             SEOSONA là Tech-Agency hàng đầu Việt Nam, kết hợp chiến lược chuyên sâu và
-            tư duy dữ liệu để tăng trưởng khách hàng tiềm năng từ Google bền vững và đột phá.
+            tư duy dữ liệu để tăng trưởng khách hàng tiềm năng từ Google bền vững và đột phá
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">

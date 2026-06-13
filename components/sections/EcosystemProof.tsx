@@ -31,17 +31,17 @@ export function EcosystemProof() {
   return (
     <section className="bg-white py-12 lg:py-16">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        
+
         <RevealOnScroll direction="up" className="mb-12 flex flex-col items-center text-center">
           <SectionBadge live={true} icon={<Globe className="h-3.5 w-3.5" />}>
             SEOSONA Ecosystem
           </SectionBadge>
           <h2 className="mx-auto mb-5 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
-            Không chỉ là Agency, chúng tôi xây dựng <br className="hidden sm:block"/>
+            Không chỉ là Agency, chúng tôi xây dựng <br className="hidden sm:block" />
             <span className="text-[#3BA6F1]">Hệ sinh thái Digital</span>
           </h2>
           <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
-            Sự phát triển bền vững cần sự hậu thuẫn từ một hệ sinh thái mạnh mẽ. SEOSONA tự hào sở hữu mạng lưới truyền thông và cộng đồng lớn nhất ngành SEO.
+            Sự phát triển bền vững cần sự hậu thuẫn từ một hệ sinh thái mạnh mẽ. SEOSONA tự hào sở hữu mạng lưới truyền thông và cộng đồng lớn nhất ngành SEO
           </p>
         </RevealOnScroll>
 
@@ -80,7 +80,7 @@ export function EcosystemProof() {
             );
           })}
         </div>
-        
+
       </div>
     </section>
   );
