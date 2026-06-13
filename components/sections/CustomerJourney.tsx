@@ -104,7 +104,7 @@ export function CustomerJourney() {
   }, []);
 
   return (
-    <section className="bg-[#F8FAFC] py-16 lg:py-24 relative overflow-hidden border-b border-slate-100">
+    <section className="bg-[#F8FAFC] py-12 lg:py-16 relative overflow-hidden border-b border-slate-100">
       <style>{`
         @keyframes gradient-flow {
           0% { background-position: 0% 50%; }
@@ -131,11 +131,11 @@ export function CustomerJourney() {
 
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
         
-        <RevealOnScroll direction="up" className="mb-14 flex flex-col items-center text-center">
+        <RevealOnScroll direction="up" className="mb-12 flex flex-col items-center text-center">
           <SectionBadge live={true} icon={<Route className="h-3.5 w-3.5" />}>
             Quy trình làm việc
           </SectionBadge>
-          <h2 className="mx-auto mt-6 mb-5 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
+          <h2 className="mx-auto mt-4 mb-4 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
             Hành trình hợp tác <span className="text-[#3BA6F1]">minh bạch</span>
           </h2>
           <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">

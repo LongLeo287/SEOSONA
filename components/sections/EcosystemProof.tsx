@@ -30,19 +30,19 @@ const ecosystem = [
 
 export function EcosystemProof() {
   return (
-    <section className="relative bg-white py-16 lg:py-24 overflow-hidden border-b border-slate-100">
+    <section className="relative bg-white py-12 lg:py-16 overflow-hidden border-b border-slate-100">
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
 
-        <RevealOnScroll direction="up" className="mb-14 flex flex-col items-center text-center">
+        <RevealOnScroll direction="up" className="mb-12 flex flex-col items-center text-center">
           <SectionBadge live={true} icon={<Globe className="h-3.5 w-3.5" />}>
             SEOSONA Ecosystem
           </SectionBadge>
 
-          <h2 className="mx-auto mt-6 mb-5 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
+          <h2 className="mx-auto mt-4 mb-4 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
             Không chỉ là Agency, chúng tôi xây dựng <br className="hidden sm:block" />
             <span className="text-[#3BA6F1]">Hệ sinh thái Digital</span>
           </h2>
-          <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
+          <p className="mx-auto mt-4 max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
             Sự phát triển bền vững cần sự hậu thuẫn từ một hệ sinh thái mạnh mẽ. SEOSONA tự hào sở hữu mạng lưới truyền thông và cộng đồng lớn nhất ngành SEO
           </p>
         </RevealOnScroll>

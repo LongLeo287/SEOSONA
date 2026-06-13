@@ -63,7 +63,7 @@ function Typewriter({ words }: { words: string[] }) {
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white py-12 lg:py-16">
+    <section className="relative overflow-hidden bg-white py-8 lg:py-10">
       {/* Premium Tech Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800A_1px,transparent_1px),linear-gradient(to_bottom,#8080800A_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
       
@@ -79,19 +79,19 @@ export function Hero() {
             Hệ sinh thái Digital hàng đầu
           </SectionBadge>
 
-          <h1 className="mx-auto mt-6 w-full text-4xl font-black leading-tight tracking-tight text-[#04091A] sm:text-5xl md:text-[54px] lg:text-[64px]">
+          <h1 className="mx-auto mt-4 w-full text-4xl font-black leading-tight tracking-tight text-[#04091A] sm:text-5xl md:text-[54px] lg:text-[64px]">
             Share<span className="text-[#3BA6F1]">.</span> Search<span className="text-[#3BA6F1]">.</span> Connect<span className="text-[#3BA6F1]">.</span> <br className="hidden lg:block" />
             <span className="inline-block lg:whitespace-nowrap">
               Tăng trưởng từ <Typewriter words={["SEO Tổng thể", "Google Ads", "Content Marketing", "Thiết kế Website", "Data Analytics"]} />
             </span>
           </h1>
 
-          <p className="mx-auto mt-8 max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
+          <p className="mx-auto mt-5 max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
             SEOSONA là Tech-Agency hàng đầu Việt Nam, kết hợp chiến lược chuyên sâu và
             tư duy dữ liệu để tăng trưởng khách hàng tiềm năng từ Google bền vững và đột phá
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/lien-he" className="flex h-14 items-center justify-center gap-2 rounded-full bg-[#3BA6F1] px-8 text-[15px] font-bold text-white transition-all hover:scale-105 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25 w-full sm:w-auto">
               Nhận tư vấn chiến lược <ArrowRight size={18} />
             </Link>
@@ -101,7 +101,7 @@ export function Hero() {
           </div>
 
           {/* Metric Counters */}
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6 max-w-3xl mx-auto w-full">
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6 max-w-3xl mx-auto w-full">
             {metrics.map((item, i) => {
               const Icon = item.icon;
               return (

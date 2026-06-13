@@ -60,9 +60,17 @@ A standard section (e.g., Services, Core Solutions, Lead Magnets) must always fo
     *   Format: Bold text (`font-bold text-[#04091A]`), size around `15px`, accompanied by an arrow icon (`<ArrowRight />`).
     *   Effect: On hover, change to the accent color `#3BA6F1` and smoothly translate the arrow to the right (`hover:translate-x-1`).
 
-4.  **Safe Spacing (Padding & Margins)**:
-    *   **Vertical Padding (Top/Bottom):** Standard sections MUST use `py-12 lg:py-16` (approx. 48px - 64px) to ensure content remains cohesive and prevents visual disconnection. DO NOT use excessive padding like `py-20`, `py-24`, or `py-28` for standard content blocks.
-    *   **Header to Content Gap:** Use `mb-10` or `mb-12` (40px - 48px) rather than massive margins like `mb-16`, pulling the grid closer to its context.
+4.  **Section Spacing & Rhythm (Quy chuẩn Khoảng trắng)**:
+    Khoảng trắng (White-space) phải được kiểm soát chặt chẽ để website thoáng đãng nhưng không bị rời rạc. Áp dụng tuyệt đối các thông số sau:
+    *   **Section Padding (Top/Bottom):**
+        *   **Hero Section:** `py-8 lg:py-10` (Vì Header đã là `sticky` chiếm một khoảng 80px, Hero không cần padding quá lớn).
+        *   **Standard Sections (Các phần chính):** `py-12 lg:py-16` (Giới hạn tối đa ở `py-16` ~ 64px). Không dùng `py-20` hay `py-24`.
+        *   **Dense Sections (Ví dụ Logo Grid):** `py-6 lg:py-8`.
+    *   **Inner Element Spacing (Khoảng cách các thành phần con):**
+        *   Badge đến Heading: `mt-4`
+        *   Heading đến Description: `mt-4` (Tối đa `mt-5`)
+        *   Description đến CTA Button: `mt-6` hoặc `mt-8`
+        *   Từ Khối Heading đến Khối Grid/Cards bên dưới: `mt-10` hoặc `mt-12` (Không dùng khoảng cách quá xa như `mt-16`).
     *   **Footer Action Gap:** Use `mt-10` or `mt-12` (40px - 48px) rather than `mt-16`.
 
 ---
