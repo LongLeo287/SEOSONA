@@ -72,7 +72,7 @@ Nguồn URL cần crawl:
 
 ## Phase 6 - Launch
 
-- Deploy production after an explicit hosting decision
+- Deploy production after an explicit hosting decision; Vercel Git auto deployments are disabled in repository config
 - Attach domain
 - Submit sitemap in GSC
 - Monitor index/ranking/errors for 2-4 weeks

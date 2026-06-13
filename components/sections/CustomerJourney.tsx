@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { Route } from "lucide-react";
 import { SectionBadge } from "@/components/ui/SectionBadge";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { createScope, createTimeline } from "animejs";
+import { createTimeline } from "animejs";
 
 const steps = [
   { title: "Nghiên cứu thị trường", desc: "Đào sâu vào hành vi khách hàng và dữ liệu tìm kiếm để tìm ra cơ hội." },
@@ -19,17 +19,17 @@ export function CustomerJourney() {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const scope = createScope(containerRef.current);
+    let timeline: any;
 
-    scope.add(() => {
-      const nodes = containerRef.current?.querySelectorAll('.journey-node');
-      const contents = containerRef.current?.querySelectorAll('.journey-content');
+    try {
+      const nodes = Array.from(containerRef.current?.querySelectorAll('.journey-node') || []);
+      const contents = Array.from(containerRef.current?.querySelectorAll('.journey-content') || []);
       const lineX = containerRef.current?.querySelector('.journey-progress-line-x');
       const lineY = containerRef.current?.querySelector('.journey-progress-line-y');
 
       if (!nodes || nodes.length === 0) return;
 
-      const timeline = createTimeline({
+      timeline = createTimeline({
         autoplay: true,
         loop: true,
       });
@@ -103,14 +103,19 @@ export function CustomerJourney() {
         }
       });
 
-      // Dừng lại 2 giây trước khi vòng lặp lặp lại
+      // Dừng lại 3 giây trước khi vòng lặp lặp lại
       timeline.add({
         targets: nodes[0],
         duration: 3000,
       }, time);
-    });
+      
+    } catch(err) {
+      console.error("AnimeJS Timeline Error:", err);
+    }
 
-    return () => scope.revert();
+    return () => {
+      if (timeline && timeline.pause) timeline.pause();
+    };
   }, []);
 
   return (

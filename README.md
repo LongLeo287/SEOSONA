@@ -34,6 +34,7 @@ npm run start
 ## Deploy
 
 Chưa khóa hosting mặc định trong repo. Chọn nền tảng deploy rõ ràng trước khi gắn staging/domain production.
+Vercel Git auto deployments are disabled in `vercel.json`.
 
 ## Lưu ý bảo mật
 
