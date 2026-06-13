@@ -175,7 +175,51 @@ Logo icon được dùng ở 3 trạng thái biến thể:
 
 ---
 
-## 05. ICON SYSTEM
+## 05. SAFE SPACING & RESPONSIVE LAYOUT SYSTEM
+
+Toàn bộ nền tảng phải đảm bảo tuân thủ chuẩn Safe Spacing (Không gian an toàn) để đảm bảo UI không bị vỡ trên mọi thiết bị và luôn có đủ khoảng "thở" (White space).
+
+### 5.1. Section Spacing (Khoảng cách giữa các Section - Trục Y)
+| Màn hình | Breakpoint | Tailwind Class | Giá trị thực |
+|---|---|---|---|
+| **Mobile** | `< 640px` | `py-12` | 48px |
+| **Tablet** | `sm:` (≥ 640px) | `sm:py-16` | 64px |
+| **Desktop** | `lg:` (≥ 1024px) | `lg:py-20` | 80px |
+
+*Luôn dùng chuỗi class này cho thẻ `<section>`: `py-12 sm:py-16 lg:py-20`.*
+*Ngoại lệ: Với các Hero Section (Top đầu trang), dùng `py-16 sm:py-20 lg:py-24` để có thêm không gian nổi bật.*
+
+### 5.2. Container Safe Spacing (Giới hạn khung đọc - Trục X)
+Tâm trang web phải luôn cân bằng, content không bao giờ được chạm sát viền màn hình (Edge-to-edge) trừ hình nền.
+- **Chuẩn Container:** `container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8`
+- **Max Width:** Khoá cứng ở `max-w-7xl` (1280px). Không dùng `max-w-full` để text không bị kéo dài dàn trải trên màn hình 4K.
+- **Padding 2 bên:** 
+  - Mobile: `px-4` (16px)
+  - Tablet: `px-6` (24px)
+  - Desktop: `px-8` (32px)
+
+### 5.3. Box & Card Padding (Không gian trong thẻ)
+| Loại Thẻ | Mobile (`p-` default) | Tablet/Desktop (`sm:`/`lg:`/`xl:`) | Use case |
+|---|---|---|---|
+| Thẻ Nhỏ / Tag | `p-4` (16px) | `sm:p-5` (20px) | Feature card nhỏ |
+| Thẻ Dịch Vụ / Process | `p-6` (24px) | `sm:p-8` hoặc `xl:p-8` (32px) | Service card, Process card |
+| Thẻ Đặc Biệt (Featured) | `p-6` (24px) | `sm:p-10` (40px) | Featured Service, Hero Card |
+
+### 5.4. Text & Element Gap (Khoảng cách thành phần)
+- Khoảng cách từ Tagline đến Tiêu đề (H2): `mt-4` đến `mt-6` (16px - 24px)
+- Khoảng cách từ Tiêu đề (H2) đến Mô tả (p): `mt-4` đến `mt-6` (16px - 24px)
+- Khoảng cách từ Tiêu đề Card (H3) đến Mô tả Card (p): `mt-2` đến `mt-3` (8px - 12px)
+- Gap trong Grid/Flex: `gap-4` (mobile), `gap-6` hoặc `gap-8` (tablet/desktop)
+
+### 5.5. Responsive Grid Rules
+Cấu trúc Grid phải tự động dàn trang (Reflow) mềm mại:
+- **Default (Mobile):** `grid-cols-1` (1 cột, trải dọc)
+- **Tablet (`sm:`/`md:`):** `sm:grid-cols-2` (2 cột)
+- **Desktop (`lg:`/`xl:`):** `lg:grid-cols-3` hoặc `lg:grid-cols-4` tuỳ vào lượng nội dung.
+
+---
+
+## 06. ICON SYSTEM
 
 **Style:** Line Icons — clean, minimal, 1.5–2px stroke  
 **Size grid:** 16px / 20px / 24px / 32px  
@@ -196,7 +240,7 @@ Logo icon được dùng ở 3 trạng thái biến thể:
 
 ---
 
-## 06. IMAGERY STYLE
+## 07. IMAGERY STYLE
 
 ### Photography Direction
 | Thuộc tính | Mô tả |
@@ -218,7 +262,7 @@ Logo icon được dùng ở 3 trạng thái biến thể:
 
 ---
 
-## 07. APPLICATIONS
+## 08. APPLICATIONS
 
 ### Website Hero
 - Headline: **"Share. Search. Connect."** — (Chữ "Search" có hiệu ứng text-shimmer gradient 7 màu ánh sáng).
@@ -261,7 +305,7 @@ Logo icon được dùng ở 3 trạng thái biến thể:
 
 ---
 
-## 08. BRAND ESSENCE
+## 09. BRAND ESSENCE
 
 ### Mission
 > *"Nâng tầm chia sẻ, lan toả giá trị."*  
@@ -290,7 +334,7 @@ Nếu SEOSONA là người: **Chuyên gia dữ liệu trẻ trung, thẳng thắ
 
 ---
 
-## 09. IMPLEMENTATION RULES
+## 10. IMPLEMENTATION RULES
 
 ### CSS Variables Bắt buộc
 ```css

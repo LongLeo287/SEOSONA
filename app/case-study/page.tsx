@@ -77,7 +77,10 @@ const stats = [
   { value: "3–6", label: "Tháng thấy kết quả" },
 ];
 
-export default function Page() {
+export default async function Page() {
+  // Simulate fetching data from a database or API
+  await new Promise((resolve) => setTimeout(resolve, 2500));
+
   const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -102,18 +105,18 @@ export default function Page() {
         <div className="bg-grid-tech absolute inset-0 opacity-30 hidden md:block" />
         <div className="absolute left-0 top-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#003566] opacity-40 blur-[120px] hidden md:block" />
         <div className="absolute bottom-0 right-0 h-[400px] w-[400px] translate-x-1/3 translate-y-1/3 rounded-full bg-[#46FF00] opacity-8 blur-[100px] hidden md:block" />
-        <div className="animate-scanline pointer-events-none absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#46FF00]/20 to-transparent hidden md:block" />
+
 
         <div className="container relative text-center">
           <div className="badge-accent mx-auto mb-6 inline-flex">
             <span className="h-1.5 w-1.5 rounded-full bg-[#46FF00]" />
             Case Study thực chiến
           </div>
-          <h1 className="mx-auto max-w-4xl text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="mx-auto max-w-4xl text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl text-balance">
             Kết quả SEO đến từ{" "}
             <span className="animate-text-shimmer">chiến lược có hệ thống</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg text-pretty">
             Mỗi ngành có mức độ cạnh tranh, hành trình tìm kiếm và cơ hội chuyển đổi khác nhau.
             SEOSONA xây roadmap theo dữ liệu thay vì triển khai theo cảm tính.
           </p>
@@ -171,8 +174,8 @@ export default function Page() {
                       <div className="mb-1 text-xs font-black uppercase tracking-[0.18em] text-slate-400">
                         {item.industry}
                       </div>
-                      <h2 className="text-xl font-black text-[#091338]">{item.result}</h2>
-                      <p className="mt-2 text-sm leading-7 text-slate-600">{item.detail}</p>
+                      <h2 className="text-xl font-black text-[#091338] text-balance">{item.result}</h2>
+                      <p className="mt-2 text-sm leading-7 text-slate-600 text-pretty">{item.detail}</p>
 
                       <div className="mt-4 flex flex-wrap gap-2">
                         {item.tags.map((tag) => (

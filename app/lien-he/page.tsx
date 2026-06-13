@@ -87,18 +87,18 @@ export default function Page() {
         <div className="bg-grid-tech absolute inset-0 opacity-30 hidden md:block" />
         <div className="absolute left-0 top-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#003566] opacity-40 blur-[120px] hidden md:block" />
         <div className="absolute bottom-0 right-0 h-[400px] w-[400px] translate-x-1/3 translate-y-1/3 rounded-full bg-[#46FF00] opacity-10 blur-[100px] hidden md:block" />
-        <div className="animate-scanline pointer-events-none absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#46FF00]/20 to-transparent hidden md:block" />
+
 
         <div className="container relative text-center">
           <div className="badge-accent mx-auto mb-6 inline-flex">
             <span className="h-1.5 w-1.5 rounded-full bg-[#46FF00]" />
             Liên hệ & Tư vấn
           </div>
-          <h1 className="mx-auto max-w-3xl text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
+          <h1 className="mx-auto max-w-3xl text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl text-balance">
             Bắt đầu tăng trưởng từ{" "}
             <span className="animate-text-shimmer">Google cùng SEOSONA</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg text-pretty">
             Để lại thông tin để đội ngũ tư vấn audit nhanh hiện trạng SEO/Google Ads
             và đề xuất roadmap phù hợp với mục tiêu của bạn.
           </p>
@@ -113,8 +113,8 @@ export default function Page() {
           {/* Left: Contact info */}
           <div className="space-y-6">
             <RevealOnScroll>
-              <h2 className="text-2xl font-black text-[#091338]">Thông tin liên hệ</h2>
-              <p className="mt-3 leading-8 text-slate-600">
+              <h2 className="text-2xl font-black text-[#091338] text-balance">Thông tin liên hệ</h2>
+              <p className="mt-3 leading-8 text-slate-600 text-pretty">
                 SEOSONA sẵn sàng tư vấn và giải đáp mọi câu hỏi về SEO, Google Ads,
                 Content SEO và đào tạo. Liên hệ trực tiếp hoặc để lại thông tin để được phản hồi sớm nhất.
               </p>
@@ -205,8 +205,8 @@ export default function Page() {
           {/* Right: Form */}
           <RevealOnScroll delay={100}>
             <div className="card p-7 sm:p-8">
-              <h2 className="mb-2 text-2xl font-black text-[#091338]">Gửi yêu cầu tư vấn</h2>
-              <p className="mb-6 text-sm text-slate-500">
+              <h2 className="mb-2 text-2xl font-black text-[#091338] text-balance">Gửi yêu cầu tư vấn</h2>
+              <p className="mb-6 text-sm text-slate-500 text-pretty">
                 Đội ngũ SEOSONA sẽ phản hồi trong vòng 24 giờ làm việc.
               </p>
               <ContactForm />
@@ -219,7 +219,7 @@ export default function Page() {
       <section className="bg-white py-12 sm:py-14">
         <div className="container">
           <RevealOnScroll className="mb-8 text-center">
-            <h2 className="text-2xl font-black text-[#091338]">Tìm hiểu thêm về dịch vụ</h2>
+            <h2 className="text-2xl font-black text-[#091338] text-balance">Tìm hiểu thêm về dịch vụ</h2>
           </RevealOnScroll>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[

@@ -52,7 +52,7 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
       <div className="container py-12 lg:py-20">
         <article className="mx-auto max-w-3xl">
           <header className="mb-12 text-center">
-            <h1 className="text-3xl font-black text-[#091338] sm:text-4xl md:text-5xl leading-tight tracking-tight">
+            <h1 className="text-3xl font-black text-[#091338] sm:text-4xl md:text-5xl leading-tight tracking-tight text-balance">
               {page.meta.title}
             </h1>
           </header>

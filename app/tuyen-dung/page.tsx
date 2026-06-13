@@ -19,8 +19,8 @@ export default function Page() {
         <div className="grid gap-5 md:grid-cols-2">
           {jobs.map((job) => (
             <div key={job} className="card p-6">
-              <h2 className="text-2xl font-black">{job}</h2>
-              <p className="mt-3 text-slate-600">Mô tả công việc, yêu cầu, quyền lợi và form ứng tuyển sẽ được hoàn thiện trong phase content.</p>
+              <h2 className="text-2xl font-black text-balance">{job}</h2>
+              <p className="mt-3 text-slate-600 text-pretty">Mô tả công việc, yêu cầu, quyền lợi và form ứng tuyển sẽ được hoàn thiện trong phase content.</p>
             </div>
           ))}
         </div>

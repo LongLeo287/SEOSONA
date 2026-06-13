@@ -5,8 +5,8 @@ export default function NotFound() {
     <main className="container py-24 text-center">
       <div className="mx-auto max-w-2xl">
         <div className="text-8xl font-black text-blue-100">404</div>
-        <h1 className="mt-4 text-5xl font-black tracking-tight text-slate-950">Không tìm thấy trang</h1>
-        <p className="mt-5 text-lg leading-8 text-slate-600">
+        <h1 className="mt-4 text-5xl font-black tracking-tight text-slate-950 text-balance">Không tìm thấy trang</h1>
+        <p className="mt-5 text-lg leading-8 text-slate-600 text-pretty">
           URL này có thể đã được di chuyển trong quá trình rebuild. Hãy quay về trang chủ hoặc thư viện kiến thức SEO.
         </p>
         <div className="mt-8 flex justify-center gap-4">

@@ -37,8 +37,8 @@ export default async function HubPage({ params }: { params: Promise<{ slug: stri
       </Link>
       
       <div className="max-w-3xl">
-        <h1 className="text-4xl font-black text-slate-950 sm:text-5xl">{hub.title}</h1>
-        <p className="mt-6 text-lg text-slate-600 leading-8">{hub.description}</p>
+        <h1 className="text-4xl font-black text-slate-950 sm:text-5xl text-balance">{hub.title}</h1>
+        <p className="mt-6 text-lg text-slate-600 leading-8 text-pretty">{hub.description}</p>
       </div>
 
       <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -73,7 +73,7 @@ export default async function HubPage({ params }: { params: Promise<{ slug: stri
                       day: 'numeric'
                     })}
                   </time>
-                  <h2 className="mt-3 text-xl font-black leading-snug text-[#091338] transition-colors group-hover:text-[#003566] line-clamp-3">
+                  <h2 className="mt-3 text-xl font-black leading-snug text-[#091338] transition-colors group-hover:text-[#003566] line-clamp-3 text-balance">
                     {post.title}
                   </h2>
                 </div>

@@ -92,11 +92,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 day: 'numeric'
               })}
             </time>
-            <h1 className="mt-4 text-3xl font-black text-[#091338] sm:text-4xl md:text-5xl leading-tight tracking-tight">
+            <h1 className="mt-4 text-3xl font-black text-[#091338] sm:text-4xl md:text-5xl leading-tight tracking-tight text-balance">
               {post.meta.title}
             </h1>
             {post.meta.excerpt && (
-              <p className="mt-6 text-lg text-[#6B7280] leading-8">
+              <p className="mt-6 text-lg text-[#6B7280] leading-8 text-pretty">
                 {post.meta.excerpt}
               </p>
             )}

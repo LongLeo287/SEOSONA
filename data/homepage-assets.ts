@@ -12,11 +12,11 @@ export const clientLogos = [
 ];
 
 export const pressLogos = [
-  { name: "CafeF", src: "/images/legacy/press/cafef.png" },
-  { name: "Dân trí", src: "/images/legacy/press/dantri.png" },
-  { name: "Thanh Niên", src: "/images/legacy/press/thanhnien.png" },
-  { name: "Vietnamnet", src: "/images/legacy/press/vietnamnet.png" },
-  { name: "Zing News", src: "/images/legacy/press/zing-news.png" }
+  { name: "CafeF", src: "/images/legacy/press/cafef.png", href: "https://cafef.vn" },
+  { name: "Dân trí", src: "/images/legacy/press/dantri.png", href: "https://dantri.com.vn" },
+  { name: "Thanh Niên", src: "/images/legacy/press/thanhnien.png", href: "https://thanhnien.vn" },
+  { name: "Vietnamnet", src: "/images/legacy/press/vietnamnet.png", href: "https://vietnamnet.vn" },
+  { name: "Zing News", src: "/images/legacy/press/zing-news.png", href: "https://znews.vn" }
 ];
 
 export const featuredPosts = [

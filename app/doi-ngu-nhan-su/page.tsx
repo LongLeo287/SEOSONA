@@ -24,8 +24,8 @@ export default function Page() {
           {team.map((member) => (
             <div key={member.name} className="card p-6">
               <div className="mb-5 grid h-20 w-20 place-items-center rounded-3xl bg-blue-50 text-2xl font-black text-blue-700">{member.name.charAt(0)}</div>
-              <h2 className="text-2xl font-black">{member.name}</h2>
-              <p className="mt-2 text-slate-600">{member.role}</p>
+              <h2 className="text-2xl font-black text-balance">{member.name}</h2>
+              <p className="mt-2 text-slate-600 text-pretty">{member.role}</p>
             </div>
           ))}
         </div>
