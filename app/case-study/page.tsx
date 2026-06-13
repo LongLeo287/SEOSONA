@@ -5,6 +5,7 @@ import { siteConfig } from "@/lib/site";
 import { TrendingUp, BarChart2, Users, Zap } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { PageHero } from "@/components/sections/PageHero";
 
 export const metadata: Metadata = {
   title: "Case Study SEO thực chiến theo ngành | SEOSONA",
@@ -100,100 +101,79 @@ export default async function Page() {
     <main>
       <JsonLd data={itemListSchema} />
 
-      {/* Hero — Dark */}
-      <section className="relative overflow-hidden bg-[#091338] py-20 sm:py-24 lg:py-32">
-        <div className="bg-grid-tech absolute inset-0 opacity-30 hidden md:block" />
-        <div className="absolute left-0 top-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#003566] opacity-40 blur-[120px] hidden md:block" />
-        <div className="absolute bottom-0 right-0 h-[400px] w-[400px] translate-x-1/3 translate-y-1/3 rounded-full bg-[#46FF00] opacity-8 blur-[100px] hidden md:block" />
+      <PageHero
+        eyebrow="Case Study thực chiến"
+        title="Kết quả SEO đến từ chiến lược có hệ thống"
+        accentWord="chiến lược có hệ thống"
+        description="Mỗi ngành có mức độ cạnh tranh, hành trình tìm kiếm và cơ hội chuyển đổi khác nhau. SEOSONA xây roadmap theo dữ liệu thay vì triển khai theo cảm tính."
+      />
 
-
-        <div className="container relative text-center">
-          <div className="badge-accent mx-auto mb-6 inline-flex">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#46FF00]" />
-            Case Study thực chiến
-          </div>
-          <h1 className="mx-auto max-w-4xl text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl text-balance">
-            Kết quả SEO đến từ{" "}
-            <span className="animate-text-shimmer">chiến lược có hệ thống</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg text-pretty">
-            Mỗi ngành có mức độ cạnh tranh, hành trình tìm kiếm và cơ hội chuyển đổi khác nhau.
-            SEOSONA xây roadmap theo dữ liệu thay vì triển khai theo cảm tính.
-          </p>
-
-          {/* Stats row */}
-          <div className="mx-auto mt-14 grid max-w-3xl grid-cols-2 gap-4 sm:grid-cols-4">
+      {/* Stats row */}
+      <section className="bg-white pb-12 lg:pb-16">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mt-[-2rem] relative z-10 grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-4">
             {stats.map((stat) => (
-              <div key={stat.label} className="card-dark p-5">
-                <div className="text-3xl font-black text-[#46FF00]">{stat.value}</div>
-                <div className="mt-1 text-xs font-semibold text-slate-400">{stat.label}</div>
+              <div key={stat.label} className="flex flex-col items-center justify-center rounded-[24px] border border-slate-200/80 bg-[#F8FAFC]/80 p-6 shadow-sm backdrop-blur-md">
+                <div className="text-3xl font-black text-[#3BA6F1]">{stat.value}</div>
+                <div className="mt-2 text-xs font-bold uppercase tracking-widest text-slate-500 text-center">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
-        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F4F6F8] to-transparent" />
       </section>
 
       {/* Case Study Grid */}
-      <section className="bg-[#F4F6F8] py-14 sm:py-16 lg:py-20">
-        <div className="container">
+      <section className="bg-[#F8FAFC] py-14 sm:py-16 lg:py-20">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {cases.map((item, index) => {
               const Icon = item.icon;
               return (
                 <RevealOnScroll key={item.industry} delay={index * 80}>
-                  <div className="card group relative h-full overflow-hidden p-7">
-                    {/* Orb */}
-                    <div
-                      className="absolute -right-8 -top-8 h-24 w-24 rounded-full opacity-10 blur-xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-20"
-                      style={{ background: item.color }}
-                    />
+                  <div className="group relative flex h-full flex-col overflow-hidden rounded-[32px] border border-slate-200/80 bg-white p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-[#3BA6F1]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]">
+                    {/* Subtle Top Glow on Hover */}
+                    <div className="absolute left-1/2 top-0 h-[2px] w-0 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent opacity-0 transition-all duration-500 group-hover:w-full group-hover:opacity-100" />
 
                     {/* Top row */}
                     <div className="relative mb-6 flex items-start justify-between">
                       <div
                         className="grid h-12 w-12 place-items-center rounded-2xl transition-all duration-300 group-hover:scale-110"
                         style={{
-                          background: `${item.color}18`,
-                          border: `1px solid ${item.color}30`,
-                          color: item.color,
+                          background: `#3BA6F115`,
+                          border: `1px solid #3BA6F130`,
+                          color: `#3BA6F1`,
                         }}
                       >
                         <Icon size={22} />
                       </div>
-                      <div
-                        className="text-4xl font-black"
-                        style={{ color: item.color }}
-                      >
+                      <div className="text-4xl font-black text-[#04091A]">
                         {item.metric}
                       </div>
                     </div>
 
                     {/* Content */}
-                    <div className="relative">
-                      <div className="mb-1 text-xs font-black uppercase tracking-[0.18em] text-slate-400">
+                    <div className="relative flex flex-1 flex-col">
+                      <div className="mb-1 text-xs font-bold uppercase tracking-widest text-[#3BA6F1]">
                         {item.industry}
                       </div>
-                      <h2 className="text-xl font-black text-[#091338] text-balance">{item.result}</h2>
-                      <p className="mt-2 text-sm leading-7 text-slate-600 text-pretty">{item.detail}</p>
+                      <h2 className="text-[19px] font-bold text-[#04091A] text-balance transition-colors duration-300 group-hover:text-[#3BA6F1]">
+                        {item.result}
+                      </h2>
+                      <p className="mt-3 flex-1 text-[15px] leading-relaxed text-slate-500 text-pretty">
+                        {item.detail}
+                      </p>
 
-                      <div className="mt-4 flex flex-wrap gap-2">
+                      <div className="mt-6 flex flex-wrap gap-2">
                         {item.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="inline-flex rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-bold text-slate-500"
+                            className="inline-flex rounded-full border border-slate-200 bg-[#F8FAFC] px-3 py-1 text-xs font-bold text-slate-500"
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
                     </div>
-
-                    {/* Bottom accent line */}
-                    <div
-                      className="relative mt-5 h-0.5 w-8 rounded-full transition-all duration-500 group-hover:w-full"
-                      style={{ background: `linear-gradient(to right, ${item.color}, transparent)` }}
-                    />
                   </div>
                 </RevealOnScroll>
               );

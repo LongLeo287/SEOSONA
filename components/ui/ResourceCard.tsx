@@ -18,8 +18,10 @@ export function ResourceCard({
 
   return (
     <article
-      className={`group relative flex h-full flex-col overflow-hidden rounded-[32px] bg-white shadow-sm ring-1 ring-slate-200/50 p-8 md:p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/50 ${className || ""}`}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-[32px] bg-white p-8 shadow-sm ring-1 ring-slate-200/50 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:ring-[#3BA6F1]/30 md:p-10 ${className || ""}`}
     >
+      {/* Glowing Sweep Top Border */}
+      <div className="absolute left-1/2 top-0 h-[2px] w-0 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent opacity-0 transition-all duration-500 group-hover:w-full group-hover:opacity-100" />
       <div className="mb-5 flex flex-col gap-3">
         <Icon className="h-[60px] w-[60px] text-[#3BA6F1] transition-transform duration-300 group-hover:scale-110" strokeWidth={2} />
         <span className="text-xs font-bold uppercase tracking-widest text-[#3BA6F1]">
@@ -31,7 +33,7 @@ export function ResourceCard({
         {resource.title}
       </h3>
       
-      <p className="mb-8 text-[15px] font-medium leading-[1.65] text-slate-500">
+      <p className="mb-8 text-pretty text-[15px] font-medium leading-[1.65] text-slate-500">
         {resource.description}
       </p>
 

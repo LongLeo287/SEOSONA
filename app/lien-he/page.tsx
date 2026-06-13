@@ -4,6 +4,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { siteConfig } from "@/lib/site";
 import { MapPin, Mail, Phone, Clock, ArrowRight, MessageCircle } from "lucide-react";
+import { PageHero } from "@/components/sections/PageHero";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 export const metadata: Metadata = {
@@ -82,39 +83,22 @@ export default function Page() {
     <main>
       <JsonLd data={contactPageSchema} />
 
-      {/* Hero — Dark */}
-      <section className="relative overflow-hidden bg-[#091338] py-20 sm:py-24 lg:py-28">
-        <div className="bg-grid-tech absolute inset-0 opacity-30 hidden md:block" />
-        <div className="absolute left-0 top-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#003566] opacity-40 blur-[120px] hidden md:block" />
-        <div className="absolute bottom-0 right-0 h-[400px] w-[400px] translate-x-1/3 translate-y-1/3 rounded-full bg-[#46FF00] opacity-10 blur-[100px] hidden md:block" />
-
-
-        <div className="container relative text-center">
-          <div className="badge-accent mx-auto mb-6 inline-flex">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#46FF00]" />
-            Liên hệ & Tư vấn
-          </div>
-          <h1 className="mx-auto max-w-3xl text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl text-balance">
-            Bắt đầu tăng trưởng từ{" "}
-            <span className="animate-text-shimmer">Google cùng SEOSONA</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg text-pretty">
-            Để lại thông tin để đội ngũ tư vấn audit nhanh hiện trạng SEO/Google Ads
-            và đề xuất roadmap phù hợp với mục tiêu của bạn.
-          </p>
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F4F6F8] to-transparent" />
-      </section>
+      <PageHero
+        eyebrow="Liên hệ & Tư vấn"
+        title="Bắt đầu tăng trưởng từ Google cùng SEOSONA"
+        accentWord="Google cùng SEOSONA"
+        description="Để lại thông tin để đội ngũ tư vấn audit nhanh hiện trạng SEO/Google Ads và đề xuất roadmap phù hợp với mục tiêu của bạn."
+      />
 
       {/* Main contact section */}
-      <section className="bg-[#F4F6F8] py-14 sm:py-16 lg:py-20">
+      <section className="bg-[#F8FAFC] py-14 sm:py-16 lg:py-20">
         <div className="container grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-start">
 
           {/* Left: Contact info */}
           <div className="space-y-6">
             <RevealOnScroll>
-              <h2 className="text-2xl font-black text-[#091338] text-balance">Thông tin liên hệ</h2>
-              <p className="mt-3 leading-8 text-slate-600 text-pretty">
+              <h2 className="text-2xl font-black text-[#04091A] text-balance">Thông tin liên hệ</h2>
+              <p className="mt-3 leading-8 text-slate-500 text-pretty">
                 SEOSONA sẵn sàng tư vấn và giải đáp mọi câu hỏi về SEO, Google Ads,
                 Content SEO và đào tạo. Liên hệ trực tiếp hoặc để lại thông tin để được phản hồi sớm nhất.
               </p>
@@ -129,9 +113,9 @@ export default function Page() {
                     <div
                       className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl transition-all duration-300"
                       style={{
-                        background: `${item.color}15`,
-                        border: `1px solid ${item.color}30`,
-                        color: item.color,
+                        background: `#3BA6F115`,
+                        border: `1px solid #3BA6F130`,
+                        color: `#3BA6F1`,
                       }}
                     >
                       <Icon size={20} />
@@ -140,7 +124,7 @@ export default function Page() {
                       <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
                         {item.label}
                       </div>
-                      <div className="mt-0.5 font-black text-[#091338]">{item.value}</div>
+                      <div className="mt-0.5 font-black text-[#04091A]">{item.value}</div>
                       <div className="text-sm text-slate-500">{item.note}</div>
                     </div>
                   </div>
@@ -152,14 +136,14 @@ export default function Page() {
                       href={item.href}
                       target={item.href.startsWith("http") ? "_blank" : undefined}
                       rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="card block p-5"
+                      className="group relative block overflow-hidden rounded-[24px] border border-slate-200/80 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#3BA6F1]/30 hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)]"
                     >
                       {inner}
                     </a>
                   </RevealOnScroll>
                 ) : (
                   <RevealOnScroll key={item.label} delay={index * 60}>
-                    <div className="card p-5">{inner}</div>
+                    <div className="group relative block overflow-hidden rounded-[24px] border border-slate-200/80 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#3BA6F1]/30 hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)]">{inner}</div>
                   </RevealOnScroll>
                 );
               })}
@@ -167,10 +151,10 @@ export default function Page() {
 
             {/* Social links */}
             <RevealOnScroll delay={240}>
-              <div className="card p-5">
+              <div className="group relative block overflow-hidden rounded-[24px] border border-slate-200/80 bg-white p-5 transition-all duration-300 hover:border-[#3BA6F1]/30 hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)]">
                 <div className="mb-4 flex items-center gap-2">
-                  <MessageCircle size={16} className="text-[#003566]" />
-                  <div className="text-sm font-black text-[#091338]">Theo dõi SEOSONA</div>
+                  <MessageCircle size={16} className="text-[#3BA6F1]" />
+                  <div className="text-sm font-black text-[#04091A]">Theo dõi SEOSONA</div>
                 </div>
                 <div className="flex flex-wrap gap-3">
                   <a
@@ -204,9 +188,9 @@ export default function Page() {
 
           {/* Right: Form */}
           <RevealOnScroll delay={100}>
-            <div className="card p-7 sm:p-8">
-              <h2 className="mb-2 text-2xl font-black text-[#091338] text-balance">Gửi yêu cầu tư vấn</h2>
-              <p className="mb-6 text-sm text-slate-500 text-pretty">
+            <div className="group relative block overflow-hidden rounded-[24px] border border-slate-200/80 bg-white p-7 sm:p-8 shadow-sm transition-all duration-300">
+              <h2 className="mb-2 text-2xl font-black text-[#04091A] text-balance">Gửi yêu cầu tư vấn</h2>
+              <p className="mb-6 text-[15px] font-medium leading-relaxed text-slate-500 text-pretty">
                 Đội ngũ SEOSONA sẽ phản hồi trong vòng 24 giờ làm việc.
               </p>
               <ContactForm />
@@ -217,9 +201,9 @@ export default function Page() {
 
       {/* Quick links */}
       <section className="bg-white py-12 sm:py-14">
-        <div className="container">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <RevealOnScroll className="mb-8 text-center">
-            <h2 className="text-2xl font-black text-[#091338] text-balance">Tìm hiểu thêm về dịch vụ</h2>
+            <h2 className="text-2xl font-black text-[#04091A] text-balance">Tìm hiểu thêm về dịch vụ</h2>
           </RevealOnScroll>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
@@ -231,17 +215,17 @@ export default function Page() {
               <RevealOnScroll key={item.href} delay={index * 60}>
                 <Link
                   href={item.href}
-                  className="group card flex items-center justify-between p-5"
+                  className="group relative flex h-full items-center justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-[#F8FAFC]/50 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#3BA6F1]/30 hover:bg-white hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)]"
                 >
                   <div>
-                    <div className="font-black text-[#091338] transition group-hover:text-[#003566]">
+                    <div className="font-bold text-[#04091A] transition-colors duration-300 group-hover:text-[#3BA6F1]">
                       {item.label}
                     </div>
-                    <div className="mt-1 text-sm text-slate-500">{item.desc}</div>
+                    <div className="mt-1 text-sm font-medium text-slate-500">{item.desc}</div>
                   </div>
                   <ArrowRight
                     size={18}
-                    className="shrink-0 text-slate-300 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#003566]"
+                    className="shrink-0 text-slate-300 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#3BA6F1]"
                   />
                 </Link>
               </RevealOnScroll>

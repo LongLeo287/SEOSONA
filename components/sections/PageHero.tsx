@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 
 type PageHeroProps = {
   eyebrow: string;
@@ -9,7 +11,7 @@ type PageHeroProps = {
   primaryHref?: string;
   secondaryCta?: string;
   secondaryHref?: string;
-  /** Highlight keyword in title with neon gradient */
+  /** Highlight keyword in title with accent color */
   accentWord?: string;
 };
 
@@ -23,13 +25,12 @@ export function PageHero({
   secondaryHref,
   accentWord,
 }: PageHeroProps) {
-  // Replace accentWord in title with neon-gradient span
   const renderedTitle = accentWord
     ? title.split(accentWord).map((part, i, arr) =>
         i < arr.length - 1 ? (
           <span key={i}>
             {part}
-            <span className="animate-text-shimmer">{accentWord}</span>
+            <span className="text-[#3BA6F1]">{accentWord}</span>
           </span>
         ) : (
           <span key={i}>{part}</span>
@@ -38,58 +39,48 @@ export function PageHero({
     : title;
 
   return (
-    <section className="relative overflow-hidden bg-[#091338] py-20 sm:py-24 lg:py-32">
-      {/* Background grid - hidden on mobile to reduce clutter as per Guideline 07 */}
-      <div className="bg-grid-tech absolute inset-0 opacity-40 hidden md:block" />
+    <section className="relative overflow-hidden bg-white py-12 lg:py-16">
+      {/* Premium Tech Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800A_1px,transparent_1px),linear-gradient(to_bottom,#8080800A_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+      {/* Soft Glow Orbs */}
+      <div className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] rounded-full bg-[#3BA6F1]/5 blur-[100px] pointer-events-none mix-blend-multiply" />
+      <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-[#7DD3FC]/10 blur-[120px] pointer-events-none mix-blend-multiply" />
 
-      {/* Ambient glows - hidden on mobile to reduce clutter */}
-      <div className="absolute left-0 top-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#003566] opacity-40 blur-[120px] hidden md:block" />
-      <div className="absolute bottom-0 right-0 h-[400px] w-[400px] translate-x-1/3 translate-y-1/3 rounded-full bg-[#46FF00] opacity-10 blur-[100px] hidden md:block" />
-
-      {/* Scanline overlay - hidden on mobile */}
-      <div className="animate-scanline pointer-events-none absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#46FF00]/20 to-transparent hidden md:block" />
-
-      <div className="container relative">
-        <div className="max-w-4xl">
+      <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <RevealOnScroll direction="up" className="flex flex-col items-center text-center">
           {/* Eyebrow badge */}
-          <div className="badge-accent mb-6 inline-flex">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#46FF00]" />
+          <SectionBadge live={true}>
             {eyebrow}
-          </div>
+          </SectionBadge>
 
           {/* Headline */}
-          <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="mx-auto mt-4 max-w-4xl text-balance text-4xl font-black leading-tight tracking-tight text-[#04091A] sm:text-5xl md:text-[54px]">
             {renderedTitle}
           </h1>
 
           {/* Description */}
-          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg">
+          <p className="mx-auto mt-5 max-w-2xl text-pretty text-[17px] font-medium leading-relaxed text-slate-500">
             {description}
           </p>
 
           {/* CTAs */}
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             {primaryHref && (
-              <Link href={primaryHref} className="btn-primary group">
+              <Link href={primaryHref} className="flex h-14 items-center justify-center gap-2 rounded-full bg-[#3BA6F1] px-8 text-[15px] font-bold text-white transition-all hover:scale-105 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25 w-full sm:w-auto">
                 {primaryCta}
-                <ArrowRight
-                  size={18}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
+                <ArrowRight size={18} />
               </Link>
             )}
 
             {secondaryHref && secondaryCta && (
-              <Link href={secondaryHref} className="btn-secondary group">
+              <Link href={secondaryHref} className="flex h-14 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-[15px] font-bold text-[#04091A] transition-all hover:border-[#3BA6F1] hover:text-[#3BA6F1] w-full sm:w-auto group">
                 {secondaryCta}
+                <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </Link>
             )}
           </div>
-        </div>
+        </RevealOnScroll>
       </div>
-      
-      {/* Bottom fade out to next section */}
-      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-transparent to-transparent" />
     </section>
   );
 }

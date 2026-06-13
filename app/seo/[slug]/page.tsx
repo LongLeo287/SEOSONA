@@ -47,9 +47,12 @@ export default async function HubPage({ params }: { params: Promise<{ slug: stri
             <Link
               href={`/seo/${resolvedParams.slug}/${post.slug}/`}
               key={post.slug}
-              className="group flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[#003566]/30 hover:shadow-xl hover:shadow-[#003566]/10"
+              className="group relative flex h-full flex-col overflow-hidden rounded-[32px] border border-slate-200/80 bg-white transition-all duration-500 hover:-translate-y-1.5 hover:border-[#3BA6F1]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]"
             >
-              <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+              {/* Subtle Top Glow on Hover */}
+              <div className="absolute left-1/2 top-0 z-10 h-[2px] w-0 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent opacity-0 transition-all duration-500 group-hover:w-full group-hover:opacity-100" />
+              
+              <div className="relative aspect-[16/10] overflow-hidden bg-[#F8FAFC]">
                 {post.coverImage ? (
                   <Image
                     src={post.coverImage}
@@ -59,26 +62,26 @@ export default async function HubPage({ params }: { params: Promise<{ slug: stri
                     sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center bg-[#F4F6F8] text-[#003566]/50">
+                  <div className="flex h-full w-full items-center justify-center bg-[#F8FAFC] text-slate-300 font-black text-2xl tracking-widest">
                     SEOSONA
                   </div>
                 )}
               </div>
               <div className="flex flex-1 flex-col justify-between p-6 sm:p-8">
                 <div>
-                  <time className="text-xs font-bold uppercase tracking-wider text-[#003566]">
+                  <time className="text-xs font-bold uppercase tracking-wider text-[#3BA6F1]">
                     {new Date(post.date).toLocaleDateString("vi-VN", {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric'
                     })}
                   </time>
-                  <h2 className="mt-3 text-xl font-black leading-snug text-[#091338] transition-colors group-hover:text-[#003566] line-clamp-3 text-balance">
+                  <h2 className="mt-3 text-xl font-bold tracking-tight text-[#04091A] transition-colors duration-300 group-hover:text-[#3BA6F1] line-clamp-3 text-balance">
                     {post.title}
                   </h2>
                 </div>
-                <div className="mt-6 flex items-center gap-2 text-sm font-bold text-[#003566] transition-colors group-hover:text-[#46FF00]">
-                  Đọc tiếp <span className="text-lg leading-none transition-transform group-hover:translate-x-1">→</span>
+                <div className="mt-6 flex items-center gap-2 text-[15px] font-bold text-[#3BA6F1]">
+                  Đọc tiếp <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </div>
               </div>
             </Link>
