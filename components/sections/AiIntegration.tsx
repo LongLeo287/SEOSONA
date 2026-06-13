@@ -39,6 +39,22 @@ const sgeScenarios = [
         Chiến lược <strong className="text-[#1A0DAB]">Topic Cluster</strong> (Cụm chủ đề) là phương pháp tối ưu hóa cấu trúc website bằng cách nhóm các bài viết có chủ đề liên quan xung quanh một bài viết Pillar chính. Phương pháp này giúp xây dựng độ phủ nội dung (Topical Authority) cực kỳ mạnh mẽ. Hệ thống AI của SEOSONA có khả năng tự động hóa việc gom nhóm Semantic Keywords, thiết lập Internal Link chuẩn SEO và cấu trúc hóa toàn bộ dữ liệu, giúp Google dễ dàng thu thập và đánh giá chuyên môn của website.
       </p>
     )
+  },
+  {
+    search: "SEO tổng thể là gì",
+    answer: (
+      <p className="text-[14px] md:text-[14.5px] leading-relaxed text-[#1F1F1F]">
+        Theo thông tin tổng hợp, <strong className="text-[#1A0DAB]">SEO Tổng Thể</strong> là phương pháp tối ưu hóa toàn bộ website trên các phương diện: Technical, Onpage, Offpage và Entity. Khác với SEO từ khóa truyền thống chỉ tập trung vào một vài từ khóa ngắn, SEO tổng thể do SEOSONA triển khai nhắm đến hàng ngàn từ khóa trải dài trên hành trình khách hàng (Customer Journey), giúp tăng trưởng traffic an toàn và bền vững hơn trước các đợt Update của Google.
+      </p>
+    )
+  },
+  {
+    search: "Báo giá dịch vụ SEO",
+    answer: (
+      <p className="text-[14px] md:text-[14.5px] leading-relaxed text-[#1F1F1F]">
+        Bảng giá <strong className="text-[#1A0DAB]">Dịch vụ SEO</strong> phụ thuộc vào nhiều yếu tố như: Tình trạng website hiện tại, mức độ cạnh tranh của ngành, và mục tiêu KPI cam kết. Tại SEOSONA, quy trình báo giá bắt buộc phải trải qua bước Audit Website chuyên sâu (thường từ 2-3 ngày) để phân tích đối thủ và lập kế hoạch rõ ràng. Doanh nghiệp sẽ nhận được một bản Master Plan chi tiết kèm theo ngân sách đầu tư tối ưu nhất cho từng giai đoạn.
+      </p>
+    )
   }
 ];
 
@@ -79,6 +95,36 @@ const contentScenarios = [
         </div>
       </div>
     )
+  },
+  {
+    prompt: "Gợi ý 5 Tiêu đề (Title) giật tít nhưng chuẩn SEO cho bài: 'Dịch vụ SEO'",
+    content: (
+      <div className="flex flex-col gap-2">
+        <h3 className="font-semibold text-white text-[16px] m-0">5 Title đề xuất (Tối ưu CTR):</h3>
+        <ul className="list-decimal pl-5 text-slate-300 space-y-1 mb-2">
+           <li><span className="text-emerald-400">Dịch Vụ SEO Tổng Thể Từ Khóa Lên Top Google [Báo Giá 2026]</span></li>
+           <li><span className="text-emerald-400">Dịch Vụ SEO Website Chuyên Nghiệp - Cam Kết Traffic Thực Tế</span></li>
+           <li><span className="text-emerald-400">Top 1 Dịch Vụ SEO Uy Tín Tại TPHCM & Hà Nội (Audit Miễn Phí)</span></li>
+           <li><span className="text-emerald-400">Bảng Giá Dịch Vụ SEO Chuyên Nghiệp - Tăng Trưởng X3 Doanh Thu</span></li>
+           <li><span className="text-emerald-400">Dịch Vụ SEO Mũ Trắng - An Toàn 100% Trước Bản Cập Nhật Google</span></li>
+        </ul>
+      </div>
+    )
+  },
+  {
+    prompt: "Viết đoạn Meta Description cho bài 'Cách tăng Traffic tự nhiên'",
+    content: (
+      <div className="flex flex-col gap-3">
+        <h3 className="font-semibold text-white text-[16px] m-0">Meta Description Optimization</h3>
+        <div className="bg-[#2F2F2F] p-3 rounded-lg border border-[#444] text-slate-300 leading-relaxed text-[14.5px]">
+           Hướng dẫn cách tăng traffic tự nhiên (Organic Traffic) cho website bền vững nhất. Áp dụng ngay chiến lược SEO từ chuyên gia SEOSONA giúp X3 lượt truy cập!
+        </div>
+        <div className="flex items-center gap-4 text-[13px]">
+           <div className="text-emerald-400 flex items-center gap-1"><CheckCircle2 className="w-3.5 h-3.5"/> Length: 156 chars (Perfect)</div>
+           <div className="text-emerald-400 flex items-center gap-1"><CheckCircle2 className="w-3.5 h-3.5"/> Action-driven CTA</div>
+        </div>
+      </div>
+    )
   }
 ];
 
@@ -100,6 +146,24 @@ const technicalScenarios = [
     { text: "[CRITICAL] 12 infinite loops detected in /old-blog/ migration.", color: "text-[#F44747]" },
     { text: "> Auto-generating disallow rules for robots.txt...", color: "text-slate-300" },
     { text: "[SUCCESS] Crawl efficiency optimized by projected 40%.", color: "text-[#4EC9B0]" }
+  ],
+  [
+    { text: "> Initializing Core Web Vitals (CWV) scanner...", color: "text-slate-300" },
+    { text: "> Emulating Mobile Device (Moto G4) on 3G Fast network...", color: "text-slate-300" },
+    { text: "[INFO] Largest Contentful Paint (LCP) is 3.2s. Target: < 2.5s.", color: "text-[#DCDCAA]" },
+    { text: "[INFO] Cumulative Layout Shift (CLS) is 0.04. Target: < 0.1.", color: "text-[#4EC9B0]" },
+    { text: "[CRITICAL] First Input Delay (FID) / INP is 240ms. Target: < 200ms.", color: "text-[#F44747]" },
+    { text: "> Identifying render-blocking resources...", color: "text-slate-300" },
+    { text: "[FIX] Suggestion: Preload hero image and defer off-screen JS.", color: "text-[#569CD6]" }
+  ],
+  [
+    { text: "> Validating Schema Markup & Structured Data...", color: "text-slate-300" },
+    { text: "> Fetching Organization, LocalBusiness, and Article schemas...", color: "text-slate-300" },
+    { text: "[SUCCESS] Organization schema valid. Found connected Knowledge Panel.", color: "text-[#4EC9B0]" },
+    { text: "[WARNING] Article schema missing 'author.url' on /blog/* pages.", color: "text-[#DCDCAA]" },
+    { text: "> Verifying FAQPage schema nesting...", color: "text-slate-300" },
+    { text: "[ERROR] Invalid nesting detected in FAQPage script tag on /dich-vu-seo.", color: "text-[#F44747]" },
+    { text: "[AUTO-FIX] Rebuilding JSON-LD string... Schema deployed.", color: "text-[#569CD6]" }
   ]
 ];
 
@@ -163,6 +227,8 @@ function SgeUI() {
                <div className="flex flex-wrap justify-center gap-3 text-[13.5px]">
                   <button onClick={() => triggerSearch(0)} className="bg-[#F8F9FA] hover:border-slate-300 hover:shadow-sm border border-transparent px-5 py-2.5 rounded-md text-slate-700 transition-all">Dịch vụ SEO uy tín</button>
                   <button onClick={() => triggerSearch(1)} className="bg-[#F8F9FA] hover:border-slate-300 hover:shadow-sm border border-transparent px-5 py-2.5 rounded-md text-slate-700 transition-all">Tối ưu Topic Cluster</button>
+                  <button onClick={() => triggerSearch(2)} className="bg-[#F8F9FA] hover:border-slate-300 hover:shadow-sm border border-transparent px-5 py-2.5 rounded-md text-slate-700 transition-all hidden sm:block">SEO tổng thể là gì</button>
+                  <button onClick={() => triggerSearch(3)} className="bg-[#F8F9FA] hover:border-slate-300 hover:shadow-sm border border-transparent px-5 py-2.5 rounded-md text-slate-700 transition-all hidden sm:block">Báo giá dịch vụ SEO</button>
                </div>
             </div>
          ) : (
@@ -242,6 +308,8 @@ function ContentUI() {
         <div className="flex flex-col gap-1">
            <button onClick={() => triggerChat(0)} className={`text-[13.5px] text-left px-3 py-2.5 rounded-lg truncate transition-colors ${scenarioIndex === 0 ? 'bg-[#2F2F2F] text-white' : 'text-slate-300 hover:bg-[#2F2F2F]'}`}>Tối ưu E-E-A-T ngành Y tế</button>
            <button onClick={() => triggerChat(1)} className={`text-[13.5px] text-left px-3 py-2.5 rounded-lg truncate transition-colors ${scenarioIndex === 1 ? 'bg-[#2F2F2F] text-white' : 'text-slate-300 hover:bg-[#2F2F2F]'}`}>Phân tích LSI Keywords</button>
+           <button onClick={() => triggerChat(2)} className={`text-[13.5px] text-left px-3 py-2.5 rounded-lg truncate transition-colors ${scenarioIndex === 2 ? 'bg-[#2F2F2F] text-white' : 'text-slate-300 hover:bg-[#2F2F2F]'}`}>5 Tiêu đề chuẩn SEO</button>
+           <button onClick={() => triggerChat(3)} className={`text-[13.5px] text-left px-3 py-2.5 rounded-lg truncate transition-colors ${scenarioIndex === 3 ? 'bg-[#2F2F2F] text-white' : 'text-slate-300 hover:bg-[#2F2F2F]'}`}>Viết Meta Description</button>
         </div>
       </div>
       
@@ -256,7 +324,7 @@ function ContentUI() {
                   <h2 className="text-2xl font-semibold text-white mb-8">How can I help you today?</h2>
                   
                   {/* Suggestions at bottom */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full max-w-2xl mt-auto">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-2xl mt-auto">
                      <button onClick={() => triggerChat(0)} className="bg-[#2F2F2F] hover:bg-[#3D3D3D] border border-transparent p-4 rounded-xl text-left transition-colors flex flex-col gap-1">
                         <span className="text-[14px] text-white font-medium">Viết Outline bài viết</span>
                         <span className="text-[13px] text-slate-400">Tối ưu E-E-A-T cho ngành Y Tế</span>
@@ -264,6 +332,14 @@ function ContentUI() {
                      <button onClick={() => triggerChat(1)} className="bg-[#2F2F2F] hover:bg-[#3D3D3D] border border-transparent p-4 rounded-xl text-left transition-colors flex flex-col gap-1">
                         <span className="text-[14px] text-white font-medium">Audit LSI Keywords</span>
                         <span className="text-[13px] text-slate-400">So với đối thủ Top 1: 'Dịch vụ SEO'</span>
+                     </button>
+                     <button onClick={() => triggerChat(2)} className="bg-[#2F2F2F] hover:bg-[#3D3D3D] border border-transparent p-4 rounded-xl text-left transition-colors flex flex-col gap-1 hidden sm:flex">
+                        <span className="text-[14px] text-white font-medium">Tạo 5 Tiêu Đề</span>
+                        <span className="text-[13px] text-slate-400">Giật tít, chuẩn SEO cho bài 'Dịch vụ SEO'</span>
+                     </button>
+                     <button onClick={() => triggerChat(3)} className="bg-[#2F2F2F] hover:bg-[#3D3D3D] border border-transparent p-4 rounded-xl text-left transition-colors flex flex-col gap-1 hidden sm:flex">
+                        <span className="text-[14px] text-white font-medium">Viết Meta Description</span>
+                        <span className="text-[13px] text-slate-400">Cho bài 'Cách tăng traffic tự nhiên'</span>
                      </button>
                   </div>
                </div>
@@ -348,12 +424,18 @@ function TechnicalUI() {
       </div>
       
       {/* Terminal Toolbar */}
-      <div className="flex items-center px-4 h-11 border-b border-[#333] shrink-0 gap-6 bg-[#252526]">
-         <button onClick={() => triggerAudit(0)} className={`text-[12px] font-sans flex items-center gap-2 ${scenarioIndex===0 ? 'text-white border-b-2 border-[#007ACC]' : 'text-slate-400 hover:text-slate-200 border-b-2 border-transparent'} h-full transition-colors`}>
+      <div className="flex items-center px-4 h-11 border-b border-[#333] shrink-0 gap-6 bg-[#252526] overflow-x-auto no-scrollbar">
+         <button onClick={() => triggerAudit(0)} className={`whitespace-nowrap text-[12px] font-sans flex items-center gap-2 ${scenarioIndex===0 ? 'text-white border-b-2 border-[#007ACC]' : 'text-slate-400 hover:text-slate-200 border-b-2 border-transparent'} h-full transition-colors`}>
             <span className="text-[#007ACC]">$</span> run deep-crawl
          </button>
-         <button onClick={() => triggerAudit(1)} className={`text-[12px] font-sans flex items-center gap-2 ${scenarioIndex===1 ? 'text-white border-b-2 border-[#007ACC]' : 'text-slate-400 hover:text-slate-200 border-b-2 border-transparent'} h-full transition-colors`}>
+         <button onClick={() => triggerAudit(1)} className={`whitespace-nowrap text-[12px] font-sans flex items-center gap-2 ${scenarioIndex===1 ? 'text-white border-b-2 border-[#007ACC]' : 'text-slate-400 hover:text-slate-200 border-b-2 border-transparent'} h-full transition-colors`}>
             <span className="text-[#007ACC]">$</span> run log-analysis
+         </button>
+         <button onClick={() => triggerAudit(2)} className={`whitespace-nowrap text-[12px] font-sans flex items-center gap-2 ${scenarioIndex===2 ? 'text-white border-b-2 border-[#007ACC]' : 'text-slate-400 hover:text-slate-200 border-b-2 border-transparent'} h-full transition-colors hidden sm:flex`}>
+            <span className="text-[#007ACC]">$</span> run core-web-vitals
+         </button>
+         <button onClick={() => triggerAudit(3)} className={`whitespace-nowrap text-[12px] font-sans flex items-center gap-2 ${scenarioIndex===3 ? 'text-white border-b-2 border-[#007ACC]' : 'text-slate-400 hover:text-slate-200 border-b-2 border-transparent'} h-full transition-colors hidden sm:flex`}>
+            <span className="text-[#007ACC]">$</span> run schema-validation
          </button>
       </div>
 
@@ -378,7 +460,12 @@ function TechnicalUI() {
                   <span className="text-slate-300 mx-1">~</span> 
                   <span className="text-[#DCDCAA]">/audit</span> 
                   <span className="mx-2">$</span> 
-                  <span className="text-white">{scenarioIndex === 0 ? "npm run deep-crawl" : "npm run log-analysis"}</span>
+                  <span className="text-white">
+                     {scenarioIndex === 0 && "npm run deep-crawl"}
+                     {scenarioIndex === 1 && "npm run log-analysis"}
+                     {scenarioIndex === 2 && "npm run core-web-vitals"}
+                     {scenarioIndex === 3 && "npm run schema-validation"}
+                  </span>
                </div>
                {activeLines.map((idx) => {
                  const line = technicalScenarios[scenarioIndex][idx];
