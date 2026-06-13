@@ -63,9 +63,14 @@ function Typewriter({ words }: { words: string[] }) {
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white py-16 lg:py-24">
-      {/* Background decoration: Soft gradient blur */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#F0F6FF] via-white to-transparent opacity-80 blur-3xl -z-10 pointer-events-none" />
+    <section className="relative overflow-hidden bg-white pt-32 pb-16 lg:pt-40 lg:pb-24">
+      {/* Premium Tech Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800A_1px,transparent_1px),linear-gradient(to_bottom,#8080800A_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
+      
+      {/* Soft Glow Orbs */}
+      <div className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] rounded-full bg-[#3BA6F1]/10 blur-[100px] pointer-events-none mix-blend-multiply"></div>
+      <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-[#7DD3FC]/15 blur-[120px] pointer-events-none mix-blend-multiply"></div>
+      <div className="absolute bottom-[-20%] left-[20%] w-[400px] h-[400px] rounded-full bg-[#3BA6F1]/5 blur-[100px] pointer-events-none mix-blend-multiply"></div>
 
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <RevealOnScroll direction="up" className="flex flex-col items-center text-center">
