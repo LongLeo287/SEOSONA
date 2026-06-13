@@ -149,12 +149,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           ">
             <MDXRemote source={post.content} components={mdxComponents} options={{ mdxOptions: { format: 'md' } }} />
           </div>
-        </article>
-
-        <aside className="hidden lg:block w-12 shrink-0 sticky top-24 z-50">
-          <TableOfContents />
-        </aside>
+          </article>
         </div>
+        
+        {/* Floating Table of Contents */}
+        <TableOfContents />
       </div>
     </main>
   );
