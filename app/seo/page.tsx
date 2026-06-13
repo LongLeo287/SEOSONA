@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { seoHubs } from "@/data/seo-hubs";
-import { PageHero } from "@/components/sections/PageHero";
+import { getAllPosts } from "@/lib/mdx";
+import { BlogLayout } from "@/components/layout/BlogLayout";
+import { BlogHero } from "@/components/sections/BlogHero";
+import { BlogCard } from "@/components/ui/BlogCard";
 
 export const metadata: Metadata = {
   title: "Thư viện kiến thức SEO có hệ thống | SEOSONA",
@@ -11,41 +12,26 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
+  const posts = getAllPosts();
+
   return (
-    <main>
-      <PageHero
-        eyebrow="Kiến thức SEO"
-        title="Thư Viện Kiến Thức SEO Hệ Thống"
-        accentWord="SEO Hệ Thống"
-        description="Hub tài liệu từ cơ bản đến nâng cao: technical SEO, onpage, content, offpage, keyword research và Google Algorithms."
+    <BlogLayout>
+      <BlogHero 
+        title="Tất cả bài viết"
+        description="Khám phá toàn bộ bài viết, case study và hướng dẫn SEO thực chiến được tổng hợp bởi đội ngũ chuyên gia tại SEOSONA."
       />
-      <div className="bg-[#F8FAFC] py-12 lg:py-16 text-[#04091A]">
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-            {Object.entries(seoHubs).map(([slug, hub]) => (
-              <Link 
-                href={`/seo/${slug}/`} 
-                key={slug} 
-                className="group relative flex h-full flex-col overflow-hidden rounded-[32px] border border-slate-200/80 bg-white p-8 transition-all duration-500 hover:-translate-y-1.5 hover:border-[#3BA6F1]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]"
-              >
-                {/* Subtle Top Glow on Hover */}
-                <div className="absolute left-1/2 top-0 h-[2px] w-0 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent opacity-0 transition-all duration-500 group-hover:w-full group-hover:opacity-100" />
-                
-                <h2 className="text-xl font-bold tracking-tight text-[#04091A] transition-colors duration-300 group-hover:text-[#3BA6F1]">
-                  {hub.title}
-                </h2>
-                <p className="mt-3 flex-1 text-base leading-relaxed text-slate-500">
-                  {hub.description}
-                </p>
-                <div className="mt-6 inline-flex items-center gap-2 text-[15px] font-bold text-[#3BA6F1]">
-                  Xem chi tiết 
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                </div>
-              </Link>
-            ))}
+
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {posts.length > 0 ? (
+          posts.map((post) => (
+            <BlogCard key={post.slug} post={post} />
+          ))
+        ) : (
+          <div className="col-span-full py-12 text-center text-slate-500">
+            Đang cập nhật bài viết...
           </div>
-        </div>
+        )}
       </div>
-    </main>
+    </BlogLayout>
   );
 }
