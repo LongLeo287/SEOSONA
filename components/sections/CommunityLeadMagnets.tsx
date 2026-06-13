@@ -1,7 +1,75 @@
-"\"use client\";\n\nimport Link from \"next/link\";\nimport { useState } from \"react\";\nimport { ArrowRight, Download } from \"lucide-react\";\nimport { LeadCaptureModal } from \"@/components/ui/LeadCaptureModal\";\nimport { ResourceCard } from \"@/components/ui/ResourceCard\";\nimport { RevealOnScroll } from \"@/components/ui/RevealOnScroll\";\nimport { resources, type Resource } from \"@/data/resources\";\n\nconst featuredResources = resources\n  .filter((resource) => resource.isFeatured)\n  .slice(0, 3);\n\nexport function CommunityLeadMagnets() {\n  const [selectedResource, setSelectedResource] = useState<Resource | null>(null);\n\n  if (featuredResources.length < 3) return null;\n\n  return (\n    <>\n      <section id=\"lead-magnets\" className=\"bg-white py-20 lg:py-28\">\n        <div className=\"container\">\n          <div className=\"mb-16 flex flex-col items-center text-center lg:mb-20\">\n            <RevealOnScroll>\n              <div className=\"mx-auto mb-6 inline-flex items-center gap-2 rounded-full bg-[#04091A] px-4 py-1.5 shadow-sm\">\n                <span className=\"h-2 w-2 rounded-full bg-[#3BA6F1]\"></span>\n                <span className=\"text-xs font-bold uppercase tracking-widest text-slate-300\">Tài nguyên miễn phí</span>\n              </div>\n              \n              <h2 className=\"mx-auto mb-6 max-w-4xl text-center text-[40px] font-black leading-[1.15] tracking-tight text-[#04091A] md:text-[50px] lg:text-[56px]\">\n                Kho tri thức dành riêng cho<br />\n                <span className=\"text-[#3BA6F1]\">Manager & C-Level</span>\n              </h2>\n              \n              <p className=\"mx-auto max-w-2xl text-[17px] font-medium leading-[1.7] text-slate-500\">\n                Không cần cam kết dịch vụ. Hãy tải xuống những tài liệu cốt lõi\n                mà đội ngũ nội bộ của chúng tôi đang sử dụng mỗi ngày để tạo ra\n                kết quả.\n              </p>\n            </RevealOnScroll>
-<truncated 623 bytes>
-"          <div className=\"mx-auto grid max-w-[1200px] grid-cols-1 gap-8 md:grid-cols-3\">\n            {featuredResources.map((resource, index) => (\n              <RevealOnScroll\n                key={resource.id}\n                delay={index * 100}\n                className=\"col-span-1\"\n              >\n                <ResourceCard\n                  resource={resource}\n                  onClick={setSelectedResource}\n                />\n              </RevealOnScroll>\n            ))}\n          </div>\n\n          <div className=\"mt-16 flex justify-center\">\n            <Link\n              href=\"/tai-nguyen\"\n              className=\"group inline-flex items-center justify-center gap-3 rounded-full bg-[#04091A] px-8 py-4 text-[15px] font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#3BA6F1] hover:shadow-xl hover:shadow-[#3BA6F1]/20\"\n            >\n              Xem tất cả Tài nguyên miễn phí <ArrowRight className=\"h-5 w-5 transition-transform group-hover:translate-x-1\" />\n            </Link>\n          </div>\n        </div>\n      </section>"
-"        <div className=\"container\">\n          <div className=\"mb-12 flex flex-col items-center text-center lg:mb-16\">\n            <RevealOnScroll>\n              <div className=\"mx-auto mb-6 inline-flex items-center gap-2 rounded-full bg-[#04091A] px-4 py-1.5 shadow-sm\">\n                <span className=\"h-2 w-2 rounded-full bg-[#3BA6F1]\"></span>\n                <span className=\"text-xs font-bold uppercase tracking-widest text-slate-300\">Tài nguyên miễn phí</span>\n              </div>\n              \n              <h2 className=\"mx-auto mb-5 max-w-4xl text-center text-[40px] font-black leading-[1.15] tracking-tight text-[#04091A] md:text-[50px] lg:text-[56px]\">\n                Kho tri thức dành riêng cho<br />\n                <span className=\"text-[#3BA6F1]\">Manager & C-Level</span>\n              </h2>\n              \n              <p className=\"mx-auto max-w-2xl text-[17px] font-medium leading-[1.7] text-slate-500\">\n                Không cần cam kết dịch vụ. Hãy tải xuống những tài liệu cốt lõi\n                mà đội ngũ nội bộ của chúng tôi đang sử dụng mỗi ngày để tạo ra\n                kết quả.\n              </p>\n            </RevealOnScroll>\n          </div>\n\n          <div className=\"mx-auto grid max-w-[1200px] grid-cols-1 gap-8 md:grid-cols-3\">\n            {featuredResources.map((resource, index) => (\n              <RevealOnScroll\n                key={resource.id}\n                delay={index * 100}\n                className=\"col-span-1\"\n              >\n                <ResourceCard\n                  resource={resource}\n                  onClick={setSelectedResource}\n                />\n              </RevealOnScroll>\n            ))}\n          </div>\n\n          <div className=\"mt-16 flex justify-center\">\n            <Link\n              href=\"/tai-nguyen\"\n              className=\"group inline-flex items-center justify-center gap-2 text-[16px] font-bold text-[#04091A] transition-colors hov
-<truncated 247 bytes>
-"import { LeadCaptureModal } from \"@/components/ui/LeadCaptureModal\";\nimport { ResourceCard } from \"@/components/ui/ResourceCard\";\nimport { RevealOnScroll } from \"@/components/ui/RevealOnScroll\";\nimport { SectionBadge } from \"@/components/ui/SectionBadge\";\nimport { resources, type Resource } from \"@/data/resources\";\n\nconst featuredResources = resources\n  .filter((resource) => resource.isFeatured)\n  .slice(0, 3);\n\nexport function CommunityLeadMagnets() {\n  const [selectedResource, setSelectedResource] = useState<Resource | null>(null);\n\n  if (featuredResources.length < 3) return null;\n\n  return (\n    <>\n      <section id=\"lead-magnets\" className=\"bg-white py-20 lg:py-28\">\n        <div className=\"container\">\n          <div className=\"mb-12 flex flex-col items-center text-center lg:mb-16\">\n            <RevealOnScroll>\n              <SectionBadge icon={<Download className=\"h-3.5 w-3.5\" />} live={true}>\n                Tài nguyên miễn phí\n              </SectionBadge>\n              \n              <h2 className=\"mx-auto mb-5 max-w-4xl text-center text-[40px] font-black leading-[1.15] tracking-tight text-[#04091A] md:text-[50px] lg:text-[56px]\">"
-"  return (\n    <section className=\"relative bg-[#F8FAFC] py-20 lg:py-28\">\n      <div className=\"container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8\">"
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import { ArrowRight, Download } from "lucide-react";
+import { LeadCaptureModal } from "@/components/ui/LeadCaptureModal";
+import { ResourceCard } from "@/components/ui/ResourceCard";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { SectionBadge } from "@/components/ui/SectionBadge";
+import { resources, type Resource } from "@/data/resources";
+
+const featuredResources = resources
+  .filter((resource) => resource.isFeatured)
+  .slice(0, 3);
+
+export function CommunityLeadMagnets() {
+  const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
+
+  if (featuredResources.length < 3) return null;
+
+  return (
+    <>
+      <section id="lead-magnets" className="bg-[#F8FAFC] py-12 lg:py-16">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+          <RevealOnScroll direction="up" className="mb-12 flex flex-col items-center text-center">
+            <SectionBadge live={true} icon={<Download className="h-3.5 w-3.5" />}>
+              Tài nguyên miễn phí
+            </SectionBadge>
+            <h2 className="mx-auto mb-5 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
+              Kho tri thức thực chiến dành riêng cho <br className="hidden sm:block" />
+              <span className="text-[#3BA6F1]">Manager & C-Level</span>
+            </h2>
+            <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
+              Không cần cam kết dịch vụ. Hãy tải xuống những tài liệu cốt lõi
+              mà đội ngũ chuyên gia của chúng tôi đang sử dụng mỗi ngày để tạo ra
+              kết quả đột phá
+            </p>
+          </RevealOnScroll>
+
+          <div className="grid gap-6 md:grid-cols-3 lg:gap-8">
+            {featuredResources.map((resource, index) => (
+              <RevealOnScroll
+                key={resource.id}
+                direction="up"
+                delay={index * 100}
+              >
+                <ResourceCard
+                  resource={resource}
+                  onClick={setSelectedResource}
+                />
+              </RevealOnScroll>
+            ))}
+          </div>
+
+          <RevealOnScroll direction="up" className="mt-12 flex justify-center">
+            <Link
+              href="/tai-nguyen"
+              className="flex h-14 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-[15px] font-bold text-[#04091A] transition-all hover:border-[#3BA6F1] hover:text-[#3BA6F1] group shadow-sm hover:shadow-md"
+            >
+              Khám phá toàn bộ Thư viện <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+            </Link>
+          </RevealOnScroll>
+
+        </div>
+      </section>
+
+      <LeadCaptureModal
+        open={!!selectedResource}
+        onClose={() => setSelectedResource(null)}
+        resource={selectedResource}
+      />
+    </>
+  );
+}

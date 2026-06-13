@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { clientLogos } from "@/data/homepage-assets";
+import { SectionBadge } from "@/components/ui/SectionBadge";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 const stats = [
   { value: "300+", label: "dự án triển khai" },
@@ -31,28 +33,26 @@ function LogoCard({ logo }: { logo: { name: string; src: string; href?: string }
 
 export function ClientLogoGrid() {
   return (
-    <section className="relative overflow-hidden bg-white py-14 sm:py-16 lg:py-20 font-inter">
+    <section className="relative overflow-hidden bg-[#F8FAFC] py-12 lg:py-16">
       <div className="container relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
-          <span className="badge-accent-light">
-            Khách hàng tiêu biểu
-          </span>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-[#091338] sm:text-4xl md:text-5xl font-poppins">
-            Đồng hành cùng nhiều doanh nghiệp tại Việt Nam
+        <RevealOnScroll direction="up" className="mx-auto max-w-4xl text-center">
+          <SectionBadge live={true} className="mx-auto">Khách hàng tiêu biểu</SectionBadge>
+          <h2 className="mx-auto mt-2 text-[32px] font-black tracking-tight leading-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
+            Đồng hành cùng nhiều doanh nghiệp <span className="text-[#3BA6F1]">tại Việt Nam</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
-            Các thương hiệu đã tin tưởng SEOSONA trong hành trình tăng trưởng từ Google.
+          <p className="mx-auto mt-6 max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
+            Các thương hiệu đã tin tưởng SEOSONA trong hành trình tăng trưởng từ Google, tối ưu hóa tỷ lệ chuyển đổi và bức phá doanh thu.
           </p>
-        </div>
+        </RevealOnScroll>
 
-        {/* Marquee container — no card backgrounds, just logos */}
+        {/* Marquee container */}
         <div className="relative mt-12 overflow-hidden py-4">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-white to-transparent sm:w-32" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-white to-transparent sm:w-32" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[#F8FAFC] to-transparent sm:w-32" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[#F8FAFC] to-transparent sm:w-32" />
 
           {/* Divider lines */}
-          <div className="absolute inset-x-0 top-0 h-px bg-slate-100" />
-          <div className="absolute inset-x-0 bottom-0 h-px bg-slate-100" />
+          <div className="absolute inset-x-0 top-0 h-px bg-slate-200/60" />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-slate-200/60" />
 
           <div className="logo-marquee-slow logo-marquee gap-2 pr-2">
             {marqueeLogos.map((logo, index) => (
@@ -61,24 +61,23 @@ export function ClientLogoGrid() {
           </div>
         </div>
 
-        <div className="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-4 sm:grid-cols-3">
+        <RevealOnScroll direction="up" delay={200} className="mx-auto mt-12 grid max-w-4xl grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
           {stats.map((item, index) => {
-            const isLastAndOdd = index === stats.length - 1 && stats.length % 2 !== 0;
             return (
               <div
                 key={item.label}
-                className={`rounded-3xl border border-slate-200 bg-white p-6 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#003566]/20 hover:shadow-md ${isLastAndOdd ? "col-span-2 sm:col-span-1" : ""}`}
+                className="rounded-[32px] border border-slate-200/80 bg-white p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#3BA6F1]/30 hover:shadow-xl ring-1 ring-slate-100/50 group"
               >
-                <div className="text-4xl font-black text-[#003566] font-poppins">
+                <div className="text-[48px] font-black text-[#04091A] leading-none tracking-tight group-hover:text-[#3BA6F1] transition-colors">
                   {item.value}
                 </div>
-                <div className="mt-2 text-sm font-medium text-slate-500 uppercase tracking-wider">
+                <div className="mt-3 text-[13px] font-bold text-slate-500 uppercase tracking-widest">
                   {item.label}
                 </div>
               </div>
             );
           })}
-        </div>
+        </RevealOnScroll>
       </div>
     </section>
   );

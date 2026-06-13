@@ -12,10 +12,16 @@ export function SectionBadge({ children, icon, live = true, className }: Section
   return (
     <div 
       className={cn(
-        "mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-[#F0F6FF] px-4 py-1.5 shadow-sm transition-colors hover:bg-blue-50", 
+        "mb-6 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-[#F0F6FF] px-4 py-1.5 shadow-sm transition-colors hover:bg-blue-50", 
         className
       )}
     >
+      {live && !icon && (
+        <span className="relative flex h-2 w-2 shrink-0">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#3BA6F1] opacity-75"></span>
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-[#3BA6F1]"></span>
+        </span>
+      )}
       {icon && (
         <span className={cn("flex items-center justify-center text-[#3BA6F1]", live && "animate-pulse")}>
           {icon}

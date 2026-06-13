@@ -9,6 +9,7 @@ import { CustomerJourney } from "@/components/sections/CustomerJourney";
 import { HighTicketCaseStudies } from "@/components/sections/HighTicketCaseStudies";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { CommunityLeadMagnets } from "@/components/sections/CommunityLeadMagnets";
+import { FeaturedPosts } from "@/components/sections/FeaturedPosts";
 import { ConsultingCta } from "@/components/sections/ConsultingCta";
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ export default function HomePage() {
       <HighTicketCaseStudies />
       <Testimonials />
       <CommunityLeadMagnets />
+      <FeaturedPosts />
       <ConsultingCta />
     </main>
   );

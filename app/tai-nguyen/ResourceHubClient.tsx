@@ -71,7 +71,7 @@ export function ResourceHubClient() {
                 </h1>
                 <p className="mt-6 max-w-3xl text-base leading-8 text-slate-300 sm:text-lg">
                   Tải template, checklist, ebook và video training được SEOSONA
-                  chuẩn hóa từ các dự án SEO, GA4, Content và AI Search thực chiến.
+                  chuẩn hóa từ các dự án SEO, GA4, Content và AI Search thực chiến
                 </p>
               </div>
 
@@ -84,7 +84,7 @@ export function ResourceHubClient() {
                     <p className="text-3xl font-black">50+</p>
                     <p className="mt-1 text-sm leading-6 text-slate-300">
                       Tài nguyên miễn phí được cập nhật theo playbook triển khai
-                      nội bộ của SEOSONA.
+                      nội bộ của SEOSONA
                     </p>
                   </div>
                 </div>
@@ -142,12 +142,11 @@ export function ResourceHubClient() {
                 <ResourceCard
                   key={resource.id}
                   resource={resource}
-                  variant={resource.isFeatured && index % 2 === 0 ? "dark" : "light"}
                   className={cn(
                     activeFilter === "all" &&
-                      resource.isFeatured &&
-                      index === 0 &&
-                      "xl:col-span-2"
+                    resource.isFeatured &&
+                    index === 0 &&
+                    "xl:col-span-2"
                   )}
                   onClick={setSelectedResource}
                 />
