@@ -108,7 +108,6 @@ export function Hero() {
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent transition-all duration-500 group-hover:w-3/4 opacity-0 group-hover:opacity-100" />
                   
                   <div className="relative mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-[#3BA6F1] shadow-sm transition-transform duration-500 group-hover:scale-110 z-10">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-2xl bg-[#3BA6F1] opacity-[0.15] group-hover:opacity-[0.25] transition-opacity"></span>
                     <Icon size={24} className="relative z-10" />
                   </div>
                   <div className="text-[36px] md:text-[40px] font-black leading-none tracking-tight text-[#04091A] group-hover:text-[#3BA6F1] transition-colors duration-500">
