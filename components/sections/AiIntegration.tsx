@@ -241,7 +241,7 @@ function ContentUI() {
   return (
     <div className="w-full h-full bg-[#212121] flex relative rounded-2xl overflow-hidden shadow-2xl border border-[#333]">
       {/* Sidebar (ChatGPT style) */}
-      <div className="hidden md:flex w-64 bg-[#171717] flex-col p-3 shrink-0">
+      <div className="hidden md:flex w-56 bg-[#171717] flex-col p-3 shrink-0">
         <button onClick={() => setScenarioIndex(null)} className="bg-transparent hover:bg-[#2F2F2F] text-white flex items-center gap-3 px-3 py-2.5 rounded-lg text-[14px] font-medium transition-colors mb-4 border border-[#333]">
           <Bot className="w-4 h-4" /> SEOSONA Content AI
           <Plus className="w-4 h-4 ml-auto" />
@@ -447,10 +447,10 @@ export function AiIntegration() {
           </p>
         </RevealOnScroll>
 
-        <div className="grid gap-8 lg:grid-cols-2 items-center">
+        <div className="grid gap-8 lg:grid-cols-12 items-center">
           
           {/* L: Features Stack */}
-          <div className="flex flex-col gap-5 justify-center lg:order-1">
+          <div className="flex flex-col gap-5 justify-center lg:col-span-5 lg:order-1">
             {aiFeatures.map((item, i) => {
               const Icon = item.icon;
               const isActive = activeIndex === i;
@@ -480,7 +480,7 @@ export function AiIntegration() {
           </div>
 
           {/* R: Dynamic UI Window (Flat) */}
-          <RevealOnScroll direction="left" delay={300} className="w-full h-[500px] lg:h-[550px] lg:order-2">
+          <RevealOnScroll direction="left" delay={300} className="w-full h-[500px] lg:h-[550px] lg:col-span-7 lg:order-2">
             <div className="relative w-full h-full transition-opacity duration-500">
               {activeIndex === 0 && <SgeUI />}
               {activeIndex === 1 && <ContentUI />}
