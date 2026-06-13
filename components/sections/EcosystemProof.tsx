@@ -50,28 +50,32 @@ export function EcosystemProof() {
             const Icon = item.icon;
             return (
               <RevealOnScroll key={item.title} direction="up" delay={i * 100}>
-                <div className="group flex h-full flex-col rounded-[32px] bg-[#F8FAFC] p-8 shadow-sm ring-1 ring-slate-200/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-[#3BA6F1]/30">
-                  <div className="mb-6 flex items-center justify-between">
-                    <span className="text-[48px] font-black text-[#3BA6F1] leading-none tracking-tight transition-transform duration-300 group-hover:scale-110 origin-left">
+                <div className="group relative flex h-full flex-col rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200/50 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:ring-[#3BA6F1]/30 overflow-hidden">
+                  
+                  {/* Glowing Sweep on Hover */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100" />
+                  
+                  <div className="mb-5 flex items-center justify-between z-10">
+                    <span className="text-[40px] font-black text-[#3BA6F1] leading-none tracking-tight transition-transform duration-500 group-hover:scale-105 origin-left">
                       {item.metric}
                     </span>
-                    <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#3BA6F1]/10 text-[#3BA6F1] shadow-sm transition-transform duration-300 group-hover:scale-110">
-                      <Icon size={28} aria-hidden="true" />
+                    <div className="flex h-12 w-12 items-center justify-center rounded-[14px] bg-[#F0F6FF] text-[#3BA6F1] shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:bg-[#3BA6F1] group-hover:text-white">
+                      <Icon size={22} aria-hidden="true" />
                     </div>
                   </div>
-                  <h3 className="mb-4 text-2xl font-black text-[#04091A] text-balance">
+                  <h3 className="mb-3 text-xl font-black text-[#04091A] text-balance">
                     {item.title}
                   </h3>
-                  <p className="mb-8 flex-1 text-[15px] font-medium leading-relaxed text-slate-500 text-pretty">
+                  <p className="mb-6 flex-1 text-[14.5px] font-medium leading-relaxed text-slate-500 text-pretty">
                     {item.desc}
                   </p>
-                  <div className="mt-auto border-t border-slate-200/80 pt-6">
+                  <div className="mt-auto border-t border-slate-100 pt-5">
                     <a href={item.href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between group/link">
-                      <span className="text-[15px] font-bold text-[#04091A] transition-colors group-hover/link:text-[#3BA6F1]">
-                        Khám phá {item.title}
+                      <span className="text-[14px] font-bold uppercase tracking-wide text-[#04091A] transition-colors group-hover/link:text-[#3BA6F1]">
+                        Khám phá
                       </span>
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-all group-hover/link:border-[#3BA6F1] group-hover/link:bg-[#3BA6F1] group-hover/link:text-white text-[#04091A]" aria-hidden="true">
-                        <ArrowRight size={18} className="transition-transform group-hover/link:translate-x-0.5" />
+                      <div className="flex items-center justify-center text-slate-400 transition-colors group-hover/link:text-[#3BA6F1]" aria-hidden="true">
+                        <ArrowRight size={18} className="transition-transform duration-300 group-hover/link:translate-x-1" />
                       </div>
                     </a>
                   </div>

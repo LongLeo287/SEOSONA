@@ -51,14 +51,18 @@ export function AiIntegration() {
             const Icon = item.icon;
             return (
               <RevealOnScroll key={item.title} direction="up" delay={i * 100}>
-                <div className="group relative flex h-full flex-col rounded-[32px] border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#3BA6F1]/40 hover:bg-white/10">
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#3BA6F1]/10 text-[#3BA6F1] shadow-sm transition-transform duration-300 group-hover:scale-110">
-                    <Icon size={28} />
+                <div className="group relative flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-1.5 hover:border-[#3BA6F1]/50 hover:bg-white/10 hover:shadow-[0_0_40px_rgba(59,166,241,0.15)] overflow-hidden">
+                  
+                  {/* Cyberpunk Top Glow */}
+                  <div className="absolute top-0 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#3BA6F1]/10 text-[#3BA6F1] shadow-inner ring-1 ring-white/5 transition-all duration-500 group-hover:scale-110 group-hover:bg-[#3BA6F1]/20 group-hover:shadow-[0_0_20px_rgba(59,166,241,0.3)] z-10">
+                    <Icon size={24} />
                   </div>
-                  <h3 className="mb-4 text-2xl font-black text-white text-balance">
+                  <h3 className="mb-3 text-xl font-black text-white text-balance transition-colors duration-500 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-[#3BA6F1]">
                     {item.title}
                   </h3>
-                  <p className="flex-1 text-[15px] leading-relaxed text-slate-400 text-pretty">
+                  <p className="flex-1 text-[14.5px] leading-relaxed text-slate-400 text-pretty">
                     {item.description}
                   </p>
                 </div>

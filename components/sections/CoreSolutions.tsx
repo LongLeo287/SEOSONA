@@ -46,23 +46,27 @@ export function CoreSolutions() {
             const Icon = item.icon;
             return (
               <RevealOnScroll key={item.title} direction="up" delay={i * 100}>
-                <div className="group flex h-full flex-col rounded-[32px] bg-[#F8FAFC] p-8 shadow-sm ring-1 ring-slate-200/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-[#3BA6F1]/30">
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-[#3BA6F1] shadow-sm transition-transform duration-300 group-hover:scale-110">
-                    <Icon size={28} aria-hidden="true" />
+                <div className="group relative flex h-full flex-col rounded-3xl bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] ring-1 ring-slate-200/50 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:ring-[#3BA6F1]/30 overflow-hidden">
+                  
+                  {/* Glowing Sweep on Hover */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100" />
+                  
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#F0F6FF] text-[#3BA6F1] shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:bg-[#3BA6F1] group-hover:text-white z-10">
+                    <Icon size={24} aria-hidden="true" />
                   </div>
-                  <h3 className="mb-4 text-2xl font-black text-[#04091A] text-balance">
+                  <h3 className="mb-3 text-xl font-black text-[#04091A] text-balance">
                     {item.title}
                   </h3>
-                  <p className="mb-8 flex-1 text-[15px] leading-relaxed text-slate-500 text-pretty">
+                  <p className="mb-6 flex-1 text-[14.5px] leading-relaxed text-slate-500 text-pretty">
                     {item.description}
                   </p>
-                  <div className="mt-auto border-t border-slate-200/80 pt-6">
+                  <div className="mt-auto border-t border-slate-100 pt-5">
                     <Link href={item.href} className="flex items-center justify-between group/link">
-                      <span className="text-[15px] font-bold text-[#04091A] transition-colors group-hover/link:text-[#3BA6F1]">
-                        Xem giải pháp {item.title}
+                      <span className="text-[14px] font-bold uppercase tracking-wide text-[#04091A] transition-colors group-hover/link:text-[#3BA6F1]">
+                        Giải pháp {item.title}
                       </span>
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-all group-hover/link:border-[#3BA6F1] group-hover/link:bg-[#3BA6F1] group-hover/link:text-white text-[#04091A]" aria-hidden="true">
-                        <ArrowRight size={18} className="transition-transform group-hover/link:translate-x-0.5" />
+                      <div className="flex items-center justify-center text-slate-400 transition-colors group-hover/link:text-[#3BA6F1]" aria-hidden="true">
+                        <ArrowRight size={18} className="transition-transform duration-300 group-hover/link:translate-x-1" />
                       </div>
                     </Link>
                   </div>

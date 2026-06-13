@@ -102,15 +102,19 @@ export function Hero() {
               return (
                 <div
                   key={item.label}
-                  className="group relative flex flex-col items-center justify-center rounded-[32px] border border-slate-200/80 bg-[#F8FAFC] p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl ring-1 ring-slate-200/50"
+                  className="group relative flex flex-col items-center justify-center rounded-3xl border border-slate-200/80 bg-[#F8FAFC]/80 backdrop-blur-sm p-6 md:py-7 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:border-[#3BA6F1]/30 hover:bg-white overflow-hidden"
                 >
-                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-[#3BA6F1] shadow-sm">
-                    <Icon size={28} />
+                  {/* Subtle Top Glow on Hover */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent transition-all duration-500 group-hover:w-3/4 opacity-0 group-hover:opacity-100" />
+                  
+                  <div className="relative mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-[#3BA6F1] shadow-sm transition-transform duration-500 group-hover:scale-110 z-10">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-2xl bg-[#3BA6F1] opacity-[0.15] group-hover:opacity-[0.25] transition-opacity"></span>
+                    <Icon size={24} className="relative z-10" />
                   </div>
-                  <div className="text-[40px] font-black leading-none tracking-tight text-[#04091A] group-hover:text-[#3BA6F1] transition-colors">
+                  <div className="text-[36px] md:text-[40px] font-black leading-none tracking-tight text-[#04091A] group-hover:text-[#3BA6F1] transition-colors duration-500">
                     <CountUp end={item.value} suffix={item.suffix} />
                   </div>
-                  <div className="mt-2 text-[15px] font-medium text-slate-500">
+                  <div className="mt-2 text-[14px] font-bold uppercase tracking-widest text-slate-500 transition-colors duration-500 group-hover:text-slate-600">
                     {item.label}
                   </div>
                 </div>

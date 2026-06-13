@@ -66,12 +66,15 @@ export function ClientLogoGrid() {
             return (
               <div
                 key={item.label}
-                className="rounded-[32px] border border-slate-200/80 bg-white p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#3BA6F1]/30 hover:shadow-xl ring-1 ring-slate-100/50 group"
+                className="group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-5 md:py-6 text-center shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-[#3BA6F1]/40 hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)] ring-1 ring-slate-100/50"
               >
-                <div className="text-[48px] font-black text-[#04091A] leading-none tracking-tight group-hover:text-[#3BA6F1] transition-colors">
+                {/* Tech Glow Sweep on Hover */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100" />
+                
+                <div className="text-[36px] md:text-[40px] font-black text-[#04091A] leading-none tracking-tight transition-colors duration-500 group-hover:text-[#3BA6F1]">
                   {item.value}
                 </div>
-                <div className="mt-3 text-[13px] font-bold text-slate-500 uppercase tracking-widest">
+                <div className="mt-2.5 text-[12px] font-bold text-slate-500 uppercase tracking-widest transition-colors duration-500 group-hover:text-slate-600">
                   {item.label}
                 </div>
               </div>
