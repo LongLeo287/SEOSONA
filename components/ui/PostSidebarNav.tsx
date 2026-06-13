@@ -115,7 +115,7 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
           return (
             <div key={groupIdx} className="flex flex-col">
               <div 
-                className="flex items-center justify-between px-2.5 py-2 cursor-pointer hover:bg-[#F8FAFC] rounded-lg transition-colors group/header"
+                className="flex items-center justify-between px-2.5 py-2 cursor-pointer hover:bg-[#F0F6FF] rounded-lg transition-all duration-200 group/header"
                 onClick={() => toggleGroup(groupIdx)}
               >
                 <span className="text-[13px] font-bold !text-[#04091A] select-none">
@@ -137,10 +137,10 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
                         key={post.slug}
                         href={`/seo/${categorySlug}/${post.slug}`}
                         className={cn(
-                          "block px-2.5 py-[6px] rounded-md text-[13px] transition-colors duration-150",
+                          "block px-2.5 py-[6px] rounded-md text-[13px] transition-all duration-200",
                           isActive
-                            ? "bg-[#F1F5F9] !text-[#04091A] font-medium leading-snug"
-                            : "truncate !text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#04091A] font-normal"
+                            ? "bg-[#F0F6FF] !text-[#3BA6F1] font-semibold leading-snug shadow-sm ring-1 ring-[#3BA6F1]/10"
+                            : "truncate !text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#3BA6F1] hover:translate-x-1 font-normal"
                         )}
                         title={post.title}
                       >
