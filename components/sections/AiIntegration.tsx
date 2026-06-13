@@ -143,7 +143,7 @@ function SgeUI() {
         </div>
       </div>
       
-      <div className="flex-1 overflow-y-auto no-scrollbar relative flex flex-col">
+      <div className="flex-1 overflow-y-auto overflow-x-hidden no-scrollbar relative flex flex-col w-full">
          {scenarioIndex === null ? (
             // Google Home Page Look
             <div className="flex-1 flex flex-col items-center justify-center px-6 animate-in fade-in duration-500 pb-12">
@@ -181,7 +181,7 @@ function SgeUI() {
                   </div>
                </div>
                
-               <div className="p-4 md:p-6 max-w-3xl">
+               <div className="p-4 md:p-6 max-w-3xl w-full min-w-0">
                  {activeLines.includes(1) && (
                    <div className="rounded-2xl border border-[#D5E3FF] bg-gradient-to-b from-[#F0F4F9] to-white p-5 md:p-6 shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-500 relative overflow-hidden">
                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4285F4] via-[#9B72CB] to-[#D96570]"></div>
@@ -254,8 +254,8 @@ function ContentUI() {
       </div>
       
       {/* Main Chat Area */}
-      <div className="flex-1 flex flex-col relative bg-[#212121]">
-         <div className="flex-1 overflow-y-auto no-scrollbar p-4 md:p-8 flex flex-col gap-6">
+      <div className="flex-1 flex flex-col relative bg-[#212121] min-w-0">
+         <div className="flex-1 overflow-y-auto overflow-x-hidden no-scrollbar p-4 md:p-8 flex flex-col gap-6 w-full">
             {scenarioIndex === null ? (
                <div className="flex-1 flex flex-col items-center justify-center animate-in fade-in duration-500">
                   <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-5 shadow-lg">
@@ -366,7 +366,7 @@ function TechnicalUI() {
       </div>
 
       {/* Terminal Window */}
-      <div className="flex-1 p-5 md:p-6 font-mono text-[13.5px] leading-relaxed overflow-y-auto no-scrollbar text-slate-300">
+      <div className="flex-1 p-5 md:p-6 font-mono text-[13.5px] leading-relaxed overflow-y-auto overflow-x-hidden no-scrollbar text-slate-300 w-full min-w-0">
          {scenarioIndex === null ? (
             <div className="text-slate-400 animate-in fade-in duration-500">
                <div className="text-[#4EC9B0] mb-2 font-bold">Welcome to SEOSONA Technical Audit Environment v2.0</div>
