@@ -89,44 +89,12 @@ export function AiIntegration() {
 
         <div className="grid gap-8 lg:grid-cols-2 items-center">
           
-          {/* L: AI Terminal Window */}
-          <RevealOnScroll direction="up" delay={100} className="w-full">
-            <div className="relative rounded-3xl border border-white/10 bg-[#0B1121] shadow-2xl overflow-hidden h-[450px] flex flex-col group">
-              {/* Glow border on hover */}
-              <div className="absolute inset-0 bg-gradient-to-b from-[#3BA6F1]/0 via-[#3BA6F1]/0 to-[#3BA6F1]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-              
-              {/* Mac-style Window Header */}
-              <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-4 py-3">
-                <div className="flex items-center gap-2">
-                  <div className="h-3 w-3 rounded-full bg-red-500/80" />
-                  <div className="h-3 w-3 rounded-full bg-amber-500/80" />
-                  <div className="h-3 w-3 rounded-full bg-green-500/80" />
-                </div>
-                <span className="text-xs font-mono font-medium text-slate-500">seosona-ai-terminal ~ bash</span>
-                <div className="w-10"></div> {/* Spacer */}
-              </div>
-              
-              {/* Terminal Content */}
-              <div className="flex-1 p-6 md:p-8 font-mono text-[13px] md:text-[14.5px] leading-relaxed overflow-hidden">
-                {activeLines.map((lineIdx) => {
-                  const line = terminalLines[lineIdx];
-                  return (
-                    <div key={lineIdx} className={`mb-3 ${line.color || 'text-slate-300'}`}>
-                      {line.text}
-                      {line.blink && <span className="animate-pulse ml-1">_</span>}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </RevealOnScroll>
-
-          {/* R: Features Stack */}
-          <div className="flex flex-col gap-5 justify-center">
+          {/* L: Features Stack */}
+          <div className="flex flex-col gap-5 justify-center lg:order-1">
             {aiFeatures.map((item, i) => {
               const Icon = item.icon;
               return (
-                <RevealOnScroll key={item.title} direction="up" delay={200 + (i * 100)}>
+                <RevealOnScroll key={item.title} direction="right" delay={100 + (i * 100)}>
                   <div className="group relative flex items-start sm:items-center gap-5 sm:gap-6 rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-[#3BA6F1]/50 hover:bg-white/10 hover:shadow-[0_0_40px_rgba(59,166,241,0.15)] overflow-hidden">
                     
                     {/* Cyberpunk Top Glow */}
@@ -148,6 +116,38 @@ export function AiIntegration() {
               );
             })}
           </div>
+
+          {/* R: AI Terminal Window */}
+          <RevealOnScroll direction="left" delay={300} className="w-full lg:order-2 [perspective:1200px]">
+            <div className="relative rounded-2xl border border-slate-700/80 bg-gradient-to-b from-[#0B1121] to-[#04091A] shadow-[0_30px_60px_rgba(0,0,0,0.6),_0_0_50px_rgba(59,166,241,0.2)] overflow-hidden h-[450px] flex flex-col group transition-all duration-700 ease-out origin-right [transform:rotateY(-12deg)_rotateX(4deg)_scale(0.95)] hover:[transform:rotateY(0deg)_rotateX(0deg)_scale(1)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.6),_0_0_80px_rgba(59,166,241,0.4)] hover:border-[#3BA6F1]/50">
+              {/* Glow border on hover */}
+              <div className="absolute inset-0 bg-gradient-to-b from-[#3BA6F1]/0 via-[#3BA6F1]/0 to-[#3BA6F1]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              
+              {/* Mac-style Window Header */}
+              <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm">
+                <div className="flex items-center gap-2">
+                  <div className="h-3 w-3 rounded-full bg-red-500/80 shadow-sm" />
+                  <div className="h-3 w-3 rounded-full bg-amber-500/80 shadow-sm" />
+                  <div className="h-3 w-3 rounded-full bg-green-500/80 shadow-sm" />
+                </div>
+                <span className="text-[11px] font-mono font-medium text-slate-500 tracking-wider">seosona-ai-terminal ~ bash</span>
+                <div className="w-10"></div> {/* Spacer */}
+              </div>
+              
+              {/* Terminal Content */}
+              <div className="flex-1 p-6 md:p-8 font-mono text-[13px] md:text-[14.5px] leading-relaxed overflow-hidden">
+                {activeLines.map((lineIdx) => {
+                  const line = terminalLines[lineIdx];
+                  return (
+                    <div key={lineIdx} className={`mb-3 ${line.color || 'text-slate-300'}`}>
+                      {line.text}
+                      {line.blink && <span className="animate-pulse ml-1">_</span>}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </RevealOnScroll>
 
         </div>
       </div>
