@@ -44,8 +44,13 @@ export function FeaturedPosts() {
                   <h3 className="mb-4 text-xl font-bold leading-tight text-[#04091A] transition-colors group-hover:text-[#3BA6F1] text-balance">
                     {post.title}
                   </h3>
-                  <div className="mt-auto flex items-center gap-2 text-[14px] font-bold text-[#3BA6F1]">
-                    Đọc bài viết <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                  <div className="mt-auto flex items-center justify-between group/link">
+                    <span className="text-[14px] font-bold text-[#04091A] transition-colors group-hover/link:text-[#3BA6F1]">
+                      Đọc bài: {post.title}
+                    </span>
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-all group-hover/link:border-[#3BA6F1] group-hover/link:bg-[#3BA6F1] group-hover/link:text-white text-[#04091A]" aria-hidden="true">
+                      <ArrowRight size={18} className="transition-transform group-hover/link:translate-x-0.5" />
+                    </div>
                   </div>
                 </div>
               </Link>

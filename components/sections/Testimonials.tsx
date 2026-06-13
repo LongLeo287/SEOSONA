@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { SectionBadge } from "@/components/ui/SectionBadge";
+import { MessageCircle } from "lucide-react";
 
 const testimonials = [
   {
@@ -45,9 +47,9 @@ const testimonials = [
 
 function StarRating({ count }: { count: number }) {
   return (
-    <div className="flex gap-0.5">
+    <div className="flex gap-1" aria-label={`Đánh giá ${count} sao`}>
       {Array.from({ length: count }).map((_, i) => (
-        <svg key={i} className="h-4 w-4 fill-amber-400 text-amber-400" viewBox="0 0 20 20">
+        <svg key={i} className="h-4 w-4 fill-amber-400 text-amber-400" viewBox="0 0 20 20" aria-hidden="true">
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
         </svg>
       ))}
@@ -66,7 +68,7 @@ function Avatar({ src, name }: { src: string; name: string }) {
 
   if (error) {
     return (
-      <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#003566] text-base font-black text-[#46FF00] ring-2 ring-[#46FF00]/30 sm:h-16 sm:w-16">
+      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#F0F6FF] text-sm font-black text-[#3BA6F1] shadow-sm ring-1 ring-blue-100">
         {initials}
       </div>
     );
@@ -75,61 +77,50 @@ function Avatar({ src, name }: { src: string; name: string }) {
   return (
     <Image
       src={src}
-      alt={name}
-      width={64}
-      height={64}
+      alt={`Chân dung ${name}`}
+      width={48}
+      height={48}
       onError={() => setError(true)}
-      className="h-14 w-14 rounded-full object-cover ring-2 ring-[#46FF00]/30 transition group-hover:ring-[#46FF00]/60 sm:h-16 sm:w-16"
+      className="h-12 w-12 rounded-full object-cover shadow-sm ring-1 ring-slate-200 transition group-hover:ring-[#3BA6F1]/50"
     />
   );
 }
 
 export function Testimonials() {
   return (
-    <section
-      className="relative overflow-hidden py-14 sm:py-16 lg:py-20"
-      style={{ background: "linear-gradient(160deg, #001833 0%, #002244 60%, #001833 100%)" }}
-    >
-      {/* Glow orbs - hidden on mobile */}
-      <div
-        className="pointer-events-none absolute right-0 top-0 hidden h-[500px] w-[500px] rounded-full opacity-10 md:block"
-        style={{ background: "radial-gradient(circle, #46FF00 0%, transparent 70%)", filter: "blur(100px)" }}
-      />
-      <div
-        className="pointer-events-none absolute bottom-0 left-0 hidden h-[400px] w-[400px] rounded-full opacity-10 md:block"
-        style={{ background: "radial-gradient(circle, #0077CE 0%, transparent 70%)", filter: "blur(80px)" }}
-      />
-
-      <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <RevealOnScroll className="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
-          <span className="badge-accent">Khách hàng nói gì</span>
-          <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl font-poppins">
-            Niềm tin đến từ kết quả và cách làm minh bạch
+    <section className="bg-white py-12 lg:py-16">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+        <RevealOnScroll direction="up" className="mb-12 flex flex-col items-center text-center">
+          <SectionBadge live={true} icon={<MessageCircle className="h-3.5 w-3.5" aria-hidden="true" />}>
+            Khách hàng nói gì
+          </SectionBadge>
+          <h2 className="mx-auto mb-5 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
+            Niềm tin đến từ <span className="text-[#3BA6F1]">kết quả thực tế</span> <br className="hidden sm:block"/>
+            và quy trình minh bạch
           </h2>
+          <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
+            Hàng trăm doanh nghiệp B2B và B2C đã tin tưởng giao phó ngân sách marketing cho SEOSONA và nhận về tỷ suất hoàn vốn ấn tượng.
+          </p>
         </RevealOnScroll>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {testimonials.map((item, index) => (
-            <RevealOnScroll key={item.name} delay={index * 80}>
-              <div className="group relative h-full overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-5 backdrop-blur-xl shadow-lg transition duration-300 hover:-translate-y-1 hover:border-[#46FF00]/30 hover:bg-white/8 hover:shadow-2xl sm:p-7">
-                {/* Decorative glow */}
-                <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#46FF00]/5 transition duration-500 group-hover:scale-150 group-hover:bg-[#46FF00]/10 blur-2xl" />
-
-                <div className="relative">
-                  <StarRating count={item.rating} />
-                  <p className="mt-4 text-base leading-8 text-slate-300 sm:text-lg font-inter">
-                    &ldquo;{item.quote}&rdquo;
-                  </p>
-                  <div className="mt-6 flex items-center gap-4">
-                    <Avatar src={item.avatar} name={item.name} />
-                    <div>
-                      <div className="font-black text-white">{item.name}</div>
-                      <div className="text-sm font-medium text-slate-400">{item.role}</div>
-                      <div className="text-xs text-[#46FF00]/70">{item.company}</div>
-                    </div>
+            <RevealOnScroll key={item.name} direction="up" delay={index * 100}>
+              <article className="group flex h-full flex-col rounded-[32px] bg-[#F8FAFC] p-8 shadow-sm ring-1 ring-slate-200/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-[#3BA6F1]/30">
+                <StarRating count={item.rating} />
+                <p className="mt-6 mb-8 flex-1 text-[15px] italic leading-relaxed text-slate-600 text-pretty">
+                  &ldquo;{item.quote}&rdquo;
+                </p>
+                <div className="mt-auto flex items-center gap-4 border-t border-slate-200/80 pt-6">
+                  <Avatar src={item.avatar} name={item.name} />
+                  <div>
+                    <h3 className="font-bold text-[#04091A] text-sm">{item.name}</h3>
+                    <p className="text-[13px] font-medium text-slate-500">{item.role}</p>
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-[#3BA6F1] mt-0.5">{item.company}</p>
                   </div>
                 </div>
-              </div>
+              </article>
             </RevealOnScroll>
           ))}
         </div>

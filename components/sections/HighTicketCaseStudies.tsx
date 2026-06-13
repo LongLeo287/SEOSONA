@@ -105,7 +105,7 @@ export function HighTicketCaseStudies() {
               <RevealOnScroll key={item.title} direction="up" delay={i * 100}>
                 <div className="group flex h-full flex-col rounded-[32px] bg-[#F8FAFC] p-8 shadow-sm ring-1 ring-slate-200/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-[#3BA6F1]/30">
                   <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-[#3BA6F1] shadow-sm transition-transform duration-300 group-hover:scale-110">
-                    <Icon size={28} />
+                    <Icon size={28} aria-hidden="true" />
                   </div>
                   <h3 className="mb-4 text-2xl font-black text-[#04091A] text-balance">
                     {item.title}
@@ -116,9 +116,9 @@ export function HighTicketCaseStudies() {
                   <div className="mt-auto border-t border-slate-200/80 pt-6">
                     <Link href="/case-study" className="flex items-center justify-between group/link">
                       <span className="text-[15px] font-bold text-[#04091A] transition-colors group-hover/link:text-[#3BA6F1]">
-                        Xem báo cáo chi tiết
+                        Xem báo cáo dự án {item.title}
                       </span>
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-all group-hover/link:border-[#3BA6F1] group-hover/link:bg-[#3BA6F1] group-hover/link:text-white text-[#04091A]">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-all group-hover/link:border-[#3BA6F1] group-hover/link:bg-[#3BA6F1] group-hover/link:text-white text-[#04091A]" aria-hidden="true">
                         <ArrowRight size={18} className="transition-transform group-hover/link:translate-x-0.5" />
                       </div>
                     </Link>
