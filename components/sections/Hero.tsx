@@ -74,9 +74,9 @@ export function Hero() {
             Hệ sinh thái Digital hàng đầu
           </SectionBadge>
 
-          <h1 className="mx-auto mt-6 max-w-5xl text-4xl font-black leading-tight tracking-tight text-[#04091A] sm:text-5xl md:text-[54px] lg:text-[64px]">
-            Share<span className="text-[#3BA6F1]">.</span> Search<span className="text-[#3BA6F1]">.</span> Connect<span className="text-[#3BA6F1]">.</span> <br className="hidden md:block" />
-            <span className="inline-block">
+          <h1 className="mx-auto mt-6 w-full text-4xl font-black leading-tight tracking-tight text-[#04091A] sm:text-5xl md:text-[54px] lg:text-[64px]">
+            Share<span className="text-[#3BA6F1]">.</span> Search<span className="text-[#3BA6F1]">.</span> Connect<span className="text-[#3BA6F1]">.</span> <br className="hidden lg:block" />
+            <span className="inline-block lg:whitespace-nowrap">
               Tăng trưởng từ <Typewriter words={["SEO Tổng thể", "Google Ads", "Content Marketing", "Thiết kế Website", "Data Analytics"]} />
             </span>
           </h1>

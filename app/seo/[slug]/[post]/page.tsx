@@ -6,6 +6,7 @@ import { ArrowLeft } from "lucide-react";
 import { getPostBySlug, getAllPosts } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { seoHubs, HubSlug } from "@/data/seo-hubs";
+import { TableOfContents } from "@/components/ui/TableOfContents";
 
 export function generateStaticParams() {
   const posts = getAllPosts();
@@ -28,6 +29,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+const getText = (node: any): string => {
+  if (typeof node === 'string') return node;
+  if (typeof node === 'number') return node.toString();
+  if (Array.isArray(node)) return node.map(getText).join('');
+  if (typeof node === 'object' && node?.props?.children) return getText(node.props.children);
+  return '';
+};
+
+const slugify = (text: string) => 
+  text.toString().toLowerCase().trim()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Xóa dấu tiếng Việt
+    .replace(/đ/g, "d").replace(/Đ/g, "d")
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\-]+/g, '');
+
 const mdxComponents = {
   img: (props: any) => (
     // Instead of forcing aspect-video and full width which blows up SVG icons,
@@ -43,7 +59,15 @@ const mdxComponents = {
   ),
   a: (props: any) => (
     <a {...props} className="text-[#003566] font-bold hover:text-[#46FF00] transition-colors decoration-2 underline-offset-4" />
-  )
+  ),
+  h2: ({ children, ...props }: any) => {
+    const slug = slugify(getText(children));
+    return <h2 id={slug} {...props} className="scroll-mt-24">{children}</h2>;
+  },
+  h3: ({ children, ...props }: any) => {
+    const slug = slugify(getText(children));
+    return <h3 id={slug} {...props} className="scroll-mt-24">{children}</h3>;
+  }
 };
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string, post: string }> }) {
@@ -83,8 +107,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <ArrowLeft size={16} /> Quay lại {hubName}
         </Link>
         
-        <article className="mx-auto max-w-3xl">
-          <header className="mb-12 text-center">
+        <div className="flex flex-col lg:flex-row lg:items-start gap-12">
+          <article className="flex-1 min-w-0 mx-auto max-w-3xl w-full">
+            <header className="mb-12 text-center">
             <time className="text-sm font-bold uppercase tracking-widest text-[#003566]">
               {new Date(post.meta.date).toLocaleDateString("vi-VN", {
                 year: 'numeric',
@@ -130,6 +155,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <MDXRemote source={post.content} components={mdxComponents} options={{ mdxOptions: { format: 'md' } }} />
           </div>
         </article>
+
+        <aside className="hidden lg:block w-64 shrink-0 sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto overflow-x-hidden">
+          <TableOfContents />
+        </aside>
+        </div>
       </div>
     </main>
   );
