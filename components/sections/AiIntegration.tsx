@@ -131,7 +131,7 @@ function SgeUI() {
         </div>
       </div>
       
-      <div className="p-6 flex-1 flex flex-col font-sans relative overflow-hidden">
+      <div className="p-6 flex-1 flex flex-col font-sans relative overflow-y-auto no-scrollbar">
         {scenarioIndex === null ? (
           <div className="flex flex-col items-center justify-center h-full gap-5 animate-in fade-in zoom-in duration-500 pb-10">
             <Bot className="w-12 h-12 text-[#3BA6F1] mb-2" />
@@ -155,7 +155,7 @@ function SgeUI() {
             )}
             
             {activeLines.includes(1) && (
-              <div className="relative flex-1 bg-gradient-to-br from-blue-50 to-indigo-50/30 border border-blue-100/50 rounded-3xl p-6 overflow-hidden shadow-sm animate-in fade-in duration-500">
+              <div className="relative shrink-0 bg-gradient-to-br from-blue-50 to-indigo-50/30 border border-blue-100/50 rounded-3xl p-6 shadow-sm animate-in fade-in duration-500">
                 <div className="flex items-center gap-2 mb-5">
                   <Sparkles className="w-5 h-5 text-blue-600 animate-pulse" />
                   <span className="text-[13px] font-bold text-slate-800 uppercase tracking-wider">AI Overview</span>
@@ -228,7 +228,7 @@ function ContentUI() {
       </div>
       
       {/* Chat Area */}
-      <div className="flex-1 flex flex-col p-6 font-sans relative overflow-hidden bg-[#1E293B]">
+      <div className="flex-1 flex flex-col p-6 font-sans relative overflow-y-auto no-scrollbar bg-[#1E293B]">
         {scenarioIndex === null ? (
           <div className="flex flex-col items-center justify-center h-full text-center px-4 animate-in fade-in duration-500">
             <Bot className="w-12 h-12 text-slate-600 mb-4 opacity-50" />
@@ -308,7 +308,7 @@ function TechnicalUI() {
       </div>
       
       {/* Terminal Content */}
-      <div className="flex-1 p-6 md:p-8 font-mono text-[13px] md:text-[14.5px] leading-relaxed overflow-hidden">
+      <div className="flex-1 p-6 md:p-8 font-mono text-[13px] md:text-[14.5px] leading-relaxed overflow-y-auto no-scrollbar">
         {scenarioIndex === null ? (
           <div className="text-slate-400 animate-in fade-in duration-500">
             <div className="text-[#3BA6F1] font-bold mb-3">SEOSONA OS Technical Terminal v2.0</div>
