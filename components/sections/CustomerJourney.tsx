@@ -139,7 +139,8 @@ export function CustomerJourney() {
             Hành trình hợp tác <span className="text-[#3BA6F1]">minh bạch</span>
           </h2>
           <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
-            Chúng tôi coi trọng sự minh bạch tuyệt đối. Mọi bước đi đều được báo cáo thường xuyên để bạn nắm rõ dòng tiền đầu tư của mình đang tạo ra kết quả gì.
+            Chúng tôi coi trọng sự minh bạch tuyệt đối. <br className="hidden md:block" />
+            Mọi bước đi đều được báo cáo thường xuyên để bạn nắm rõ dòng tiền đầu tư của mình đang tạo ra kết quả gì.
           </p>
         </RevealOnScroll>
         

@@ -43,7 +43,8 @@ export function EcosystemProof() {
             <span className="text-[#3BA6F1]">Hệ sinh thái Digital</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
-            Sự phát triển bền vững cần sự hậu thuẫn từ một hệ sinh thái mạnh mẽ. SEOSONA tự hào sở hữu mạng lưới truyền thông và cộng đồng lớn nhất ngành SEO
+            Sự phát triển bền vững cần sự hậu thuẫn từ một hệ sinh thái mạnh mẽ. <br className="hidden md:block" />
+            SEOSONA tự hào sở hữu mạng lưới truyền thông và cộng đồng lớn nhất ngành SEO
           </p>
         </RevealOnScroll>
 

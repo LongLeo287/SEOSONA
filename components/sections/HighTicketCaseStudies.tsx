@@ -75,7 +75,8 @@ export function HighTicketCaseStudies() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
-            Chúng tôi không chạy theo metric ảo. Mọi chiến lược tại SEOSONA đều được thiết kế để tối ưu hóa Conversion Rate và ROI cho khách hàng
+            Chúng tôi không chạy theo metric ảo. <br className="hidden md:block" />
+            Mọi chiến lược tại SEOSONA đều được thiết kế để tối ưu hóa Conversion Rate và ROI cho khách hàng
           </p>
 
           <div className="mt-8 flex items-center justify-center h-[44px]">
