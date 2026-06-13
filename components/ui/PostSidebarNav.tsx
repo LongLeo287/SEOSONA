@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { PostMeta } from "@/lib/mdx";
+import { ChevronDown, FolderOpen } from "lucide-react";
 
 interface PostSidebarNavProps {
   posts: PostMeta[];
@@ -14,10 +15,24 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
 
   return (
     <div className="w-full">
-      <h4 className="mb-4 text-[11px] font-black uppercase tracking-[0.2em] text-[#94A3B8]">
-        {categoryName}
-      </h4>
-      <nav className="flex flex-col gap-1 pr-4 max-h-[calc(100vh-10rem)] overflow-y-auto custom-scrollbar">
+      {/* Fake Dropdown Header for Category */}
+      <div className="mb-6 flex items-center justify-between px-3 py-2 border border-[#E2E8F0] rounded-xl shadow-sm bg-white cursor-pointer hover:bg-[#F8FAFC] transition-colors">
+        <div className="flex items-center gap-2.5">
+          <div className="w-6 h-6 rounded-md bg-[#F0F6FF] text-[#3BA6F1] flex items-center justify-center">
+            <FolderOpen className="w-3.5 h-3.5" />
+          </div>
+          <span className="text-[14px] font-semibold !text-[#04091A]">
+            {categoryName}
+          </span>
+        </div>
+        <ChevronDown className="w-4 h-4 !text-[#94A3B8]" />
+      </div>
+
+      <div className="mb-2 px-2 pb-1 text-[11px] font-black uppercase tracking-[0.15em] !text-[#94A3B8]">
+        Bài viết trong chuyên mục
+      </div>
+
+      <nav className="flex flex-col gap-0.5 pr-2 max-h-[calc(100vh-14rem)] overflow-y-auto custom-scrollbar">
         {posts.map((post) => {
           const isActive = currentSlug === post.slug;
           return (
@@ -25,10 +40,10 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
               key={post.slug}
               href={`/seo/${categorySlug}/${post.slug}`}
               className={cn(
-                "block px-3 py-2 rounded-lg text-[14px] transition-all duration-200 leading-snug",
+                "block px-2.5 py-[6px] rounded-md text-[13px] transition-colors duration-150 leading-relaxed",
                 isActive
-                  ? "bg-[#F8FAFC] !text-[#04091A] font-bold ring-1 ring-[#E2E8F0]/60"
-                  : "!text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#3BA6F1] font-medium"
+                  ? "bg-[#F1F5F9] !text-[#04091A] font-medium"
+                  : "!text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#04091A] font-normal"
               )}
             >
               {post.title}
