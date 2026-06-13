@@ -1,6 +1,8 @@
+import { useEffect, useRef } from "react";
 import { Route } from "lucide-react";
 import { SectionBadge } from "@/components/ui/SectionBadge";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { createScope, onScroll, createTimeline } from "animejs";
 
 const steps = [
   { title: "Nghiên cứu thị trường", desc: "Đào sâu vào hành vi khách hàng và dữ liệu tìm kiếm để tìm ra cơ hội." },
@@ -10,11 +12,61 @@ const steps = [
 ];
 
 export function CustomerJourney() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const scope = createScope(containerRef.current);
+
+    scope.add(() => {
+      const timeline = createTimeline({
+        autoplay: onScroll({
+          target: containerRef.current,
+        }),
+      });
+
+      timeline
+        .add({
+          targets: '.journey-progress-line-x',
+          width: ['0%', '100%'],
+          duration: 1000,
+          ease: 'linear'
+        }, 0)
+        .add({
+          targets: '.journey-progress-line-y',
+          height: ['0%', '100%'],
+          duration: 1000,
+          ease: 'linear'
+        }, 0)
+        .add({
+          targets: '.journey-node',
+          scale: [0.8, 1],
+          backgroundColor: ['#F1F5F9', '#3BA6F1'],
+          color: ['#94A3B8', '#FFFFFF'],
+          boxShadow: ['0 0 0px rgba(59,166,241,0)', '0 0 20px rgba(59,166,241,0.5)'],
+          delay: (el: any, i: number) => (i * 330),
+          duration: 300,
+          ease: 'spring(1, 80, 10, 0)'
+        }, 0)
+        .add({
+          targets: '.journey-content',
+          opacity: [0, 1],
+          translateY: [30, 0],
+          delay: (el: any, i: number) => (i * 330) + 100,
+          duration: 500,
+          ease: 'outCubic'
+        }, 0);
+    });
+
+    return () => scope.revert();
+  }, []);
+
   return (
-    <section className="bg-[#F8FAFC] py-12 lg:py-16">
+    <section className="bg-[#F8FAFC] py-16 lg:py-24">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
-        <RevealOnScroll direction="up" className="mb-12 flex flex-col items-center text-center">
+        <RevealOnScroll direction="up" className="mb-16 flex flex-col items-center text-center">
           <SectionBadge live={true} icon={<Route className="h-3.5 w-3.5" />}>
             Quy trình làm việc
           </SectionBadge>
@@ -26,20 +78,39 @@ export function CustomerJourney() {
           </p>
         </RevealOnScroll>
         
-        <div className="grid gap-6 md:grid-cols-4 lg:gap-8">
-          {steps.map((step, index) => (
-            <RevealOnScroll key={index} direction="up" delay={index * 100}>
-              <div className="group relative h-full rounded-[32px] bg-white p-8 shadow-sm ring-1 ring-slate-200/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-[#3BA6F1]/30">
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#F0F6FF] text-[22px] font-black text-[#3BA6F1] transition-transform duration-300 group-hover:scale-110 group-hover:bg-[#3BA6F1] group-hover:text-white">
+        <div ref={containerRef} className="relative mx-auto max-w-5xl px-2 md:px-0">
+          
+          {/* Desktop Progress Line */}
+          <div className="hidden md:block absolute top-[26px] left-[12%] right-[12%] h-2 bg-slate-200/60 rounded-full z-0 overflow-hidden">
+            <div className="journey-progress-line-x absolute top-0 left-0 h-full w-0 bg-gradient-to-r from-[#3BA6F1] to-[#2589D0] rounded-full"></div>
+          </div>
+
+          {/* Mobile Progress Line */}
+          <div className="md:hidden absolute top-[30px] bottom-[30px] left-[34px] w-1.5 bg-slate-200/60 rounded-full z-0 overflow-hidden">
+            <div className="journey-progress-line-y absolute top-0 left-0 w-full h-0 bg-gradient-to-b from-[#3BA6F1] to-[#2589D0] rounded-full"></div>
+          </div>
+
+          <div className="relative z-10 flex flex-col md:flex-row justify-between gap-12 md:gap-4">
+            {steps.map((step, index) => (
+              <div key={index} className="flex flex-row md:flex-col items-start md:items-center gap-6 md:gap-6 flex-1">
+                
+                {/* Timeline Node */}
+                <div className="journey-node relative flex shrink-0 h-[60px] w-[60px] items-center justify-center rounded-full border-[6px] border-[#F8FAFC] bg-slate-100 text-[22px] font-black text-slate-400 z-10">
                   {index + 1}
                 </div>
-                <h3 className="mb-3 text-[20px] font-bold text-[#04091A] text-balance group-hover:text-[#3BA6F1] transition-colors">{step.title}</h3>
-                <p className="text-[15px] font-medium text-slate-500 text-pretty leading-relaxed">
-                  {step.desc}
-                </p>
+                
+                {/* Timeline Content */}
+                <div className="journey-content text-left md:text-center mt-1 md:mt-0 opacity-0 transform translate-y-6">
+                  <h3 className="mb-2.5 text-[20px] font-black text-[#04091A]">{step.title}</h3>
+                  <p className="text-[15px] font-medium text-slate-500 leading-relaxed text-pretty md:px-4">
+                    {step.desc}
+                  </p>
+                </div>
+
               </div>
-            </RevealOnScroll>
-          ))}
+            ))}
+          </div>
+
         </div>
         
       </div>
