@@ -27,8 +27,8 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
               className={cn(
                 "block px-3 py-2 rounded-lg text-[14px] transition-all duration-200 leading-snug",
                 isActive
-                  ? "bg-[#F0F6FF] text-[#3BA6F1] font-bold"
-                  : "text-slate-600 hover:bg-slate-50 hover:text-[#04091A]"
+                  ? "bg-[#F0F6FF] text-[#003566] font-bold"
+                  : "text-[#6B7280] hover:bg-slate-50 hover:text-[#003566] font-medium"
               )}
             >
               {post.title}
