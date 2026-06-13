@@ -1,6 +1,6 @@
 # SEOSONA Rebuild
 
-Rebuild website https://seosona.com bằng Next.js, Tailwind CSS, GitHub và Vercel.
+Rebuild website https://seosona.com bằng Next.js, Tailwind CSS và GitHub.
 
 ## Mục tiêu
 
@@ -15,7 +15,6 @@ Rebuild website https://seosona.com bằng Next.js, Tailwind CSS, GitHub và Ver
 - Next.js App Router
 - TypeScript
 - Tailwind CSS
-- Vercel hosting
 - GitHub source control
 
 ## Chạy local
@@ -32,13 +31,10 @@ npm run build
 npm run start
 ```
 
-## Deploy Vercel
+## Deploy
 
-1. Import repository `LongLeo287/SEOSONA` vào Vercel.
-2. Framework preset: Next.js.
-3. Build command: `npm run build`.
-4. Output: mặc định Next.js.
-5. Gắn domain staging trước, sau đó mới trỏ `seosona.com`.
+Chưa khóa hosting mặc định trong repo. Chọn nền tảng deploy rõ ràng trước khi gắn staging/domain production.
+Vercel Git auto deployments are disabled in `vercel.json`.
 
 ## Lưu ý bảo mật
 
