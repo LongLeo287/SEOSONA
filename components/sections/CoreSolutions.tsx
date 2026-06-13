@@ -37,7 +37,7 @@ export function CoreSolutions() {
             Tối đa hóa ROI với các <span className="text-[#3BA6F1]">giải pháp chuyên sâu</span>
           </h2>
           <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
-            Mỗi doanh nghiệp có một bài toán riêng. Chúng tôi cung cấp các gói dịch vụ được thiết kế đo ni đóng giày để giải quyết chính xác điểm nghẽn tăng trưởng của bạn
+            Mỗi doanh nghiệp có một bài toán riêng. Chúng tôi cung cấp các gói dịch vụ <br className="hidden md:block" /> được thiết kế đo ni đóng giày để giải quyết chính xác điểm nghẽn tăng trưởng của bạn
           </p>
         </RevealOnScroll>
 

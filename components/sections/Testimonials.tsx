@@ -99,8 +99,9 @@ export function Testimonials() {
             Niềm tin đến từ <span className="text-[#3BA6F1]">kết quả thực tế</span> <br className="hidden sm:block" />
             và quy trình minh bạch
           </h2>
-          <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
-            Hàng trăm doanh nghiệp B2B và B2C đã tin tưởng giao phó ngân sách marketing cho SEOSONA và nhận về tỷ suất hoàn vốn ấn tượng
+          <p className="mx-auto mt-4 max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
+            Hàng trăm doanh nghiệp B2B và B2C đã tin tưởng giao phó ngân sách marketing <br className="hidden md:block" />
+            cho SEOSONA và nhận về tỷ suất hoàn vốn ấn tượng
           </p>
         </RevealOnScroll>
 

@@ -522,7 +522,8 @@ export function AiIntegration() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3BA6F1] to-[#00D4FF]">Hệ Sinh Thái AI Sonatools</span>
           </h2>
           <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-400 text-pretty">
-            Thay vì lo sợ Google Update, chúng tôi làm chủ công nghệ. Tích hợp sức mạnh của Sonatools vào quy trình R&D Content và Data Analysis để mang lại hiệu quả vượt trội.
+            Thay vì lo sợ Google Update, chúng tôi làm chủ công nghệ. Tích hợp sức mạnh của Sonatools <br className="hidden md:block" />
+            vào quy trình R&D Content và Data Analysis để mang lại hiệu quả vượt trội.
           </p>
         </RevealOnScroll>
 

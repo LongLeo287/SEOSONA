@@ -87,7 +87,7 @@ export function Hero() {
           </h1>
 
           <p className="mx-auto mt-5 max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
-            SEOSONA là Tech-Agency hàng đầu Việt Nam, kết hợp chiến lược chuyên sâu và
+            SEOSONA là Tech-Agency hàng đầu Việt Nam, kết hợp chiến lược chuyên sâu và <br className="hidden md:block" />
             tư duy dữ liệu để tăng trưởng khách hàng tiềm năng từ Google bền vững và đột phá
           </p>
 
