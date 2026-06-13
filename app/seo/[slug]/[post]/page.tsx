@@ -104,8 +104,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="container py-12 lg:py-20">
-        <Link href={`/seo/${resolvedParams.slug}/`} className="inline-flex items-center gap-2 text-sm font-bold text-[#6B7280] hover:text-[#003566] transition-colors mb-10">
+      <div className="container pt-8 pb-12 lg:pt-10 lg:pb-20">
+        <Link href={`/seo/${resolvedParams.slug}/`} className="inline-flex lg:hidden items-center gap-2 text-sm font-bold text-[#6B7280] hover:text-[#003566] transition-colors mb-6">
           <ArrowLeft size={16} /> Quay lại {hubName}
         </Link>
         
