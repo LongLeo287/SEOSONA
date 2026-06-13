@@ -92,3 +92,23 @@ Preventing text orphans, widows, and ragged paragraph edges is critical for a pr
 *   **Paragraphs (p):** Always apply the `text-pretty` utility. This smart formatting prevents "orphans" (a single word dangling alone on the final line of a paragraph).
 *   **Width Constraining:** Any center-aligned text block MUST be constrained by a max-width (e.g., `max-w-2xl` or `max-w-3xl`) to maintain the optimal reading length of 60-80 characters per line.
 *   **Non-breaking Entities:** Use non-breaking spaces or `whitespace-nowrap` for terms that should never be separated across lines (e.g., brand names, numbers with their units).
+
+---
+
+## 6. SEO & Core Web Vitals Standards
+
+As an SEO Agency, every UI component must be inherently optimized for search engines and performance (Core Web Vitals).
+
+*   **Semantic HTML:** Strictly use semantic tags (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>`) instead of generic `<div>` wrappers where applicable.
+*   **Heading Hierarchy:**
+    *   Strictly one `<h1>` per page.
+    *   Headings must follow a logical descending order (`<h2>` -> `<h3>` -> `<h4>`) without skipping levels.
+    *   Do not use heading tags purely for styling; use utility classes (e.g., `text-2xl font-bold`) on `<span>` or `<div>` if it's not a structural heading.
+*   **Cumulative Layout Shift (CLS) Prevention:**
+    *   All images must use `next/image` with explicit `width` and `height`, or if using `fill`, must include proper `sizes` attribute.
+    *   Reserve space for dynamic elements or text to prevent layout jumping upon load.
+*   **Accessibility (A11y) for SEO:**
+    *   Ensure sufficient color contrast (e.g., `#64748B` on `#FFFFFF` is acceptable, avoid lighter grays for main text).
+    *   All icon-only buttons or links must have an `aria-label`.
+    *   All images must have descriptive `alt` attributes.
+*   **Internal Linking:** Use `next/link` for all internal navigation to utilize Next.js prefetching, reducing perceived page load time. Ensure anchor text is descriptive (e.g., "Xem báo cáo dự án SEO" instead of just "Xem thêm").
