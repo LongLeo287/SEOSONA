@@ -1,6 +1,6 @@
 "use client";
 
-import { Bot, Sparkles, Cpu, PenTool, Search, LayoutPanelLeft, FileText, CheckCircle2, Lock, Mic, Plus, ArrowUp } from "lucide-react";
+import { Bot, Sparkles, Cpu, PenTool, Search, LayoutPanelLeft, FileText, CheckCircle2, Lock, Mic, Plus, ArrowUp, ArrowRight } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
@@ -301,7 +301,7 @@ function ContentUI() {
       {/* Sidebar (ChatGPT style) */}
       <div className="hidden md:flex w-56 bg-[#171717] flex-col p-3 shrink-0">
         <button onClick={() => setScenarioIndex(null)} className="bg-transparent hover:bg-[#2F2F2F] text-white flex items-center gap-3 px-3 py-2.5 rounded-lg text-[14px] font-medium transition-colors mb-4 border border-[#333]">
-          <Bot className="w-4 h-4" /> SEOSONA Content AI
+          <Bot className="w-4 h-4" /> Sonatools Content AI
           <Plus className="w-4 h-4 ml-auto" />
         </button>
         <div className="text-xs font-semibold text-slate-500 px-3 mb-2 mt-2">Today</div>
@@ -377,12 +377,12 @@ function ContentUI() {
          {/* Fake Input Bar */}
          <div className="p-4 md:p-6 bg-[#212121] shrink-0">
             <div className="w-full max-w-3xl mx-auto bg-[#2F2F2F] rounded-2xl flex items-center px-4 py-3 border border-[#444]">
-               <span className="text-[15px] text-slate-400 flex-1">Message SEOSONA Content AI...</span>
-               <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shadow-sm">
+               <span className="text-[15px] text-slate-400 flex-1">Message Sonatools Content AI...</span>
+               <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shadow-sm cursor-pointer hover:bg-slate-200 transition-colors">
                   <ArrowUp className="w-5 h-5 text-[#212121]" />
                </div>
             </div>
-            <div className="text-center text-[11px] text-slate-500 mt-3">SEOSONA AI can make mistakes. Consider verifying important information.</div>
+            <div className="text-center text-[11px] text-slate-500 mt-3">Sonatools AI can make mistakes. Consider verifying important information.</div>
          </div>
       </div>
     </div>
@@ -420,7 +420,7 @@ function TechnicalUI() {
            <div className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]"/>
            <div className="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]"/>
          </div>
-         <span className="text-[12px] text-slate-400 font-sans tracking-wide">seosona-technical-audit — bash</span>
+         <span className="text-[12px] text-slate-400 font-sans tracking-wide">sonatools-technical-audit — bash</span>
       </div>
       
       {/* Terminal Toolbar */}
@@ -443,10 +443,10 @@ function TechnicalUI() {
       <div className="flex-1 p-5 md:p-6 font-mono text-[13.5px] leading-relaxed overflow-y-auto overflow-x-hidden no-scrollbar text-slate-300 w-full min-w-0">
          {scenarioIndex === null ? (
             <div className="text-slate-400 animate-in fade-in duration-500">
-               <div className="text-[#4EC9B0] mb-2 font-bold">Welcome to SEOSONA Technical Audit Environment v2.0</div>
+               <div className="text-[#4EC9B0] mb-2 font-bold">Welcome to Sonatools Technical Audit Environment v3.0</div>
                <div>Select a script from the toolbar above to execute.</div>
                <div className="mt-4 flex">
-                  <span className="text-[#569CD6]">Admin@SEOSONA</span> 
+                  <span className="text-[#569CD6]">Admin@Sonatools</span> 
                   <span className="text-slate-300 mx-1">~</span> 
                   <span className="text-[#DCDCAA]">/audit</span> 
                   <span className="mx-2">$</span> 
@@ -456,7 +456,7 @@ function TechnicalUI() {
          ) : (
             <>
                <div className="mb-3 flex animate-in fade-in duration-300">
-                  <span className="text-[#569CD6]">Admin@SEOSONA</span> 
+                  <span className="text-[#569CD6]">Admin@Sonatools</span> 
                   <span className="text-slate-300 mx-1">~</span> 
                   <span className="text-[#DCDCAA]">/audit</span> 
                   <span className="mx-2">$</span> 
@@ -483,7 +483,7 @@ function TechnicalUI() {
                )}
                {activeLines.length === technicalScenarios[scenarioIndex].length && (
                  <div className="mt-4 flex animate-in fade-in duration-300">
-                    <span className="text-[#569CD6]">Admin@SEOSONA</span> 
+                    <span className="text-[#569CD6]">Admin@Sonatools</span> 
                     <span className="text-slate-300 mx-1">~</span> 
                     <span className="text-[#DCDCAA]">/audit</span> 
                     <span className="mx-2">$</span> 
@@ -514,15 +514,15 @@ export function AiIntegration() {
               <span className="relative inline-flex h-2 w-2 rounded-full bg-[#3BA6F1]"></span>
             </span>
             <Bot className="h-4 w-4 text-[#3BA6F1]" />
-            <span className="text-[14px] font-bold text-[#3BA6F1]">Kỷ Nguyên AI SEO</span>
+            <span className="text-[14px] font-bold text-[#3BA6F1]">Powered by Sonatools.io</span>
           </div>
 
           <h2 className="mx-auto mb-5 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-white sm:text-4xl md:text-[44px] text-balance">
             Sẵn sàng đón đầu thay đổi với <br className="hidden md:block"/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3BA6F1] to-[#00D4FF]">Hệ Thống AI Tích Hợp</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3BA6F1] to-[#00D4FF]">Hệ Sinh Thái AI Sonatools</span>
           </h2>
           <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-400 text-pretty">
-            Thay vì lo sợ Google Update, chúng tôi làm chủ công nghệ. SEOSONA tích hợp AI vào quy trình R&D Content và Data Analysis để mang lại hiệu quả vượt trội.
+            Thay vì lo sợ Google Update, chúng tôi làm chủ công nghệ. Tích hợp sức mạnh của Sonatools vào quy trình R&D Content và Data Analysis để mang lại hiệu quả vượt trội.
           </p>
         </RevealOnScroll>
 
@@ -568,6 +568,18 @@ export function AiIntegration() {
           </RevealOnScroll>
 
         </div>
+
+        {/* Sonatools CTA */}
+        <RevealOnScroll direction="up" delay={400} className="mt-16 sm:mt-24 flex justify-center">
+          <div className="relative group">
+            <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#3BA6F1] to-[#00D4FF] opacity-30 blur transition duration-500 group-hover:opacity-60"></div>
+            <a href="https://sonatools.io/" target="_blank" rel="noreferrer" className="relative flex items-center gap-3 rounded-full bg-[#0B1530] border border-[#3BA6F1]/30 px-8 py-4 text-[16px] font-bold text-white transition-all hover:bg-[#111F45] hover:scale-105 active:scale-95 shadow-xl">
+              Khám phá toàn bộ sức mạnh Sonatools.io
+              <ArrowRight className="h-5 w-5 text-[#3BA6F1] transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+        </RevealOnScroll>
+
       </div>
     </section>
   );
