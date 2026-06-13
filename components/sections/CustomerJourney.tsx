@@ -34,12 +34,14 @@ export function CustomerJourney() {
           if (lineX) animate(lineX, { width: ['0%', '0%'], duration: 10 });
           if (lineY) animate(lineY, { height: ['0%', '0%'], duration: 10 });
           
-          animate(nodes, {
-            backgroundColor: '#F1F5F9',
-            color: '#94A3B8',
-            scale: 1,
-            boxShadow: '0 0 0px rgba(59,166,241,0)',
-            duration: 10,
+          nodes.forEach(node => {
+            animate(node, {
+              backgroundColor: ['#F1F5F9', '#F1F5F9'],
+              color: ['#94A3B8', '#94A3B8'],
+              scale: [1, 1],
+              boxShadow: ['0 0 0px rgba(59,166,241,0)', '0 0 0px rgba(59,166,241,0)'],
+              duration: 10,
+            });
           });
 
           await new Promise(r => setTimeout(r, 100)); // Đợi reset
