@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import clsx from "clsx";
 
 interface RevealOnScrollProps {
@@ -16,44 +16,28 @@ export function RevealOnScroll({
   className = "",
   direction = "up"
 }: RevealOnScrollProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  const hiddenClasses = {
-    up: "opacity-0 translate-y-8",
-    left: "opacity-0 -translate-x-8",
-    right: "opacity-0 translate-x-8",
-    none: "opacity-0"
+  const directionVariants = {
+    up: { y: 32, opacity: 0 },
+    left: { x: -32, opacity: 0 },
+    right: { x: 32, opacity: 0 },
+    none: { opacity: 0 },
   };
 
+  const initialVariant = directionVariants[direction] || directionVariants.up;
+
   return (
-    <div
-      ref={ref}
-      className={clsx(
-        className,
-        "transition-all duration-700 ease-out will-change-transform",
-        visible ? "opacity-100 translate-y-0 translate-x-0" : hiddenClasses[direction]
-      )}
-      style={{ transitionDelay: `${delay}ms` }}
+    <motion.div
+      initial={initialVariant}
+      whileInView={{ x: 0, y: 0, opacity: 1 }}
+      viewport={{ once: true, amount: 0.12 }}
+      transition={{ 
+        duration: 0.7, 
+        ease: "easeOut", 
+        delay: delay / 1000 
+      }}
+      className={clsx("will-change-transform", className)}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

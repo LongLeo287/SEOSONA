@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { Route } from "lucide-react";
 import { SectionBadge } from "@/components/ui/SectionBadge";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { animate } from "animejs";
+import { useAnimate } from "framer-motion";
 
 const steps = [
   { title: "Nghiên cứu thị trường", desc: "Đào sâu vào hành vi khách hàng và dữ liệu tìm kiếm để tìm ra cơ hội." },
@@ -14,35 +14,32 @@ const steps = [
 ];
 
 export function CustomerJourney() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [scope, animate] = useAnimate();
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!scope.current) return;
 
     let isPlaying = true;
 
     const runSequence = async () => {
       try {
-        const nodes = Array.from(containerRef.current?.querySelectorAll('.journey-node') || []);
-        const lineX = containerRef.current?.querySelector('.journey-progress-line-x');
-        const lineY = containerRef.current?.querySelector('.journey-progress-line-y');
+        const nodes = scope.current.querySelectorAll('.journey-node');
+        const lineX = scope.current.querySelector('.journey-progress-line-x');
+        const lineY = scope.current.querySelector('.journey-progress-line-y');
 
         if (!nodes || nodes.length === 0) return;
 
         while (isPlaying) {
           // 1. Reset về trạng thái ban đầu
-          if (lineX) animate(lineX, { width: ['0%', '0%'], duration: 10 });
-          if (lineY) animate(lineY, { height: ['0%', '0%'], duration: 10 });
+          if (lineX) animate(lineX, { width: ['0%', '0%'] }, { duration: 0.01 });
+          if (lineY) animate(lineY, { height: ['0%', '0%'] }, { duration: 0.01 });
           
-          nodes.forEach(node => {
-            animate(node, {
-              backgroundColor: ['#F1F5F9', '#F1F5F9'],
-              color: ['#94A3B8', '#94A3B8'],
-              scale: [1, 1],
-              boxShadow: ['0 0 0px rgba(59,166,241,0)', '0 0 0px rgba(59,166,241,0)'],
-              duration: 10,
-            });
-          });
+          await animate(nodes, {
+            backgroundColor: ['#F1F5F9', '#F1F5F9'],
+            color: ['#94A3B8', '#94A3B8'],
+            scale: [1, 1],
+            boxShadow: ['0 0 0px rgba(59,166,241,0)', '0 0 0px rgba(59,166,241,0)'],
+          }, { duration: 0.01 });
 
           await new Promise(r => setTimeout(r, 100)); // Đợi reset
 
@@ -56,9 +53,7 @@ export function CustomerJourney() {
               color: ['#94A3B8', '#FFFFFF'],
               scale: [1, 1.15, 1],
               boxShadow: ['0 0 0px rgba(59,166,241,0)', '0 0 25px rgba(59,166,241,0.6)'],
-              duration: 500,
-              ease: 'outBack'
-            });
+            }, { duration: 0.5, ease: 'easeOut' });
 
             await new Promise(r => setTimeout(r, 500));
             if (!isPlaying) break;
@@ -71,16 +66,12 @@ export function CustomerJourney() {
               if (lineX) {
                 animate(lineX, {
                   width: [`${currentPercent}%`, `${nextPercent}%`],
-                  duration: 800,
-                  ease: 'easeInOutQuad'
-                });
+                }, { duration: 0.8, ease: 'easeInOut' });
               }
               if (lineY) {
                 animate(lineY, {
                   height: [`${currentPercent}%`, `${nextPercent}%`],
-                  duration: 800,
-                  ease: 'easeInOutQuad'
-                });
+                }, { duration: 0.8, ease: 'easeInOut' });
               }
 
               await new Promise(r => setTimeout(r, 800));
@@ -92,7 +83,7 @@ export function CustomerJourney() {
           await new Promise(r => setTimeout(r, 3000));
         }
       } catch (err) {
-        console.error("AnimeJS Animate Error:", err);
+        console.error("Framer Motion Animate Error:", err);
       }
     };
 
@@ -101,7 +92,7 @@ export function CustomerJourney() {
     return () => {
       isPlaying = false;
     };
-  }, []);
+  }, [animate, scope]);
 
   return (
     <section className="bg-[#F8FAFC] py-12 lg:py-16 relative overflow-hidden border-b border-slate-100">
@@ -144,7 +135,7 @@ export function CustomerJourney() {
           </p>
         </RevealOnScroll>
         
-        <div ref={containerRef} className="relative mx-auto max-w-6xl px-2 md:px-0">
+        <div ref={scope} className="relative mx-auto max-w-6xl px-2 md:px-0">
           
           {/* Desktop Progress Line */}
           <div className="hidden md:block absolute top-[26px] left-[12%] right-[12%] h-2 bg-slate-200/60 rounded-full z-0 overflow-hidden">

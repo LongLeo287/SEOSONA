@@ -15,7 +15,6 @@
   "dependencies": {
     "@next/mdx": "latest",
     "@tailwindcss/typography": "^0.5.19",
-    "animejs": "^4.4.1",
     "axios": "^1.17.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "latest",
@@ -28,6 +27,7 @@
     "react": "latest",
     "react-dom": "latest",
     "tailwind-merge": "^3.6.0",
+    "tailwindcss-animate": "^1.0.7",
     "turndown": "^7.2.4"
   },
   "devDependencies": {
