@@ -74,7 +74,6 @@ export default function Page() {
         title="Từ setup tracking đến tối ưu chuyển đổi"
         description="SEOSONA triển khai Google Ads toàn diện: từ cấu trúc chiến dịch, tối ưu từ khóa đến landing page và đo lường kết quả thực tế."
         features={features}
-        variant="dark"
       />
       <Process
         steps={steps}

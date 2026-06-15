@@ -64,7 +64,6 @@ export default function Page() {
         title="Phương Pháp SEO White-Hat Tiên Tiến Nhất" 
         description="Bỏ qua các thủ thuật bơm link rác xưa cũ. Chúng tôi tiếp cận SEO bằng Tư duy của chuyên gia Marketing, tối ưu từ kỹ thuật hệ thống, nội dung lõi đến Trải nghiệm người dùng." 
         features={features}
-        variant="dark"
       />
       <Process steps={steps} description="Quy trình giúp đội ngũ và khách hàng cùng nhìn rõ việc cần làm, ưu tiên triển khai và kết quả kỳ vọng." />
       <Faq items={faq} />

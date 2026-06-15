@@ -91,7 +91,6 @@ export default function Page() {
         title="Không Học Lý Thuyết Suông, Thực Chiến Ngay Tại Lớp" 
         description="Bộ giáo trình được tinh luyện từ hàng trăm dự án SEO thực tế tại SEOSONA, giúp bạn rút ngắn 2 năm tự mò mẫm sai lầm." 
         features={features}
-        variant="dark"
       />
       <Process
         steps={curriculum}

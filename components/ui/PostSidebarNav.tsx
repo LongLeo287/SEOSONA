@@ -107,7 +107,7 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  if (safePosts.length === 0) return null;
+  if (!posts || posts.length === 0) return null;
 
   return (
     <div className="w-full">
