@@ -50,9 +50,8 @@ function groupPosts(posts: PostMeta[]): GroupedPosts[] {
 }
 
 export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName }: PostSidebarNavProps) {
-  if (!posts || posts.length === 0) return null;
-
-  const groupedPosts = useMemo(() => groupPosts(posts), [posts]);
+  const safePosts = posts || [];
+  const groupedPosts = useMemo(() => groupPosts(safePosts), [safePosts]);
 
   // Khởi tạo state, mặc định mở group chứa bài viết hiện tại
   const [expandedGroups, setExpandedGroups] = useState<Record<number, boolean>>(() => {
@@ -107,6 +106,8 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  if (safePosts.length === 0) return null;
 
   return (
     <div className="w-full">

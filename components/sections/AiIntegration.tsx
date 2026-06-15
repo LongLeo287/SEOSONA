@@ -84,13 +84,13 @@ const contentScenarios = [
         <p className="text-slate-300">Bài viết hiện tại của bạn đang thiếu hụt một số Entity và Keyword quan trọng so với đối thủ Top 1:</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-1 text-[13.5px]">
           <div className="bg-red-500/10 text-red-400 p-2.5 rounded-lg border border-red-500/20 flex items-center gap-2">
-             <span className="font-bold text-red-500">-</span> "SEO mũ trắng" (Thiếu)
+             <span className="font-bold text-red-500">-</span> &quot;SEO mũ trắng&quot; (Thiếu)
           </div>
           <div className="bg-red-500/10 text-red-400 p-2.5 rounded-lg border border-red-500/20 flex items-center gap-2">
-             <span className="font-bold text-red-500">-</span> "Tỷ lệ chuyển đổi" (Thiếu)
+             <span className="font-bold text-red-500">-</span> &quot;Tỷ lệ chuyển đổi&quot; (Thiếu)
           </div>
           <div className="bg-emerald-500/10 text-emerald-400 p-2.5 rounded-lg border border-emerald-500/20 flex items-center gap-2">
-             <CheckCircle2 className="w-3.5 h-3.5"/> "Backlink báo" (Tốt)
+             <CheckCircle2 className="w-3.5 h-3.5"/> &quot;Backlink báo&quot; (Tốt)
           </div>
         </div>
       </div>
@@ -331,15 +331,15 @@ function ContentUI() {
                      </button>
                      <button onClick={() => triggerChat(1)} className="bg-[#2F2F2F] hover:bg-[#3D3D3D] border border-transparent p-4 rounded-xl text-left transition-colors flex flex-col gap-1">
                         <span className="text-[14px] text-white font-medium">Audit LSI Keywords</span>
-                        <span className="text-[13px] text-slate-400">So với đối thủ Top 1: 'Dịch vụ SEO'</span>
+                        <span className="text-[13px] text-slate-400">So với đối thủ Top 1: &apos;Dịch vụ SEO&apos;</span>
                      </button>
                      <button onClick={() => triggerChat(2)} className="bg-[#2F2F2F] hover:bg-[#3D3D3D] border border-transparent p-4 rounded-xl text-left transition-colors flex flex-col gap-1 hidden sm:flex">
                         <span className="text-[14px] text-white font-medium">Tạo 5 Tiêu Đề</span>
-                        <span className="text-[13px] text-slate-400">Giật tít, chuẩn SEO cho bài 'Dịch vụ SEO'</span>
+                        <span className="text-[13px] text-slate-400">Giật tít, chuẩn SEO cho bài &apos;Dịch vụ SEO&apos;</span>
                      </button>
                      <button onClick={() => triggerChat(3)} className="bg-[#2F2F2F] hover:bg-[#3D3D3D] border border-transparent p-4 rounded-xl text-left transition-colors flex flex-col gap-1 hidden sm:flex">
                         <span className="text-[14px] text-white font-medium">Viết Meta Description</span>
-                        <span className="text-[13px] text-slate-400">Cho bài 'Cách tăng traffic tự nhiên'</span>
+                        <span className="text-[13px] text-slate-400">Cho bài &apos;Cách tăng traffic tự nhiên&apos;</span>
                      </button>
                   </div>
                </div>
