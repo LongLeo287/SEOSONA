@@ -62,7 +62,7 @@ export function ClientLogoGrid() {
         </div>
 
         <RevealOnScroll direction="up" delay={200} className="mx-auto mt-12 grid max-w-4xl grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
-          {stats.map((item, index) => {
+          {stats.map((item) => {
             return (
               <div
                 key={item.label}

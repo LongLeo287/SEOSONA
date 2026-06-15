@@ -50,8 +50,7 @@ function groupPosts(posts: PostMeta[]): GroupedPosts[] {
 }
 
 export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName }: PostSidebarNavProps) {
-  const safePosts = posts || [];
-  const groupedPosts = useMemo(() => groupPosts(safePosts), [safePosts]);
+  const groupedPosts = useMemo(() => groupPosts(posts || []), [posts]);
 
   // Khởi tạo state, mặc định mở group chứa bài viết hiện tại
   const [expandedGroups, setExpandedGroups] = useState<Record<number, boolean>>(() => {
@@ -66,6 +65,7 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
 
   // Tự động mở group nếu người dùng chuyển bài viết
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setExpandedGroups(prev => {
       const next = { ...prev };
       let changed = false;

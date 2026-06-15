@@ -5,14 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Globe, Mail, MessageSquare } from 'lucide-react';
 
-const LogoIcon = () => (
-  <div className="w-8 h-8 bg-[#31A8FF] rounded-[8px] flex items-center justify-center">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4 20C4 20 4 14 10 10C16 6 20 4 20 4C20 4 18 8 14 14C10 20 4 20 4 20Z" fill="white" />
-      <path d="M4 20L10 14" stroke="white" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  </div>
-);
+
 
 const GlassText = () => (
   <div className="relative mt-8 sm:mt-12 md:mt-24 w-full overflow-hidden flex items-center justify-center pt-0">

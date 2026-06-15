@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Download, LibraryBig, Sparkles } from "lucide-react";
+import { LibraryBig } from "lucide-react";
 import { LeadCaptureModal } from "@/components/ui/LeadCaptureModal";
 import { ResourceCard } from "@/components/ui/ResourceCard";
 import { resources, type Resource } from "@/data/resources";

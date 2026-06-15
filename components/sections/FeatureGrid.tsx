@@ -12,8 +12,6 @@ type FeatureGridProps = {
   title: string;
   description?: string;
   features: Feature[];
-  /** Deprecated - kept for backwards compatibility but ignores value */
-  variant?: "dark" | "light";
 };
 
 export function FeatureGrid({
@@ -21,7 +19,6 @@ export function FeatureGrid({
   title,
   description,
   features,
-  variant = "light",
 }: FeatureGridProps) {
   const colClass =
     features.length <= 3

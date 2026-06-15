@@ -23,6 +23,7 @@ export function TableOfContents() {
       level: Number(element.tagName.charAt(1)),
     })).filter((item) => item.id); // Chỉ lấy những heading có id
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHeadings(tocItems);
 
     // Cài đặt IntersectionObserver để bắt sự kiện cuộn

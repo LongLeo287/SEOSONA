@@ -74,6 +74,7 @@ const AnimatedLoadingSkeleton = () => {
 
     // Handles window resize events and updates the window width
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setWindowWidth(window.innerWidth);
         const handleResize = () => setWindowWidth(window.innerWidth);
         window.addEventListener('resize', handleResize);

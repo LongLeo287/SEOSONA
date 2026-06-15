@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
+
 import Link from "next/link";
 import { ArrowRight, TrendingUp, BarChart3, ShieldCheck } from "lucide-react";
 import { CountUp } from "@/components/ui/CountUp";
@@ -102,7 +102,7 @@ export function Hero() {
 
           {/* Metric Counters */}
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6 max-w-3xl mx-auto w-full">
-            {metrics.map((item, i) => {
+            {metrics.map((item) => {
               const Icon = item.icon;
               return (
                 <div

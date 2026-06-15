@@ -1,7 +1,7 @@
 "use client";
 
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { Wrench, Sparkles, Files, Map, Activity, DollarSign, Brain, Rocket, FileText, TrendingUp, MonitorPlay, Target } from "lucide-react";
+import { Wrench, Sparkles, Files, Map, Activity, Brain, Rocket, FileText, TrendingUp, MonitorPlay, Target } from "lucide-react";
 
 const features = [
   { icon: Wrench, title: "Công cụ SEO chuyên sâu", desc: "Được chia sẻ và hướng dẫn công cụ SEO bản quyền, giúp tăng hiệu quả làm SEO tối đa.", className: "md:col-span-2", bgDeco: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(37,99,235,0.1),transparent_50%)]" },

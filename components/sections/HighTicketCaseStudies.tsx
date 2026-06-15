@@ -11,6 +11,7 @@ const TypewriterText = ({ text }: { text: string }) => {
 
   useEffect(() => {
     let i = 0;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setDisplayedText("");
     const interval = setInterval(() => {
       if (i <= text.length) {
@@ -58,7 +59,7 @@ export function HighTicketCaseStudies() {
       setCurrentTagIndex((prev) => (prev + 1) % tags.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [tags.length]);
 
   return (
     <section className="relative overflow-hidden bg-white py-12 lg:py-16">

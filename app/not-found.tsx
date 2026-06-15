@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Search, TrendingUp, Home, LibraryBig, ChevronRight, BarChart3, Telescope } from "lucide-react";
+import { Search, TrendingUp, Home, LibraryBig, ChevronRight, BarChart3 } from "lucide-react";
 
 export default function NotFound() {
   return (

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { getPostBySlug, getAllPosts, getPostsByCategory } from "@/lib/mdx";
@@ -30,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-const getText = (node: any): string => {
+const getText = (node: any /* eslint-disable-line @typescript-eslint/no-explicit-any */): string => {
   if (typeof node === 'string') return node;
   if (typeof node === 'number') return node.toString();
   if (Array.isArray(node)) return node.map(getText).join('');
@@ -46,10 +45,11 @@ const slugify = (text: string) =>
     .replace(/[^\w\-]+/g, '');
 
 const mdxComponents = {
-  img: (props: any) => (
+  img: (props: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => (
     // Instead of forcing aspect-video and full width which blows up SVG icons,
     // we use max-w-full and h-auto so images respect their natural aspect ratio.
     <span className="block w-full my-8 text-center flex justify-center">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={props.src}
         alt={props.alt || "SEOSONA Image"}
@@ -58,14 +58,14 @@ const mdxComponents = {
       />
     </span>
   ),
-  a: (props: any) => (
+  a: (props: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => (
     <a {...props} className="text-[#003566] font-bold hover:text-[#46FF00] transition-colors decoration-2 underline-offset-4" />
   ),
-  h2: ({ children, ...props }: any) => {
+  h2: ({ children, ...props }: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => {
     const slug = slugify(getText(children));
     return <h2 id={slug} {...props} className="scroll-mt-24">{children}</h2>;
   },
-  h3: ({ children, ...props }: any) => {
+  h3: ({ children, ...props }: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => {
     const slug = slugify(getText(children));
     return <h3 id={slug} {...props} className="scroll-mt-24">{children}</h3>;
   }

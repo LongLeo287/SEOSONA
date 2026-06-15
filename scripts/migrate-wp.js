@@ -106,7 +106,7 @@ async function fetchFeaturedImage(post) {
         return response.data.source_url;
       }
     }
-  } catch (err) {
+  } catch {
     // console.error(`  Failed to fetch featured media`);
   }
   return null;

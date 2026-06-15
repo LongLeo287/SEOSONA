@@ -1,6 +1,6 @@
 "use client";
 
-import { Bot, Sparkles, Cpu, PenTool, Search, LayoutPanelLeft, FileText, CheckCircle2, Lock, Mic, Plus, ArrowUp, ArrowRight } from "lucide-react";
+import { Bot, Sparkles, Cpu, PenTool, Search, CheckCircle2, Lock, Mic, Plus, ArrowUp, ArrowRight } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
