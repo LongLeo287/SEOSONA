@@ -170,8 +170,8 @@ export default function Page() {
                <Target className="w-10 h-10 text-blue-600 mb-6 relative z-10 group-hover:scale-110 transition-transform duration-500" />
                <h3 className="text-xl font-bold text-slate-900 mb-4 relative z-10">Mới bắt đầu / Chưa có In-house</h3>
                <ul className="space-y-4 mb-8 relative z-10">
-                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" /> Cần xây dựng nền móng Traffic từ con số 0.</li>
-                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" /> Muốn giao khoán toàn bộ KPI cho Agency.</li>
+                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-blue-500 shrink-0" /> Cần xây dựng nền móng Traffic từ con số 0.</li>
+                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-blue-500 shrink-0" /> Muốn giao khoán toàn bộ KPI cho Agency.</li>
                </ul>
                <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3 relative z-10">Đề xuất:</div>
                <Link href="/dich-vu-seo/" className="flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700 relative z-10 group/link">
@@ -185,8 +185,8 @@ export default function Page() {
                <ShieldCheck className="w-10 h-10 text-blue-600 mb-6 relative z-10 group-hover:scale-110 transition-transform duration-500" />
                <h3 className="text-xl font-bold text-slate-900 mb-4 relative z-10">Đã có Team nhưng kẹt TOP</h3>
                <ul className="space-y-4 mb-8 relative z-10">
-                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" /> Traffic dậm chân tại chỗ, đối thủ vượt mặt.</li>
-                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" /> Cần chuyên gia gỡ lỗi Technical và lập Roadmap.</li>
+                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-blue-500 shrink-0" /> Traffic dậm chân tại chỗ, đối thủ vượt mặt.</li>
+                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-blue-500 shrink-0" /> Cần chuyên gia gỡ lỗi Technical và lập Roadmap.</li>
                </ul>
                <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3 relative z-10">Đề xuất:</div>
                <Link href="/tu-van-seo-chuyen-sau/" className="flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700 relative z-10 group/link">
@@ -194,20 +194,20 @@ export default function Page() {
                </Link>
             </div>
 
-            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm relative overflow-hidden group hover:shadow-xl hover:border-purple-200 transition-all duration-500 hover:-translate-y-2 animate-in slide-in-from-bottom-12 fade-in duration-700 delay-400">
-               <div className="absolute top-0 right-0 w-24 h-24 bg-purple-100 rounded-bl-full -mr-4 -mt-4 opacity-50 pointer-events-none group-hover:scale-125 transition-transform duration-700"></div>
-               <Zap className="w-10 h-10 text-purple-600 mb-6 relative z-10 group-hover:scale-110 transition-transform duration-500" />
+            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm relative overflow-hidden group hover:shadow-xl hover:border-blue-200 transition-all duration-500 hover:-translate-y-2 animate-in slide-in-from-bottom-12 fade-in duration-700 delay-400">
+               <div className="absolute top-0 right-0 w-24 h-24 bg-blue-100 rounded-bl-full -mr-4 -mt-4 opacity-50 pointer-events-none group-hover:scale-125 transition-transform duration-700"></div>
+               <Zap className="w-10 h-10 text-blue-600 mb-6 relative z-10 group-hover:scale-110 transition-transform duration-500" />
                <h3 className="text-xl font-bold text-slate-900 mb-4 relative z-10">Cần tăng cường sức mạnh</h3>
                <ul className="space-y-4 mb-8 relative z-10">
-                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" /> Web đã chuẩn SEO nhưng thiếu độ Trust.</li>
-                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" /> Thiếu nguồn lực viết bài chất lượng cao số lượng lớn.</li>
+                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-blue-500 shrink-0" /> Web đã chuẩn SEO nhưng thiếu độ Trust.</li>
+                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-blue-500 shrink-0" /> Thiếu nguồn lực viết bài chất lượng cao số lượng lớn.</li>
                </ul>
                <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3 relative z-10">Đề xuất:</div>
                <div className="flex flex-col gap-3 relative z-10">
-                 <Link href="/dich-vu-backlink/" className="flex items-center gap-2 text-purple-600 font-bold hover:text-purple-700 group/link">
+                 <Link href="/dich-vu-backlink/" className="flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700 group/link">
                    Backlink & Entity <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
                  </Link>
-                 <Link href="/dich-vu-viet-bai-chuan-seo/" className="flex items-center gap-2 text-rose-600 font-bold hover:text-rose-700 group/link">
+                 <Link href="/dich-vu-viet-bai-chuan-seo/" className="flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700 group/link">
                    Content SEO Mastery <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
                  </Link>
                </div>
@@ -238,8 +238,8 @@ export default function Page() {
                       </div>
                    </div>
                    <div className="flex gap-4 animate-in slide-in-from-bottom-8 fade-in duration-700 delay-400">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100">
-                         <BarChart className="w-6 h-6 text-emerald-600" />
+                      <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 border border-blue-100">
+                         <BarChart className="w-6 h-6 text-blue-600" />
                       </div>
                       <div>
                          <h4 className="text-xl font-bold text-slate-900 mb-2">Tracking Dữ liệu tập trung</h4>
@@ -269,15 +269,15 @@ export default function Page() {
                    </div>
                    <div className="space-y-4">
                       <div className="bg-white p-6 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-500 animate-[bounce_10s_ease-in-out_infinite]">
-                         <div className="w-16 h-16 rounded-full bg-rose-50 border border-rose-100 flex items-center justify-center mb-4 shadow-sm">
-                            <PenTool className="w-8 h-8 text-rose-600" />
+                         <div className="w-16 h-16 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center mb-4 shadow-sm">
+                            <PenTool className="w-8 h-8 text-blue-600" />
                          </div>
                          <div className="font-bold text-slate-900 mb-1">Content Mastery</div>
                          <div className="text-xs text-slate-500">Đúng Search Intent</div>
                       </div>
                       <div className="bg-white p-6 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-500 animate-[bounce_7s_ease-in-out_infinite_reverse]">
-                         <div className="w-16 h-16 rounded-full bg-amber-50 border border-amber-100 flex items-center justify-center mb-4 shadow-sm">
-                            <Share2 className="w-8 h-8 text-amber-600" />
+                         <div className="w-16 h-16 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center mb-4 shadow-sm">
+                            <Share2 className="w-8 h-8 text-blue-600" />
                          </div>
                          <div className="font-bold text-slate-900 mb-1">Performance Ads</div>
                          <div className="text-xs text-slate-500">Google & Meta Ads</div>

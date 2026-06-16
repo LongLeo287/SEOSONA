@@ -18,7 +18,7 @@ export const MotionButton: FC<Props> = ({ label, classes, as: Component = "butto
     <Component
       href={href}
       className={cn(
-        'bg-white group relative h-auto w-50 cursor-pointer rounded-full border-[none] p-1 outline-none',
+        'bg-white group relative h-auto w-[200px] cursor-pointer rounded-full border-[none] p-1 outline-none',
         classes
       )}
       {...props}
