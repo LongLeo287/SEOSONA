@@ -52,7 +52,8 @@ export const socialChannels = [
 export type NavItem = {
   label: string;
   href: string;
-  children?: { label: string; href: string; children?: { label: string; href: string }[] }[];
+  badge?: string;
+  children?: { label: string; href: string; badge?: string; children?: { label: string; href: string; badge?: string }[] }[];
 };
 
 export const navItems: NavItem[] = [
@@ -101,7 +102,7 @@ export const navItems: NavItem[] = [
       { label: "Power BI", href: "/giai-phap/power-bi/" },
       { label: "Tích hợp Hệ thống BE", href: "/giai-phap/he-thong-be/" },
       { label: "Zalo 2BS / ZNS", href: "/giai-phap/zalo-2bs/" },
-      { label: "SonaTool", href: "/giai-phap/sonatool/" }
+      { label: "SonaTool", href: "/giai-phap/sonatool/", badge: "NEW" }
     ]
   },
   {

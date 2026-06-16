@@ -3,6 +3,7 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Faq } from "@/components/sections/Faq";
 import { Process } from "@/components/sections/Process";
 import { PricingTable } from "@/components/sections/PricingTable";
+import { FunnelChart } from "@/components/ui/funnel-chart";
 import { LineChart, BarChart3, TrendingUp, Search, Activity, Target, Zap, ShieldCheck, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
@@ -282,6 +283,40 @@ export default function SeoTongThePage() {
                  </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Conversion Funnel Section */}
+      <section className="py-24 relative z-30 bg-white border-t border-slate-200">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">
+              Mô hình Phễu Chuyển Đổi SEO
+            </h2>
+            <p className="text-lg text-slate-600 text-pretty mb-12">
+              Chúng tôi tối ưu hóa từng giai đoạn trong hành trình khách hàng để đảm bảo lượng truy cập mang về doanh thu thực tế.
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto h-[400px]">
+            <FunnelChart
+              data={[
+                { label: "Organic Traffic (Nhận thức)", value: 100000, color: "#3b82f6" },
+                { label: "Active Users (Tương tác)", value: 45000, color: "#6366f1" },
+                { label: "Qualified Leads (Tiềm năng)", value: 8500, color: "#8b5cf6" },
+                { label: "Customers (Khách hàng)", value: 1200, color: "#ec4899" },
+              ]}
+              orientation="vertical"
+              showPercentage={true}
+              showValues={true}
+              showLabels={true}
+              gap={4}
+              layers={3}
+              edges="curved"
+              labelAlign="end"
+              grid={{ bands: true, lines: true }}
+            />
           </div>
         </div>
       </section>

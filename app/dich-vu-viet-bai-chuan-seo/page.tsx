@@ -3,12 +3,14 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Faq } from "@/components/sections/Faq";
 import { Process } from "@/components/sections/Process";
 import { PricingTable } from "@/components/sections/PricingTable";
-import { PenTool, CheckCircle2, FileText, Type, ListChecks, Sparkles, LayoutTemplate, Layers, Target } from "lucide-react";
+import { Sparkles, PenTool, Search, ArrowRight, BarChart3, CheckCircle2, Type, ListChecks, LayoutTemplate, Layers, Target, FileText } from "lucide-react";
 import Link from "next/link";
+import { MarkerHighlight } from "@/components/ui/marker-highlight";
+import { InlineHighlight } from "@/components/ui/inline-highlight";
 
 export const metadata: Metadata = {
-  title: "Dịch vụ Viết bài chuẩn SEO & Sáng tạo Content | SEOSONA",
-  description: "Dịch vụ viết bài chuẩn SEO, content marketing chuyên sâu. Đảm bảo Unique 100%, tối ưu tỷ lệ chuyển đổi và thu hút người dùng mục tiêu.",
+  title: "Giải pháp Content SEO Mastery (Research & Viết bài) | SEOSONA",
+  description: "Dịch vụ Content SEO Mastery trọn gói: Research Keyword, Research Content và sản xuất bài viết chuẩn SEO. Đảm bảo Unique 100%, tối ưu tỷ lệ chuyển đổi.",
   alternates: { canonical: "/dich-vu-viet-bai-chuan-seo/" }
 };
 
@@ -98,11 +100,11 @@ export default function ContentSeoPage() {
             <PenTool size={16} /> Unique - Chuyên Sâu - Chuyển Đổi Cao
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 tracking-tight mb-6 animate-in slide-in-from-bottom-6 fade-in duration-700 delay-100 text-balance leading-[1.1]">
-            Dịch vụ Viết Bài Chuẩn SEO <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-pink-600">Đỉnh Cao Content</span>
+            Giải pháp Content SEO Mastery <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-pink-600">Research & Viết Bài Chuẩn SEO</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-10 animate-in slide-in-from-bottom-8 fade-in duration-700 delay-200 text-pretty">
-            Sản xuất nội dung chạm đến điểm đau của khách hàng. Không chỉ đáp ứng hàng trăm tiêu chí của Google, mà còn thuyết phục người đọc thực hiện hành động.
+            Không chỉ là "sản xuất chữ". Chúng tôi cung cấp giải pháp trọn gói từ <strong>Research Keyword</strong>, <strong>Research Content</strong> đến thiết lập dàn ý và viết bài chuyên sâu <InlineHighlight highlightColor="#e11d48" className="font-bold">chạm đúng Search Intent</InlineHighlight>.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-10 fade-in duration-700 delay-300">
             <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-rose-600 text-white font-bold text-[15px] flex items-center justify-center hover:bg-rose-700 transition-all shadow-xl hover:shadow-rose-500/25 hover:-translate-y-1">
@@ -166,10 +168,10 @@ export default function ContentSeoPage() {
                   </div>
 
                   <h2 className="text-3xl font-black text-slate-800 mb-4 border-l-4 border-rose-500 pl-4">
-                     Dịch vụ Viết bài chuẩn SEO chuyên nghiệp - Thúc đẩy doanh thu
+                     Giải pháp Content SEO Mastery toàn diện - Thúc đẩy doanh thu
                   </h2>
                   <p className="text-slate-600 leading-relaxed mb-4 text-sm md:text-base">
-                     Trong thời đại Digital Marketing, <span className="bg-rose-100 text-rose-800 px-1 rounded font-medium">nội dung chất lượng</span> chính là cầu nối vững chắc nhất giữa doanh nghiệp và khách hàng. Một bài viết được đầu tư kỹ lưỡng không chỉ giúp website <span className="font-bold text-slate-700 underline decoration-rose-300 decoration-2">leo top Google dễ dàng</span>, mà còn giữ chân người dùng ở lại lâu hơn.
+                     Trong thời đại Digital Marketing, <span className="bg-rose-100 text-rose-800 px-1 rounded font-medium">nội dung chất lượng</span> chính là cầu nối vững chắc nhất giữa doanh nghiệp và khách hàng. Một bài viết được đầu tư kỹ lưỡng không chỉ giúp website <MarkerHighlight markerColor="#fda4af" delay={0.5}>leo top Google dễ dàng</MarkerHighlight>, mà còn giữ chân người dùng ở lại lâu hơn.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-4 text-sm md:text-base">
                      Tại SEOSONA, chúng tôi không "sản xuất chữ". Đội ngũ Copywriter phân tích sâu sắc <span className="text-blue-600 font-medium cursor-help" title="Ý định tìm kiếm">Search Intent</span> của người dùng trước khi đặt bút, đảm bảo bài viết giải quyết triệt để vấn đề của họ...

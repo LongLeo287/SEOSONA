@@ -3,6 +3,7 @@
 import { Bot, Sparkles, Cpu, PenTool, Search, CheckCircle2, Lock, Mic, Plus, ArrowUp, ArrowRight, BarChart3, Database, MessageSquare, Activity, Globe, RefreshCw, Shield, Network, LineChart, Music } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { TextShimmer } from "@/components/ui/shimmer-text";
 
 const aiFeatures = [
   {
@@ -714,7 +715,9 @@ export function AiIntegration() {
               <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-600"></span>
             </span>
             <Bot className="h-4 w-4 text-blue-700" />
-            <span className="text-[14px] font-bold text-blue-700">Powered by Sonatools</span>
+            <TextShimmer as="span" className="text-[14px] font-bold [--base-color:#1d4ed8] [--base-gradient-color:#60a5fa] dark:[--base-color:#1d4ed8] dark:[--base-gradient-color:#60a5fa]">
+              Powered by Sonatools
+            </TextShimmer>
           </div>
 
           <h2 className="mx-auto mb-5 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">

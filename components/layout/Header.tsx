@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { X, Menu, ArrowRight, ChevronDown, Bot, GraduationCap, ExternalLink } from "lucide-react";
 import { BrandLogo } from "@/components/layout/BrandLogo";
+import { MotionButton } from "@/components/ui/motion-button";
+import { Badge } from "@/components/ui/new-badge";
 import { navItems } from "@/lib/site";
 
 export function Header() {
@@ -136,11 +138,16 @@ export function Header() {
                               <Link
                                 key={child.href}
                                 href={child.href}
-                                className={`px-4 py-2.5 text-[14px] font-semibold rounded-xl transition-colors ${
+                                className={`px-4 py-2.5 text-[14px] font-semibold rounded-xl transition-colors flex items-center gap-2 ${
                                   isChildActive ? "bg-[#F0F6FF] text-[#1D4ED8]" : "text-slate-600 hover:bg-[#F0F6FF] hover:text-[#1D4ED8]"
                                 }`}
                               >
                                 {child.label}
+                                {child.badge && (
+                                  <Badge color="red" size="sm" variant="default" className="scale-75 origin-left">
+                                    {child.badge}
+                                  </Badge>
+                                )}
                               </Link>
                             );
                           })
@@ -161,7 +168,14 @@ export function Header() {
                       : "text-slate-600 hover:bg-[#F0F6FF] hover:text-[#1D4ED8]"
                   }`}
                 >
-                  <span className="relative z-10">{item.label}</span>
+                  <span className="relative z-10 flex items-center gap-2">
+                    {item.label}
+                    {item.badge && (
+                      <Badge color="red" size="sm" variant="default" className="scale-75 origin-left">
+                        {item.badge}
+                      </Badge>
+                    )}
+                  </span>
                 </Link>
               );
             })}
@@ -169,12 +183,13 @@ export function Header() {
 
           {/* Desktop CTA */}
           <div className="flex items-center gap-4">
-            <Link
-              href="/lien-he/"
-              className="hidden sm:flex h-11 items-center justify-center gap-2 rounded-full bg-[#1D4ED8] px-6 text-[14px] font-bold text-white transition-all hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25 group"
-            >
-              Liên hệ chuyên gia
-            </Link>
+            <div className="hidden sm:block">
+               <MotionButton 
+                  label="Liên hệ chuyên gia" 
+                  as={Link} 
+                  href="/lien-he/" 
+               />
+            </div>
 
             {/* Mobile hamburger */}
             <button
