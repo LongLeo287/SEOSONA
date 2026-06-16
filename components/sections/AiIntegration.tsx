@@ -1,6 +1,6 @@
 "use client";
 
-import { Bot, Sparkles, Cpu, PenTool, Search, CheckCircle2, Lock, Mic, Plus, ArrowUp, ArrowRight } from "lucide-react";
+import { Bot, Sparkles, Cpu, PenTool, Search, CheckCircle2, Lock, Mic, Plus, ArrowUp, ArrowRight, BarChart3, Database, MessageSquare, Activity, Globe, RefreshCw } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
@@ -19,6 +19,34 @@ const aiFeatures = [
     title: "Data-Driven Technical",
     description: "Sử dụng Machine Learning để audit website hàng triệu trang, phát hiện và tự động báo cáo lỗi Technical SEO theo thời gian thực.",
     icon: Cpu
+  },
+  {
+    title: "Hệ thống Data & Automation",
+    description: "Tracking đa nền tảng, thiết lập Dashboard và tự động hóa quy trình chăm sóc khách hàng bằng dữ liệu.",
+    icon: Database
+  }
+];
+
+const dataFeatures = [
+  {
+    title: "Tracking Nâng cao",
+    description: "Cài đặt GTM, GA4, Server-side tracking giúp theo dõi chính xác, vượt qua rào cản chặn quảng cáo.",
+    icon: Activity
+  },
+  {
+    title: "Dashboard Power BI",
+    description: "Tích hợp đa nguồn dữ liệu thành Dashboard Real-time, trực quan hóa KPI hỗ trợ ra quyết định.",
+    icon: BarChart3
+  },
+  {
+    title: "Zalo 2BS / ZNS",
+    description: "Tự động hóa remarketing qua Zalo với kịch bản cá nhân hóa, tỷ lệ mở lên đến 90%.",
+    icon: MessageSquare
+  },
+  {
+    title: "Tích hợp Hệ thống",
+    description: "Luồng API/Webhook kết nối mượt mà giữa Website, Landing Page và hệ thống CRM/ERP nội bộ.",
+    icon: Database
   }
 ];
 
@@ -162,7 +190,7 @@ const technicalScenarios = [
     { text: "[SUCCESS] Organization schema valid. Found connected Knowledge Panel.", color: "text-[#4EC9B0]" },
     { text: "[WARNING] Article schema missing 'author.url' on /blog/* pages.", color: "text-[#DCDCAA]" },
     { text: "> Verifying FAQPage schema nesting...", color: "text-slate-300" },
-    { text: "[ERROR] Invalid nesting detected in FAQPage script tag on /dich-vu-seo.", color: "text-[#F44747]" },
+    { text: "[ERROR] Invalid nesting detected in FAQPage script tag on /dich-vu/seo-tong-the.", color: "text-[#F44747]" },
     { text: "[AUTO-FIX] Rebuilding JSON-LD string... Schema deployed.", color: "text-[#569CD6]" }
   ]
 ];
@@ -497,6 +525,141 @@ function TechnicalUI() {
   );
 }
 
+const TrackingMockup = () => (
+   <div className="flex flex-col gap-3 h-full animate-in fade-in zoom-in-95 duration-500">
+      <h4 className="text-white text-sm font-bold mt-1">Real-time Event Stream</h4>
+      <div className="flex-1 bg-[#0F172A] border border-slate-700/50 rounded-lg p-3 md:p-4 font-mono text-[11px] md:text-[12px] flex flex-col gap-2 overflow-y-auto shadow-inner">
+         <div className="text-slate-300"><span className="text-[#3BA6F1] font-bold">[GTM]</span> PageView fired on /dich-vu/seo-tong-the</div>
+         <div className="text-emerald-400"><span className="text-[#3BA6F1] font-bold">[GA4]</span> purchase_event detected</div>
+         <div className="text-slate-400 pl-4 border-l border-slate-700 ml-2 py-1">
+            <div className="mb-1">Value: 2,400,000 VND</div>
+            <div>Transaction_ID: SEO-8291</div>
+         </div>
+         <div className="text-yellow-400"><span className="text-[#3BA6F1] font-bold">[Server-Side]</span> Routing to Meta CAPI...</div>
+         <div className="text-emerald-400 pl-4 border-l border-slate-700 ml-2 py-1">Status: 200 OK (Processed)</div>
+      </div>
+   </div>
+);
+
+const PowerBIMockup = () => (
+   <div className="flex flex-col gap-3 h-full animate-in fade-in zoom-in-95 duration-500">
+      <h4 className="text-white text-sm font-bold mt-1">Executive Overview</h4>
+      <div className="grid grid-cols-2 gap-3">
+         <div className="bg-[#0F172A] border border-slate-700/50 rounded-lg p-3 shadow-sm">
+            <div className="text-slate-400 text-[10px] md:text-[11px] uppercase mb-1 font-semibold">Organic Traffic</div>
+            <div className="text-white text-lg md:text-xl font-bold">142.5K</div>
+            <div className="text-emerald-400 text-[10px] md:text-[11px] font-medium">+12.4% vs last month</div>
+         </div>
+         <div className="bg-[#0F172A] border border-slate-700/50 rounded-lg p-3 shadow-sm">
+            <div className="text-slate-400 text-[10px] md:text-[11px] uppercase mb-1 font-semibold">Conversion Rate</div>
+            <div className="text-white text-lg md:text-xl font-bold">3.8%</div>
+            <div className="text-emerald-400 text-[10px] md:text-[11px] font-medium">+0.5% vs last month</div>
+         </div>
+      </div>
+      <div className="flex-1 bg-[#0F172A] border border-slate-700/50 rounded-lg p-4 flex items-end gap-2 shadow-sm">
+         {[40, 70, 45, 90, 65, 100, 80].map((h, i) => (
+            <div key={i} className="flex-1 bg-gradient-to-t from-[#3BA6F1]/20 to-[#3BA6F1]/80 rounded-t-sm hover:from-[#3BA6F1] hover:to-[#00D4FF] transition-all cursor-pointer" style={{ height: `${h}%` }}></div>
+         ))}
+      </div>
+   </div>
+);
+
+const ZaloMockup = () => (
+   <div className="flex flex-col h-full bg-[#E5E7EB] rounded-lg overflow-hidden animate-in fade-in zoom-in-95 duration-500 shadow-inner">
+      <div className="bg-white px-3 md:px-4 py-2 md:py-3 border-b border-slate-200 flex items-center gap-3 shrink-0">
+         <div className="w-8 h-8 rounded-full bg-[#0068FF] flex items-center justify-center text-white font-bold text-xs shadow-sm">OA</div>
+         <div>
+            <div className="text-slate-800 text-[13px] md:text-[14px] font-bold leading-tight">SEOSONA OA</div>
+            <div className="text-emerald-500 text-[10px] md:text-[11px] font-medium">Đang hoạt động</div>
+         </div>
+      </div>
+      <div className="flex-1 p-3 md:p-4 flex flex-col justify-end gap-3 pb-6 md:pb-8">
+         <div className="bg-white text-slate-800 text-[12px] md:text-[13px] p-3 rounded-2xl rounded-tl-sm w-[90%] md:w-[85%] shadow-sm self-start">
+            <p className="mb-2">Chào bạn, cảm ơn bạn đã quan tâm đến dịch vụ SEO.</p>
+            <p>Hệ thống đã gửi Báo giá qua Email của bạn. Bạn kiểm tra nhé!</p>
+         </div>
+         <div className="text-center text-[10px] md:text-[11px] text-slate-500 mt-1 bg-white/50 py-1 rounded-full w-fit mx-auto px-4 shadow-sm">
+            Đã gửi tự động qua API (Tỷ lệ mở: <span className="text-[#0068FF] font-bold">92.4%</span>)
+         </div>
+      </div>
+   </div>
+);
+
+const ApiMockup = () => (
+   <div className="flex flex-col h-full items-center justify-center animate-in fade-in zoom-in-95 duration-500 relative">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#3BA6F1]/10 via-transparent to-transparent pointer-events-none"></div>
+      <h4 className="text-white text-sm font-bold mb-8 absolute top-1 left-0">Luồng tự động hóa</h4>
+      
+      <div className="flex items-center gap-2 md:gap-4 w-full justify-center px-2">
+         <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#0F172A] border border-slate-700 flex items-center justify-center text-slate-300 shadow-lg z-10 shrink-0">
+            <Globe size={18} />
+         </div>
+         <div className="flex-1 h-[2px] bg-gradient-to-r from-slate-700 to-[#3BA6F1] relative min-w-[20px]">
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#3BA6F1] animate-ping"></div>
+         </div>
+         <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#3BA6F1]/10 border border-[#3BA6F1]/50 flex items-center justify-center text-[#3BA6F1] shadow-[0_0_15px_rgba(59,166,241,0.2)] z-10 shrink-0">
+            <RefreshCw size={18} className="animate-spin" style={{ animationDuration: '3s' }} />
+         </div>
+         <div className="flex-1 h-[2px] bg-gradient-to-r from-[#3BA6F1] to-emerald-500 relative min-w-[20px]">
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-emerald-500 animate-ping" style={{ animationDelay: '0.5s' }}></div>
+         </div>
+         <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/50 flex items-center justify-center text-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.2)] z-10 shrink-0">
+            <Database size={18} />
+         </div>
+      </div>
+      <div className="flex justify-between w-full px-2 mt-4 text-[10px] md:text-[11px] text-slate-400 font-medium z-10">
+         <span className="text-center w-10 md:w-12">Website</span>
+         <span className="text-center w-10 md:w-12">Webhook</span>
+         <span className="text-center w-10 md:w-12">CRM</span>
+      </div>
+   </div>
+);
+
+function DataAutomationUI() {
+  const [dataIndex, setDataIndex] = useState(0);
+
+  return (
+    <div className="w-full h-full bg-[#0F172A] flex flex-col relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
+      <div className="h-10 md:h-12 bg-[#1E293B] flex items-center px-4 justify-between border-b border-slate-700 shrink-0 z-10 relative">
+         <div className="flex items-center gap-2">
+            <Database className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#3BA6F1]" />
+            <span className="text-[12px] md:text-[13px] font-medium text-slate-300">Data Management Dashboard</span>
+         </div>
+         <div className="flex gap-2">
+            <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-slate-600"/>
+            <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-slate-600"/>
+         </div>
+      </div>
+      
+      <div className="flex flex-1 overflow-hidden bg-[#020617] relative">
+         <div className="absolute top-0 left-1/3 w-[200px] h-[200px] bg-[#3BA6F1]/10 blur-3xl rounded-full pointer-events-none"></div>
+         
+         {/* Left Menu */}
+         <div className="w-[140px] md:w-[180px] border-r border-slate-800 p-2 md:p-3 flex flex-col gap-1.5 md:gap-2 shrink-0 overflow-y-auto relative z-10 bg-[#020617]/50 backdrop-blur-sm">
+            {dataFeatures.map((feature, idx) => {
+               const Icon = feature.icon;
+               const isActive = dataIndex === idx;
+               return (
+                  <div key={idx} onClick={() => setDataIndex(idx)} className={`flex items-start sm:items-center gap-2 md:gap-3 p-2 md:p-3 rounded-xl cursor-pointer transition-all duration-300 border ${isActive ? 'bg-[#3BA6F1]/10 border-[#3BA6F1]/30 text-[#3BA6F1] shadow-[0_0_15px_rgba(59,166,241,0.1)]' : 'border-transparent text-slate-400 hover:bg-white/5 hover:text-slate-200'}`}>
+                     <Icon size={16} className={`shrink-0 mt-0.5 sm:mt-0 ${isActive ? 'text-[#3BA6F1]' : 'text-slate-500'}`} />
+                     <span className="text-[11px] md:text-[12.5px] font-semibold leading-tight md:leading-snug">{feature.title}</span>
+                  </div>
+               )
+            })}
+         </div>
+
+         {/* Right Mockup Display */}
+         <div className="flex-1 relative p-4 md:p-5 lg:p-6 overflow-hidden z-10">
+            {dataIndex === 0 && <TrackingMockup />}
+            {dataIndex === 1 && <PowerBIMockup />}
+            {dataIndex === 2 && <ZaloMockup />}
+            {dataIndex === 3 && <ApiMockup />}
+         </div>
+      </div>
+    </div>
+  );
+}
+
 // --- Main Component ---
 
 export function AiIntegration() {
@@ -519,18 +682,18 @@ export function AiIntegration() {
 
           <h2 className="mx-auto mb-5 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-white sm:text-4xl md:text-[44px] text-balance">
             Sẵn sàng đón đầu thay đổi với <br className="hidden md:block"/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3BA6F1] to-[#00D4FF]">Hệ Sinh Thái AI Sonatools</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3BA6F1] to-[#00D4FF]">Hệ Sinh Thái Công Nghệ & Dữ Liệu</span>
           </h2>
-          <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-400 text-pretty">
-            Thay vì lo sợ Google Update, chúng tôi làm chủ công nghệ. Tích hợp sức mạnh của Sonatools <br className="hidden md:block" />
-            vào quy trình R&D Content và Data Analysis để mang lại hiệu quả vượt trội.
+          <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-400 text-balance">
+            Thay vì lo sợ Google Update, chúng tôi làm chủ công nghệ. <br className="hidden md:block" />
+            Tích hợp sức mạnh của Sonatools vào quy trình R&D Content và Data Analysis để mang lại hiệu quả vượt trội.
           </p>
         </RevealOnScroll>
 
         <div className="grid gap-8 lg:grid-cols-12 items-center">
           
           {/* L: Features Stack */}
-          <div className="flex flex-col gap-5 justify-center lg:col-span-5 lg:order-1">
+          <div className="flex flex-col gap-3 lg:gap-4 justify-center lg:col-span-5 lg:order-1">
             {aiFeatures.map((item, i) => {
               const Icon = item.icon;
               const isActive = activeIndex === i;
@@ -538,18 +701,18 @@ export function AiIntegration() {
                 <RevealOnScroll key={item.title} direction="right" delay={100 + (i * 100)}>
                   <div 
                     onClick={() => setActiveIndex(i)}
-                    className={`group cursor-pointer relative flex items-start sm:items-center gap-5 sm:gap-6 rounded-3xl border p-5 sm:p-6 backdrop-blur-md transition-all duration-500 overflow-hidden ${isActive ? 'border-[#3BA6F1]/80 bg-white/10 shadow-[0_0_40px_rgba(59,166,241,0.2)] -translate-y-1' : 'border-white/10 bg-white/5 hover:border-[#3BA6F1]/50 hover:bg-white/10 hover:shadow-[0_0_40px_rgba(59,166,241,0.15)] hover:-translate-y-1'}`}
+                    className={`group cursor-pointer relative flex items-start sm:items-center gap-4 sm:gap-5 rounded-2xl border p-4 sm:p-5 backdrop-blur-md transition-all duration-500 overflow-hidden ${isActive ? 'border-[#3BA6F1]/80 bg-white/10 shadow-[0_0_40px_rgba(59,166,241,0.2)] -translate-y-1' : 'border-white/10 bg-white/5 hover:border-[#3BA6F1]/50 hover:bg-white/10 hover:shadow-[0_0_40px_rgba(59,166,241,0.15)] hover:-translate-y-1'}`}
                   >
                     <div className={`absolute top-0 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
                     
-                    <div className={`flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl ring-1 transition-all duration-500 z-10 ${isActive ? 'bg-[#3BA6F1]/20 text-[#3BA6F1] shadow-[0_0_20px_rgba(59,166,241,0.3)] ring-[#3BA6F1]/50 scale-110' : 'bg-[#3BA6F1]/10 text-[#3BA6F1] shadow-inner ring-white/5 group-hover:scale-110 group-hover:bg-[#3BA6F1]/20 group-hover:shadow-[0_0_20px_rgba(59,166,241,0.3)]'}`}>
-                      <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                    <div className={`flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl ring-1 transition-all duration-500 z-10 ${isActive ? 'bg-[#3BA6F1]/20 text-[#3BA6F1] shadow-[0_0_20px_rgba(59,166,241,0.3)] ring-[#3BA6F1]/50 scale-110' : 'bg-[#3BA6F1]/10 text-[#3BA6F1] shadow-inner ring-white/5 group-hover:scale-110 group-hover:bg-[#3BA6F1]/20 group-hover:shadow-[0_0_20px_rgba(59,166,241,0.3)]'}`}>
+                      <Icon className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className={`mb-1.5 sm:mb-2 text-lg sm:text-xl font-black transition-colors duration-500 ${isActive ? 'text-[#3BA6F1]' : 'text-white group-hover:text-[#3BA6F1]'}`}>
+                      <h3 className={`mb-1 sm:mb-1.5 text-[16px] sm:text-[18px] font-black transition-colors duration-500 ${isActive ? 'text-[#3BA6F1]' : 'text-white group-hover:text-[#3BA6F1]'}`}>
                         {item.title}
                       </h3>
-                      <p className={`text-[14px] sm:text-[14.5px] leading-relaxed text-pretty transition-colors duration-500 ${isActive ? 'text-slate-300' : 'text-slate-400'}`}>
+                      <p className={`text-[13px] sm:text-[13.5px] leading-relaxed text-pretty transition-colors duration-500 ${isActive ? 'text-slate-300' : 'text-slate-400'}`}>
                         {item.description}
                       </p>
                     </div>
@@ -565,6 +728,7 @@ export function AiIntegration() {
               {activeIndex === 0 && <SgeUI />}
               {activeIndex === 1 && <ContentUI />}
               {activeIndex === 2 && <TechnicalUI />}
+              {activeIndex === 3 && <DataAutomationUI />}
             </div>
           </RevealOnScroll>
 

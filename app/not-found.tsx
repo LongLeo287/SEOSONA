@@ -27,7 +27,7 @@ export default function NotFound() {
           }
         }
       `}} />
-      <main className="relative flex min-h-[calc(100vh-80px)] flex-col items-center overflow-hidden bg-white px-5 py-8 text-center">
+      <main className="relative flex min-h-[calc(100vh-80px)] flex-col items-center justify-center overflow-hidden bg-white px-5 py-8 text-center">
         
         {/* Hero-style Premium Background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800A_1px,transparent_1px),linear-gradient(to_bottom,#8080800A_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
@@ -38,7 +38,7 @@ export default function NotFound() {
 
         
         {/* Content Container */}
-        <div className="relative z-10 flex w-full flex-1 flex-col items-center pt-8 pb-12">
+        <div className="relative z-10 flex w-full flex-col items-center">
           
           {/* Top Text Group */}
           <div className="flex w-full max-w-4xl flex-col items-center">
@@ -59,13 +59,14 @@ export default function NotFound() {
               </h1>
             </div>
 
-            <p className="max-w-2xl text-[16px] font-medium leading-relaxed text-slate-500 mb-12">
-              Có vẻ như bạn đã đi lạc. Đường dẫn này có thể đã bị thay đổi hoặc không tồn tại. Hãy để chúng tôi đưa bạn về đúng hướng nhé.
+            <p className="max-w-2xl text-[16px] font-medium leading-relaxed text-slate-500 mb-12 text-balance">
+              Có vẻ như bạn đã đi lạc. Đường dẫn này có thể đã bị thay đổi hoặc không tồn tại. <br className="hidden sm:block" />
+              Hãy để chúng tôi đưa bạn về đúng hướng nhé.
             </p>
           </div>
 
           {/* Navigation Cards */}
-          <div className="mt-auto flex w-full max-w-md flex-col gap-4">
+          <div className="mt-4 flex w-full max-w-md flex-col gap-4">
             {/* Card 1 */}
             <Link href="/" className="group flex items-center justify-between rounded-3xl border border-slate-200/60 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#3BA6F1]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]">
               <div className="flex items-center gap-4 text-left">

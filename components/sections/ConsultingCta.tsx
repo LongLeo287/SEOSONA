@@ -4,9 +4,9 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 export function ConsultingCta() {
   return (
-    <section className="bg-[#04091A] py-12 lg:py-16 relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#3BA6F1]/20 via-[#04091A]/0 to-transparent pointer-events-none"></div>
+    <section className="relative overflow-hidden bg-[#04091A] py-16 lg:py-24">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:32px_32px]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#3BA6F1]/50 to-transparent" />
 
       <div className="container relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         <RevealOnScroll direction="up">
@@ -21,7 +21,7 @@ export function ConsultingCta() {
               <PhoneCall size={18} />
               Nhận tư vấn ngay
             </Link>
-            <Link href="/bao-gia" className="flex h-14 w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-white/10 px-8 text-[15px] font-bold text-white backdrop-blur-md transition-all hover:bg-white/20">
+            <Link href="/bao-gia-seo" className="flex h-14 w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-white/10 px-8 text-[15px] font-bold text-white backdrop-blur-md transition-all hover:bg-white/20">
               Xem bảng giá dịch vụ
             </Link>
           </div>

@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle2, GraduationCap, LineChart, Megaphone, SearchCh
 const services: Array<{ title: string; href: string; desc: string; icon: LucideIcon; image: string; label: string; featured?: boolean; points?: string[] }> = [
   {
     title: "SEO tổng thể",
-    href: "/dich-vu-seo/",
+    href: "/dich-vu/seo-tong-the/",
     label: "Dịch vụ chủ lực",
     desc: "Xây nền tảng SEO bền vững: kỹ thuật, từ khóa, nội dung, entity và đo lường chuyển đổi trong cùng một roadmap.",
     icon: SearchCheck,
@@ -13,8 +13,8 @@ const services: Array<{ title: string; href: string; desc: string; icon: LucideI
     featured: true,
     points: ["Audit kỹ thuật", "Topical map", "Content SEO", "Báo cáo tăng trưởng"]
   },
-  { title: "Tư vấn SEO", href: "/tu-van-seo-chuyen-sau/", label: "Cố vấn chiến lược", desc: "Audit, roadmap và review định kỳ cho đội marketing/in-house đang tự triển khai SEO.", icon: LineChart, image: "/images/legacy/about/about-img.png" },
-  { title: "Google Ads", href: "/google-ads/", label: "Tăng lead nhanh", desc: "Tối ưu Search, Performance Max và remarketing để tạo khách hàng tiềm năng trong ngắn hạn.", icon: Megaphone, image: "/images/legacy/services/google-ads.png" },
+  { title: "Tư vấn SEO", href: "/dich-vu/tu-van-seo/", label: "Cố vấn chiến lược", desc: "Audit, roadmap và review định kỳ cho đội marketing/in-house đang tự triển khai SEO.", icon: LineChart, image: "/images/legacy/about/about-img.png" },
+  { title: "Google Ads", href: "/dich-vu-ads/google/", label: "Tăng lead nhanh", desc: "Tối ưu Search, Performance Max và remarketing để tạo khách hàng tiềm năng trong ngắn hạn.", icon: Megaphone, image: "/images/legacy/services/google-ads.png" },
   { title: "Đào tạo SEO", href: "/khoa-hoc-seo/", label: "Nâng năng lực đội ngũ", desc: "Đào tạo SEO thực chiến cho cá nhân, team content và doanh nghiệp theo case thực tế.", icon: GraduationCap, image: "/images/legacy/services/seo-course.png" }
 ];
 

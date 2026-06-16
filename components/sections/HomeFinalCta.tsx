@@ -47,7 +47,7 @@ export function HomeFinalCta() {
   };
 
   return (
-    <section className="py-12 lg:py-16">
+    <section className="py-6 lg:py-8">
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="overflow-hidden rounded-[28px] bg-gradient-to-br from-[#002244] to-[#001833] border border-white/10 text-white shadow-2xl sm:rounded-[36px]">
         <div className="grid gap-0 lg:grid-cols-[1.05fr_.95fr]">

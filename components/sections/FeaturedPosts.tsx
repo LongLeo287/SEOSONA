@@ -9,7 +9,7 @@ export function FeaturedPosts() {
   if (!featuredPosts || featuredPosts.length === 0) return null;
 
   return (
-    <section className="bg-white py-12 lg:py-16">
+    <section className="bg-white py-16 lg:py-24">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <RevealOnScroll direction="up" className="mb-12 flex flex-col items-center text-center">
           <SectionBadge live={true} icon={<BookOpen className="h-3.5 w-3.5" />}>
@@ -60,7 +60,7 @@ export function FeaturedPosts() {
 
         <RevealOnScroll direction="up" className="mt-12 flex justify-center">
           <Link
-            href="/blog"
+            href="/seo"
             className="flex h-14 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-[15px] font-bold text-[#04091A] transition-all hover:border-[#3BA6F1] hover:text-[#3BA6F1] group shadow-sm hover:shadow-md"
           >
             Xem tất cả bài viết <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />

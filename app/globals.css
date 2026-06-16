@@ -211,3 +211,36 @@
   }
 }
 
+@keyframes cursor-blink {
+  50% { border-color: transparent; }
+}
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes light-beam-y {
+  0% { top: -30%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 130%; opacity: 0; }
+}
+.live-line {
+  background-size: 200% 200%;
+  animation: gradient-flow 3s ease infinite;
+}
+@keyframes spin-orbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes spin-orbit-reverse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+@keyframes message-appear {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-message-appear {
+  animation: message-appear 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

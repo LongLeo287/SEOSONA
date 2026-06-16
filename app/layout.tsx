@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { FloatingActions } from "@/components/layout/FloatingActions";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
@@ -22,6 +23,13 @@ const inter = Inter({
   variable: "--font-inter"
 });
 
+export const viewport = {
+  themeColor: "#3BA6F1",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.domain),
   title: {
@@ -30,6 +38,17 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     title: "SEOSONA - Google Marketing Agency",
     description: siteConfig.description,
@@ -44,11 +63,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="vi" id="top">
       <body className={`${poppins.variable} ${inter.variable} font-sans antialiased`}>
-        <JsonLd data={[organizationSchema(), websiteSchema()]} />
-        <Header />
-        {children}
-        <Footer />
-        <FloatingActions />
+        <SmoothScroll>
+          <JsonLd data={[organizationSchema(), websiteSchema()]} />
+          <Header />
+          {children}
+          <Footer />
+          <FloatingActions />
+        </SmoothScroll>
       </body>
     </html>
   );

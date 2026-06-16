@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { EcosystemProof } from "@/components/sections/EcosystemProof";
-import { ClientLogoGrid } from "@/components/sections/ClientLogoGrid";
-import { PressLogoGrid } from "@/components/sections/PressLogoGrid";
+import { TrustSection } from "@/components/sections/TrustSection";
 import { CoreSolutions } from "@/components/sections/CoreSolutions";
-import { AiIntegration } from "@/components/sections/AiIntegration";
-import { CustomerJourney } from "@/components/sections/CustomerJourney";
-import { HighTicketCaseStudies } from "@/components/sections/HighTicketCaseStudies";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { CommunityLeadMagnets } from "@/components/sections/CommunityLeadMagnets";
-import { FeaturedPosts } from "@/components/sections/FeaturedPosts";
-import { ConsultingCta } from "@/components/sections/ConsultingCta";
+import dynamic from "next/dynamic";
+
+const AiIntegration = dynamic(() => import("@/components/sections/AiIntegration").then(mod => mod.AiIntegration));
+const CustomerJourney = dynamic(() => import("@/components/sections/CustomerJourney").then(mod => mod.CustomerJourney));
+const HighTicketCaseStudies = dynamic(() => import("@/components/sections/HighTicketCaseStudies").then(mod => mod.HighTicketCaseStudies));
+const Testimonials = dynamic(() => import("@/components/sections/Testimonials").then(mod => mod.Testimonials));
+const CommunityLeadMagnets = dynamic(() => import("@/components/sections/CommunityLeadMagnets").then(mod => mod.CommunityLeadMagnets));
+const FeaturedPosts = dynamic(() => import("@/components/sections/FeaturedPosts").then(mod => mod.FeaturedPosts));
+const ConsultingCta = dynamic(() => import("@/components/sections/ConsultingCta").then(mod => mod.ConsultingCta));
 
 export const metadata: Metadata = {
   title: "SEOSONA - Google Marketing Agency hàng đầu Việt Nam",
@@ -23,13 +24,16 @@ export default function HomePage() {
   return (
     <main>
       <Hero />
-      <EcosystemProof />
-      <ClientLogoGrid />
-      <PressLogoGrid />
+      <TrustSection />
       <CoreSolutions />
-      <AiIntegration />
+      <div className="relative overflow-hidden bg-[#04091A]">
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:32px_32px]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#3BA6F1]/50 to-transparent" />
+        <AiIntegration />
+      </div>
       <CustomerJourney />
       <HighTicketCaseStudies />
+      <EcosystemProof />
       <Testimonials />
       <CommunityLeadMagnets />
       <FeaturedPosts />

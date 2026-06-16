@@ -20,7 +20,7 @@ export function CommunityLeadMagnets() {
 
   return (
     <>
-      <section id="lead-magnets" className="bg-[#F8FAFC] py-12 lg:py-16">
+      <section id="lead-magnets" className="border-y border-slate-100 bg-[#F6F9FC] py-16 lg:py-24">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           <RevealOnScroll direction="up" className="mb-12 flex flex-col items-center text-center">

@@ -33,7 +33,7 @@ export function Faq({ items }: FaqProps) {
   };
 
   return (
-    <section className="bg-[#F8FAFC] py-12 lg:py-16">
+    <section className="bg-[#F8FAFC] py-6 lg:py-8">
       <JsonLd data={schema} />
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <RevealOnScroll direction="up" className="flex flex-col items-center text-center">
@@ -46,7 +46,7 @@ export function Faq({ items }: FaqProps) {
           </p>
         </RevealOnScroll>
 
-        <div className="mx-auto mt-12 grid max-w-3xl gap-4">
+        <div className="mx-auto mt-8 grid max-w-3xl gap-4">
           {items.map((item, index) => {
             const isOpen = openIndex === index;
             return (

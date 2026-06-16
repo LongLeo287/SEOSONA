@@ -4,6 +4,7 @@ import Link from "next/link";
 interface PricingPlan {
   name: string;
   price: string;
+  period?: string;
   description: string;
   features: string[];
   isPopular?: boolean;
@@ -32,13 +33,13 @@ export function PricingTable({ eyebrow, title, description, plans }: PricingTabl
           )}
         </div>
 
-        <div className="mx-auto mt-10 grid max-w-6xl gap-8 lg:grid-cols-3">
+        <div className="mx-auto mt-10 grid max-w-6xl gap-6 lg:gap-8 lg:grid-cols-3">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative flex flex-col rounded-[2.5rem] p-8 sm:p-10 ${
+              className={`relative flex flex-col rounded-[2.5rem] p-6 sm:p-8 ${
                 plan.isPopular
-                  ? "bg-[#091338] text-white shadow-2xl ring-2 ring-blue-500 scale-105 z-10"
+                  ? "bg-[#091338] text-white shadow-2xl ring-2 ring-blue-500 lg:scale-105 z-10"
                   : "bg-white text-slate-950 shadow-lg ring-1 ring-slate-200/50"
               }`}
             >
@@ -48,13 +49,17 @@ export function PricingTable({ eyebrow, title, description, plans }: PricingTabl
                 </div>
               )}
               
-              <div className="mb-8">
+              <div className="mb-6">
                 <h3 className={`text-xl font-bold ${plan.isPopular ? "text-blue-200" : "text-blue-600"}`}>
                   {plan.name}
                 </h3>
-                <div className="mt-4 flex items-baseline gap-2">
-                  <span className="text-4xl font-black tracking-tight sm:text-5xl">{plan.price}</span>
-                  {plan.price !== "Liên hệ" && <span className={`text-sm ${plan.isPopular ? "text-slate-300" : "text-slate-500"}`}>/ tháng</span>}
+                <div className="mt-4 flex items-baseline gap-1.5 flex-wrap">
+                  <span className="text-3xl font-black tracking-tight sm:text-4xl break-all sm:break-normal">{plan.price}</span>
+                  {plan.price !== "Liên hệ" && plan.period !== "" && (
+                    <span className={`text-sm whitespace-nowrap ${plan.isPopular ? "text-slate-300" : "text-slate-500"}`}>
+                      {plan.period || "/ tháng"}
+                    </span>
+                  )}
                 </div>
                 <p className={`mt-4 text-sm leading-6 ${plan.isPopular ? "text-slate-300" : "text-slate-600"}`}>
                   {plan.description}

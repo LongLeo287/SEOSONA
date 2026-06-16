@@ -95,30 +95,8 @@ export function CustomerJourney() {
   }, [animate, scope]);
 
   return (
-    <section className="bg-[#F8FAFC] py-12 lg:py-16 relative overflow-hidden border-b border-slate-100">
-      <style>{`
-        @keyframes gradient-flow {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .live-line {
-          background-size: 200% 200%;
-          animation: gradient-flow 3s ease infinite;
-        }
-        @keyframes light-beam-x {
-          0% { left: -30%; opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { left: 130%; opacity: 0; }
-        }
-        @keyframes light-beam-y {
-          0% { top: -30%; opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { top: 130%; opacity: 0; }
-        }
-      `}</style>
+    <section className="relative overflow-hidden border-b border-slate-100 bg-[#F6F9FC] py-16 lg:py-24">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#3BA6F1]/30 to-transparent" />
 
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
         
@@ -138,10 +116,8 @@ export function CustomerJourney() {
         <div ref={scope} className="relative mx-auto max-w-6xl px-2 md:px-0">
           
           {/* Desktop Progress Line */}
-          <div className="hidden md:block absolute top-[26px] left-[12%] right-[12%] h-2 bg-slate-200/60 rounded-full z-0 overflow-hidden">
-            <div className="journey-progress-line-x live-line absolute top-0 left-0 h-full w-0 bg-gradient-to-r from-[#3BA6F1] via-[#7DD3FC] to-[#3BA6F1] rounded-full shadow-[0_0_12px_rgba(59,166,241,0.6)]"></div>
-            {/* The Beam */}
-            <div className="absolute top-0 h-full w-1/4 bg-gradient-to-r from-transparent via-white to-transparent opacity-80 mix-blend-overlay z-10" style={{ animation: 'light-beam-x 2.5s linear infinite' }}></div>
+          <div className="absolute top-[29px] left-[12.5%] right-[12.5%] hidden h-[3px] bg-slate-200/50 z-0 rounded-full md:block overflow-hidden">
+            <div className="journey-progress-line-x absolute top-0 left-0 h-full w-0 bg-gradient-to-r from-[#3BA6F1] to-[#00D4FF] shadow-[0_0_12px_rgba(59,166,241,0.6)] rounded-full"></div>
           </div>
 
           {/* Mobile Progress Line */}
@@ -156,17 +132,20 @@ export function CustomerJourney() {
               <div key={index} className="group/step flex flex-row md:flex-col items-start md:items-center gap-6 md:gap-8 flex-1">
                 
                 {/* Timeline Node */}
-                <div className="journey-node cursor-pointer relative flex shrink-0 h-[60px] w-[60px] items-center justify-center rounded-2xl border border-slate-200/80 bg-white text-[22px] font-black text-slate-400 z-10 transition-transform duration-300 hover:scale-110 hover:-translate-y-1 active:scale-95 shadow-sm">
+                <div className="journey-node cursor-pointer relative flex shrink-0 h-[60px] w-[60px] items-center justify-center rounded-2xl border border-slate-200/80 bg-white/80 backdrop-blur-sm text-[22px] font-black text-slate-400 z-10 transition-all duration-300 hover:scale-110 hover:-translate-y-1 active:scale-95 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(59,166,241,0.2)] hover:border-[#3BA6F1]/50">
                   {index + 1}
                 </div>
                 
                 {/* Timeline Content Card */}
-                <div className="journey-content relative w-full flex-1 flex flex-col rounded-[24px] bg-white p-6 sm:p-8 border border-slate-200/80 shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:border-[#3BA6F1]/30 overflow-hidden text-left md:text-center mt-1 md:mt-0">
+                <div className="journey-content relative w-full flex-1 flex flex-col rounded-[24px] bg-white/80 backdrop-blur-md p-6 sm:p-8 border border-slate-200/80 shadow-[0_4px_20px_rgb(0,0,0,0.02)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,166,241,0.15)] hover:border-[#3BA6F1]/40 overflow-hidden text-left md:text-center mt-1 md:mt-0 group-hover/step:bg-white">
                   {/* Glowing Sweep on Hover */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent transition-all duration-500 group-hover/step:w-full opacity-0 group-hover/step:opacity-100" />
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[3px] w-0 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent transition-all duration-500 group-hover/step:w-full opacity-0 group-hover/step:opacity-100" />
                   
-                  <h3 className="mb-3 text-[20px] font-black text-[#04091A] text-balance transition-colors group-hover/step:text-[#3BA6F1]">{step.title}</h3>
-                  <p className="text-[15px] font-medium text-slate-500 leading-relaxed text-pretty">
+                  {/* Subtle Background Glow on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#3BA6F1]/5 to-transparent opacity-0 transition-opacity duration-500 group-hover/step:opacity-100 pointer-events-none" />
+
+                  <h3 className="relative z-10 mb-3 text-[20px] font-black text-[#04091A] text-balance transition-colors group-hover/step:text-[#3BA6F1]">{step.title}</h3>
+                  <p className="relative z-10 text-[15px] font-medium text-slate-500 leading-relaxed text-pretty">
                     {step.desc}
                   </p>
                 </div>

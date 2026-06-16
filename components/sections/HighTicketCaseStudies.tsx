@@ -26,8 +26,8 @@ const TypewriterText = ({ text }: { text: string }) => {
 
   return (
     <>
-      <span className="invisible h-0 block w-full truncate" aria-hidden="true">{text}</span>
-      <span className="absolute inset-0 flex items-center">{displayedText}<span className="animate-pulse ml-[1px] w-[2px] h-4 bg-[#3BA6F1] inline-block"></span></span>
+      <span className="invisible h-0 block whitespace-nowrap" aria-hidden="true">{text}</span>
+      <span className="absolute inset-y-0 left-0 flex items-center whitespace-nowrap">{displayedText}<span className="animate-pulse ml-[1px] w-[2px] h-4 bg-[#3BA6F1] inline-block"></span></span>
     </>
   );
 };
@@ -83,18 +83,8 @@ export function HighTicketCaseStudies() {
           <div className="mt-8 flex items-center justify-center h-[44px]">
             <motion.div layout className="relative flex items-center gap-2 rounded-full border border-blue-100 bg-[#F0F6FF] px-5 py-2.5 text-[15px] font-bold text-[#3BA6F1] shadow-sm overflow-hidden">
               <CheckCircle2 className="shrink-0" size={18} />
-              <div className="relative h-5 flex items-center min-w-[200px]">
-                <AnimatePresence mode="popLayout">
-                  <motion.div
-                    key={currentTagIndex}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <TypewriterText text={tags[currentTagIndex]} />
-                  </motion.div>
-                </AnimatePresence>
+              <div className="relative h-5 flex items-center transition-all duration-300">
+                <TypewriterText text={tags[currentTagIndex]} />
               </div>
             </motion.div>
           </div>

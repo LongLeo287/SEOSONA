@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ContactForm } from "@/components/sections/ContactForm";
-import { siteConfig } from "@/lib/site";
+import { siteConfig, socialChannels } from "@/lib/site";
 import { MapPin, Mail, Phone, Clock, ArrowRight, MessageCircle } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
@@ -75,7 +75,8 @@ export default function Page() {
         contactType: "customer service",
         availableLanguage: "Vietnamese",
         areaServed: "VN"
-      }
+      },
+      sameAs: socialChannels.map((channel) => channel.href)
     }
   };
 
@@ -157,30 +158,23 @@ export default function Page() {
                   <div className="text-sm font-black text-[#04091A]">Theo dõi SEOSONA</div>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  <a
-                    href={siteConfig.socials.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-bold text-slate-700 transition-all hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+                  {socialChannels.slice(0, 4).map((channel) => (
+                    <a
+                      key={channel.href}
+                      href={channel.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-bold text-slate-700 transition-all hover:border-[#3BA6F1]/30 hover:bg-blue-50 hover:text-[#3BA6F1]"
+                    >
+                      {channel.label}
+                    </a>
+                  ))}
+                  <Link
+                    href="/ve-seosona/fanpage-social/"
+                    className="inline-flex items-center gap-2 rounded-xl border border-[#3BA6F1]/20 bg-[#F0F6FF] px-4 py-2.5 text-sm font-bold text-[#3BA6F1] transition-all hover:border-[#3BA6F1]/40 hover:bg-white"
                   >
-                    Facebook
-                  </a>
-                  <a
-                    href={siteConfig.socials.youtube}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-bold text-slate-700 transition-all hover:border-red-200 hover:bg-red-50 hover:text-red-700"
-                  >
-                    YouTube
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/company/seosona"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-bold text-slate-700 transition-all hover:border-blue-300 hover:bg-blue-50 hover:text-blue-600"
-                  >
-                    LinkedIn
-                  </a>
+                    Xem tất cả
+                  </Link>
                 </div>
               </div>
             </RevealOnScroll>
@@ -207,8 +201,8 @@ export default function Page() {
           </RevealOnScroll>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { label: "Dịch vụ SEO", href: "/dich-vu-seo/", desc: "SEO tổng thể cho doanh nghiệp" },
-              { label: "Google Ads", href: "/google-ads/", desc: "Tăng lead nhanh từ Google" },
+              { label: "Dịch vụ SEO", href: "/dich-vu/seo-tong-the/", desc: "SEO tổng thể cho doanh nghiệp" },
+              { label: "Google Ads", href: "/dich-vu-ads/google/", desc: "Tăng lead nhanh từ Google" },
               { label: "Khóa học SEO", href: "/khoa-hoc-seo/", desc: "Đào tạo SEO thực chiến" },
               { label: "Báo giá SEO", href: "/bao-gia-seo/", desc: "Minh bạch theo mục tiêu" }
             ].map((item, index) => (
