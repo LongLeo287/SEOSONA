@@ -36,92 +36,108 @@ export default function NotFound() {
         <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-[#7DD3FC]/15 blur-[120px] pointer-events-none mix-blend-multiply" />
         <div className="absolute bottom-[-20%] left-[20%] w-[400px] h-[400px] rounded-full bg-[#1D4ED8]/5 blur-[100px] pointer-events-none mix-blend-multiply" />
 
+        {/* Giant Faint 404 Text Background */}
+        <div 
+          className="absolute top-[-10%] sm:top-[-5%] left-1/2 -translate-x-1/2 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0 w-full"
+          style={{ WebkitMaskImage: 'linear-gradient(to bottom, white 30%, transparent 90%)', maskImage: 'linear-gradient(to bottom, white 30%, transparent 90%)' }}
+        >
+          <span className="text-[300px] sm:text-[450px] md:text-[550px] font-black text-slate-200/80 leading-none tracking-tighter">
+            404
+          </span>
+        </div>
         
         {/* Content Container */}
         <div className="relative z-10 flex w-full flex-col items-center">
           
           {/* Top Text Group */}
           <div className="flex w-full max-w-4xl flex-col items-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-[#F0F6FF] px-4 py-1.5 text-[14px] font-bold text-[#1D4ED8] mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#1D4ED8] opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#1D4ED8]"></span>
-              </span>
-              <span>Lỗi 404 - Not Found</span>
-            </div>
 
-            <div className="relative mb-8 text-center mt-6 w-full max-w-[1100px] px-4 mx-auto">
-              <h1 className="text-4xl font-black leading-[1.5] tracking-tight text-[#04091A] sm:text-[46px] md:text-[50px] transition-colors duration-300">
-                <span className="inline-block sm:whitespace-nowrap">Whoops! Trang này không tồn tại.</span><br className="hidden sm:block" />
-                <span className="inline-block sm:whitespace-nowrap">Nhưng bạn có thể khám phá các dịch vụ</span><br className="hidden sm:block" />
+            <div className="mb-8 text-center mt-6 w-full px-4 mx-auto">
+              <h1 className="relative inline-block text-4xl font-black leading-[1.3] tracking-tight text-[#04091A] sm:text-[46px] md:text-[50px] transition-colors duration-300">
+                {/* Line 1: Separated with margin-bottom */}
+                <span className="block mb-4 sm:mb-8 sm:whitespace-nowrap">
+                  <span className="inline-block -rotate-3 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-1 text-white shadow-lg shadow-blue-500/30 mr-3 hover:rotate-2 hover:scale-105 transition-all duration-300 cursor-default">
+                    Whoops!
+                  </span>
+                  Trang này không tồn tại.
+                </span>
+                
+                {/* Line 2 */}
+                <span className="block sm:whitespace-nowrap text-2xl sm:text-3xl md:text-[36px] font-extrabold text-[#04091A]/90">Nhưng bạn có thể khám phá các dịch vụ</span>
                 
                 {/* Line 3 Container to keep keywords together */}
-                <span className="inline-block sm:whitespace-nowrap">
+                <span className="block sm:whitespace-nowrap mt-2 text-2xl sm:text-3xl md:text-[36px] font-extrabold text-[#04091A]/90">
                   {/* Keyword 1: SEO */}
-                  <span className="group/seo cursor-default transition-colors duration-300 hover:text-[#1D4ED8]">
-                  SEO
-                  {/* Left Cluster for SEO */}
-                  <div className="absolute top-[10%] -left-8 sm:-left-16 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg transition-all duration-300 ease-out scale-50 opacity-0 group-hover/seo:scale-100 group-hover/seo:opacity-100 group-hover/seo:-translate-y-2 rotate-[-15deg] z-10 pointer-events-none">
-                    <Search className="h-7 w-7 text-white" strokeWidth={2.5} />
-                  </div>
-                  <div className="absolute top-[45%] left-0 sm:-left-4 flex h-12 w-12 items-center justify-center rounded-[20px] bg-gradient-to-br from-emerald-400 to-emerald-500 shadow-lg transition-all duration-300 delay-75 ease-out scale-50 opacity-0 group-hover/seo:scale-100 group-hover/seo:opacity-100 group-hover/seo:-translate-y-2 rotate-[10deg] z-10 pointer-events-none">
-                    <TrendingUp className="h-6 w-6 text-white" strokeWidth={2.5} />
-                  </div>
+                  <span className="group/seo cursor-default">
+                    <span className="inline-block transition-all duration-300 group-hover/seo:text-blue-600 group-hover/seo:scale-110 group-hover/seo:-translate-y-1 relative z-20">
+                      SEO
+                    </span>
+                    {/* Left Cluster for SEO */}
+                    <div className="absolute top-[10%] -left-12 sm:-left-24 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg transition-all duration-300 ease-out scale-50 opacity-0 group-hover/seo:scale-100 group-hover/seo:opacity-100 group-hover/seo:-translate-y-2 rotate-[-15deg] pointer-events-none">
+                      <Search className="h-7 w-7 text-white" strokeWidth={2.5} />
+                    </div>
+                    <div className="absolute bottom-[20%] -left-6 sm:-left-16 flex h-12 w-12 items-center justify-center rounded-[20px] bg-gradient-to-br from-emerald-400 to-emerald-500 shadow-lg transition-all duration-300 delay-75 ease-out scale-50 opacity-0 group-hover/seo:scale-100 group-hover/seo:opacity-100 group-hover/seo:-translate-y-2 rotate-[10deg] pointer-events-none">
+                      <TrendingUp className="h-6 w-6 text-white" strokeWidth={2.5} />
+                    </div>
+                    
+                    {/* Right Cluster for SEO */}
+                    <div className="absolute top-[15%] -right-12 sm:-right-24 flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-amber-400 to-amber-500 shadow-lg transition-all duration-300 ease-out scale-50 opacity-0 group-hover/seo:scale-100 group-hover/seo:opacity-100 group-hover/seo:-translate-y-2 rotate-[20deg] pointer-events-none">
+                      <BarChart3 className="h-8 w-8 text-white" strokeWidth={2.5} />
+                    </div>
+                    <div className="absolute bottom-[10%] -right-6 sm:-right-16 flex h-10 w-10 items-center justify-center rounded-[14px] bg-gradient-to-br from-red-500 to-red-600 shadow-lg transition-all duration-300 delay-75 ease-out scale-50 opacity-0 group-hover/seo:scale-100 group-hover/seo:opacity-100 group-hover/seo:-translate-y-2 rotate-[-10deg] pointer-events-none">
+                      <Target className="h-5 w-5 text-white" strokeWidth={2.5} />
+                    </div>
+                  </span>
                   
-                  {/* Right Cluster for SEO */}
-                  <div className="absolute top-[15%] -right-8 sm:-right-16 flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-amber-400 to-amber-500 shadow-lg transition-all duration-300 ease-out scale-50 opacity-0 group-hover/seo:scale-100 group-hover/seo:opacity-100 group-hover/seo:-translate-y-2 rotate-[20deg] z-10 pointer-events-none">
-                    <BarChart3 className="h-8 w-8 text-white" strokeWidth={2.5} />
-                  </div>
-                  <div className="absolute top-[50%] right-0 sm:-right-4 flex h-10 w-10 items-center justify-center rounded-[14px] bg-gradient-to-br from-red-500 to-red-600 shadow-lg transition-all duration-300 delay-75 ease-out scale-50 opacity-0 group-hover/seo:scale-100 group-hover/seo:opacity-100 group-hover/seo:-translate-y-2 rotate-[-10deg] z-10 pointer-events-none">
-                    <Target className="h-5 w-5 text-white" strokeWidth={2.5} />
-                  </div>
-                </span>
-                
-                {", "}
+                  {", "}
 
-                {/* Keyword 2: Content */}
-                <span className="group/content cursor-default transition-colors duration-300 hover:text-[#1D4ED8]">
-                  Content
-                  {/* Left Cluster for Content */}
-                  <div className="absolute top-[15%] left-0 sm:-left-8 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-400 to-rose-500 shadow-lg transition-all duration-300 ease-out scale-50 opacity-0 group-hover/content:scale-100 group-hover/content:opacity-100 group-hover/content:-translate-y-2 rotate-[10deg] z-10 pointer-events-none">
-                    <FileText className="h-6 w-6 text-white" strokeWidth={2.5} />
-                  </div>
-                  <div className="absolute top-[50%] -left-8 sm:-left-20 flex h-14 w-14 items-center justify-center rounded-[20px] bg-gradient-to-br from-pink-500 to-pink-600 shadow-lg transition-all duration-300 delay-75 ease-out scale-50 opacity-0 group-hover/content:scale-100 group-hover/content:opacity-100 group-hover/content:-translate-y-2 rotate-[-20deg] z-10 pointer-events-none">
-                    <BookOpen className="h-7 w-7 text-white" strokeWidth={2.5} />
-                  </div>
+                  {/* Keyword 2: Content */}
+                  <span className="group/content cursor-default">
+                    <span className="inline-block transition-all duration-300 group-hover/content:text-rose-500 group-hover/content:scale-110 group-hover/content:-rotate-3 relative z-20">
+                      Content
+                    </span>
+                    {/* Left Cluster for Content */}
+                    <div className="absolute top-[15%] -left-10 sm:-left-20 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-400 to-rose-500 shadow-lg transition-all duration-300 ease-out scale-50 opacity-0 group-hover/content:scale-100 group-hover/content:opacity-100 group-hover/content:-translate-y-2 rotate-[10deg] pointer-events-none">
+                      <FileText className="h-6 w-6 text-white" strokeWidth={2.5} />
+                    </div>
+                    <div className="absolute bottom-[25%] -left-16 sm:-left-32 flex h-14 w-14 items-center justify-center rounded-[20px] bg-gradient-to-br from-pink-500 to-pink-600 shadow-lg transition-all duration-300 delay-75 ease-out scale-50 opacity-0 group-hover/content:scale-100 group-hover/content:opacity-100 group-hover/content:-translate-y-2 rotate-[-20deg] pointer-events-none">
+                      <BookOpen className="h-7 w-7 text-white" strokeWidth={2.5} />
+                    </div>
+                    
+                    {/* Right Cluster for Content */}
+                    <div className="absolute top-[10%] -right-10 sm:-right-20 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-orange-400 to-orange-500 shadow-lg transition-all duration-300 ease-out scale-50 opacity-0 group-hover/content:scale-100 group-hover/content:opacity-100 group-hover/content:-translate-y-2 rotate-[-15deg] pointer-events-none">
+                      <PenTool className="h-5 w-5 text-white" strokeWidth={2.5} />
+                    </div>
+                    <div className="absolute bottom-[20%] -right-14 sm:-right-28 flex h-12 w-12 items-center justify-center rounded-[18px] bg-gradient-to-br from-yellow-400 to-yellow-500 shadow-lg transition-all duration-300 delay-75 ease-out scale-50 opacity-0 group-hover/content:scale-100 group-hover/content:opacity-100 group-hover/content:-translate-y-2 rotate-[25deg] pointer-events-none">
+                      <Edit3 className="h-6 w-6 text-white" strokeWidth={2.5} />
+                    </div>
+                  </span>
                   
-                  {/* Right Cluster for Content */}
-                  <div className="absolute top-[10%] right-0 sm:-right-4 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-orange-400 to-orange-500 shadow-lg transition-all duration-300 ease-out scale-50 opacity-0 group-hover/content:scale-100 group-hover/content:opacity-100 group-hover/content:-translate-y-2 rotate-[-15deg] z-10 pointer-events-none">
-                    <PenTool className="h-5 w-5 text-white" strokeWidth={2.5} />
-                  </div>
-                  <div className="absolute top-[40%] -right-8 sm:-right-16 flex h-12 w-12 items-center justify-center rounded-[18px] bg-gradient-to-br from-yellow-400 to-yellow-500 shadow-lg transition-all duration-300 delay-75 ease-out scale-50 opacity-0 group-hover/content:scale-100 group-hover/content:opacity-100 group-hover/content:-translate-y-2 rotate-[25deg] z-10 pointer-events-none">
-                    <Edit3 className="h-6 w-6 text-white" strokeWidth={2.5} />
-                  </div>
-                </span>
-                
-                {", và "}
+                  {", và "}
 
-                {/* Keyword 3: Backlink */}
-                <span className="group/backlink cursor-default transition-colors duration-300 hover:text-[#1D4ED8]">
-                  Backlink
-                  {/* Left Cluster for Backlink */}
-                  <div className="absolute top-[20%] -left-6 sm:-left-14 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-600 shadow-lg transition-all duration-300 ease-out scale-50 opacity-0 group-hover/backlink:scale-100 group-hover/backlink:opacity-100 group-hover/backlink:-translate-y-2 rotate-[-10deg] z-10 pointer-events-none">
-                    <Link2 className="h-6 w-6 text-white" strokeWidth={2.5} />
-                  </div>
-                  <div className="absolute top-[60%] left-0 sm:-left-4 flex h-10 w-10 items-center justify-center rounded-[16px] bg-gradient-to-br from-violet-500 to-violet-600 shadow-lg transition-all duration-300 delay-75 ease-out scale-50 opacity-0 group-hover/backlink:scale-100 group-hover/backlink:opacity-100 group-hover/backlink:-translate-y-2 rotate-[15deg] z-10 pointer-events-none">
-                    <Network className="h-5 w-5 text-white" strokeWidth={2.5} />
-                  </div>
+                  {/* Keyword 3: Backlink */}
+                  <span className="group/backlink cursor-default">
+                    <span className="inline-block transition-all duration-300 group-hover/backlink:text-purple-600 group-hover/backlink:scale-110 group-hover/backlink:rotate-3 relative z-20">
+                      Backlink
+                    </span>
+                    {/* Left Cluster for Backlink */}
+                    <div className="absolute top-[20%] -left-14 sm:-left-28 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-600 shadow-lg transition-all duration-300 ease-out scale-50 opacity-0 group-hover/backlink:scale-100 group-hover/backlink:opacity-100 group-hover/backlink:-translate-y-2 rotate-[-10deg] pointer-events-none">
+                      <Link2 className="h-6 w-6 text-white" strokeWidth={2.5} />
+                    </div>
+                    <div className="absolute bottom-[10%] -left-8 sm:-left-16 flex h-10 w-10 items-center justify-center rounded-[16px] bg-gradient-to-br from-violet-500 to-violet-600 shadow-lg transition-all duration-300 delay-75 ease-out scale-50 opacity-0 group-hover/backlink:scale-100 group-hover/backlink:opacity-100 group-hover/backlink:-translate-y-2 rotate-[15deg] pointer-events-none">
+                      <Network className="h-5 w-5 text-white" strokeWidth={2.5} />
+                    </div>
+                    
+                    {/* Right Cluster for Backlink */}
+                    <div className="absolute top-[5%] -right-12 sm:-right-24 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-500 shadow-lg transition-all duration-300 ease-out scale-50 opacity-0 group-hover/backlink:scale-100 group-hover/backlink:opacity-100 group-hover/backlink:-translate-y-2 rotate-[20deg] pointer-events-none">
+                      <Globe className="h-6 w-6 text-white" strokeWidth={2.5} />
+                    </div>
+                    <div className="absolute bottom-[15%] -right-16 sm:-right-32 flex h-14 w-14 items-center justify-center rounded-[20px] bg-gradient-to-br from-purple-500 to-purple-600 shadow-lg transition-all duration-300 delay-75 ease-out scale-50 opacity-0 group-hover/backlink:scale-100 group-hover/backlink:opacity-100 group-hover/backlink:-translate-y-2 rotate-[-15deg] pointer-events-none">
+                      <Share2 className="h-7 w-7 text-white" strokeWidth={2.5} />
+                    </div>
+                  </span>
                   
-                  {/* Right Cluster for Backlink */}
-                  <div className="absolute top-[5%] -right-4 sm:-right-8 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-500 shadow-lg transition-all duration-300 ease-out scale-50 opacity-0 group-hover/backlink:scale-100 group-hover/backlink:opacity-100 group-hover/backlink:-translate-y-2 rotate-[20deg] z-10 pointer-events-none">
-                    <Globe className="h-6 w-6 text-white" strokeWidth={2.5} />
-                  </div>
-                  <div className="absolute top-[45%] -right-10 sm:-right-20 flex h-14 w-14 items-center justify-center rounded-[20px] bg-gradient-to-br from-purple-500 to-purple-600 shadow-lg transition-all duration-300 delay-75 ease-out scale-50 opacity-0 group-hover/backlink:scale-100 group-hover/backlink:opacity-100 group-hover/backlink:-translate-y-2 rotate-[-15deg] z-10 pointer-events-none">
-                    <Share2 className="h-7 w-7 text-white" strokeWidth={2.5} />
-                  </div>
-                </span>
-                
-                {" của SEOSONA"}
+                  {" của SEOSONA"}
                 </span>
               </h1>
             </div>
@@ -132,36 +148,55 @@ export default function NotFound() {
             </p>
           </div>
 
-          {/* Navigation Cards */}
-          <div className="mt-4 flex w-full max-w-md flex-col gap-4">
-            {/* Card 1 */}
-            <Link href="/" className="group flex items-center justify-between rounded-3xl border border-slate-200/60 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1D4ED8]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]">
-              <div className="flex items-center gap-4 text-left">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#F0F6FF] text-[#1D4ED8] transition-transform duration-300 group-hover:scale-110">
-                  <Home className="h-6 w-6" />
-                </div>
-                <div>
-                  <h3 className="text-[15px] font-bold text-[#04091A]">Về trang chủ</h3>
-                  <p className="text-[13px] font-medium text-slate-500">Khám phá các dịch vụ của SEOSONA</p>
-                </div>
+          {/* Navigation Cards - 3 Services */}
+          <div className="mt-8 grid w-full max-w-5xl grid-cols-1 gap-6 sm:grid-cols-3">
+            {/* Card 1: SEO */}
+            <Link href="/dich-vu-seo-tong-the/" className="group relative flex flex-col items-center sm:items-start gap-4 rounded-3xl border border-slate-200/60 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-blue-500/30 hover:shadow-[0_20px_40px_rgba(37,99,235,0.12)]">
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 transition-colors duration-300 group-hover:bg-blue-600 group-hover:text-white">
+                <TrendingUp strokeWidth={2.5} className="h-8 w-8" />
               </div>
-              <ChevronRight className="h-5 w-5 text-slate-400 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#1D4ED8]" />
+              <div className="text-center sm:text-left flex-1">
+                <h3 className="text-[20px] font-bold text-[#04091A]">Dịch vụ SEO</h3>
+                <p className="mt-2 text-[14px] font-medium text-slate-500 leading-relaxed">Tăng trưởng traffic organic bền vững và thống trị thứ hạng trên Google.</p>
+              </div>
+              <div className="mt-2 flex items-center gap-2 text-[14px] font-bold text-blue-600 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-2">
+                Khám phá ngay <ChevronRight className="h-4 w-4" />
+              </div>
             </Link>
 
-            {/* Card 2 */}
-            <Link href="/tai-nguyen/" className="group flex items-center justify-between rounded-3xl border border-slate-200/60 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1D4ED8]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]">
-              <div className="flex items-center gap-4 text-left">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#F0F6FF] text-[#1D4ED8] transition-transform duration-300 group-hover:scale-110">
-                  <LibraryBig className="h-6 w-6" />
-                </div>
-                <div>
-                  <h3 className="text-[15px] font-bold text-[#04091A]">Thư viện tài nguyên</h3>
-                  <p className="text-[13px] font-medium text-slate-500">Tải biểu mẫu và kiến thức chuyên sâu</p>
-                </div>
+            {/* Card 2: Content */}
+            <Link href="/dich-vu-viet-bai-chuan-seo/" className="group relative flex flex-col items-center sm:items-start gap-4 rounded-3xl border border-slate-200/60 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-rose-500/30 hover:shadow-[0_20px_40px_rgba(244,63,94,0.12)]">
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-rose-50 text-rose-500 transition-colors duration-300 group-hover:bg-rose-500 group-hover:text-white">
+                <PenTool strokeWidth={2.5} className="h-8 w-8" />
               </div>
-              <ChevronRight className="h-5 w-5 text-slate-400 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#1D4ED8]" />
+              <div className="text-center sm:text-left flex-1">
+                <h3 className="text-[20px] font-bold text-[#04091A]">Dịch vụ Content</h3>
+                <p className="mt-2 text-[14px] font-medium text-slate-500 leading-relaxed">Sáng tạo nội dung chuẩn SEO, thu hút độc giả và tối ưu tỷ lệ chuyển đổi.</p>
+              </div>
+              <div className="mt-2 flex items-center gap-2 text-[14px] font-bold text-rose-500 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-2">
+                Khám phá ngay <ChevronRight className="h-4 w-4" />
+              </div>
+            </Link>
+
+            {/* Card 3: Backlink */}
+            <Link href="/dich-vu-backlink/" className="group relative flex flex-col items-center sm:items-start gap-4 rounded-3xl border border-slate-200/60 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-purple-500/30 hover:shadow-[0_20px_40px_rgba(168,85,247,0.12)]">
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-purple-50 text-purple-600 transition-colors duration-300 group-hover:bg-purple-600 group-hover:text-white">
+                <Link2 strokeWidth={2.5} className="h-8 w-8" />
+              </div>
+              <div className="text-center sm:text-left flex-1">
+                <h3 className="text-[20px] font-bold text-[#04091A]">Dịch vụ Backlink</h3>
+                <p className="mt-2 text-[14px] font-medium text-slate-500 leading-relaxed">Xây dựng liên kết chất lượng cao, an toàn và thúc đẩy sức mạnh Website.</p>
+              </div>
+              <div className="mt-2 flex items-center gap-2 text-[14px] font-bold text-purple-600 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-2">
+                Khám phá ngay <ChevronRight className="h-4 w-4" />
+              </div>
             </Link>
           </div>
+
+          <Link href="/" className="mt-12 inline-flex items-center gap-2 rounded-full bg-slate-900 px-8 py-3.5 text-[15px] font-bold text-white shadow-lg shadow-slate-900/20 transition-all hover:-translate-y-1 hover:shadow-xl hover:bg-slate-800">
+            <Home className="h-5 w-5" />
+            Quay về Trang Chủ
+          </Link>
         </div>
       </main>
     </>

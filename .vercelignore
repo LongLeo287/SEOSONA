@@ -1,0 +1,15 @@
+# Ignore documentation and AI configs from being uploaded to Vercel build
+docs/
+*.md
+.cursorrules
+.clauderules
+seosona.project.json
+AGENTS.md
+DESIGN.md
+
+# Ignore scripts
+scripts/
+
+# The rest are standard Next.js vercel ignores
+node_modules
+.next
