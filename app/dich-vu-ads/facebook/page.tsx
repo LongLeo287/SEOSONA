@@ -3,7 +3,8 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Faq } from "@/components/sections/Faq";
 import { Process } from "@/components/sections/Process";
 import { PricingTable } from "@/components/sections/PricingTable";
-import { MessageCircle, Users, Image as ImageIcon, Video, Target, TrendingUp, CheckCircle2, SplitSquareHorizontal } from "lucide-react";
+import { Users, Target, TrendingUp, CheckCircle2, ImageIcon, SplitSquareHorizontal } from "lucide-react";
+import { FacebookAbTestMockup } from "@/components/mockups/FacebookAbTestMockup";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -103,105 +104,14 @@ export default function FacebookAdsPage() {
             Chúng tôi vận hành Facebook Ads như một hệ thống phễu đa điểm chạm: đúng audience, đúng creative, đúng tracking và vòng lặp A/B testing liên tục để tìm ra Win Campaign.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-10 fade-in duration-700 delay-300">
-            <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-indigo-600 text-white font-bold text-[15px] flex items-center justify-center hover:bg-indigo-700 transition-all shadow-xl hover:shadow-indigo-500/25 hover:-translate-y-1">
+            <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-indigo-600 text-white font-bold text-[15px] flex items-center justify-center hover:bg-indigo-700 transition-all shadow-xl hover:shadow-indigo-500/25 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">
               Yêu cầu Tư vấn Giải pháp
             </Link>
           </div>
 
-          {/* Light Mockup: A/B Testing Creative Funnel */}
+          {/* Animated Mockup: A/B Testing Creative Funnel */}
           <div className="mt-20 relative mx-auto max-w-4xl animate-in fade-in slide-in-from-bottom-24 duration-1000 delay-500">
-            <div className="rounded-2xl border border-slate-200 bg-white p-2 shadow-[0_30px_60px_rgba(0,0,0,0.08)] relative z-10 text-left">
-               <div className="rounded-xl border border-slate-100 bg-slate-50 overflow-hidden flex flex-col font-sans p-6 md:p-8">
-                  <div className="flex items-center justify-between mb-8">
-                     <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center shadow-sm">
-                           <SplitSquareHorizontal size={16} className="text-white" />
-                        </div>
-                        <div>
-                           <div className="font-bold text-slate-900 text-sm">A/B Testing Lab</div>
-                           <div className="text-xs text-slate-500">Campaign: Lead Gen_Q3</div>
-                        </div>
-                     </div>
-                     <div className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold flex items-center gap-1">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> Active Test
-                     </div>
-                  </div>
-
-                  {/* A/B Test Variants */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
-                     {/* Divider Line */}
-                     <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-slate-200" />
-                     
-                     {/* Variant A */}
-                     <div className="relative">
-                        <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-sm shadow-sm z-10 border-2 border-white">
-                           A
-                        </div>
-                        <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-sm opacity-80 scale-95 origin-top transition-all hover:scale-100 hover:opacity-100">
-                           <div className="flex items-center gap-2 mb-3">
-                              <ImageIcon size={16} className="text-slate-400" />
-                              <span className="text-sm font-semibold text-slate-700">Image: Benefit Hook</span>
-                           </div>
-                           <div className="aspect-video bg-slate-100 rounded-lg mb-4 flex items-center justify-center text-slate-400 text-xs">
-                              [Static Image Banner]
-                           </div>
-                           <div className="space-y-3">
-                              <div className="flex justify-between items-center text-sm">
-                                 <span className="text-slate-500">CTR</span>
-                                 <span className="font-bold text-slate-700">1.2%</span>
-                              </div>
-                              <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                                 <div className="w-[30%] h-full bg-slate-400" />
-                              </div>
-                              
-                              <div className="flex justify-between items-center text-sm">
-                                 <span className="text-slate-500">Cost per Lead</span>
-                                 <span className="font-bold text-slate-700">245,000đ</span>
-                              </div>
-                              <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                                 <div className="w-[80%] h-full bg-rose-400" />
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                     {/* Variant B (Winner) */}
-                     <div className="relative">
-                        <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm shadow-[0_0_15px_rgba(79,70,229,0.5)] z-10 border-2 border-white">
-                           B
-                        </div>
-                        <div className="bg-white rounded-xl border-2 border-indigo-500 p-4 shadow-md relative overflow-hidden">
-                           <div className="absolute top-0 right-0 bg-indigo-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">WINNER</div>
-                           <div className="flex items-center gap-2 mb-3">
-                              <Video size={16} className="text-indigo-500" />
-                              <span className="text-sm font-semibold text-slate-900">Video: Problem Agitation</span>
-                           </div>
-                           <div className="aspect-video bg-indigo-50 rounded-lg mb-4 flex items-center justify-center text-indigo-400 text-xs relative overflow-hidden">
-                              <div className="absolute inset-0 border-[4px] border-indigo-100/50 m-2 rounded" />
-                              [Short Video UGC]
-                           </div>
-                           <div className="space-y-3">
-                              <div className="flex justify-between items-center text-sm">
-                                 <span className="text-slate-500">CTR</span>
-                                 <span className="font-bold text-emerald-600">3.8%</span>
-                              </div>
-                              <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                                 <div className="w-[85%] h-full bg-emerald-500" />
-                              </div>
-                              
-                              <div className="flex justify-between items-center text-sm">
-                                 <span className="text-slate-500">Cost per Lead</span>
-                                 <span className="font-bold text-indigo-600">120,000đ</span>
-                              </div>
-                              <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                                 <div className="w-[40%] h-full bg-indigo-500" />
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
+            <FacebookAbTestMockup />
             {/* Soft Glow under mockup */}
             <div className="absolute -inset-x-20 -bottom-20 h-[50%] bg-gradient-to-t from-slate-50 to-transparent z-20 pointer-events-none" />
           </div>
@@ -209,7 +119,7 @@ export default function FacebookAdsPage() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-24 relative z-30 bg-slate-50">
+      <section className="py-20 lg:py-32 relative z-30 bg-slate-50">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">

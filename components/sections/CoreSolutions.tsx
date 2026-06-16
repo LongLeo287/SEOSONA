@@ -12,7 +12,7 @@ const solutions = [
   {
     title: "Dịch Vụ SEO Toàn Diện",
     description: "Xây dựng nền móng Organic vững chắc, phủ sóng hàng ngàn từ khóa và chiếm lĩnh đỉnh cao tìm kiếm Google một cách bền vững. Chiến lược an toàn, cam kết KPI rõ ràng.",
-    href: "/dich-vu/seo-tong-the/",
+    href: "/dich-vu-seo-tong-the/",
     icon: TrendingUp,
     metrics: ["+300% Organic Traffic", "Top 1-3 Keywords"]
   },
@@ -80,8 +80,10 @@ export function CoreSolutions() {
               return (
                 <button
                   key={item.title}
+                  type="button"
+                  aria-pressed={isActive}
                   onClick={() => setActiveIndex(index)}
-                  className={`relative flex items-center gap-4 w-full p-5 rounded-2xl text-left transition-all duration-300 border ${
+                  className={`relative flex items-center gap-4 w-full p-5 rounded-2xl text-left transition-all duration-300 border focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 ${
                     isActive 
                       ? 'bg-white border-blue-100 shadow-[0_8px_30px_rgba(59,166,241,0.08)] ring-1 ring-blue-50' 
                       : 'border-transparent hover:bg-slate-50 text-slate-500'

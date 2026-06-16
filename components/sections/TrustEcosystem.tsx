@@ -56,7 +56,7 @@ function LogoCard({ logo }: { logo: { name: string; src: string; href?: string }
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Đến website ${logo.name}`}
-      className="group flex h-16 w-40 shrink-0 items-center justify-center px-4 py-3 sm:h-20 sm:w-48"
+      className="group flex h-16 w-40 shrink-0 items-center justify-center px-4 py-3 sm:h-20 sm:w-48 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100"
     >
       <Image
         src={logo.src}
@@ -186,7 +186,7 @@ export function TrustEcosystem() {
                       ease: "easeInOut",
                       delay: index * 0.4
                     }}
-                    className="group flex h-[76px] w-[240px] max-w-full items-center justify-center rounded-[20px] bg-slate-50/80 backdrop-blur-sm border border-slate-200/60 shadow-sm transition-all hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg cursor-pointer hover:bg-white mx-auto"
+                    className="group flex h-[76px] w-[240px] max-w-full items-center justify-center rounded-[20px] bg-slate-50/80 backdrop-blur-sm border border-slate-200/60 shadow-sm transition-all hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg cursor-pointer hover:bg-white mx-auto focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100"
                   >
                     <Image 
                       src={logo.src} 

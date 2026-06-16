@@ -81,11 +81,11 @@ export function AcademyHero() {
             </div>
 
             <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-4">
-              <Link href="#register" className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-8 py-4 font-bold text-white shadow-[0_8px_30px_-10px_rgba(6,182,212,0.4)] transition-all duration-200 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-12px_rgba(6,182,212,0.6)] active:scale-[0.98] will-change-transform">
+              <Link href="#register" className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-8 py-4 font-bold text-white shadow-[0_8px_30px_-10px_rgba(6,182,212,0.4)] transition-all duration-200 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-12px_rgba(6,182,212,0.6)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan-300/30 will-change-transform">
                 Đăng ký học ngay 
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </Link>
-              <Link href="#curriculum" className="group inline-flex items-center justify-center gap-2 rounded-full border border-slate-700/80 bg-slate-800/40 px-8 py-4 font-semibold text-slate-200 backdrop-blur-md transition-all duration-200 ease-in-out hover:bg-slate-800 hover:text-white active:scale-[0.98] will-change-transform">
+              <Link href="#curriculum" className="group inline-flex items-center justify-center gap-2 rounded-full border border-slate-700/80 bg-slate-800/40 px-8 py-4 font-semibold text-slate-200 backdrop-blur-md transition-all duration-200 ease-in-out hover:bg-slate-800 hover:text-white active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan-300/30 will-change-transform">
                 <PlayCircle size={18} className="text-slate-400 transition-colors group-hover:text-cyan-400" /> Xem lộ trình học
               </Link>
             </div>
@@ -107,7 +107,7 @@ export function AcademyHero() {
                   </div>
                   <h4 className="text-lg font-bold text-white">Đăng ký thành công!</h4>
                   <p className="mt-2 text-sm leading-relaxed text-slate-300">Đội ngũ hỗ trợ sẽ liên hệ với bạn trong ít phút để kích hoạt tài khoản.</p>
-                  <button onClick={() => setSuccess(false)} className="mt-6 text-sm font-semibold text-cyan-400 transition-colors hover:text-cyan-300 hover:underline underline-offset-4">Đăng ký thêm người</button>
+                  <button type="button" onClick={() => setSuccess(false)} className="mt-6 text-sm font-semibold text-cyan-400 transition-colors hover:text-cyan-300 hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan-300/30">Đăng ký thêm người</button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -120,7 +120,7 @@ export function AcademyHero() {
                   <div className="group relative">
                     <input type="tel" required value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} placeholder="Số điện thoại" className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white placeholder-slate-400 outline-none backdrop-blur-md transition-all duration-200 focus:border-cyan-500/50 focus:bg-white/10 focus:ring-4 focus:ring-cyan-500/10" />
                   </div>
-                  <button type="submit" disabled={loading} className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 px-4 py-4 font-bold text-white shadow-lg shadow-cyan-500/20 transition-all duration-200 ease-in-out hover:-translate-y-0.5 hover:shadow-cyan-500/30 active:scale-[0.98] disabled:opacity-70 will-change-transform">
+                  <button type="submit" disabled={loading} className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 px-4 py-4 font-bold text-white shadow-lg shadow-cyan-500/20 transition-all duration-200 ease-in-out hover:-translate-y-0.5 hover:shadow-cyan-500/30 active:scale-[0.98] disabled:opacity-70 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan-300/30 will-change-transform">
                     {loading && <Loader2 size={18} className="animate-spin" />}
                     Đăng ký & Học ngay
                   </button>

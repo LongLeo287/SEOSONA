@@ -146,7 +146,7 @@ const OrbitalNode = ({
               style={{ scale: nodeScale, opacity: nodeOpacity, filter: nodeBlur }}
               animate={{ y: [-15, 15, -15] }}
               transition={{ duration: 4 + (Math.abs(pillar.startAngle) % 3), repeat: Infinity, ease: "easeInOut" }}
-              className="pointer-events-auto flex items-center gap-3 rounded-full bg-white/90 backdrop-blur-md px-5 py-3 shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-200/80 transition-all duration-300 hover:scale-110 hover:border-[#1D4ED8]/50 cursor-pointer group"
+              className="pointer-events-auto flex items-center gap-3 rounded-full bg-white/90 backdrop-blur-md px-5 py-3 shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-200/80 transition-all duration-300 hover:scale-110 hover:border-[#1D4ED8]/50 group"
             >
               <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white shadow-sm border border-slate-100 transition-colors group-hover:bg-[#1D4ED8] group-hover:text-white group-hover:border-transparent ${pillar.color}`}>
                 <pillar.icon size={22} />
@@ -308,10 +308,10 @@ export function Hero() {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/lien-he" className="flex h-14 items-center justify-center gap-2 rounded-full bg-[#1D4ED8] px-8 text-[15px] font-bold text-white transition-all hover:scale-105 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25 w-full sm:w-auto">
+              <Link href="/lien-he/" className="flex h-14 items-center justify-center gap-2 rounded-full bg-[#1D4ED8] px-8 text-[15px] font-bold text-white transition-all hover:scale-105 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 w-full sm:w-auto">
                 Nhận tư vấn chiến lược <ArrowRight size={18} />
               </Link>
-              <Link href="/case-study" className="flex h-14 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-[15px] font-bold text-[#04091A] transition-all hover:border-[#1D4ED8] hover:text-[#1D4ED8] w-full sm:w-auto group">
+              <Link href="/case-study/" className="flex h-14 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-[15px] font-bold text-[#04091A] transition-all hover:border-[#1D4ED8] hover:text-[#1D4ED8] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 w-full sm:w-auto group">
                 Xem Case Study <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </Link>
             </div>

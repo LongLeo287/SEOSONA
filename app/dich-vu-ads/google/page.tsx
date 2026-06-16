@@ -3,7 +3,8 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Faq } from "@/components/sections/Faq";
 import { Process } from "@/components/sections/Process";
 import { PricingTable } from "@/components/sections/PricingTable";
-import { Search, BarChart3, TrendingUp, Target, ShieldCheck, Zap, MousePointerClick, CheckCircle2 } from "lucide-react";
+import { Search, BarChart3, Target, MousePointerClick, CheckCircle2, Zap } from "lucide-react";
+import { GoogleAdsDashboard } from "@/components/mockups/GoogleAdsDashboard";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -103,71 +104,14 @@ export default function GoogleAdsPage() {
             Chúng tôi không tối ưu lượt Click. SEOSONA xây dựng cấu trúc tài khoản chuẩn, cài đặt Tracking sâu và tối ưu giá thầu dựa trên tín hiệu CRM (Doanh thu thật).
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-10 fade-in duration-700 delay-300">
-            <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-blue-600 text-white font-bold text-[15px] flex items-center justify-center hover:bg-blue-700 transition-all shadow-xl hover:shadow-blue-500/25 hover:-translate-y-1">
+            <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-blue-600 text-white font-bold text-[15px] flex items-center justify-center hover:bg-blue-700 transition-all shadow-xl hover:shadow-blue-500/25 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">
               Nhận Audit Tài khoản Miễn phí
             </Link>
           </div>
 
-          {/* Light Mockup: Google Ads Dashboard */}
+          {/* Animated Mockup: Google Ads Dashboard */}
           <div className="mt-20 relative mx-auto max-w-5xl animate-in fade-in slide-in-from-bottom-24 duration-1000 delay-500">
-            <div className="rounded-2xl border border-slate-200 bg-white p-2 shadow-[0_30px_60px_rgba(0,0,0,0.08)] relative z-10 text-left">
-               <div className="rounded-xl border border-slate-100 bg-slate-50 overflow-hidden flex flex-col font-sans">
-                  {/* Mockup Header */}
-                  <div className="h-12 bg-white border-b border-slate-100 flex items-center px-4 gap-4">
-                     <div className="flex items-center gap-2 text-slate-400">
-                        <Search size={18} />
-                        <span className="text-xs font-medium">All campaigns</span>
-                     </div>
-                     <div className="ml-auto flex items-center gap-2">
-                        <div className="px-3 py-1 rounded bg-slate-100 text-slate-600 text-xs font-semibold">Last 30 days</div>
-                     </div>
-                  </div>
-                  
-                  {/* Mockup Content Grid */}
-                  <div className="p-6 grid grid-cols-1 md:grid-cols-4 gap-4">
-                     <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                        <div className="text-slate-500 text-xs font-semibold mb-1">Cost</div>
-                        <div className="text-2xl font-bold text-slate-900">124.5M ₫</div>
-                        <div className="text-emerald-500 text-xs font-medium mt-2 flex items-center gap-1"><TrendingUp size={12}/> +5.2%</div>
-                     </div>
-                     <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                        <div className="text-slate-500 text-xs font-semibold mb-1">Conversions (Leads)</div>
-                        <div className="text-2xl font-bold text-slate-900">842</div>
-                        <div className="text-emerald-500 text-xs font-medium mt-2 flex items-center gap-1"><TrendingUp size={12}/> +12.4%</div>
-                     </div>
-                     <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                        <div className="text-slate-500 text-xs font-semibold mb-1">Cost / Conv.</div>
-                        <div className="text-2xl font-bold text-slate-900">147K ₫</div>
-                        <div className="text-emerald-500 text-xs font-medium mt-2 flex items-center gap-1"><TrendingUp size={12} className="rotate-180"/> -8.1%</div>
-                     </div>
-                     {/* Highlighted ROAS */}
-                     <div className="bg-gradient-to-br from-blue-500 to-cyan-500 p-4 rounded-xl border border-blue-400 shadow-md relative overflow-hidden group hover:scale-105 transition-transform cursor-pointer">
-                        <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500" />
-                        <div className="text-blue-100 text-xs font-semibold mb-1 relative z-10">ROAS (Return on Ad Spend)</div>
-                        <div className="text-3xl font-black text-white relative z-10">450%</div>
-                        <div className="text-white text-xs font-medium mt-2 flex items-center gap-1 relative z-10"><Target size={12}/> Vượt KPI 15%</div>
-                     </div>
-                  </div>
-
-                  {/* Fake Search Ad Example */}
-                  <div className="px-6 pb-6">
-                     <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                        <div className="flex items-center gap-2 mb-2">
-                           <span className="font-bold text-sm text-slate-900">Google</span>
-                           <span className="text-xs text-slate-500">Kết quả tìm kiếm</span>
-                        </div>
-                        <div className="flex flex-col gap-1">
-                           <div className="flex items-center gap-2">
-                              <span className="font-bold text-xs text-slate-900 bg-slate-100 px-1.5 py-0.5 rounded">Được tài trợ</span>
-                              <span className="text-xs text-slate-600">seosona.com</span>
-                           </div>
-                           <h4 className="text-lg font-medium text-blue-600 hover:underline cursor-pointer">Dịch Vụ Google Ads Chuyển Đổi - Báo Giá Chuẩn B2B</h4>
-                           <p className="text-sm text-slate-600 line-clamp-2">SEOSONA chuyên triển khai Google Ads với định hướng Data-Driven. Setup Tracking đa điểm chạm, tối ưu CPA/ROAS bằng hệ thống báo cáo Real-time. Nhận Audit ngay!</p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
+             <GoogleAdsDashboard />
             {/* Soft Glow under mockup */}
             <div className="absolute -inset-x-20 -bottom-20 h-[50%] bg-gradient-to-t from-slate-50 to-transparent z-20 pointer-events-none" />
           </div>
@@ -175,7 +119,7 @@ export default function GoogleAdsPage() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-24 relative z-30 bg-slate-50">
+      <section className="py-20 lg:py-32 relative z-30 bg-slate-50">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">

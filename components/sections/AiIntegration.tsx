@@ -1,6 +1,6 @@
 "use client";
 
-import { Bot, Sparkles, Cpu, PenTool, Search, CheckCircle2, Lock, Mic, Plus, ArrowUp, ArrowRight, BarChart3, Database, MessageSquare, Activity, Globe, RefreshCw, Shield, Network, LineChart, Music } from "lucide-react";
+import { Bot, Sparkles, Cpu, PenTool, Search, CheckCircle2, Lock, Mic, Plus, ArrowUp, ArrowRight, Database, Shield, Network, LineChart } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { TextShimmer } from "@/components/ui/shimmer-text";
@@ -24,29 +24,6 @@ const aiFeatures = [
   {
     title: "Hệ thống Data & Automation",
     description: "Tracking đa nền tảng, thiết lập Dashboard và tự động hóa quy trình chăm sóc khách hàng bằng dữ liệu.",
-    icon: Database
-  }
-];
-
-const dataFeatures = [
-  {
-    title: "Tracking Nâng cao",
-    description: "Cài đặt GTM, GA4, Server-side tracking giúp theo dõi chính xác, vượt qua rào cản chặn quảng cáo.",
-    icon: Activity
-  },
-  {
-    title: "Dashboard Power BI",
-    description: "Tích hợp đa nguồn dữ liệu thành Dashboard Real-time, trực quan hóa KPI hỗ trợ ra quyết định.",
-    icon: BarChart3
-  },
-  {
-    title: "Zalo 2BS / ZNS",
-    description: "Tự động hóa remarketing qua Zalo với kịch bản cá nhân hóa, tỷ lệ mở lên đến 90%.",
-    icon: MessageSquare
-  },
-  {
-    title: "Tích hợp Hệ thống",
-    description: "Luồng API/Webhook kết nối mượt mà giữa Website, Landing Page và hệ thống CRM/ERP nội bộ.",
     icon: Database
   }
 ];
@@ -217,8 +194,11 @@ function SgeUI() {
   };
 
   useEffect(() => {
-    triggerSearch(0);
-    return () => timeoutsRef.current.forEach(clearTimeout);
+    const bootstrap = setTimeout(() => triggerSearch(0), 0);
+    return () => {
+      clearTimeout(bootstrap);
+      timeoutsRef.current.forEach(clearTimeout);
+    };
   }, []);
 
   return (
@@ -255,10 +235,10 @@ function SgeUI() {
             </div>
 
             <div className="flex flex-wrap justify-center gap-3 text-[13.5px]">
-              <button onClick={() => triggerSearch(0)} className="bg-[#F8F9FA] hover:border-slate-300 hover:shadow-sm border border-transparent px-5 py-2.5 rounded-md text-slate-700 transition-all">Dịch vụ SEO uy tín</button>
-              <button onClick={() => triggerSearch(1)} className="bg-[#F8F9FA] hover:border-slate-300 hover:shadow-sm border border-transparent px-5 py-2.5 rounded-md text-slate-700 transition-all">Tối ưu Topic Cluster</button>
-              <button onClick={() => triggerSearch(2)} className="bg-[#F8F9FA] hover:border-slate-300 hover:shadow-sm border border-transparent px-5 py-2.5 rounded-md text-slate-700 transition-all hidden sm:block">SEO tổng thể là gì</button>
-              <button onClick={() => triggerSearch(3)} className="bg-[#F8F9FA] hover:border-slate-300 hover:shadow-sm border border-transparent px-5 py-2.5 rounded-md text-slate-700 transition-all hidden sm:block">Báo giá dịch vụ SEO</button>
+              <button type="button" onClick={() => triggerSearch(0)} className="bg-[#F8F9FA] hover:border-slate-300 hover:shadow-sm border border-transparent px-5 py-2.5 rounded-md text-slate-700 transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">Dịch vụ SEO uy tín</button>
+              <button type="button" onClick={() => triggerSearch(1)} className="bg-[#F8F9FA] hover:border-slate-300 hover:shadow-sm border border-transparent px-5 py-2.5 rounded-md text-slate-700 transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">Tối ưu Topic Cluster</button>
+              <button type="button" onClick={() => triggerSearch(2)} className="bg-[#F8F9FA] hover:border-slate-300 hover:shadow-sm border border-transparent px-5 py-2.5 rounded-md text-slate-700 transition-all hidden sm:block focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">SEO tổng thể là gì</button>
+              <button type="button" onClick={() => triggerSearch(3)} className="bg-[#F8F9FA] hover:border-slate-300 hover:shadow-sm border border-transparent px-5 py-2.5 rounded-md text-slate-700 transition-all hidden sm:block focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">Báo giá dịch vụ SEO</button>
             </div>
           </div>
         ) : (
@@ -268,11 +248,11 @@ function SgeUI() {
               <div className="text-[28px] font-sans font-medium tracking-tighter hidden sm:flex">
                 <span className="text-[#4285F4]">G</span><span className="text-[#EA4335]">o</span><span className="text-[#FBBC05]">o</span><span className="text-[#4285F4]">g</span><span className="text-[#34A853]">l</span><span className="text-[#EA4335]">e</span>
               </div>
-              <div className="flex-1 max-w-2xl bg-white border border-[#DFE1E5] hover:shadow-md transition-shadow rounded-full h-11 flex items-center px-4 gap-3 cursor-pointer" onClick={() => setScenarioIndex(null)}>
+              <button type="button" className="flex-1 max-w-2xl bg-white border border-[#DFE1E5] hover:shadow-md transition-shadow rounded-full h-11 flex items-center px-4 gap-3 text-left focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100" onClick={() => setScenarioIndex(null)}>
                 <Search className="w-4 h-4 text-slate-500" />
                 <span className="text-[14.5px] text-[#202124] flex-1">{sgeScenarios[scenarioIndex].search}</span>
                 <Mic className="w-4 h-4 text-[#4285F4]" />
-              </div>
+              </button>
             </div>
 
             <div className="p-4 md:p-6 max-w-3xl w-full min-w-0">
@@ -323,24 +303,27 @@ function ContentUI() {
   };
 
   useEffect(() => {
-    triggerChat(0);
-    return () => timeoutsRef.current.forEach(clearTimeout);
+    const bootstrap = setTimeout(() => triggerChat(0), 0);
+    return () => {
+      clearTimeout(bootstrap);
+      timeoutsRef.current.forEach(clearTimeout);
+    };
   }, []);
 
   return (
     <div className="w-full h-full bg-white flex relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 animate-in fade-in zoom-in-[0.98] duration-500">
       {/* Sidebar (ChatGPT style) */}
       <div className="hidden md:flex w-56 bg-slate-50 border-r border-slate-100 flex-col p-3 shrink-0">
-        <button onClick={() => setScenarioIndex(null)} className="bg-white hover:bg-slate-100 text-slate-800 flex items-center gap-3 px-3 py-2.5 rounded-lg text-[14px] font-medium transition-colors mb-4 border border-slate-200 shadow-sm">
+        <button type="button" onClick={() => setScenarioIndex(null)} className="bg-white hover:bg-slate-100 text-slate-800 flex items-center gap-3 px-3 py-2.5 rounded-lg text-[14px] font-medium transition-colors mb-4 border border-slate-200 shadow-sm focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">
           <Bot className="w-4 h-4 text-blue-600" /> Sonatools Content AI
           <Plus className="w-4 h-4 ml-auto text-slate-400" />
         </button>
         <div className="text-xs font-semibold text-slate-500 px-3 mb-2 mt-2">Today</div>
         <div className="flex flex-col gap-1">
-          <button onClick={() => triggerChat(0)} className={`text-[13.5px] text-left px-3 py-2.5 rounded-lg truncate transition-colors ${scenarioIndex === 0 ? 'bg-blue-50 text-blue-700 font-medium' : 'text-slate-600 hover:bg-slate-100'}`}>Tối ưu E-E-A-T ngành Y tế</button>
-          <button onClick={() => triggerChat(1)} className={`text-[13.5px] text-left px-3 py-2.5 rounded-lg truncate transition-colors ${scenarioIndex === 1 ? 'bg-blue-50 text-blue-700 font-medium' : 'text-slate-600 hover:bg-slate-100'}`}>Phân tích LSI Keywords</button>
-          <button onClick={() => triggerChat(2)} className={`text-[13.5px] text-left px-3 py-2.5 rounded-lg truncate transition-colors ${scenarioIndex === 2 ? 'bg-blue-50 text-blue-700 font-medium' : 'text-slate-600 hover:bg-slate-100'}`}>5 Tiêu đề chuẩn SEO</button>
-          <button onClick={() => triggerChat(3)} className={`text-[13.5px] text-left px-3 py-2.5 rounded-lg truncate transition-colors ${scenarioIndex === 3 ? 'bg-blue-50 text-blue-700 font-medium' : 'text-slate-600 hover:bg-slate-100'}`}>Viết Meta Description</button>
+          <button type="button" aria-pressed={scenarioIndex === 0} onClick={() => triggerChat(0)} className={`text-[13.5px] text-left px-3 py-2.5 rounded-lg truncate transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 ${scenarioIndex === 0 ? 'bg-blue-50 text-blue-700 font-medium' : 'text-slate-600 hover:bg-slate-100'}`}>Tối ưu E-E-A-T ngành Y tế</button>
+          <button type="button" aria-pressed={scenarioIndex === 1} onClick={() => triggerChat(1)} className={`text-[13.5px] text-left px-3 py-2.5 rounded-lg truncate transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 ${scenarioIndex === 1 ? 'bg-blue-50 text-blue-700 font-medium' : 'text-slate-600 hover:bg-slate-100'}`}>Phân tích LSI Keywords</button>
+          <button type="button" aria-pressed={scenarioIndex === 2} onClick={() => triggerChat(2)} className={`text-[13.5px] text-left px-3 py-2.5 rounded-lg truncate transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 ${scenarioIndex === 2 ? 'bg-blue-50 text-blue-700 font-medium' : 'text-slate-600 hover:bg-slate-100'}`}>5 Tiêu đề chuẩn SEO</button>
+          <button type="button" aria-pressed={scenarioIndex === 3} onClick={() => triggerChat(3)} className={`text-[13.5px] text-left px-3 py-2.5 rounded-lg truncate transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 ${scenarioIndex === 3 ? 'bg-blue-50 text-blue-700 font-medium' : 'text-slate-600 hover:bg-slate-100'}`}>Viết Meta Description</button>
         </div>
       </div>
 
@@ -356,19 +339,19 @@ function ContentUI() {
 
               {/* Suggestions at bottom */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-2xl mt-auto">
-                <button onClick={() => triggerChat(0)} className="bg-[#F0F6FF] hover:bg-slate-200 border border-transparent p-4 rounded-xl text-left transition-colors flex flex-col gap-1">
+                <button type="button" onClick={() => triggerChat(0)} className="bg-[#F0F6FF] hover:bg-slate-200 border border-transparent p-4 rounded-xl text-left transition-colors flex flex-col gap-1 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">
                   <span className="text-[14px] text-slate-800 font-medium">Viết Outline bài viết</span>
                   <span className="text-[13px] text-slate-500">Tối ưu E-E-A-T cho ngành Y Tế</span>
                 </button>
-                <button onClick={() => triggerChat(1)} className="bg-[#F0F6FF] hover:bg-slate-200 border border-transparent p-4 rounded-xl text-left transition-colors flex flex-col gap-1">
+                <button type="button" onClick={() => triggerChat(1)} className="bg-[#F0F6FF] hover:bg-slate-200 border border-transparent p-4 rounded-xl text-left transition-colors flex flex-col gap-1 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">
                   <span className="text-[14px] text-slate-800 font-medium">Audit LSI Keywords</span>
                   <span className="text-[13px] text-slate-500">So với đối thủ Top 1: &apos;Dịch vụ SEO&apos;</span>
                 </button>
-                <button onClick={() => triggerChat(2)} className="bg-[#F0F6FF] hover:bg-slate-200 border border-transparent p-4 rounded-xl text-left transition-colors flex flex-col gap-1 hidden sm:flex">
+                <button type="button" onClick={() => triggerChat(2)} className="bg-[#F0F6FF] hover:bg-slate-200 border border-transparent p-4 rounded-xl text-left transition-colors flex flex-col gap-1 hidden sm:flex focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">
                   <span className="text-[14px] text-slate-800 font-medium">Tạo 5 Tiêu Đề</span>
                   <span className="text-[13px] text-slate-500">Giật tít, chuẩn SEO cho bài &apos;Dịch vụ SEO&apos;</span>
                 </button>
-                <button onClick={() => triggerChat(3)} className="bg-[#F0F6FF] hover:bg-slate-200 border border-transparent p-4 rounded-xl text-left transition-colors flex flex-col gap-1 hidden sm:flex">
+                <button type="button" onClick={() => triggerChat(3)} className="bg-[#F0F6FF] hover:bg-slate-200 border border-transparent p-4 rounded-xl text-left transition-colors flex flex-col gap-1 hidden sm:flex focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">
                   <span className="text-[14px] text-slate-800 font-medium">Viết Meta Description</span>
                   <span className="text-[13px] text-slate-500">Cho bài &apos;Cách tăng traffic tự nhiên&apos;</span>
                 </button>
@@ -408,7 +391,7 @@ function ContentUI() {
         <div className="p-4 md:p-6 bg-slate-50 shrink-0 border-t border-slate-100">
           <div className="w-full max-w-3xl mx-auto bg-white rounded-2xl flex items-center px-4 py-3 border border-slate-200 shadow-sm">
             <span className="text-[15px] text-slate-500 flex-1">Message Sonatools Content AI...</span>
-            <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center cursor-pointer hover:bg-blue-100 transition-colors">
+            <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center transition-colors">
               <ArrowUp className="w-5 h-5 text-blue-600" />
             </div>
           </div>
@@ -438,8 +421,11 @@ function TechnicalUI() {
   };
 
   useEffect(() => {
-    triggerAudit(0);
-    return () => timeoutsRef.current.forEach(clearTimeout);
+    const bootstrap = setTimeout(() => triggerAudit(0), 0);
+    return () => {
+      clearTimeout(bootstrap);
+      timeoutsRef.current.forEach(clearTimeout);
+    };
   }, []);
 
   return (
@@ -456,16 +442,16 @@ function TechnicalUI() {
 
       {/* Terminal Toolbar */}
       <div className="flex items-center px-4 h-11 border-b border-slate-200 shrink-0 gap-6 bg-slate-50 overflow-x-auto no-scrollbar">
-        <button onClick={() => triggerAudit(0)} className={`whitespace-nowrap text-[12px] font-sans flex items-center gap-2 ${scenarioIndex === 0 ? 'text-blue-700 font-bold border-b-2 border-blue-600' : 'text-slate-500 hover:text-slate-800 border-b-2 border-transparent'} h-full transition-colors`}>
+        <button type="button" aria-pressed={scenarioIndex === 0} onClick={() => triggerAudit(0)} className={`whitespace-nowrap text-[12px] font-sans flex items-center gap-2 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 ${scenarioIndex === 0 ? 'text-blue-700 font-bold border-b-2 border-blue-600' : 'text-slate-500 hover:text-slate-800 border-b-2 border-transparent'} h-full transition-colors`}>
           <span className="text-blue-500">$</span> run deep-crawl
         </button>
-        <button onClick={() => triggerAudit(1)} className={`whitespace-nowrap text-[12px] font-sans flex items-center gap-2 ${scenarioIndex === 1 ? 'text-blue-700 font-bold border-b-2 border-blue-600' : 'text-slate-500 hover:text-slate-800 border-b-2 border-transparent'} h-full transition-colors`}>
+        <button type="button" aria-pressed={scenarioIndex === 1} onClick={() => triggerAudit(1)} className={`whitespace-nowrap text-[12px] font-sans flex items-center gap-2 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 ${scenarioIndex === 1 ? 'text-blue-700 font-bold border-b-2 border-blue-600' : 'text-slate-500 hover:text-slate-800 border-b-2 border-transparent'} h-full transition-colors`}>
           <span className="text-blue-500">$</span> run log-analysis
         </button>
-        <button onClick={() => triggerAudit(2)} className={`whitespace-nowrap text-[12px] font-sans flex items-center gap-2 ${scenarioIndex === 2 ? 'text-blue-700 font-bold border-b-2 border-blue-600' : 'text-slate-500 hover:text-slate-800 border-b-2 border-transparent'} h-full transition-colors hidden sm:flex`}>
+        <button type="button" aria-pressed={scenarioIndex === 2} onClick={() => triggerAudit(2)} className={`whitespace-nowrap text-[12px] font-sans flex items-center gap-2 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 ${scenarioIndex === 2 ? 'text-blue-700 font-bold border-b-2 border-blue-600' : 'text-slate-500 hover:text-slate-800 border-b-2 border-transparent'} h-full transition-colors hidden sm:flex`}>
           <span className="text-blue-500">$</span> run core-web-vitals
         </button>
-        <button onClick={() => triggerAudit(3)} className={`whitespace-nowrap text-[12px] font-sans flex items-center gap-2 ${scenarioIndex === 3 ? 'text-blue-700 font-bold border-b-2 border-blue-600' : 'text-slate-500 hover:text-slate-800 border-b-2 border-transparent'} h-full transition-colors hidden sm:flex`}>
+        <button type="button" aria-pressed={scenarioIndex === 3} onClick={() => triggerAudit(3)} className={`whitespace-nowrap text-[12px] font-sans flex items-center gap-2 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 ${scenarioIndex === 3 ? 'text-blue-700 font-bold border-b-2 border-blue-600' : 'text-slate-500 hover:text-slate-800 border-b-2 border-transparent'} h-full transition-colors hidden sm:flex`}>
           <span className="text-blue-500">$</span> run schema-validation
         </button>
       </div>
@@ -674,20 +660,16 @@ export function AiIntegration() {
       if (isPausedRef.current) return;
 
       setProgress((prev) => {
-        if (prev >= 100) return 100;
-        return prev + increment;
+        const next = prev + increment;
+        if (next < 100) return next;
+
+        setActiveIndex((current) => (current + 1) % 4);
+        return 0;
       });
     }, interval);
 
     return () => clearInterval(timer);
   }, []);
-
-  useEffect(() => {
-    if (progress >= 100) {
-      setActiveIndex((current) => (current + 1) % 4);
-      setProgress(0);
-    }
-  }, [progress]);
 
   const handleNodeClick = (index: number) => {
     setActiveIndex(index);
@@ -749,9 +731,11 @@ export function AiIntegration() {
               const isActive = activeIndex === i;
               return (
                 <RevealOnScroll key={item.title} direction="up" delay={100 + (i * 100)}>
-                  <div
+                  <button
+                    type="button"
+                    aria-pressed={isActive}
                     onClick={() => handleNodeClick(i)}
-                    className={`group cursor-pointer flex flex-col items-center text-center gap-4 transition-all duration-500 h-full`}
+                    className={`group flex flex-col items-center text-center gap-4 transition-all duration-500 h-full focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 rounded-2xl`}
                   >
                     <div className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-full transition-all duration-500 shadow-md border z-10 ${isActive ? 'bg-white text-blue-600 border-blue-500 scale-110 shadow-[0_0_20px_rgba(37,99,235,0.2)]' : 'bg-white text-slate-500 border-slate-200 hover:border-blue-300 hover:text-blue-500 hover:scale-105'}`}>
                       <Icon size={28} />
@@ -764,7 +748,7 @@ export function AiIntegration() {
                         {item.description}
                       </p>
                     </div>
-                  </div>
+                  </button>
                 </RevealOnScroll>
               );
             })}

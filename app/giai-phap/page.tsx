@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
 import Link from "next/link";
-import { ArrowRight, Bot, MessageCircle, BarChart2, Zap } from "lucide-react";
+import { ArrowRight, Bot, MessageCircle, BarChart2, Zap, Sparkles, Workflow, Database } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Giải pháp Công nghệ & AI | SEOSONA",
@@ -20,10 +20,17 @@ const solutions = [
     highlight: true
   },
   {
-    title: "Giải pháp Zalo 2BS / ZNS",
-    description: "Tích hợp và tự động hóa chăm sóc khách hàng qua Zalo ZNS, xây dựng kịch bản bán hàng và Remarketing chi phí thấp.",
-    href: "/giai-phap/zalo-2bs/",
-    icon: <MessageCircle className="h-6 w-6 text-[#1D4ED8]" />,
+    title: "AI Content Automation",
+    description: "Sản xuất hàng ngàn nội dung chuẩn SEO độc bản với tốc độ cao, đáp ứng mọi tiêu chí khắt khe nhất của Google SGE.",
+    href: "/giai-phap/ai-content/",
+    icon: <Sparkles className="h-6 w-6 text-[#1D4ED8]" />,
+    highlight: true
+  },
+  {
+    title: "Tracking & Automation",
+    description: "Thiết lập hệ thống Tracking chuẩn xác 99%, thu thập mọi điểm chạm từ Website, CRM đến Social.",
+    href: "/giai-phap/tracking-automation/",
+    icon: <Workflow className="h-6 w-6 text-[#1D4ED8]" />,
     highlight: false
   },
   {
@@ -34,8 +41,22 @@ const solutions = [
     highlight: false
   },
   {
+    title: "Tích hợp Hệ thống (BE)",
+    description: "Xây dựng cầu nối API/Webhook mạnh mẽ giúp đồng bộ luồng vận hành Website và CRM/ERP diễn ra tự động 24/7.",
+    href: "/giai-phap/he-thong-be/",
+    icon: <Database className="h-6 w-6 text-[#1D4ED8]" />,
+    highlight: false
+  },
+  {
+    title: "Giải pháp Zalo 2BS / ZNS",
+    description: "Tích hợp và tự động hóa chăm sóc khách hàng qua Zalo ZNS, xây dựng kịch bản bán hàng và Remarketing chi phí thấp.",
+    href: "/giai-phap/zalo-2bs/",
+    icon: <MessageCircle className="h-6 w-6 text-[#1D4ED8]" />,
+    highlight: false
+  },
+  {
     title: "Công cụ SonaTool",
-    description: "Hệ thống công cụ hỗ trợ Audit SEO, quản lý nội dung và tối ưu kỹ thuật độc quyền do SEOSONA phát triển.",
+    description: "SEO Tool #1 tại Việt Nam. Công cụ hỗ trợ theo dõi thứ hạng, quản lý nội dung và tự động phân tích Entity độc quyền do SEOSONA phát triển.",
     href: "/giai-phap/sonatool/",
     icon: <Zap className="h-6 w-6 text-[#1D4ED8]" />,
     highlight: false
@@ -54,11 +75,11 @@ export default function Page() {
         secondaryHref="/lien-he/" 
       />
 
-      <section className="py-16 md:py-24 bg-[#F8FAFC] relative">
+      <section className="py-20 lg:py-32 bg-[#F8FAFC] relative">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {solutions.map((item, index) => (
-              <div key={index} className={`group relative flex flex-col p-8 sm:p-10 rounded-[32px] bg-white border ${item.highlight ? 'border-[#1D4ED8] shadow-[0_12px_40px_rgba(59,166,241,0.12)]' : 'border-slate-200/80 shadow-sm'} hover:-translate-y-1 hover:shadow-xl transition-all duration-300 overflow-hidden`}>
+              <div key={index} className={`group relative flex flex-col p-8 sm:p-10 rounded-[32px] bg-white border ${item.highlight ? 'border-[#1D4ED8] shadow-[0_12px_40px_rgba(59,166,241,0.12)] md:col-span-2 lg:col-span-1' : 'border-slate-200/80 shadow-sm'} hover:-translate-y-1 hover:shadow-xl transition-all duration-300 overflow-hidden`}>
                 {item.highlight && (
                   <div className="absolute top-0 right-0">
                     <div className="bg-[#1D4ED8] text-white text-[12px] font-bold px-4 py-1.5 rounded-bl-2xl">

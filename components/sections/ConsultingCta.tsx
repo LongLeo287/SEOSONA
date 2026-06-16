@@ -1,4 +1,4 @@
-import { PhoneCall, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { CursorTrackingButton } from "@/components/ui/CursorTrackingButton";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
@@ -17,10 +17,10 @@ export function ConsultingCta() {
             Đừng để đối thủ chiếm lĩnh thị phần trên Google. Hãy cùng chuyên gia của SEOSONA thảo luận chiến lược tăng trưởng phù hợp nhất cho doanh nghiệp của bạn
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <CursorTrackingButton href="/lien-he" className="w-full sm:w-auto">
+            <CursorTrackingButton href="/lien-he/" className="w-full sm:w-auto">
               Nhận tư vấn 1-1 <ArrowRight size={18} />
             </CursorTrackingButton>
-            <Link href="/bao-gia-seo" className="flex h-14 w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-white border border-slate-200 px-8 text-[15px] font-bold text-[#04091A] transition-all hover:border-[#1D4ED8] hover:text-[#1D4ED8] shadow-sm">
+            <Link href="/bao-gia-seo/" className="flex h-14 w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-white border border-slate-200 px-8 text-[15px] font-bold text-[#04091A] transition-all hover:border-[#1D4ED8] hover:text-[#1D4ED8] shadow-sm focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">
               Xem bảng giá dịch vụ
             </Link>
           </div>

@@ -22,7 +22,7 @@ const benefits = [
 
 export function AcademyBenefits() {
   return (
-    <section className="bg-slate-50 py-12 lg:py-16 overflow-hidden">
+    <section id="curriculum" className="bg-slate-50 py-12 lg:py-16 overflow-hidden scroll-m-24">
       <div className="container">
         
         {/* Part 1: What you will learn - Bento Grid Light */}

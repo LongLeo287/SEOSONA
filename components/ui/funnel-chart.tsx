@@ -899,7 +899,7 @@ export function FunnelChart({
             return (
               <motion.div
                 animate={{ opacity: isDimmed ? 0.4 : 1 }}
-                className="absolute cursor-pointer"
+                className="absolute"
                 key={`lbl-${stage.label}`}
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}

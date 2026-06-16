@@ -62,18 +62,23 @@ export function ResourceCard({
         </span>
       </div>
 
-      <div className="flex items-center justify-between border-t border-slate-200/80 pt-6 relative z-10 group/btn cursor-pointer" onClick={() => onClick?.(resource)}>
+      <button
+        type="button"
+        disabled={!onClick}
+        className="flex w-full items-center justify-between border-t border-slate-200/80 pt-6 relative z-10 group/btn text-left disabled:cursor-default disabled:opacity-70 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100"
+        onClick={() => onClick?.(resource)}
+      >
         <span className="text-[14.5px] font-bold text-slate-500 transition-colors duration-300 group-hover:text-[#1D4ED8]">
           Tải xuống ngay
         </span>
-        <button
-          type="button"
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-400 shadow-sm transition-all duration-300 group-hover:border-[#1D4ED8] group-hover:bg-[#1D4ED8] group-hover:text-white group-hover:shadow-md group-hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1D4ED8] focus-visible:ring-offset-2"
-          aria-label={`Tải xuống ngay: ${resource.title}`}
+        <div
+          aria-hidden="true"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-400 shadow-sm transition-all duration-300 group-hover:border-[#1D4ED8] group-hover:bg-[#1D4ED8] group-hover:text-white group-hover:shadow-md group-hover:scale-105"
         >
           <ArrowRight className="h-[18px] w-[18px] transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
-        </button>
-      </div>
+        </div>
+        <span className="sr-only">{resource.title}</span>
+      </button>
     </article>
   );
 }

@@ -33,7 +33,7 @@ const ecosystem = [
     desc: "Mạng lưới đối tác là các chuyên gia hàng đầu trong ngành Digital Marketing, thường xuyên tổ chức sự kiện chia sẻ.",
     icon: Presentation,
     hoverColor: "#1D4ED8",
-    href: "/doi-ngu-nhan-su",
+    href: "/doi-ngu-nhan-su/",
     comingSoon: false,
   },
   {
@@ -199,7 +199,7 @@ export function CommunityHub() {
                     <h3 className="text-2xl md:text-3xl font-black text-[#04091A] mb-3">Kho tri thức Manager & C-Level</h3>
                     <p className="text-slate-500 max-w-xl text-[15px]">Tải xuống những tài liệu cốt lõi mà đội ngũ chuyên gia của chúng tôi đang sử dụng mỗi ngày để tạo ra kết quả đột phá.</p>
                   </div>
-                  <Link href="/tai-nguyen" className="shrink-0 flex h-12 items-center justify-center gap-2 rounded-full bg-white border border-slate-200 px-6 text-[14px] font-bold text-[#04091A] transition-all hover:border-[#1D4ED8] hover:text-[#1D4ED8] shadow-sm">
+                  <Link href="/tai-nguyen/" className="shrink-0 flex h-12 items-center justify-center gap-2 rounded-full bg-white border border-slate-200 px-6 text-[14px] font-bold text-[#04091A] transition-all hover:border-[#1D4ED8] hover:text-[#1D4ED8] shadow-sm focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">
                     Xem tất cả tài liệu <ArrowRight size={16} />
                   </Link>
                 </div>

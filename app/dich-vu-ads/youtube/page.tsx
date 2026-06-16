@@ -3,7 +3,8 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Faq } from "@/components/sections/Faq";
 import { Process } from "@/components/sections/Process";
 import { PricingTable } from "@/components/sections/PricingTable";
-import { PlayCircle, Target, Users, BarChart3, CheckCircle2, MonitorPlay, SkipForward } from "lucide-react";
+import { PlayCircle, Users, BarChart3, CheckCircle2, MonitorPlay } from "lucide-react";
+import { YoutubePlayerMockup } from "@/components/mockups/YoutubePlayerMockup";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -103,66 +104,14 @@ export default function YoutubeAdsPage() {
             Chúng tôi xây dựng YouTube Ads theo tư duy video funnel: phân bổ đúng format, đúng thông điệp và đo lường sự đóng góp của video vào hành trình mua hàng.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-10 fade-in duration-700 delay-300">
-            <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-red-600 text-white font-bold text-[15px] flex items-center justify-center hover:bg-red-700 transition-all shadow-xl hover:shadow-red-500/25 hover:-translate-y-1">
+            <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-red-600 text-white font-bold text-[15px] flex items-center justify-center hover:bg-red-700 transition-all shadow-xl hover:shadow-red-500/25 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">
               Nhận Chiến lược Video Ads
             </Link>
           </div>
 
-          {/* Light Mockup: YouTube In-stream Ad Player */}
+          {/* Animated Mockup: YouTube In-stream Ad Player */}
           <div className="mt-20 relative mx-auto max-w-4xl animate-in fade-in slide-in-from-bottom-24 duration-1000 delay-500">
-            <div className="rounded-2xl border border-slate-200 bg-white p-2 shadow-[0_30px_60px_rgba(0,0,0,0.08)] relative z-10 text-left">
-               <div className="rounded-xl border border-slate-900 bg-slate-900 overflow-hidden flex flex-col font-sans relative">
-                  
-                  {/* Floating Metrics (Mocking Ads Data) */}
-                  <div className="absolute top-4 left-4 z-20 flex flex-col gap-2">
-                     <div className="bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg text-xs font-bold text-white border border-white/10 flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400" /> View Rate: 42.5%
-                     </div>
-                     <div className="bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg text-xs font-bold text-white border border-white/10 flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-blue-400" /> CPV: 115đ
-                     </div>
-                  </div>
-
-                  {/* Video Player Area */}
-                  <div className="aspect-video relative bg-slate-800 flex items-center justify-center overflow-hidden">
-                     {/* Fake Video Thumbnail / Background */}
-                     <div className="absolute inset-0 bg-gradient-to-br from-rose-900/40 to-slate-900 opacity-50" />
-                     <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-16 h-16 rounded-full bg-rose-600/90 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform shadow-[0_0_30px_rgba(225,29,72,0.6)]">
-                           <PlayCircle size={32} className="text-white ml-1" />
-                        </div>
-                     </div>
-
-                     {/* Skip Ad Button */}
-                     <div className="absolute bottom-16 right-0 bg-white/10 backdrop-blur-md border border-white/20 border-r-0 rounded-l-full py-3 pl-6 pr-4 flex items-center gap-2 cursor-pointer hover:bg-white/20 transition-colors z-20">
-                        <span className="text-white text-sm font-semibold">Skip Ad</span>
-                        <SkipForward size={16} className="text-white" />
-                     </div>
-
-                     {/* Progress Bar */}
-                     <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
-                        <div className="absolute top-0 left-0 bottom-0 w-[25%] bg-red-600" />
-                        <div className="absolute top-1/2 left-[25%] -translate-y-1/2 w-3 h-3 rounded-full bg-red-600 shadow-[0_0_10px_rgba(220,38,38,1)]" />
-                     </div>
-                  </div>
-
-                  {/* Ad Action Companion Banner */}
-                  <div className="h-20 bg-white flex items-center px-6 justify-between border-t border-slate-200">
-                     <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-full bg-rose-100 flex items-center justify-center shrink-0">
-                           <Target size={24} className="text-rose-600" />
-                        </div>
-                        <div>
-                           <div className="text-slate-900 font-bold text-sm">Giải pháp Marketing Tổng thể - SEOSONA</div>
-                           <div className="text-slate-500 text-xs mt-0.5">Ad · seosona.com</div>
-                        </div>
-                     </div>
-                     <Link href="/lien-he/" className="hidden md:flex h-10 px-6 rounded-full bg-blue-600 text-white font-bold text-sm items-center justify-center hover:bg-blue-700 transition-colors">
-                        Nhận Tư Vấn Ngay
-                     </Link>
-                  </div>
-               </div>
-            </div>
+             <YoutubePlayerMockup />
             {/* Soft Glow under mockup */}
             <div className="absolute -inset-x-20 -bottom-20 h-[50%] bg-gradient-to-t from-slate-50 to-transparent z-20 pointer-events-none" />
           </div>
@@ -170,7 +119,7 @@ export default function YoutubeAdsPage() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-24 relative z-30 bg-slate-50">
+      <section className="py-20 lg:py-32 relative z-30 bg-slate-50">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">

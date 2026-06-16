@@ -37,6 +37,8 @@ export function FloatingActions() {
       <button
         type="button"
         aria-label="Lên đầu trang"
+        aria-hidden={!showBackToTop}
+        tabIndex={showBackToTop ? 0 : -1}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         style={{
           opacity: showBackToTop ? 1 : 0,

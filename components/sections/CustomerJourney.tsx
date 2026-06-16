@@ -132,7 +132,7 @@ export function CustomerJourney() {
               <div key={index} className="group/step flex flex-row md:flex-col items-start md:items-center gap-6 md:gap-8 flex-1">
                 
                 {/* Timeline Node */}
-                <div className="journey-node cursor-pointer relative flex shrink-0 h-[60px] w-[60px] items-center justify-center rounded-2xl border border-slate-200/80 bg-white/80 backdrop-blur-sm text-[22px] font-black text-slate-400 z-10 transition-all duration-300 hover:scale-110 hover:-translate-y-1 active:scale-95 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(59,166,241,0.2)] hover:border-[#3BA6F1]/50">
+                <div className="journey-node relative flex shrink-0 h-[60px] w-[60px] items-center justify-center rounded-2xl border border-slate-200/80 bg-white/80 backdrop-blur-sm text-[22px] font-black text-slate-400 z-10 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
                   {index + 1}
                 </div>
                 

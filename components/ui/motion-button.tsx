@@ -14,11 +14,16 @@ interface Props {
 }
 
 export const MotionButton: FC<Props> = ({ label, classes, as: Component = "button", href, ...props }) => {
+  const componentProps = {
+    ...(href ? { href } : {}),
+    ...(Component === "button" ? { type: "button" } : {}),
+  };
+
   return (
     <Component
-      href={href}
+      {...componentProps}
       className={cn(
-        'bg-white group relative h-auto w-[200px] cursor-pointer rounded-full border-[none] p-1 outline-none',
+        'bg-white group relative h-auto w-[200px] cursor-pointer rounded-full border-[none] p-1 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100',
         classes
       )}
       {...props}

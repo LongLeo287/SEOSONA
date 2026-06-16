@@ -94,7 +94,7 @@ export const navItems: NavItem[] = [
   },
   {
     label: "AI & Data",
-    href: "/giai-phap/ai-customer-journey/",
+    href: "/giai-phap/",
     children: [
       { label: "AI Customer Journey", href: "/giai-phap/ai-customer-journey/" },
       { label: "AI Content Automation", href: "/giai-phap/ai-content/" },
@@ -119,13 +119,10 @@ export const navItems: NavItem[] = [
   },
   {
     label: "Tài nguyên",
-    href: "/seo/",
+    href: "/tai-nguyen-hub/",
     children: [
       { label: "Kiến thức SEO", href: "/seo/" },
-      { label: "Tài nguyên SEO", href: "/tai-nguyen/" },
-      { label: "Templates & Dashboard", href: "/tai-nguyen/templates/" },
-      { label: "Ebook & Tài liệu", href: "/tai-nguyen/ebooks/" },
-      { label: "Webinar", href: "/tai-nguyen/webinar/" }
+      { label: "Tài nguyên SEO", href: "/tai-nguyen/" }
     ]
   },
   {
@@ -145,14 +142,13 @@ export const coreRoutes = [
   "/dich-vu-viet-bai-chuan-seo/",
   "/dich-vu-backlink/",
   "/dich-vu/",
-  "/dich-vu/seo-tong-the/",
-  "/dich-vu/thiet-ke-website/",
-  "/dich-vu/audit-seo/",
-  "/dich-vu/seo-option/",
-  "/dich-vu/quy-trinh-seo/",
+  "/dich-vu-thiet-ke-website/",
+  "/audit-seo/",
+  "/seo-option/",
+  "/quy-trinh-seo/",
   "/giai-phap/tracking-automation/",
   "/giai-phap/he-thong-be/",
-  "/dich-vu/tu-van-seo/",
+  "/tu-van-seo-chuyen-sau/",
   "/bao-gia-seo/",
   "/dich-vu-ads/google/",
   "/dich-vu-ads/facebook/",

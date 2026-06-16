@@ -113,8 +113,11 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
     <div className="w-full">
       {/* Real Dropdown Header for Category */}
       <div className="relative mb-6 category-dropdown">
-        <div 
-          className="flex items-center justify-between px-3 py-2 border border-[#E2E8F0] rounded-xl shadow-sm bg-white cursor-pointer hover:bg-[#F0F6FF] transition-all duration-200 group"
+        <button
+          type="button"
+          aria-expanded={isCategoryDropdownOpen}
+          aria-controls="post-category-menu"
+          className="flex w-full items-center justify-between px-3 py-2 border border-[#E2E8F0] rounded-xl shadow-sm bg-white hover:bg-[#F0F6FF] transition-all duration-200 group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100"
           onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
         >
           <div className="flex items-center gap-2.5">
@@ -126,10 +129,11 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
             </span>
           </div>
           <ChevronDown className={cn("w-4 h-4 !text-[#94A3B8] transition-transform duration-200 group-hover:!text-[#1D4ED8]", isCategoryDropdownOpen ? "rotate-180" : "")} />
-        </div>
+        </button>
 
         {/* Dropdown Menu */}
         <div 
+          id="post-category-menu"
           className={cn(
             "absolute top-full left-0 right-0 mt-2 bg-white border border-[#E2E8F0] shadow-xl rounded-xl overflow-hidden z-50 py-1.5 transition-all duration-200 origin-top",
             isCategoryDropdownOpen ? "opacity-100 scale-100 visible" : "opacity-0 scale-95 invisible"
@@ -144,10 +148,10 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
             {Object.entries(seoHubs).map(([slug, hub]) => (
               <Link
                 key={slug}
-                href={`/seo/${slug}`}
+                href={`/seo/${slug}/`}
                 onClick={() => setIsCategoryDropdownOpen(false)}
                 className={cn(
-                  "block px-3 py-2 rounded-lg text-[13px] font-medium transition-all duration-200",
+                  "block px-3 py-2 rounded-lg text-[13px] font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100",
                   slug === categorySlug 
                     ? "bg-[#F0F6FF] !text-[#1D4ED8] cursor-default" 
                     : "!text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#1D4ED8] hover:translate-x-0.5"
@@ -166,8 +170,11 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
           
           return (
             <div key={groupIdx} className="flex flex-col">
-              <div 
-                className="flex items-center justify-between px-2.5 py-2 cursor-pointer hover:bg-[#F0F6FF] rounded-lg transition-all duration-200 group/header"
+              <button
+                type="button"
+                aria-expanded={Boolean(isExpanded)}
+                aria-controls={`post-group-${groupIdx}`}
+                className="flex w-full items-center justify-between px-2.5 py-2 hover:bg-[#F0F6FF] rounded-lg transition-all duration-200 group/header focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100"
                 onClick={() => toggleGroup(groupIdx)}
               >
                 <span className="text-[13px] font-bold !text-[#04091A] select-none">
@@ -178,18 +185,18 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
                 ) : (
                   <ChevronRight className="w-4 h-4 !text-[#64748B] transition-colors" />
                 )}
-              </div>
+              </button>
               
               {isExpanded && (
-                <nav className="flex flex-col gap-0.5 mt-1 mb-2 pl-3 border-l border-[#E2E8F0] ml-3">
+                <nav id={`post-group-${groupIdx}`} className="flex flex-col gap-0.5 mt-1 mb-2 pl-3 border-l border-[#E2E8F0] ml-3">
                   {group.posts.map((post) => {
                     const isActive = currentSlug === post.slug;
                     return (
                       <Link
                         key={post.slug}
-                        href={`/seo/${categorySlug}/${post.slug}`}
+                         href={`/seo/${categorySlug}/${post.slug}/`}
                         className={cn(
-                          "block px-2.5 py-[6px] rounded-md text-[13px] transition-all duration-200",
+                          "block px-2.5 py-[6px] rounded-md text-[13px] transition-all duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100",
                           isActive
                             ? "bg-[#F0F6FF] !text-[#1D4ED8] font-semibold leading-snug shadow-sm ring-1 ring-[#1D4ED8]/10"
                             : "truncate !text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#1D4ED8] hover:translate-x-1 font-normal"

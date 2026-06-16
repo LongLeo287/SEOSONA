@@ -52,14 +52,15 @@ export function TableOfContents() {
   return (
     <div className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 group flex-col z-[100] items-end py-12 pl-12 pr-2 cursor-default">
       {/* Collapsed View (Dashes) */}
-      <div className="flex flex-col items-center justify-center gap-1.5 transition-all duration-300 opacity-100 group-hover:opacity-0 group-hover:invisible">
+      <div className="flex flex-col items-center justify-center gap-1.5 transition-all duration-300 opacity-100 group-hover:opacity-0 group-hover:invisible group-focus-within:opacity-0 group-focus-within:invisible">
         {headings.map((heading) => {
           const isActive = activeId === heading.id;
           return (
-            <div
+            <button
+              type="button"
               key={heading.id}
               className={cn(
-                "h-1.5 rounded-full transition-all duration-300 cursor-pointer shadow-sm",
+                "h-1.5 rounded-full border-0 p-0 transition-all duration-300 shadow-sm focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100",
                 isActive ? "w-5 bg-[#1D4ED8]" : "w-3 bg-[#E2E8F0] hover:w-4 hover:bg-[#94A3B8]"
               )}
               onClick={() => {
@@ -70,13 +71,14 @@ export function TableOfContents() {
                 }
               }}
               title={heading.text}
+              aria-label={`Đến mục: ${heading.text}`}
             />
           );
         })}
       </div>
 
       {/* Expanded View (Table) */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[260px] bg-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] ring-1 ring-slate-200/60 rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-x-4 group-hover:translate-x-0 origin-right">
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[260px] bg-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] ring-1 ring-slate-200/60 rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-300 translate-x-4 group-hover:translate-x-0 group-focus-within:translate-x-0 origin-right">
         <h4 className="mb-3 pl-2 text-[10px] font-black uppercase tracking-[0.15em] text-[#94A3B8]">
           Nội dung bài viết
         </h4>
@@ -88,7 +90,7 @@ export function TableOfContents() {
                 key={heading.id}
                 href={`#${heading.id}`}
                 className={cn(
-                  "block px-2.5 py-1.5 rounded-md text-[12px] transition-all duration-200 leading-snug",
+                  "block px-2.5 py-1.5 rounded-md text-[12px] transition-all duration-200 leading-snug focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100",
                   heading.level === 3 ? "ml-3 border-l border-slate-100" : "font-medium",
                   isActive
                     ? "bg-[#F0F6FF] !text-[#1D4ED8] font-semibold"

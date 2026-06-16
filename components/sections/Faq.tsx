@@ -49,18 +49,26 @@ export function Faq({ items }: FaqProps) {
         <div className="mx-auto mt-8 grid max-w-3xl gap-4">
           {items.map((item, index) => {
             const isOpen = openIndex === index;
+            const panelId = `faq-panel-${index}`;
+            const buttonId = `faq-button-${index}`;
             return (
               <RevealOnScroll key={item.question} delay={index * 50} direction="up">
                 <div
                   className={cn(
-                    "group cursor-pointer overflow-hidden rounded-3xl border bg-white px-6 py-5 transition-all duration-300",
+                    "group overflow-hidden rounded-3xl border bg-white transition-all duration-300",
                     isOpen
                       ? "border-[#1D4ED8] shadow-[0_8px_30px_rgba(59,166,241,0.12)]"
                       : "border-slate-200/80 hover:border-[#1D4ED8]/30 hover:shadow-md"
                   )}
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
                 >
-                  <div className="flex items-center justify-between gap-4">
+                  <button
+                    id={buttonId}
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-controls={panelId}
+                    onClick={() => setOpenIndex(isOpen ? null : index)}
+                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100"
+                  >
                     <h3
                       className={cn(
                         "text-[17px] font-bold tracking-tight transition-colors duration-300",
@@ -79,12 +87,15 @@ export function Faq({ items }: FaqProps) {
                     >
                       {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                     </div>
-                  </div>
+                  </button>
                   
                   <div
+                    id={panelId}
+                    role="region"
+                    aria-labelledby={buttonId}
                     className={cn(
                       "grid transition-all duration-300 ease-in-out",
-                      isOpen ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0 mt-0"
+                      isOpen ? "grid-rows-[1fr] opacity-100 px-6 pb-5" : "grid-rows-[0fr] opacity-0 px-6 pb-0"
                     )}
                   >
                     <div className="overflow-hidden">

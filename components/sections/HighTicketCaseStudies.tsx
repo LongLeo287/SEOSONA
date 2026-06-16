@@ -4,7 +4,7 @@ import { TrendingUp, CheckCircle2, ArrowRight, Activity, Building } from "lucide
 import Link from "next/link";
 import { SectionBadge } from "@/components/ui/SectionBadge";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const TypewriterText = ({ text }: { text: string }) => {
   const [displayedText, setDisplayedText] = useState("");
@@ -113,7 +113,7 @@ export function HighTicketCaseStudies() {
                   </p>
                   
                   <div className="mt-auto pt-2">
-                    <Link href="/case-study" className="inline-flex items-center gap-2 group/link">
+                    <Link href="/case-study/" className="inline-flex items-center gap-2 group/link focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">
                       <span className="text-[14px] font-bold tracking-wide text-slate-900 transition-colors group-hover/link:text-blue-600">
                         Khám phá chi tiết
                       </span>
@@ -127,7 +127,7 @@ export function HighTicketCaseStudies() {
         </div>
 
         <RevealOnScroll direction="up" className="mt-12 flex justify-center">
-          <Link href="/case-study" className="flex h-14 items-center justify-center gap-2 rounded-full bg-[#1D4ED8] px-8 text-[15px] font-bold text-white transition-all hover:scale-105 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25">
+          <Link href="/case-study/" className="flex h-14 items-center justify-center gap-2 rounded-full bg-[#1D4ED8] px-8 text-[15px] font-bold text-white transition-all hover:scale-105 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">
             Xem toàn bộ Case Study <ArrowRight size={18} />
           </Link>
         </RevealOnScroll>

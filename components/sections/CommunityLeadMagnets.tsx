@@ -55,7 +55,7 @@ export function CommunityLeadMagnets() {
 
           <RevealOnScroll direction="up" className="mt-12 flex justify-center">
             <Link
-              href="/tai-nguyen"
+                href="/tai-nguyen/"
               className="flex h-14 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-[15px] font-bold text-[#04091A] transition-all hover:border-[#1D4ED8] hover:text-[#1D4ED8] group shadow-sm hover:shadow-md"
             >
               Khám phá toàn bộ Thư viện <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />

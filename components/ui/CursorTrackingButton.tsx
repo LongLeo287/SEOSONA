@@ -45,7 +45,7 @@ export function CursorTrackingButton({
       className={cn(
         "relative inline-flex h-14 items-center justify-center overflow-hidden rounded-full px-8 text-[16px] font-bold transition-all duration-300",
         "bg-[#1D4ED8] text-white",
-        "hover:shadow-[0_12px_30px_rgba(29,78,216,0.3)] hover:-translate-y-1",
+        "hover:shadow-[0_12px_30px_rgba(29,78,216,0.3)] hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100",
         className
       )}
       {...props}
