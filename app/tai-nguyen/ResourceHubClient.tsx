@@ -59,17 +59,17 @@ export function ResourceHubClient() {
       <main className="overflow-hidden bg-[#F8FAFC] text-[#04091A]">
         <section className="py-12 lg:py-16">
           <div className="mx-auto w-full max-w-[1200px] px-6 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-[#F0F6FF] px-4 py-1.5 text-[14px] font-bold text-[#3BA6F1]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-[#F0F6FF] px-4 py-1.5 text-[14px] font-bold text-[#1D4ED8]">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#3BA6F1] opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#3BA6F1]"></span>
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#1D4ED8] opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#1D4ED8]"></span>
               </span>
               <LibraryBig className="h-4 w-4" />
               <span>SEOSONA Resource Hub</span>
             </div>
             
             <h1 className="mx-auto mt-4 max-w-4xl text-balance text-4xl font-black leading-tight tracking-tight text-[#04091A] sm:text-[54px]">
-              Kho tài nguyên độc quyền cho đội ngũ <span className="text-[#3BA6F1]">tăng trưởng trên Google</span>
+              Kho tài nguyên độc quyền cho đội ngũ <span className="text-[#1D4ED8]">tăng trưởng trên Google</span>
             </h1>
             
             <p className="mx-auto mt-4 max-w-2xl text-pretty text-base font-medium leading-relaxed text-slate-500 sm:text-[17px]">
@@ -89,10 +89,10 @@ export function ResourceHubClient() {
                     type="button"
                     onClick={() => setActiveFilter(filter.key)}
                     className={cn(
-                      "rounded-full border px-6 py-2.5 text-[15px] font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3BA6F1]",
+                      "rounded-full border px-6 py-2.5 text-[15px] font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1D4ED8]",
                       isActive
-                        ? "border-[#3BA6F1] bg-[#3BA6F1] text-white shadow-[0_8px_20px_rgba(59,166,241,0.25)]"
-                        : "border-slate-200 bg-white text-slate-500 hover:border-[#3BA6F1]/30 hover:text-[#3BA6F1] hover:shadow-sm"
+                        ? "border-[#1D4ED8] bg-[#1D4ED8] text-white shadow-[0_8px_20px_rgba(59,166,241,0.25)]"
+                        : "border-slate-200 bg-white text-slate-500 hover:border-[#1D4ED8]/30 hover:text-[#1D4ED8] hover:shadow-sm"
                     )}
                   >
                     {filter.label}

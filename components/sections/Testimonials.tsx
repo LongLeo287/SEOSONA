@@ -49,12 +49,12 @@ export function Testimonials() {
     avatar: t.avatar,
     username: `${t.name} - ${t.company}`,
     content: t.quote,
-    color: "text-[#3BA6F1]",
+    color: "text-[#1D4ED8]",
     duration: 5000,
   }));
 
   return (
-    <section className="bg-white py-16 lg:py-24 overflow-hidden relative">
+    <section className="bg-[#F8FAFC] py-16 lg:py-24 overflow-hidden relative">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
@@ -65,7 +65,7 @@ export function Testimonials() {
               </SectionBadge>
               <h2 className="mt-5 mb-6 text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
                 Niềm tin đến từ <br className="hidden lg:block" />
-                <span className="text-[#3BA6F1]">kết quả thực tế</span> <br className="hidden sm:block" />
+                <span className="text-[#1D4ED8]">kết quả thực tế</span> <br className="hidden sm:block" />
                 và quy trình minh bạch
               </h2>
               <p className="text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">

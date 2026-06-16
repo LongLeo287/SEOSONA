@@ -48,7 +48,7 @@ export default function Page() {
       <JsonLd data={schema} />
       <section className="relative overflow-hidden bg-[#F8FAFC] py-14 sm:py-16 lg:py-20">
         <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <p className="text-sm font-black uppercase text-[#3BA6F1]">SEOSONA Legal</p>
+          <p className="text-sm font-black uppercase text-[#1D4ED8]">SEOSONA Legal</p>
           <h1 className="mt-4 text-balance text-4xl font-black leading-tight text-[#04091A] sm:text-5xl">
             Chính sách bảo mật
           </h1>
@@ -72,10 +72,10 @@ export default function Page() {
           <div className="mt-10 rounded-[24px] border border-slate-200 bg-[#F8FAFC] p-6 sm:p-8">
             <h2 className="text-2xl font-black text-[#04091A]">Thông tin liên hệ</h2>
             <p className="mt-3 text-base leading-8 text-slate-600">
-              Email: <a className="font-bold text-[#3BA6F1]" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-              {" "}· Hotline: <a className="font-bold text-[#3BA6F1]" href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}>{siteConfig.phone}</a>
+              Email: <a className="font-bold text-[#1D4ED8]" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+              {" "}· Hotline: <a className="font-bold text-[#1D4ED8]" href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}>{siteConfig.phone}</a>
             </p>
-            <Link href="/lien-he/" className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#3BA6F1] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-blue-600">
+            <Link href="/lien-he/" className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#1D4ED8] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-blue-600">
               Gửi yêu cầu hỗ trợ <ArrowRight size={16} />
             </Link>
           </div>

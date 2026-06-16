@@ -18,7 +18,7 @@ const metrics = [
 ];
 
 const orbitalPillars = [
-  { icon: Target, label: "Dịch vụ SEO", color: "text-[#3BA6F1]", startRadius: 500, angle: 0, depth: 1, tilt: 0 },
+  { icon: Target, label: "Dịch vụ SEO", color: "text-[#1D4ED8]", startRadius: 500, angle: 0, depth: 1, tilt: 0 },
   { icon: MousePointerClick, label: "Quảng cáo Ads", color: "text-[#F59E0B]", startRadius: 420, angle: 72, depth: 1, tilt: 0 },
   { icon: Sparkles, label: "Giải pháp AI", color: "text-[#8B5CF6]", startRadius: 480, angle: 144, depth: 1, tilt: 0 },
   { icon: Workflow, label: "Data & Auto", color: "text-[#10B981]", startRadius: 550, angle: 216, depth: 1, tilt: 0 },
@@ -75,7 +75,7 @@ function Typewriter({ words }: { words: string[] }) {
 
   return (
     <span
-      className="inline-block border-r-[2px] border-[#3BA6F1] pr-1 text-[#3BA6F1] animate-[cursor-blink_1s_step-end_infinite]"
+      className="inline-block border-r-[2px] border-[#1D4ED8] pr-1 text-[#1D4ED8] animate-[cursor-blink_1s_step-end_infinite]"
     >
       {text}
     </span>
@@ -146,12 +146,12 @@ const OrbitalNode = ({
               style={{ scale: nodeScale, opacity: nodeOpacity, filter: nodeBlur }}
               animate={{ y: [-15, 15, -15] }}
               transition={{ duration: 4 + (Math.abs(pillar.startAngle) % 3), repeat: Infinity, ease: "easeInOut" }}
-              className="pointer-events-auto flex items-center gap-3 rounded-full bg-white/90 backdrop-blur-md px-5 py-3 shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-200/80 transition-all duration-300 hover:scale-110 hover:border-[#3BA6F1]/50 cursor-pointer group"
+              className="pointer-events-auto flex items-center gap-3 rounded-full bg-white/90 backdrop-blur-md px-5 py-3 shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-200/80 transition-all duration-300 hover:scale-110 hover:border-[#1D4ED8]/50 cursor-pointer group"
             >
-              <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white shadow-sm border border-slate-100 transition-colors group-hover:bg-[#3BA6F1] group-hover:text-white group-hover:border-transparent ${pillar.color}`}>
+              <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white shadow-sm border border-slate-100 transition-colors group-hover:bg-[#1D4ED8] group-hover:text-white group-hover:border-transparent ${pillar.color}`}>
                 <pillar.icon size={22} />
               </div>
-              <span className="font-black text-slate-700 text-[15px] whitespace-nowrap pr-2 group-hover:text-[#3BA6F1] transition-colors">{pillar.label}</span>
+              <span className="font-black text-slate-700 text-[15px] whitespace-nowrap pr-2 group-hover:text-[#1D4ED8] transition-colors">{pillar.label}</span>
             </motion.div>
           </motion.div>
         </motion.div>
@@ -297,7 +297,7 @@ export function Hero() {
             </SectionBadge>
 
             <h1 className="mx-auto mt-4 w-full text-4xl font-black leading-tight tracking-tight text-[#04091A] sm:text-5xl md:text-[54px] lg:text-[64px]">
-              Share<span className="text-[#3BA6F1]">.</span> Search<span className="text-[#3BA6F1]">.</span> Connect<span className="text-[#3BA6F1]">.</span> <br className="hidden lg:block" />
+              Share<span className="text-[#1D4ED8]">.</span> Search<span className="text-[#1D4ED8]">.</span> Connect<span className="text-[#1D4ED8]">.</span> <br className="hidden lg:block" />
               <span className="inline-block lg:whitespace-nowrap">
                 Tăng trưởng từ <Typewriter words={["Dịch vụ SEO", "Quảng cáo Ads", "Giải pháp AI", "Data & Automation", "Đào tạo Academy"]} />
               </span>
@@ -308,10 +308,10 @@ export function Hero() {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/lien-he" className="flex h-14 items-center justify-center gap-2 rounded-full bg-[#3BA6F1] px-8 text-[15px] font-bold text-white transition-all hover:scale-105 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25 w-full sm:w-auto">
+              <Link href="/lien-he" className="flex h-14 items-center justify-center gap-2 rounded-full bg-[#1D4ED8] px-8 text-[15px] font-bold text-white transition-all hover:scale-105 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25 w-full sm:w-auto">
                 Nhận tư vấn chiến lược <ArrowRight size={18} />
               </Link>
-              <Link href="/case-study" className="flex h-14 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-[15px] font-bold text-[#04091A] transition-all hover:border-[#3BA6F1] hover:text-[#3BA6F1] w-full sm:w-auto group">
+              <Link href="/case-study" className="flex h-14 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-[15px] font-bold text-[#04091A] transition-all hover:border-[#1D4ED8] hover:text-[#1D4ED8] w-full sm:w-auto group">
                 Xem Case Study <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
@@ -322,13 +322,13 @@ export function Hero() {
                 return (
                   <div
                     key={item.label}
-                    className="group relative flex flex-col items-center justify-center rounded-3xl border border-slate-200/80 bg-[#F8FAFC]/80 backdrop-blur-sm p-5 md:py-6 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:border-[#3BA6F1]/30 hover:bg-white overflow-hidden"
+                    className="group relative flex flex-col items-center justify-center rounded-3xl border border-slate-200/80 bg-[#F8FAFC]/80 backdrop-blur-sm p-5 md:py-6 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:border-[#1D4ED8]/30 hover:bg-white overflow-hidden"
                   >
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent transition-all duration-500 group-hover:w-3/4 opacity-0 group-hover:opacity-100" />
-                    <div className="relative mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#3BA6F1] shadow-sm transition-transform duration-500 group-hover:scale-110 z-10">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#1D4ED8] to-transparent transition-all duration-500 group-hover:w-3/4 opacity-0 group-hover:opacity-100" />
+                    <div className="relative mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#1D4ED8] shadow-sm transition-transform duration-500 group-hover:scale-110 z-10">
                       <Icon size={20} className="relative z-10" />
                     </div>
-                    <div className="text-[32px] md:text-[36px] font-black leading-none tracking-tight text-[#04091A] group-hover:text-[#3BA6F1] transition-colors duration-500">
+                    <div className="text-[32px] md:text-[36px] font-black leading-none tracking-tight text-[#04091A] group-hover:text-[#1D4ED8] transition-colors duration-500">
                       <CountUp end={item.value} suffix={item.suffix} />
                     </div>
                     <div className="mt-2 text-[13px] font-bold uppercase tracking-widest text-slate-500 transition-colors duration-500 group-hover:text-slate-600">
@@ -354,7 +354,7 @@ export function Hero() {
              style={{ opacity: logoOpacity, scale: logoScale }}
              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center w-[300px] xl:w-[400px] 2xl:w-[500px]"
            >
-             <div className="relative flex items-center justify-center h-32 w-32 xl:h-40 xl:w-40 2xl:h-52 2xl:w-52 rounded-full bg-white shadow-[0_0_50px_rgba(59,166,241,0.15)] border border-slate-100 before:absolute before:inset-[-20px] xl:before:inset-[-24px] 2xl:before:inset-[-32px] before:rounded-full before:border before:border-dashed before:border-[#3BA6F1]/30 before:animate-[spin_20s_linear_infinite]">
+             <div className="relative flex items-center justify-center h-32 w-32 xl:h-40 xl:w-40 2xl:h-52 2xl:w-52 rounded-full bg-white shadow-[0_0_50px_rgba(59,166,241,0.15)] border border-slate-100 before:absolute before:inset-[-20px] xl:before:inset-[-24px] 2xl:before:inset-[-32px] before:rounded-full before:border before:border-dashed before:border-[#1D4ED8]/30 before:animate-[spin_20s_linear_infinite]">
                <Image
                  src="/images/brand/Seosona_Logo.png"
                  alt="SEOSONA Logo"
@@ -371,7 +371,7 @@ export function Hero() {
              <motion.div
                animate={{ opacity: isGathered ? 1 : 0, scale: isGathered ? 1 : 0.8 }}
                transition={{ duration: 1.5, ease: "easeInOut" }}
-               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#3BA6F1]/20 pointer-events-none"
+               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#1D4ED8]/20 pointer-events-none"
                style={{
                  width: pillars[0].orbitRadius * 2,
                  height: pillars[0].orbitRadius * 2

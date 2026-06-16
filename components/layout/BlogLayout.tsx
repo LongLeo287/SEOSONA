@@ -16,7 +16,7 @@ export function BlogLayout({ children, activeSlug }: { children: React.ReactNode
                 <div className="relative mb-6">
                   <div className="flex items-center justify-between px-3 py-2 border border-[#E2E8F0] rounded-xl shadow-sm bg-white cursor-pointer hover:bg-[#F0F6FF] transition-all duration-200 group">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-6 h-6 rounded-md bg-[#F0F6FF] text-[#3BA6F1] flex items-center justify-center group-hover:bg-white transition-colors">
+                      <div className="w-6 h-6 rounded-md bg-[#F0F6FF] text-[#1D4ED8] flex items-center justify-center group-hover:bg-white transition-colors">
                         <FolderOpen className="w-3.5 h-3.5" />
                       </div>
                       <span className="text-[14px] font-bold !text-[#04091A]">
@@ -34,8 +34,8 @@ export function BlogLayout({ children, activeSlug }: { children: React.ReactNode
                     className={cn(
                       "flex items-center gap-2.5 px-2.5 py-[8px] rounded-md text-[13px] transition-all duration-200",
                       !activeSlug
-                        ? "bg-[#F0F6FF] !text-[#3BA6F1] font-semibold leading-snug shadow-sm ring-1 ring-[#3BA6F1]/10"
-                        : "truncate !text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#3BA6F1] hover:translate-x-1 font-normal"
+                        ? "bg-[#F0F6FF] !text-[#1D4ED8] font-semibold leading-snug shadow-sm ring-1 ring-[#1D4ED8]/10"
+                        : "truncate !text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#1D4ED8] hover:translate-x-1 font-normal"
                     )}
                   >
                     <LayoutGrid className="w-4 h-4 opacity-70" />
@@ -52,8 +52,8 @@ export function BlogLayout({ children, activeSlug }: { children: React.ReactNode
                         className={cn(
                           "flex items-center gap-2.5 px-2.5 py-[8px] rounded-md text-[13px] transition-all duration-200",
                           isActive
-                            ? "bg-[#F0F6FF] !text-[#3BA6F1] font-semibold leading-snug shadow-sm ring-1 ring-[#3BA6F1]/10"
-                            : "truncate !text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#3BA6F1] hover:translate-x-1 font-normal"
+                            ? "bg-[#F0F6FF] !text-[#1D4ED8] font-semibold leading-snug shadow-sm ring-1 ring-[#1D4ED8]/10"
+                            : "truncate !text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#1D4ED8] hover:translate-x-1 font-normal"
                         )}
                         title={hub.title}
                       >

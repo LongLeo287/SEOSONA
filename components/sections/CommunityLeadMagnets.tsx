@@ -20,7 +20,7 @@ export function CommunityLeadMagnets() {
 
   return (
     <>
-      <section id="lead-magnets" className="border-y border-slate-100 bg-[#F6F9FC] py-16 lg:py-24">
+      <section id="lead-magnets" className="border-y border-slate-100 bg-white py-16 lg:py-24">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           <RevealOnScroll direction="up" className="mb-12 flex flex-col items-center text-center">
@@ -29,7 +29,7 @@ export function CommunityLeadMagnets() {
             </SectionBadge>
             <h2 className="mx-auto mb-5 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
               Kho tri thức thực chiến dành riêng cho <br className="hidden sm:block" />
-              <span className="text-[#3BA6F1]">Manager & C-Level</span>
+              <span className="text-[#1D4ED8]">Manager & C-Level</span>
             </h2>
             <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
               Không cần cam kết dịch vụ. Hãy tải xuống những tài liệu cốt lõi
@@ -56,7 +56,7 @@ export function CommunityLeadMagnets() {
           <RevealOnScroll direction="up" className="mt-12 flex justify-center">
             <Link
               href="/tai-nguyen"
-              className="flex h-14 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-[15px] font-bold text-[#04091A] transition-all hover:border-[#3BA6F1] hover:text-[#3BA6F1] group shadow-sm hover:shadow-md"
+              className="flex h-14 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-[15px] font-bold text-[#04091A] transition-all hover:border-[#1D4ED8] hover:text-[#1D4ED8] group shadow-sm hover:shadow-md"
             >
               Khám phá toàn bộ Thư viện <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </Link>

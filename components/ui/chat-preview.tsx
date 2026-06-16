@@ -51,6 +51,8 @@ const defaultChannel: Channel = {
 
 const defaultMessages: Message[] = [];
 
+import { motion, AnimatePresence } from "framer-motion";
+
 export function ChatPreview({
   messages = defaultMessages,
   channel = defaultChannel,
@@ -93,7 +95,7 @@ export function ChatPreview({
           setVisibleMessages([]);
         }
       },
-      { threshold: 0.1 } // changed threshold to trigger earlier
+      { threshold: 0.1 }
     );
 
     if (containerRef.current) {
@@ -128,7 +130,7 @@ export function ChatPreview({
           theme.background
         )}
       >
-        <div className="border-b border-slate-100 bg-slate-50/50 px-4 py-3 sm:px-5 sm:py-4">
+        <div className="border-b border-slate-100 bg-slate-50/50 px-4 py-3 sm:px-5 sm:py-4 z-20 relative">
           <div className="flex items-center gap-3">
             <div className="flex gap-1.5">
               <div className="h-3 w-3 rounded-full bg-red-400" />
@@ -145,60 +147,68 @@ export function ChatPreview({
           </div>
         </div>
 
-        <div className="p-4 pt-0 sm:p-6 sm:pt-0 flex flex-col justify-end relative h-[400px] sm:h-[450px] overflow-hidden">
-          <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-white to-transparent pointer-events-none z-10" />
+        <div className="p-4 pt-0 sm:p-6 sm:pt-0 flex flex-col justify-end relative h-[400px] sm:h-[450px] overflow-hidden bg-white/50">
+          <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white via-white/80 to-transparent pointer-events-none z-10" />
           <div className="flex flex-col justify-end gap-4 sm:gap-5 overflow-hidden">
-            {visibleMessages.map((message) => (
-              <div
-                key={message.timestamp}
-                className={cn(
-                  "flex items-start gap-3 sm:gap-4",
-                  message === visibleMessages[visibleMessages.length - 1] &&
-                    "animate-message-appear"
-                )}
-              >
-                <div
-                  className={cn(
-                    "rounded-full flex-shrink-0 relative overflow-hidden ring-1 ring-slate-200",
-                    theme.avatarSize,
-                    !message.avatar &&
-                      (message.avatarBackground ?? "bg-slate-200")
-                  )}
+            <AnimatePresence initial={false} mode="popLayout">
+              {visibleMessages.map((message) => (
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+                  transition={{ 
+                    type: "spring", 
+                    stiffness: 400, 
+                    damping: 25,
+                    mass: 0.8
+                  }}
+                  key={message.timestamp}
+                  className="flex items-start gap-3 sm:gap-4 relative z-0 origin-bottom"
                 >
-                  {message.avatar && (
-                    <Image
-                      src={message.avatar}
-                      alt={message.username}
-                      fill
-                      className="object-cover"
-                    />
-                  )}
-                  {!message.avatar && (
-                    <div className="w-full h-full flex items-center justify-center text-white font-bold text-sm">
-                      {message.username.charAt(0)}
-                    </div>
-                  )}
-                </div>
-                <div className="min-w-0 flex-1 bg-slate-50 border border-slate-100 rounded-2xl rounded-tl-none p-3 sm:p-4">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span
-                      className={cn(
-                        "font-bold text-[14px] sm:text-[15px]",
-                        message.color ?? "text-[#04091A]"
-                      )}
-                    >
-                      {message.username}
-                    </span>
-                    <span className="text-slate-400 shrink-0 text-[11px] sm:text-xs font-medium">
-                      just now
-                    </span>
+                  <div
+                    className={cn(
+                      "rounded-full flex-shrink-0 relative overflow-hidden ring-1 ring-slate-200 shadow-sm",
+                      theme.avatarSize,
+                      !message.avatar &&
+                        (message.avatarBackground ?? "bg-slate-200")
+                    )}
+                  >
+                    {message.avatar && (
+                      <Image
+                        src={message.avatar}
+                        alt={message.username}
+                        fill
+                        className="object-cover"
+                      />
+                    )}
+                    {!message.avatar && (
+                      <div className="w-full h-full flex items-center justify-center text-white font-bold text-sm">
+                        {message.username.charAt(0)}
+                      </div>
+                    )}
                   </div>
-                  <p className={cn(theme.textColor, "text-[14px] sm:text-[15px] font-medium leading-relaxed")}>
-                    {message.content}
-                  </p>
-                </div>
-              </div>
-            ))}
+                  <div className="min-w-0 flex-1 bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow rounded-2xl rounded-tl-none p-3 sm:p-4">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span
+                        className={cn(
+                          "font-bold text-[14px] sm:text-[15px]",
+                          message.color ?? "text-[#04091A]"
+                        )}
+                      >
+                        {message.username}
+                      </span>
+                      <span className="text-slate-400 shrink-0 text-[11px] sm:text-xs font-medium">
+                        just now
+                      </span>
+                    </div>
+                    <p className={cn(theme.textColor, "text-[14px] sm:text-[15px] font-medium leading-relaxed")}>
+                      {message.content}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         </div>
       </div>

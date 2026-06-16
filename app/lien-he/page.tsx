@@ -114,9 +114,9 @@ export default function Page() {
                     <div
                       className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl transition-all duration-300"
                       style={{
-                        background: `#3BA6F115`,
-                        border: `1px solid #3BA6F130`,
-                        color: `#3BA6F1`,
+                        background: `#1D4ED815`,
+                        border: `1px solid #1D4ED830`,
+                        color: `#1D4ED8`,
                       }}
                     >
                       <Icon size={20} />
@@ -137,14 +137,14 @@ export default function Page() {
                       href={item.href}
                       target={item.href.startsWith("http") ? "_blank" : undefined}
                       rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="group relative block overflow-hidden rounded-[24px] border border-slate-200/80 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#3BA6F1]/30 hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)]"
+                      className="group relative block overflow-hidden rounded-[24px] border border-slate-200/80 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#1D4ED8]/30 hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)]"
                     >
                       {inner}
                     </a>
                   </RevealOnScroll>
                 ) : (
                   <RevealOnScroll key={item.label} delay={index * 60}>
-                    <div className="group relative block overflow-hidden rounded-[24px] border border-slate-200/80 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#3BA6F1]/30 hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)]">{inner}</div>
+                    <div className="group relative block overflow-hidden rounded-[24px] border border-slate-200/80 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#1D4ED8]/30 hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)]">{inner}</div>
                   </RevealOnScroll>
                 );
               })}
@@ -152,9 +152,9 @@ export default function Page() {
 
             {/* Social links */}
             <RevealOnScroll delay={240}>
-              <div className="group relative block overflow-hidden rounded-[24px] border border-slate-200/80 bg-white p-5 transition-all duration-300 hover:border-[#3BA6F1]/30 hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)]">
+              <div className="group relative block overflow-hidden rounded-[24px] border border-slate-200/80 bg-white p-5 transition-all duration-300 hover:border-[#1D4ED8]/30 hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)]">
                 <div className="mb-4 flex items-center gap-2">
-                  <MessageCircle size={16} className="text-[#3BA6F1]" />
+                  <MessageCircle size={16} className="text-[#1D4ED8]" />
                   <div className="text-sm font-black text-[#04091A]">Theo dõi SEOSONA</div>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -164,14 +164,14 @@ export default function Page() {
                       href={channel.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-bold text-slate-700 transition-all hover:border-[#3BA6F1]/30 hover:bg-blue-50 hover:text-[#3BA6F1]"
+                      className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-bold text-slate-700 transition-all hover:border-[#1D4ED8]/30 hover:bg-blue-50 hover:text-[#1D4ED8]"
                     >
                       {channel.label}
                     </a>
                   ))}
                   <Link
                     href="/ve-seosona/fanpage-social/"
-                    className="inline-flex items-center gap-2 rounded-xl border border-[#3BA6F1]/20 bg-[#F0F6FF] px-4 py-2.5 text-sm font-bold text-[#3BA6F1] transition-all hover:border-[#3BA6F1]/40 hover:bg-white"
+                    className="inline-flex items-center gap-2 rounded-xl border border-[#1D4ED8]/20 bg-[#F0F6FF] px-4 py-2.5 text-sm font-bold text-[#1D4ED8] transition-all hover:border-[#1D4ED8]/40 hover:bg-white"
                   >
                     Xem tất cả
                   </Link>
@@ -209,17 +209,17 @@ export default function Page() {
               <RevealOnScroll key={item.href} delay={index * 60}>
                 <Link
                   href={item.href}
-                  className="group relative flex h-full items-center justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-[#F8FAFC]/50 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#3BA6F1]/30 hover:bg-white hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)]"
+                  className="group relative flex h-full items-center justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-[#F8FAFC]/50 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#1D4ED8]/30 hover:bg-white hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)]"
                 >
                   <div>
-                    <div className="font-bold text-[#04091A] transition-colors duration-300 group-hover:text-[#3BA6F1]">
+                    <div className="font-bold text-[#04091A] transition-colors duration-300 group-hover:text-[#1D4ED8]">
                       {item.label}
                     </div>
                     <div className="mt-1 text-sm font-medium text-slate-500">{item.desc}</div>
                   </div>
                   <ArrowRight
                     size={18}
-                    className="shrink-0 text-slate-300 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#3BA6F1]"
+                    className="shrink-0 text-slate-300 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#1D4ED8]"
                   />
                 </Link>
               </RevealOnScroll>

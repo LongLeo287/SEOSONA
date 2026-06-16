@@ -52,16 +52,16 @@ export function FeatureGrid({
         <div className={`mt-12 grid gap-6 lg:gap-8 ${colClass}`}>
           {features.map((feature, index) => (
             <RevealOnScroll key={feature.title} delay={index * 70} direction="up">
-              <div className="group relative flex h-full flex-col overflow-hidden rounded-[32px] border border-slate-200/80 bg-white p-8 transition-all duration-500 hover:-translate-y-1.5 hover:border-[#3BA6F1]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]">
+              <div className="group relative flex h-full flex-col overflow-hidden rounded-[32px] border border-slate-200/80 bg-white p-8 transition-all duration-500 hover:-translate-y-1.5 hover:border-[#1D4ED8]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]">
                 {/* Subtle Top Glow on Hover */}
-                <div className="absolute left-1/2 top-0 h-[2px] w-0 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent opacity-0 transition-all duration-500 group-hover:w-full group-hover:opacity-100" />
+                <div className="absolute left-1/2 top-0 h-[2px] w-0 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#1D4ED8] to-transparent opacity-0 transition-all duration-500 group-hover:w-full group-hover:opacity-100" />
                 
                 {/* Number badge / Icon area */}
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#F0F6FF] text-xl font-black text-[#3BA6F1] shadow-sm transition-transform duration-500 group-hover:scale-110">
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#F0F6FF] text-xl font-black text-[#1D4ED8] shadow-sm transition-transform duration-500 group-hover:scale-110">
                   {String(index + 1).padStart(2, "0")}
                 </div>
 
-                <h3 className="text-xl font-bold tracking-tight text-[#04091A] transition-colors duration-300 group-hover:text-[#3BA6F1]">
+                <h3 className="text-xl font-bold tracking-tight text-[#04091A] transition-colors duration-300 group-hover:text-[#1D4ED8]">
                   {feature.title}
                 </h3>
                 

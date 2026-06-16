@@ -113,7 +113,7 @@ export default async function Page() {
           <div className="mx-auto mt-[-2rem] relative z-10 grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label} className="flex flex-col items-center justify-center rounded-[24px] border border-slate-200/80 bg-[#F8FAFC]/80 p-6 shadow-sm backdrop-blur-md">
-                <div className="text-3xl font-black text-[#3BA6F1]">{stat.value}</div>
+                <div className="text-3xl font-black text-[#1D4ED8]">{stat.value}</div>
                 <div className="mt-2 text-xs font-bold uppercase tracking-widest text-slate-500 text-center">{stat.label}</div>
               </div>
             ))}
@@ -129,18 +129,18 @@ export default async function Page() {
               const Icon = item.icon;
               return (
                 <RevealOnScroll key={item.industry} delay={index * 80}>
-                  <div className="group relative flex h-full flex-col overflow-hidden rounded-[32px] border border-slate-200/80 bg-white p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-[#3BA6F1]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]">
+                  <div className="group relative flex h-full flex-col overflow-hidden rounded-[32px] border border-slate-200/80 bg-white p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-[#1D4ED8]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]">
                     {/* Subtle Top Glow on Hover */}
-                    <div className="absolute left-1/2 top-0 h-[2px] w-0 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent opacity-0 transition-all duration-500 group-hover:w-full group-hover:opacity-100" />
+                    <div className="absolute left-1/2 top-0 h-[2px] w-0 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#1D4ED8] to-transparent opacity-0 transition-all duration-500 group-hover:w-full group-hover:opacity-100" />
 
                     {/* Top row */}
                     <div className="relative mb-6 flex items-start justify-between">
                       <div
                         className="grid h-12 w-12 place-items-center rounded-2xl transition-all duration-300 group-hover:scale-110"
                         style={{
-                          background: `#3BA6F115`,
-                          border: `1px solid #3BA6F130`,
-                          color: `#3BA6F1`,
+                          background: `#1D4ED815`,
+                          border: `1px solid #1D4ED830`,
+                          color: `#1D4ED8`,
                         }}
                       >
                         <Icon size={22} />
@@ -152,10 +152,10 @@ export default async function Page() {
 
                     {/* Content */}
                     <div className="relative flex flex-1 flex-col">
-                      <div className="mb-1 text-xs font-bold uppercase tracking-widest text-[#3BA6F1]">
+                      <div className="mb-1 text-xs font-bold uppercase tracking-widest text-[#1D4ED8]">
                         {item.industry}
                       </div>
-                      <h2 className="text-[19px] font-bold text-[#04091A] text-balance transition-colors duration-300 group-hover:text-[#3BA6F1]">
+                      <h2 className="text-[19px] font-bold text-[#04091A] text-balance transition-colors duration-300 group-hover:text-[#1D4ED8]">
                         {item.result}
                       </h2>
                       <p className="mt-3 flex-1 text-[15px] leading-relaxed text-slate-500 text-pretty">

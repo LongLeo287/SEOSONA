@@ -39,8 +39,8 @@ export default function Page() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((item, index) => (
-              <div key={index} className="p-8 rounded-[24px] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:border-[#3BA6F1]/30 transition-all duration-300">
-                <div className="h-12 w-12 rounded-xl bg-white text-[#3BA6F1] shadow-sm border border-slate-100 flex items-center justify-center mb-6">
+              <div key={index} className="p-8 rounded-[24px] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:border-[#1D4ED8]/30 transition-all duration-300">
+                <div className="h-12 w-12 rounded-xl bg-white text-[#1D4ED8] shadow-sm border border-slate-100 flex items-center justify-center mb-6">
                   <CheckCircle2 size={24} />
                 </div>
                 <h3 className="text-[20px] font-bold text-[#04091A] mb-4">{item.title}</h3>

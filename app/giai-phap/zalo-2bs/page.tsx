@@ -33,7 +33,7 @@ export default function ZaloAutomationPage() {
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight mb-6 animate-in slide-in-from-left-6 fade-in duration-700 delay-100 text-balance leading-[1.1]">
               Tự động hóa CSKH với <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0068FF] to-[#3BA6F1]">Zalo OA & ZNS</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0068FF] to-[#1D4ED8]">Zalo OA & ZNS</span>
             </h1>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 mb-10 animate-in slide-in-from-left-8 fade-in duration-700 delay-200 text-pretty leading-relaxed">
               Biến Zalo thành cỗ máy chốt Sales tự động. Tiếp cận khách hàng tức thì, gửi báo giá tự động ngay khi họ điền form, và nuôi dưỡng khách hàng trung thành với tỷ lệ tương tác vượt trội so với Email hay SMS.

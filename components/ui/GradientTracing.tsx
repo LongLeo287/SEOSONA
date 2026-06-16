@@ -13,7 +13,7 @@ interface GradientTracingProps {
 
 export const GradientTracing: React.FC<GradientTracingProps> = ({
   baseColor = "white",
-  gradientColors = ["#3BA6F1", "#00D4FF", "#3BA6F1"],
+  gradientColors = ["#1D4ED8", "#00D4FF", "#1D4ED8"],
   animationDuration = 3,
   strokeWidth = 1.5,
   className = "",

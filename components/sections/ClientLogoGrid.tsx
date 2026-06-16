@@ -33,12 +33,12 @@ function LogoCard({ logo }: { logo: { name: string; src: string; href?: string }
 
 export function ClientLogoGrid() {
   return (
-    <section className="relative overflow-hidden bg-[#F8FAFC] py-12 lg:py-16">
+    <section className="relative overflow-hidden bg-white py-12 lg:py-16">
       <div className="container relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <RevealOnScroll direction="up" className="mx-auto max-w-4xl text-center">
           <SectionBadge live={true} className="mx-auto">Khách hàng tiêu biểu</SectionBadge>
           <h2 className="mx-auto mt-2 text-[32px] font-black tracking-tight leading-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
-            Đồng hành cùng nhiều doanh nghiệp <span className="text-[#3BA6F1]">tại Việt Nam</span>
+            Đồng hành cùng nhiều doanh nghiệp <span className="text-[#1D4ED8]">tại Việt Nam</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
             Các thương hiệu đã tin tưởng SEOSONA trong hành trình tăng trưởng từ Google, tối ưu hóa tỷ lệ chuyển đổi và bức phá doanh thu.
@@ -66,12 +66,12 @@ export function ClientLogoGrid() {
             return (
               <div
                 key={item.label}
-                className="group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-5 md:py-6 text-center shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-[#3BA6F1]/40 hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)] ring-1 ring-slate-100/50"
+                className="group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-5 md:py-6 text-center shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-[#1D4ED8]/40 hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)] ring-1 ring-slate-100/50"
               >
                 {/* Tech Glow Sweep on Hover */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#1D4ED8] to-transparent transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100" />
                 
-                <div className="text-[36px] md:text-[40px] font-black text-[#04091A] leading-none tracking-tight transition-colors duration-500 group-hover:text-[#3BA6F1]">
+                <div className="text-[36px] md:text-[40px] font-black text-[#04091A] leading-none tracking-tight transition-colors duration-500 group-hover:text-[#1D4ED8]">
                   {item.value}
                 </div>
                 <div className="mt-2.5 text-[12px] font-bold text-slate-500 uppercase tracking-widest transition-colors duration-500 group-hover:text-slate-600">

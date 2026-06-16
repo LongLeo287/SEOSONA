@@ -18,7 +18,7 @@ export function BlogHero({ title, description }: { title: string, description: s
           <input
             type="text"
             placeholder="Search articles..."
-            className="w-full rounded-[16px] border border-white/60 bg-white/80 py-3 pl-11 pr-4 text-sm font-medium text-[#04091A] placeholder:text-slate-400 shadow-sm backdrop-blur-md outline-none transition-all focus:border-[#3BA6F1] focus:bg-white focus:ring-4 focus:ring-[#3BA6F1]/10"
+            className="w-full rounded-[16px] border border-white/60 bg-white/80 py-3 pl-11 pr-4 text-sm font-medium text-[#04091A] placeholder:text-slate-400 shadow-sm backdrop-blur-md outline-none transition-all focus:border-[#1D4ED8] focus:bg-white focus:ring-4 focus:ring-[#1D4ED8]/10"
           />
         </div>
       </div>

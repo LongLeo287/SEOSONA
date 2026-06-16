@@ -17,7 +17,7 @@
   --color-canvas-surface: #F8FAFC;    /* Elevated surface */
   --color-canvas-elevated: #F1F5F9;   /* Higher elevated surface */
   
-  --color-signal-primary: #3BA6F1;    /* Signal Blue: technical, trustworthy */
+  --color-signal-primary: #1D4ED8;    /* Signal Blue: technical, trustworthy */
   --color-signal-hover: #2B8FD4;
 
   --color-text-ink: #04091A;          /* Dark Navy/Black for strong contrast */
@@ -243,4 +243,13 @@
 }
 .animate-message-appear {
   animation: message-appear 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -16;
+  }
 }

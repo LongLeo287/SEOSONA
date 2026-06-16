@@ -21,23 +21,23 @@ export default function TrackingAutomationPage() {
       {/* SaaS Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-[#04091A] border-b border-white/5">
          {/* Background Effects */}
-        <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-[#3BA6F1]/10 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-[#1D4ED8]/10 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[400px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none" />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px]" />
         
         <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#3BA6F1]/10 border border-[#3BA6F1]/30 text-[#3BA6F1] font-bold text-sm mb-8 animate-in slide-in-from-bottom-4 fade-in duration-700">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1D4ED8]/10 border border-[#1D4ED8]/30 text-[#1D4ED8] font-bold text-sm mb-8 animate-in slide-in-from-bottom-4 fade-in duration-700">
             <Target size={16} /> Data Precision
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white tracking-tight mb-6 animate-in slide-in-from-bottom-6 fade-in duration-700 delay-100 text-balance">
             Lắp &quot;mắt thần&quot; cho <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3BA6F1] to-emerald-400">Doanh nghiệp của bạn</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1D4ED8] to-emerald-400">Doanh nghiệp của bạn</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 animate-in slide-in-from-bottom-8 fade-in duration-700 delay-200 text-pretty">
             Không còn &quot;đốt tiền&quot; mù quáng vào quảng cáo. Hệ thống Tracking Server-Side của chúng tôi giúp bạn ghi nhận chính xác 100% dữ liệu chuyển đổi bất chấp mọi rào cản bảo mật.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-10 fade-in duration-700 delay-300">
-            <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-[#3BA6F1] text-white font-bold text-[15px] flex items-center justify-center hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/25 hover:-translate-y-1">
+            <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-[#1D4ED8] text-white font-bold text-[15px] flex items-center justify-center hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/25 hover:-translate-y-1">
               Kiểm tra tình trạng Tracking
             </Link>
           </div>
@@ -120,8 +120,8 @@ export default function TrackingAutomationPage() {
             {features.map((item, index) => {
                const Icon = item.icon;
                return (
-              <div key={index} className="p-8 rounded-[24px] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] hover:border-[#3BA6F1]/30 transition-all duration-300 flex flex-col gap-4">
-                <div className="h-14 w-14 rounded-2xl bg-white shadow-sm border border-slate-100 text-[#3BA6F1] flex items-center justify-center">
+              <div key={index} className="p-8 rounded-[24px] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] hover:border-[#1D4ED8]/30 transition-all duration-300 flex flex-col gap-4">
+                <div className="h-14 w-14 rounded-2xl bg-white shadow-sm border border-slate-100 text-[#1D4ED8] flex items-center justify-center">
                   <Icon size={28} />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900">{item.title}</h3>

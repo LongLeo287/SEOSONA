@@ -19,3 +19,6 @@ This project is bound to SEOSONA OS through `seosona.project.json`.
 - Publish/deploy actions require explicit user intent.
 
 TASK COMPLETED
+
+## Design Guidelines
+- DO NOT use dark colors (e.g., #04091A) as background colors. Always use light colors for backgrounds.

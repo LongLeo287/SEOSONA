@@ -47,24 +47,24 @@ export function ServiceAuditBlock({
   const isDark = tone === "dark";
 
   return (
-    <section className={`relative overflow-hidden py-16 lg:py-24 ${isDark ? "bg-[#04091A] text-white" : "bg-white text-[#04091A]"}`}>
+    <section className={`relative overflow-hidden py-16 lg:py-24 ${isDark ? "bg-[#F8FAFC] text-[#04091A]" : "bg-white text-[#04091A]"}`}>
       {isDark ? (
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:32px_32px]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#04091A08_1px,transparent_1px),linear-gradient(to_bottom,#04091A08_1px,transparent_1px)] bg-[size:32px_32px]" />
       ) : (
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#04091A08_1px,transparent_1px),linear-gradient(to_bottom,#04091A08_1px,transparent_1px)] bg-[size:28px_28px]" />
       )}
 
       <div className={`container relative mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8 ${reverse ? "lg:[&>*:first-child]:order-2" : ""}`}>
         <RevealOnScroll direction={reverse ? "left" : "right"}>
-          <SectionBadge live={false} className={isDark ? "border-white/20 bg-white/10 text-[#7DD3FC]" : ""}>
+          <SectionBadge live={false} className={isDark ? "border-slate-200 bg-white" : ""}>
             {eyebrow}
           </SectionBadge>
 
-          <h2 className={`mt-4 max-w-3xl text-balance text-3xl font-black leading-tight tracking-tight sm:text-4xl md:text-[46px] ${isDark ? "text-white" : "text-[#04091A]"}`}>
+          <h2 className={`mt-4 max-w-3xl text-balance text-3xl font-black leading-tight tracking-tight sm:text-4xl md:text-[46px] text-[#04091A]`}>
             {title}
           </h2>
 
-          <p className={`mt-5 max-w-2xl text-pretty text-[17px] font-medium leading-relaxed ${isDark ? "text-slate-300" : "text-slate-500"}`}>
+          <p className={`mt-5 max-w-2xl text-pretty text-[17px] font-medium leading-relaxed text-slate-500`}>
             {description}
           </p>
 
@@ -74,17 +74,17 @@ export function ServiceAuditBlock({
                 key={item.title}
                 className={`group rounded-3xl border p-5 transition-all duration-300 hover:-translate-y-1 ${
                   isDark
-                    ? "border-white/10 bg-white/5 hover:border-[#3BA6F1]/50 hover:bg-white/10"
-                    : "border-slate-200/80 bg-white/80 hover:border-[#3BA6F1]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]"
+                    ? "border-slate-200/80 bg-white hover:border-[#1D4ED8]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]"
+                    : "border-slate-200/80 bg-white/80 hover:border-[#1D4ED8]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]"
                 }`}
               >
                 <div className="flex gap-4">
-                  <div className={`mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl font-black ${isDark ? "bg-[#3BA6F1]/20 text-[#7DD3FC]" : "bg-[#F0F6FF] text-[#3BA6F1]"}`}>
+                  <div className={`mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl font-black bg-[#F0F6FF] text-[#1D4ED8]`}>
                     {String(index + 1).padStart(2, "0")}
                   </div>
                   <div>
-                    <h3 className={`font-black ${isDark ? "text-white" : "text-[#04091A]"}`}>{item.title}</h3>
-                    <p className={`mt-1 text-[15px] leading-relaxed ${isDark ? "text-slate-400" : "text-slate-500"}`}>
+                    <h3 className={`font-black text-[#04091A]`}>{item.title}</h3>
+                    <p className={`mt-1 text-[15px] leading-relaxed text-slate-500`}>
                       {item.description}
                     </p>
                   </div>
@@ -95,8 +95,8 @@ export function ServiceAuditBlock({
         </RevealOnScroll>
 
         <RevealOnScroll direction={reverse ? "right" : "left"} delay={120}>
-          <div className={`relative overflow-hidden rounded-[32px] border p-4 shadow-[0_24px_70px_rgba(4,9,26,0.12)] ${isDark ? "border-white/10 bg-white/10" : "border-slate-200/80 bg-[#F8FAFC]"}`}>
-            <div className="absolute left-8 top-8 z-10 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/80 px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-[#3BA6F1] shadow-sm backdrop-blur-md">
+          <div className={`relative overflow-hidden rounded-[32px] border p-4 shadow-sm ${isDark ? "border-slate-200/80 bg-white" : "border-slate-200/80 bg-[#F8FAFC]"}`}>
+            <div className="absolute left-8 top-8 z-10 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/80 px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-[#1D4ED8] shadow-sm backdrop-blur-md">
               <CheckCircle2 className="h-4 w-4" />
               {imageBadge}
             </div>
@@ -142,18 +142,18 @@ export function ServiceResourceLinks({
             <RevealOnScroll key={resource.title} direction="up" delay={index * 90}>
               <Link
                 href={resource.href}
-                className="group flex h-full flex-col rounded-[32px] border border-slate-200/80 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#3BA6F1]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]"
+                className="group flex h-full flex-col rounded-[32px] border border-slate-200/80 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#1D4ED8]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]"
               >
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F0F6FF] text-lg font-black text-[#3BA6F1] transition-transform group-hover:scale-110">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F0F6FF] text-lg font-black text-[#1D4ED8] transition-transform group-hover:scale-110">
                   {String(index + 1).padStart(2, "0")}
                 </div>
-                <h3 className="text-xl font-black text-[#04091A] transition-colors group-hover:text-[#3BA6F1]">
+                <h3 className="text-xl font-black text-[#04091A] transition-colors group-hover:text-[#1D4ED8]">
                   {resource.title}
                 </h3>
                 <p className="mt-3 flex-1 text-[15px] leading-relaxed text-slate-500">
                   {resource.description}
                 </p>
-                <div className="mt-6 flex items-center gap-2 border-t border-slate-100 pt-5 text-[14px] font-bold text-[#04091A] transition-colors group-hover:text-[#3BA6F1]">
+                <div className="mt-6 flex items-center gap-2 border-t border-slate-100 pt-5 text-[14px] font-bold text-[#04091A] transition-colors group-hover:text-[#1D4ED8]">
                   {resource.label || "Xem tài nguyên"}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>

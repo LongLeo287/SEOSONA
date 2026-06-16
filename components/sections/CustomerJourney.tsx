@@ -101,7 +101,7 @@ export function CustomerJourney() {
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
         
         <RevealOnScroll direction="up" className="mb-12 flex flex-col items-center text-center">
-          <SectionBadge live={true} icon={<Route className="h-3.5 w-3.5" />}>
+          <SectionBadge variant="neutral" live={false} icon={<Route className="h-3.5 w-3.5" />}>
             Quy trình làm việc
           </SectionBadge>
           <h2 className="mx-auto mt-4 mb-4 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">

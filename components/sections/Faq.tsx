@@ -55,8 +55,8 @@ export function Faq({ items }: FaqProps) {
                   className={cn(
                     "group cursor-pointer overflow-hidden rounded-3xl border bg-white px-6 py-5 transition-all duration-300",
                     isOpen
-                      ? "border-[#3BA6F1] shadow-[0_8px_30px_rgba(59,166,241,0.12)]"
-                      : "border-slate-200/80 hover:border-[#3BA6F1]/30 hover:shadow-md"
+                      ? "border-[#1D4ED8] shadow-[0_8px_30px_rgba(59,166,241,0.12)]"
+                      : "border-slate-200/80 hover:border-[#1D4ED8]/30 hover:shadow-md"
                   )}
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                 >
@@ -64,7 +64,7 @@ export function Faq({ items }: FaqProps) {
                     <h3
                       className={cn(
                         "text-[17px] font-bold tracking-tight transition-colors duration-300",
-                        isOpen ? "text-[#3BA6F1]" : "text-[#04091A] group-hover:text-[#3BA6F1]"
+                        isOpen ? "text-[#1D4ED8]" : "text-[#04091A] group-hover:text-[#1D4ED8]"
                       )}
                     >
                       {item.question}
@@ -73,8 +73,8 @@ export function Faq({ items }: FaqProps) {
                       className={cn(
                         "flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-300",
                         isOpen
-                          ? "bg-[#3BA6F1] text-white rotate-180"
-                          : "bg-[#F0F6FF] text-[#3BA6F1] group-hover:bg-[#3BA6F1] group-hover:text-white"
+                          ? "bg-[#1D4ED8] text-white rotate-180"
+                          : "bg-[#F0F6FF] text-[#1D4ED8] group-hover:bg-[#1D4ED8] group-hover:text-white"
                       )}
                     >
                       {isOpen ? <Minus size={16} /> : <Plus size={16} />}

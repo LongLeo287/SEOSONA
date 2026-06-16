@@ -21,7 +21,7 @@ export default function AiContentPage() {
       {/* SaaS Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}
-        <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-[#3BA6F1]/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-[#1D4ED8]/5 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[400px] bg-[#10B981]/5 blur-[120px] rounded-full pointer-events-none" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-100 via-white to-white" />
         
@@ -33,7 +33,7 @@ export default function AiContentPage() {
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight mb-6 animate-in slide-in-from-left-6 fade-in duration-700 delay-100 text-balance leading-[1.1]">
               Cỗ máy sản xuất <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#10B981] to-[#3BA6F1]">Content chuẩn SEO hàng loạt</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#10B981] to-[#1D4ED8]">Content chuẩn SEO hàng loạt</span>
             </h1>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 mb-10 animate-in slide-in-from-left-8 fade-in duration-700 delay-200 text-pretty leading-relaxed">
               Tạm biệt nỗi lo cạn kiệt ý tưởng hay mất hàng tuần để viết bài. Hệ thống AI Content Automation của SEOSONA kết hợp sức mạnh LangChain tạo ra hàng nghìn bài viết tối ưu E-E-A-T với tốc độ tên lửa.
@@ -64,11 +64,11 @@ export default function AiContentPage() {
                   <div className="p-4 md:p-6 text-slate-300 flex flex-col gap-2 min-h-[300px]">
                      <div className="flex gap-4">
                         <span className="text-slate-500 select-none">1</span>
-                        <span className="text-[#3BA6F1]">import</span> <span>seosona_os</span>
+                        <span className="text-[#1D4ED8]">import</span> <span>seosona_os</span>
                      </div>
                      <div className="flex gap-4">
                         <span className="text-slate-500 select-none">2</span>
-                        <span className="text-[#3BA6F1]">from</span> <span>langchain.agents</span> <span className="text-[#3BA6F1]">import</span> <span>ContentGenerator</span>
+                        <span className="text-[#1D4ED8]">from</span> <span>langchain.agents</span> <span className="text-[#1D4ED8]">import</span> <span>ContentGenerator</span>
                      </div>
                      <div className="flex gap-4">
                         <span className="text-slate-500 select-none">3</span>
@@ -91,7 +91,7 @@ export default function AiContentPage() {
                      </div>
                      <div className="flex gap-4">
                         <span className="text-slate-500 select-none">8</span>
-                        <span className="ml-4 text-[#3BA6F1]">return</span> <span>article.optimize_internal_links()</span>
+                        <span className="ml-4 text-[#1D4ED8]">return</span> <span>article.optimize_internal_links()</span>
                      </div>
                      <div className="flex gap-4 mt-4 border-t border-slate-800 pt-4 text-emerald-400 font-bold">
                         <span className="text-slate-500 select-none font-normal">9</span>

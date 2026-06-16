@@ -44,7 +44,7 @@ export default function Page() {
       <JsonLd data={schema} />
       <section className="relative overflow-hidden bg-[#F8FAFC] py-14 sm:py-16 lg:py-20">
         <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <p className="text-sm font-black uppercase text-[#3BA6F1]">SEOSONA Legal</p>
+          <p className="text-sm font-black uppercase text-[#1D4ED8]">SEOSONA Legal</p>
           <h1 className="mt-4 text-balance text-4xl font-black leading-tight text-[#04091A] sm:text-5xl">
             Hình thức thanh toán và hoàn trả
           </h1>
@@ -70,7 +70,7 @@ export default function Page() {
             <p className="mt-3 text-base leading-8 text-slate-600">
               Liên hệ SEOSONA qua {siteConfig.phone} hoặc {siteConfig.email} để được kiểm tra đúng báo giá, hợp đồng và thông tin chuyển khoản.
             </p>
-            <Link href="/lien-he/" className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#3BA6F1] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-blue-600">
+            <Link href="/lien-he/" className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#1D4ED8] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-blue-600">
               Liên hệ xác nhận <ArrowRight size={16} />
             </Link>
           </div>

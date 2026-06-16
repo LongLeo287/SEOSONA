@@ -106,29 +106,29 @@ export default function Footer() {
             <div className="grid gap-3 text-sm text-slate-600">
               <a
                 href={`tel:${phoneDigits}`}
-                className="group inline-flex items-center gap-3 font-semibold transition-colors hover:text-[#3BA6F1]"
+                className="group inline-flex items-center gap-3 font-semibold transition-colors hover:text-[#1D4ED8]"
               >
-                <Phone size={18} className="text-[#3BA6F1]" />
+                <Phone size={18} className="text-[#1D4ED8]" />
                 {siteConfig.phone}
               </a>
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="group inline-flex items-center gap-3 font-semibold transition-colors hover:text-[#3BA6F1]"
+                className="group inline-flex items-center gap-3 font-semibold transition-colors hover:text-[#1D4ED8]"
               >
-                <Mail size={18} className="text-[#3BA6F1]" />
+                <Mail size={18} className="text-[#1D4ED8]" />
                 {siteConfig.email}
               </a>
               <a
                 href="https://maps.google.com/?q=71/2+Che+Lan+Vien+Tan+Phu+TPHCM"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-start gap-3 font-semibold leading-6 transition-colors hover:text-[#3BA6F1]"
+                className="group inline-flex items-start gap-3 font-semibold leading-6 transition-colors hover:text-[#1D4ED8]"
               >
-                <MapPin size={18} className="mt-0.5 shrink-0 text-[#3BA6F1]" />
+                <MapPin size={18} className="mt-0.5 shrink-0 text-[#1D4ED8]" />
                 <span>{siteConfig.address}</span>
               </a>
               <div className="inline-flex items-center gap-3 font-semibold">
-                <Clock size={18} className="text-[#3BA6F1]" />
+                <Clock size={18} className="text-[#1D4ED8]" />
                 Thứ 2 - Thứ 7, 8:00 - 18:00
               </div>
             </div>
@@ -136,13 +136,13 @@ export default function Footer() {
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/lien-he/"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#3BA6F1] px-6 text-sm font-bold text-white transition-all hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/20"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#1D4ED8] px-6 text-sm font-bold text-white transition-all hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/20"
               >
                 Nhận tư vấn <ArrowRight size={16} />
               </Link>
               <Link
                 href="/ve-seosona/fanpage-social/"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 text-sm font-bold text-slate-800 transition-all hover:border-[#3BA6F1]/30 hover:text-[#3BA6F1]"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 text-sm font-bold text-slate-800 transition-all hover:border-[#1D4ED8]/30 hover:text-[#1D4ED8]"
               >
                 Theo dõi social
               </Link>
@@ -158,7 +158,7 @@ export default function Footer() {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="text-sm font-semibold leading-6 text-slate-600 transition-colors hover:text-[#3BA6F1]"
+                        className="text-sm font-semibold leading-6 text-slate-600 transition-colors hover:text-[#1D4ED8]"
                       >
                         {link.label}
                       </Link>
@@ -183,7 +183,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={channel.label}
-                    className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-all hover:-translate-y-0.5 hover:border-[#3BA6F1]/30 hover:text-[#3BA6F1] hover:shadow-lg hover:shadow-blue-500/10"
+                    className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-all hover:-translate-y-0.5 hover:border-[#1D4ED8]/30 hover:text-[#1D4ED8] hover:shadow-lg hover:shadow-blue-500/10"
                   >
                     <Icon size={18} />
                   </a>
@@ -193,7 +193,7 @@ export default function Footer() {
 
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-slate-500">
               {legalLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="transition-colors hover:text-[#3BA6F1]">
+                <Link key={link.href} href={link.href} className="transition-colors hover:text-[#1D4ED8]">
                   {link.label}
                 </Link>
               ))}

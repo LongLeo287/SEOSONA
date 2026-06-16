@@ -13,9 +13,9 @@ export function ProofBar() {
           {proofItems.map((item) => (
             <div 
               key={item.label} 
-              className="group relative flex flex-col items-center justify-center rounded-3xl border border-slate-200/80 bg-white p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-[#3BA6F1]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]"
+              className="group relative flex flex-col items-center justify-center rounded-3xl border border-slate-200/80 bg-white p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-[#1D4ED8]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]"
             >
-              <div className="text-4xl font-black text-[#04091A] group-hover:text-[#3BA6F1] transition-colors duration-500">
+              <div className="text-4xl font-black text-[#04091A] group-hover:text-[#1D4ED8] transition-colors duration-500">
                 {item.value}
               </div>
               <div className="mt-2 text-[13px] font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-600 transition-colors duration-500">

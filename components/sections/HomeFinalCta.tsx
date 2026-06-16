@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { CursorTrackingButton } from "@/components/ui/CursorTrackingButton";
 import { ArrowRight, CheckCircle2, PhoneCall, Loader2 } from "lucide-react";
 
 const benefits = [
@@ -66,7 +67,7 @@ export function HomeFinalCta() {
                 ))}
               </div>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start">
-                <Link href="/lien-he/" className="btn-primary w-full sm:w-auto">Bắt đầu tư vấn <ArrowRight size={18} /></Link>
+                <CursorTrackingButton href="/lien-he/" className="w-full sm:w-auto">Bắt đầu tư vấn <ArrowRight size={18} /></CursorTrackingButton>
                 <a href="tel:0909346660" className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/10 px-6 py-4 font-bold text-white transition hover:-translate-y-0.5 hover:bg-white/15 sm:w-auto">
                   <PhoneCall size={18} /> Gọi ngay
                 </a>

@@ -191,8 +191,8 @@ export default function SeoTongThePage() {
                      <svg className="w-full h-56 drop-shadow-md z-10" viewBox="0 0 800 200" preserveAspectRatio="none">
                         <defs>
                            <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                              <stop offset="0%" stopColor="#3BA6F1" stopOpacity="0.3" />
-                              <stop offset="100%" stopColor="#3BA6F1" stopOpacity="0.01" />
+                              <stop offset="0%" stopColor="#1D4ED8" stopOpacity="0.3" />
+                              <stop offset="100%" stopColor="#1D4ED8" stopOpacity="0.01" />
                            </linearGradient>
                            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                               <stop offset="0%" stopColor="#94a3b8" />

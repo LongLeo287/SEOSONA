@@ -75,16 +75,16 @@ export default function Page() {
                     href={channel.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex h-full flex-col rounded-[24px] border border-slate-200/80 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#3BA6F1]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]"
+                    className="group flex h-full flex-col rounded-[24px] border border-slate-200/80 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#1D4ED8]/30 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)]"
                   >
-                    <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F0F6FF] text-[#3BA6F1] transition-transform duration-300 group-hover:scale-105">
+                    <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F0F6FF] text-[#1D4ED8] transition-transform duration-300 group-hover:scale-105">
                       <Icon size={22} />
                     </div>
-                    <h3 className="text-xl font-black text-[#04091A] transition-colors group-hover:text-[#3BA6F1]">
+                    <h3 className="text-xl font-black text-[#04091A] transition-colors group-hover:text-[#1D4ED8]">
                       {channel.label}
                     </h3>
                     <p className="mt-3 flex-1 text-base leading-relaxed text-slate-500">{channel.description}</p>
-                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#3BA6F1]">
+                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#1D4ED8]">
                       Mở kênh <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                     </span>
                   </a>
@@ -107,7 +107,7 @@ export default function Page() {
               </div>
               <Link
                 href="/lien-he/"
-                className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-[#3BA6F1] px-8 text-[15px] font-bold text-white transition-all hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25"
+                className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-[#1D4ED8] px-8 text-[15px] font-bold text-white transition-all hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25"
               >
                 Đi tới Liên hệ <ArrowRight size={18} />
               </Link>

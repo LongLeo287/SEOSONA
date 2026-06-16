@@ -5,7 +5,7 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 export function PressLogoGrid() {
   return (
-    <section className="relative bg-white py-12 lg:py-16">
+    <section className="relative bg-[#F8FAFC] py-12 lg:py-16">
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <RevealOnScroll direction="up" className="overflow-hidden rounded-[32px] border border-slate-200/80 bg-[#F8FAFC] p-8 lg:p-12 shadow-sm ring-1 ring-slate-100/50">
           <div className="grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
@@ -15,7 +15,7 @@ export function PressLogoGrid() {
               <SectionBadge live={true}>Báo chí & Truyền thông</SectionBadge>
               <h2 className="mt-4 text-[32px] font-black tracking-tight leading-tight text-[#04091A] sm:text-4xl text-balance">
                 SEOSONA trên <br className="hidden lg:block"/> 
-                <span className="text-[#3BA6F1]">báo chí</span>
+                <span className="text-[#1D4ED8]">báo chí</span>
               </h2>
               <p className="mt-4 text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
                 Được công nhận bởi các đơn vị báo chí và truyền thông uy tín hàng đầu tại Việt Nam.
@@ -27,7 +27,7 @@ export function PressLogoGrid() {
               {pressLogos.map((logo) => (
                 <div 
                   key={logo.name} 
-                  className="group flex h-24 items-center justify-center rounded-[24px] border border-slate-200/80 bg-white p-4 shadow-sm transition-all hover:-translate-y-1 hover:border-[#3BA6F1]/30 hover:shadow-xl ring-1 ring-slate-100/50"
+                  className="group flex h-24 items-center justify-center rounded-[24px] border border-slate-200/80 bg-[#F8FAFC] p-4 shadow-sm transition-all hover:-translate-y-1 hover:border-[#1D4ED8]/30 hover:shadow-xl ring-1 ring-slate-100/50"
                 >
                   <Image 
                     src={logo.src} 

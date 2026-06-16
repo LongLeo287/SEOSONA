@@ -42,7 +42,7 @@ export function TrustSection() {
         <RevealOnScroll direction="up" className="mx-auto max-w-4xl text-center">
           <SectionBadge live={true} className="mx-auto">Khách hàng tiêu biểu</SectionBadge>
           <h2 className="mx-auto mt-2 text-[32px] font-black tracking-tight leading-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
-            Đồng hành cùng nhiều doanh nghiệp <span className="text-[#3BA6F1]">tại Việt Nam</span>
+            Đồng hành cùng nhiều doanh nghiệp <span className="text-[#1D4ED8]">tại Việt Nam</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
             Các thương hiệu đã tin tưởng SEOSONA trong hành trình tăng trưởng từ Google, tối ưu hóa tỷ lệ chuyển đổi và bức phá doanh thu.
@@ -70,12 +70,12 @@ export function TrustSection() {
           {stats.map((item) => (
             <div
               key={item.label}
-              className="group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-5 md:py-6 text-center shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all duration-500 hover:-translate-y-1 hover:border-[#3BA6F1]/40 hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)] ring-1 ring-slate-100/50"
+              className="group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-5 md:py-6 text-center shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all duration-500 hover:-translate-y-1 hover:border-[#1D4ED8]/40 hover:shadow-[0_8px_30px_rgba(59,166,241,0.12)] ring-1 ring-slate-100/50"
             >
               {/* Tech Glow Sweep on Hover */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#1D4ED8] to-transparent transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100" />
               
-              <div className="text-[36px] md:text-[40px] font-black text-[#04091A] leading-none tracking-tight transition-colors duration-500 group-hover:text-[#3BA6F1]">
+              <div className="text-[36px] md:text-[40px] font-black text-[#04091A] leading-none tracking-tight transition-colors duration-500 group-hover:text-[#1D4ED8]">
                 {item.value}
               </div>
               <div className="mt-2.5 text-[12px] font-bold text-slate-500 uppercase tracking-widest transition-colors duration-500 group-hover:text-slate-600">
@@ -95,7 +95,7 @@ export function TrustSection() {
               <SectionBadge live={true}>Báo chí & Truyền thông</SectionBadge>
               <h2 className="mt-4 text-[32px] font-black tracking-tight leading-tight text-[#04091A] sm:text-4xl text-balance">
                 SEOSONA trên <br className="hidden lg:block"/> 
-                <span className="text-[#3BA6F1]">báo chí</span>
+                <span className="text-[#1D4ED8]">báo chí</span>
               </h2>
               <p className="mt-4 text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
                 Được công nhận bởi các đơn vị báo chí và truyền thông uy tín hàng đầu tại Việt Nam.
@@ -107,7 +107,7 @@ export function TrustSection() {
               {pressLogos.map((logo) => (
                 <div 
                   key={logo.name} 
-                  className="group flex h-24 items-center justify-center rounded-[24px] border border-slate-200/80 bg-white p-4 shadow-sm transition-all hover:-translate-y-1 hover:border-[#3BA6F1]/30 hover:shadow-xl ring-1 ring-slate-100/50"
+                  className="group flex h-24 items-center justify-center rounded-[24px] border border-slate-200/80 bg-white p-4 shadow-sm transition-all hover:-translate-y-1 hover:border-[#1D4ED8]/30 hover:shadow-xl ring-1 ring-slate-100/50"
                 >
                   <Image 
                     src={logo.src} 

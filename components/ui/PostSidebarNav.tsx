@@ -118,14 +118,14 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
           onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
         >
           <div className="flex items-center gap-2.5">
-            <div className="w-6 h-6 rounded-md bg-[#F0F6FF] text-[#3BA6F1] flex items-center justify-center group-hover:bg-white transition-colors">
+            <div className="w-6 h-6 rounded-md bg-[#F0F6FF] text-[#1D4ED8] flex items-center justify-center group-hover:bg-white transition-colors">
               <FolderOpen className="w-3.5 h-3.5" />
             </div>
             <span className="text-[14px] font-bold !text-[#04091A]">
               {categoryName}
             </span>
           </div>
-          <ChevronDown className={cn("w-4 h-4 !text-[#94A3B8] transition-transform duration-200 group-hover:!text-[#3BA6F1]", isCategoryDropdownOpen ? "rotate-180" : "")} />
+          <ChevronDown className={cn("w-4 h-4 !text-[#94A3B8] transition-transform duration-200 group-hover:!text-[#1D4ED8]", isCategoryDropdownOpen ? "rotate-180" : "")} />
         </div>
 
         {/* Dropdown Menu */}
@@ -149,8 +149,8 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
                 className={cn(
                   "block px-3 py-2 rounded-lg text-[13px] font-medium transition-all duration-200",
                   slug === categorySlug 
-                    ? "bg-[#F0F6FF] !text-[#3BA6F1] cursor-default" 
-                    : "!text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#3BA6F1] hover:translate-x-0.5"
+                    ? "bg-[#F0F6FF] !text-[#1D4ED8] cursor-default" 
+                    : "!text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#1D4ED8] hover:translate-x-0.5"
                 )}
               >
                 {hub.title}
@@ -191,8 +191,8 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
                         className={cn(
                           "block px-2.5 py-[6px] rounded-md text-[13px] transition-all duration-200",
                           isActive
-                            ? "bg-[#F0F6FF] !text-[#3BA6F1] font-semibold leading-snug shadow-sm ring-1 ring-[#3BA6F1]/10"
-                            : "truncate !text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#3BA6F1] hover:translate-x-1 font-normal"
+                            ? "bg-[#F0F6FF] !text-[#1D4ED8] font-semibold leading-snug shadow-sm ring-1 ring-[#1D4ED8]/10"
+                            : "truncate !text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#1D4ED8] hover:translate-x-1 font-normal"
                         )}
                         title={post.title}
                       >

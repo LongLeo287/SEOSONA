@@ -60,7 +60,7 @@ export function TableOfContents() {
               key={heading.id}
               className={cn(
                 "h-1.5 rounded-full transition-all duration-300 cursor-pointer shadow-sm",
-                isActive ? "w-5 bg-[#3BA6F1]" : "w-3 bg-[#E2E8F0] hover:w-4 hover:bg-[#94A3B8]"
+                isActive ? "w-5 bg-[#1D4ED8]" : "w-3 bg-[#E2E8F0] hover:w-4 hover:bg-[#94A3B8]"
               )}
               onClick={() => {
                 const target = document.getElementById(heading.id);
@@ -91,8 +91,8 @@ export function TableOfContents() {
                   "block px-2.5 py-1.5 rounded-md text-[12px] transition-all duration-200 leading-snug",
                   heading.level === 3 ? "ml-3 border-l border-slate-100" : "font-medium",
                   isActive
-                    ? "bg-[#F0F6FF] !text-[#3BA6F1] font-semibold"
-                    : "!text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#3BA6F1] hover:translate-x-0.5"
+                    ? "bg-[#F0F6FF] !text-[#1D4ED8] font-semibold"
+                    : "!text-[#64748B] hover:bg-[#F8FAFC] hover:!text-[#1D4ED8] hover:translate-x-0.5"
                 )}
                 onClick={(e) => {
                   e.preventDefault();

@@ -27,7 +27,7 @@ const TypewriterText = ({ text }: { text: string }) => {
   return (
     <>
       <span className="invisible h-0 block whitespace-nowrap" aria-hidden="true">{text}</span>
-      <span className="absolute inset-y-0 left-0 flex items-center whitespace-nowrap">{displayedText}<span className="animate-pulse ml-[1px] w-[2px] h-4 bg-[#3BA6F1] inline-block"></span></span>
+      <span className="absolute inset-y-0 left-0 flex items-center whitespace-nowrap">{displayedText}<span className="animate-pulse ml-[1px] w-[2px] h-4 bg-[#1D4ED8] inline-block"></span></span>
     </>
   );
 };
@@ -62,17 +62,17 @@ export function HighTicketCaseStudies() {
   }, [tags.length]);
 
   return (
-    <section className="relative overflow-hidden bg-white py-12 lg:py-16">
+    <section className="relative overflow-hidden bg-slate-50 py-12 lg:py-20">
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         <RevealOnScroll direction="up" className="mb-12 flex flex-col items-center text-center">
-          <SectionBadge live={true} icon={<TrendingUp className="h-3.5 w-3.5" />}>
+          <SectionBadge variant="premium" live={false} icon={<TrendingUp className="h-3.5 w-3.5" />}>
             Premium Case Studies
           </SectionBadge>
 
           <h2 className="mx-auto mt-4 mb-4 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
             Tăng Traffic là bề nổi, <br className="hidden sm:block" />
-            Tăng <span className="text-[#3BA6F1]">Doanh Thu</span> mới là cốt lõi
+            Tăng <span className="text-[#1D4ED8]">Doanh Thu</span> mới là cốt lõi
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
@@ -81,7 +81,7 @@ export function HighTicketCaseStudies() {
           </p>
 
           <div className="mt-8 flex items-center justify-center h-[44px]">
-            <motion.div layout className="relative flex items-center gap-2 rounded-full border border-blue-100 bg-[#F0F6FF] px-5 py-2.5 text-[15px] font-bold text-[#3BA6F1] shadow-sm overflow-hidden">
+            <motion.div layout className="relative flex items-center gap-2 rounded-full border border-blue-100 bg-[#F0F6FF] px-5 py-2.5 text-[15px] font-bold text-[#1D4ED8] shadow-sm overflow-hidden">
               <CheckCircle2 className="shrink-0" size={18} />
               <div className="relative h-5 flex items-center transition-all duration-300">
                 <TypewriterText text={tags[currentTagIndex]} />
@@ -95,28 +95,29 @@ export function HighTicketCaseStudies() {
             const Icon = item.icon;
             return (
               <RevealOnScroll key={item.title} direction="up" delay={i * 100}>
-                <div className="group relative flex h-full flex-col rounded-[32px] bg-white p-6 sm:p-8 border border-slate-200/80 shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:border-[#3BA6F1]/30 overflow-hidden">
+                <div className="group relative flex h-full flex-col rounded-[24px] bg-white p-6 md:p-7 border border-slate-200 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-900/5 hover:border-blue-200 overflow-hidden">
                   
-                  {/* Glowing Sweep on Hover */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100" />
+                  {/* Subtle Top Glow on Hover */}
+                  <div className="absolute top-0 inset-x-0 h-[2px] w-full bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#F8FAFC] text-[#3BA6F1] border border-slate-200/60 shadow-sm transition-transform duration-500 group-hover:scale-110 group-hover:bg-[#3BA6F1] group-hover:text-white group-hover:border-[#3BA6F1] z-10">
-                    <Icon size={28} aria-hidden="true" />
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 border border-blue-100 transition-transform duration-500 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 z-10">
+                    <Icon size={24} aria-hidden="true" />
                   </div>
-                  <h3 className="mb-4 text-[22px] font-black text-[#04091A] text-balance transition-colors group-hover:text-[#3BA6F1]">
+                  
+                  <h3 className="mb-3 text-[20px] font-bold text-slate-900 leading-tight transition-colors group-hover:text-blue-700">
                     {item.title}
                   </h3>
-                  <p className="mb-8 flex-1 text-[16px] font-medium leading-relaxed text-slate-500 text-pretty">
+                  
+                  <p className="mb-6 flex-1 text-[15px] leading-relaxed text-slate-500">
                     {item.description}
                   </p>
-                  <div className="mt-auto border-t border-slate-200/80 pt-6">
-                    <Link href="/case-study" className="flex items-center justify-between group/link">
-                      <span className="text-[14px] font-bold uppercase tracking-widest text-[#04091A] transition-colors group-hover/link:text-[#3BA6F1]">
-                        Khám phá
+                  
+                  <div className="mt-auto pt-2">
+                    <Link href="/case-study" className="inline-flex items-center gap-2 group/link">
+                      <span className="text-[14px] font-bold tracking-wide text-slate-900 transition-colors group-hover/link:text-blue-600">
+                        Khám phá chi tiết
                       </span>
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition-all duration-300 group-hover/link:border-[#3BA6F1] group-hover/link:bg-[#F0F6FF] group-hover/link:text-[#3BA6F1]" aria-hidden="true">
-                        <ArrowRight size={18} className="transition-transform duration-300 group-hover/link:translate-x-1" />
-                      </div>
+                      <ArrowRight size={16} className="text-slate-400 transition-transform duration-300 group-hover/link:translate-x-1 group-hover/link:text-blue-600" />
                     </Link>
                   </div>
                 </div>
@@ -126,7 +127,7 @@ export function HighTicketCaseStudies() {
         </div>
 
         <RevealOnScroll direction="up" className="mt-12 flex justify-center">
-          <Link href="/case-study" className="flex h-14 items-center justify-center gap-2 rounded-full bg-[#3BA6F1] px-8 text-[15px] font-bold text-white transition-all hover:scale-105 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25">
+          <Link href="/case-study" className="flex h-14 items-center justify-center gap-2 rounded-full bg-[#1D4ED8] px-8 text-[15px] font-bold text-white transition-all hover:scale-105 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25">
             Xem toàn bộ Case Study <ArrowRight size={18} />
           </Link>
         </RevealOnScroll>

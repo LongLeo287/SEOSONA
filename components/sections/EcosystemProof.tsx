@@ -68,7 +68,7 @@ export function EcosystemProof() {
 
           <h2 className="mx-auto mt-4 mb-4 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
             Không chỉ là Agency, chúng tôi xây dựng <br className="hidden sm:block" />
-            <span className="text-[#3BA6F1]">Hệ sinh thái Digital</span>
+            <span className="text-[#1D4ED8]">Hệ sinh thái Digital</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-pretty">
             Sự phát triển bền vững cần sự hậu thuẫn từ một hệ sinh thái mạnh mẽ. <br className="hidden md:block" />
@@ -82,21 +82,21 @@ export function EcosystemProof() {
             const Icon = item.icon;
             return (
               <RevealOnScroll key={item.title} direction="up" delay={i * 100} className={`col-span-1 ${i < 3 ? 'lg:col-span-2' : 'lg:col-span-3'}`}>
-                <div className={`group relative flex h-full flex-col rounded-[32px] bg-white p-6 sm:p-8 border border-slate-200/80 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:border-[#3BA6F1]/30 overflow-hidden ${item.comingSoon ? 'opacity-80' : ''}`}>
+                <div className={`group relative flex h-full flex-col rounded-[32px] bg-white p-6 sm:p-8 border border-slate-200/80 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:border-[#1D4ED8]/30 overflow-hidden ${item.comingSoon ? 'opacity-80' : ''}`}>
 
                   {/* Glowing Sweep on Hover */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#3BA6F1] to-transparent transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100" />
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-[#1D4ED8] to-transparent transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100" />
 
                   <div className="mb-6 flex items-start justify-between z-10">
-                    <span className="text-[54px] font-black text-[#3BA6F1] leading-none tracking-tight">
+                    <span className="text-[54px] font-black text-[#1D4ED8] leading-none tracking-tight">
                       {item.metric}
                     </span>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#F8FAFC] text-[#3BA6F1] border border-slate-200/60 shadow-sm transition-transform duration-500 group-hover:scale-110 group-hover:bg-[#3BA6F1] group-hover:text-white group-hover:border-[#3BA6F1]">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#F8FAFC] text-[#1D4ED8] border border-slate-200/60 shadow-sm transition-transform duration-500 group-hover:scale-110 group-hover:bg-[#1D4ED8] group-hover:text-white group-hover:border-[#1D4ED8]">
                       <Icon size={28} aria-hidden="true" />
                     </div>
                   </div>
 
-                  <h3 className="mb-3 text-[22px] font-black text-[#04091A] text-balance transition-colors group-hover:text-[#3BA6F1] flex items-center gap-2">
+                  <h3 className="mb-3 text-[22px] font-black text-[#04091A] text-balance transition-colors group-hover:text-[#1D4ED8] flex items-center gap-2">
                     {item.title}
                     {item.comingSoon && (
                       <span className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-[10px] font-bold text-slate-500 uppercase tracking-wider whitespace-nowrap">
@@ -121,10 +121,10 @@ export function EcosystemProof() {
                       </div>
                     ) : (
                       <a href={item.href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between group/link">
-                        <span className="text-[14px] font-bold uppercase tracking-widest text-[#04091A] transition-colors group-hover/link:text-[#3BA6F1]">
+                        <span className="text-[14px] font-bold uppercase tracking-widest text-[#04091A] transition-colors group-hover/link:text-[#1D4ED8]">
                           Khám phá
                         </span>
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition-all duration-300 group-hover/link:border-[#3BA6F1] group-hover/link:bg-[#F0F6FF] group-hover/link:text-[#3BA6F1]" aria-hidden="true">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition-all duration-300 group-hover/link:border-[#1D4ED8] group-hover/link:bg-[#F0F6FF] group-hover/link:text-[#1D4ED8]" aria-hidden="true">
                           <ArrowRight size={18} className="transition-transform duration-300 group-hover/link:translate-x-1" />
                         </div>
                       </a>

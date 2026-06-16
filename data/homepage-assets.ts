@@ -12,11 +12,11 @@ export const clientLogos = [
 ];
 
 export const pressLogos = [
-  { name: "CafeF", src: "/images/legacy/press/cafef.png", href: "https://cafef.vn" },
-  { name: "Dân trí", src: "/images/legacy/press/dantri.png", href: "https://dantri.com.vn" },
-  { name: "Thanh Niên", src: "/images/legacy/press/thanhnien.png", href: "https://thanhnien.vn" },
-  { name: "Vietnamnet", src: "/images/legacy/press/vietnamnet.png", href: "https://vietnamnet.vn" },
-  { name: "Zing News", src: "/images/legacy/press/zing-news.png", href: "https://znews.vn" }
+  { name: "CafeF", src: "/images/legacy/press/cafef.png", href: "https://cafef.vn/vietnam-seo-performance-2022-voi-hon-600-khach-tham-du-20220507100702778.chn" },
+  { name: "Dân trí", src: "/images/legacy/press/dantri.png", href: "https://dantri.com.vn/kinh-doanh/vietnam-seo-performance-2022-kien-thuc-can-thiet-cho-seoers-thoi-40-20220523141215231.htm" },
+  { name: "Thanh Niên", src: "/images/legacy/press/thanhnien.png", href: "https://thanhnien.vn/voi-hon-600-khach-tham-du-vietnam-seo-performance-2022-da-chay-sach-ve-ban-1851453745.htm" },
+  { name: "Vietnamnet", src: "/images/legacy/press/vietnamnet.png", href: "https://vietnamnet.vn/vietnam-seo-performance-2022-su-kien-chia-se-giai-phap-toi-uu-seo-2016087.html" },
+  { name: "Zing News", src: "/images/legacy/press/zing-news.png", href: "https://znews.vn/vietnam-seo-performance-2022-dem-den-nhieu-giai-phap-cho-smes-post1321916.html" }
 ];
 
 export const featuredPosts = [
