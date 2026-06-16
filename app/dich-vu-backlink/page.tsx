@@ -115,26 +115,26 @@ export default function BacklinkPage() {
 
           {/* Interactive Network Graph Dashboard Mockup */}
           <div className="mt-20 relative mx-auto max-w-5xl animate-in fade-in slide-in-from-bottom-24 duration-1000 delay-500">
-            <div className="rounded-2xl border border-slate-200 bg-white p-3 shadow-[0_30px_60px_rgba(168,85,247,0.08)] relative z-10 text-left">
-               <div className="rounded-xl border border-slate-100 bg-slate-900 overflow-hidden relative min-h-[400px]">
+            <div className="rounded-2xl border border-slate-200 bg-white p-2 shadow-2xl relative z-10 text-left">
+               <div className="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden relative min-h-[400px]">
                   
                   {/* Dashboard Header */}
-                  <div className="absolute top-0 left-0 right-0 h-16 border-b border-slate-800 bg-slate-900/80 backdrop-blur-md flex items-center px-6 justify-between z-20">
+                  <div className="absolute top-0 left-0 right-0 h-16 border-b border-slate-200 bg-white/80 backdrop-blur-md flex items-center px-6 justify-between z-20">
                      <div className="flex items-center gap-4">
                         <div className="flex gap-2">
-                           <div className="w-3 h-3 rounded-full bg-slate-700"/>
-                           <div className="w-3 h-3 rounded-full bg-slate-700"/>
-                           <div className="w-3 h-3 rounded-full bg-slate-700"/>
+                           <div className="w-3 h-3 rounded-full bg-slate-300"/>
+                           <div className="w-3 h-3 rounded-full bg-slate-300"/>
+                           <div className="w-3 h-3 rounded-full bg-slate-300"/>
                         </div>
-                        <div className="h-6 w-px bg-slate-800"></div>
-                        <div className="text-white font-bold flex items-center gap-2">
-                           <Activity size={20} className="text-purple-400" /> 
+                        <div className="h-6 w-px bg-slate-200"></div>
+                        <div className="text-slate-900 font-bold flex items-center gap-2">
+                           <Activity size={20} className="text-purple-600" /> 
                            Domain Authority Tracker
                         </div>
                      </div>
                      <div className="flex gap-4 items-center">
-                        <div className="text-slate-400 text-sm font-medium">Domain Rating:</div>
-                        <div className="px-3 py-1 bg-purple-500/20 text-purple-400 font-black rounded border border-purple-500/30">72.4</div>
+                        <div className="text-slate-500 text-sm font-medium">Domain Rating:</div>
+                        <div className="px-3 py-1 bg-purple-100 text-purple-700 font-black rounded border border-purple-200">72.4</div>
                      </div>
                   </div>
 
@@ -142,14 +142,14 @@ export default function BacklinkPage() {
                   <div className="absolute inset-0 pt-16 flex items-center justify-center overflow-hidden">
                      {/* Center Node (Client Site) */}
                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                        <div className="w-20 h-20 rounded-full bg-purple-600 shadow-[0_0_40px_rgba(168,85,247,0.6)] flex items-center justify-center border-4 border-slate-900 animate-[pulse_3s_ease-in-out_infinite]">
+                        <div className="w-20 h-20 rounded-full bg-purple-600 shadow-[0_0_40px_rgba(168,85,247,0.3)] flex items-center justify-center border-4 border-white animate-[pulse_3s_ease-in-out_infinite]">
                            <Globe size={32} className="text-white" />
                         </div>
-                        <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 text-white font-bold whitespace-nowrap bg-slate-800 px-3 py-1 rounded-full text-xs border border-slate-700">Client Website</div>
+                        <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 text-slate-900 font-bold whitespace-nowrap bg-white px-3 py-1 rounded-full text-xs border border-slate-200 shadow-sm">Client Website</div>
                      </div>
 
                      {/* SVG Connection Lines */}
-                     <svg className="absolute inset-0 w-full h-full opacity-60">
+                     <svg className="absolute inset-0 w-full h-full opacity-50">
                         <defs>
                            <linearGradient id="linkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                               <stop offset="0%" stopColor="#a855f7" />
@@ -167,41 +167,41 @@ export default function BacklinkPage() {
 
                      {/* Satellite Nodes (Backlink Sources) */}
                      <div className="absolute top-[30%] left-[20%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
-                        <div className="w-12 h-12 rounded-full bg-blue-500 border-2 border-slate-800 flex items-center justify-center group-hover:scale-125 transition-transform">
+                        <div className="w-12 h-12 rounded-full bg-blue-500 border-2 border-white shadow-sm flex items-center justify-center group-hover:scale-125 transition-transform">
                            <span className="text-white font-bold text-xs">VnE</span>
                         </div>
-                        <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-slate-300 text-[10px] px-2 py-1 rounded whitespace-nowrap">DR: 89 • Traffic: 5M+</div>
+                        <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-white border border-slate-200 text-slate-600 shadow-sm text-[10px] px-2 py-1 rounded whitespace-nowrap">DR: 89 • Traffic: 5M+</div>
                      </div>
 
                      <div className="absolute top-[20%] left-[80%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
-                        <div className="w-16 h-16 rounded-full bg-emerald-500 border-2 border-slate-800 flex items-center justify-center group-hover:scale-125 transition-transform">
+                        <div className="w-16 h-16 rounded-full bg-emerald-500 border-2 border-white shadow-sm flex items-center justify-center group-hover:scale-125 transition-transform">
                            <span className="text-white font-bold text-sm">Tuổi Trẻ</span>
                         </div>
-                        <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-slate-300 text-[10px] px-2 py-1 rounded whitespace-nowrap">DR: 85 • Traffic: 4.2M+</div>
+                        <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-white border border-slate-200 text-slate-600 shadow-sm text-[10px] px-2 py-1 rounded whitespace-nowrap">DR: 85 • Traffic: 4.2M+</div>
                      </div>
 
                      <div className="absolute top-[70%] left-[15%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
-                        <div className="w-10 h-10 rounded-full bg-amber-500 border-2 border-slate-800 flex items-center justify-center group-hover:scale-125 transition-transform">
+                        <div className="w-10 h-10 rounded-full bg-amber-500 border-2 border-white shadow-sm flex items-center justify-center group-hover:scale-125 transition-transform">
                            <Network size={16} className="text-white" />
                         </div>
-                        <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-slate-300 text-[10px] px-2 py-1 rounded whitespace-nowrap">Guest Post • DR: 45</div>
+                        <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-white border border-slate-200 text-slate-600 shadow-sm text-[10px] px-2 py-1 rounded whitespace-nowrap">Guest Post • DR: 45</div>
                      </div>
 
                      <div className="absolute top-[80%] left-[75%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
-                        <div className="w-14 h-14 rounded-full bg-indigo-500 border-2 border-slate-800 flex items-center justify-center group-hover:scale-125 transition-transform">
+                        <div className="w-14 h-14 rounded-full bg-indigo-500 border-2 border-white shadow-sm flex items-center justify-center group-hover:scale-125 transition-transform">
                            <span className="text-white font-bold text-xs">Dân Trí</span>
                         </div>
-                        <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-slate-300 text-[10px] px-2 py-1 rounded whitespace-nowrap">DR: 88 • Traffic: 4.8M+</div>
+                        <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-white border border-slate-200 text-slate-600 shadow-sm text-[10px] px-2 py-1 rounded whitespace-nowrap">DR: 88 • Traffic: 4.8M+</div>
                      </div>
 
                      <div className="absolute top-[15%] left-[45%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
-                        <div className="w-8 h-8 rounded-full bg-rose-500 border-2 border-slate-800 flex items-center justify-center group-hover:scale-125 transition-transform">
+                        <div className="w-8 h-8 rounded-full bg-rose-500 border-2 border-white shadow-sm flex items-center justify-center group-hover:scale-125 transition-transform">
                            <Share2 size={12} className="text-white" />
                         </div>
                      </div>
 
                      <div className="absolute top-[85%] left-[60%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
-                        <div className="w-10 h-10 rounded-full bg-cyan-500 border-2 border-slate-800 flex items-center justify-center group-hover:scale-125 transition-transform">
+                        <div className="w-10 h-10 rounded-full bg-cyan-500 border-2 border-white shadow-sm flex items-center justify-center group-hover:scale-125 transition-transform">
                            <Link2 size={16} className="text-white" />
                         </div>
                      </div>
@@ -210,7 +210,7 @@ export default function BacklinkPage() {
                </div>
             </div>
             {/* Soft Glow under mockup */}
-            <div className="absolute -inset-x-20 -bottom-20 h-[50%] bg-gradient-to-t from-slate-50 to-transparent z-20 pointer-events-none" />
+            <div className="absolute -inset-x-20 -bottom-20 h-[50%] bg-gradient-to-t from-white to-transparent z-20 pointer-events-none" />
           </div>
         </div>
       </section>

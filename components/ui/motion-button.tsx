@@ -18,21 +18,18 @@ export const MotionButton: FC<Props> = ({ label, classes, as: Component = "butto
     <Component
       href={href}
       className={cn(
-        'group relative h-12 w-[180px] cursor-pointer rounded-full border border-blue-200 bg-white p-1 outline-none transition-all hover:border-blue-600',
+        'group relative flex h-11 w-[200px] items-center cursor-pointer rounded-full border border-slate-200 bg-white p-1 pr-4 outline-none transition-all hover:border-blue-600 hover:shadow-lg hover:shadow-blue-500/25',
         classes
       )}
       {...props}
     >
-      <span
-        className='absolute inset-1 w-10 bg-blue-600 m-0 block rounded-full duration-500 group-hover:w-[calc(100%-8px)]'
-        aria-hidden='true'
-      ></span>
-      <div className='absolute top-1/2 left-3 -translate-y-1/2 duration-500 group-hover:translate-x-[0.2rem] z-10'>
-        <ArrowRight className='text-white size-5' />
+      <div className="absolute inset-y-1 left-1 w-9 rounded-full bg-[#1D4ED8] transition-all duration-500 group-hover:w-[calc(100%-8px)]" />
+      <div className="relative z-10 flex h-9 w-9 items-center justify-center shrink-0 transition-transform duration-500 group-hover:translate-x-1">
+        <ArrowRight className="size-4 text-white" />
       </div>
-      <span className='absolute top-1/2 left-1/2 ml-3 -translate-x-1/2 -translate-y-1/2 text-center text-[14px] font-bold tracking-tight whitespace-nowrap duration-500 text-slate-700 group-hover:text-white z-10'>
+      <div className="relative z-10 flex-1 text-center text-[14px] font-bold text-slate-700 transition-colors duration-500 group-hover:text-white">
         {label}
-      </span>
+      </div>
     </Component>
   )
 }
