@@ -28,5 +28,6 @@ When assigned a task in this project, DO NOT start writing code until you have v
 2. **Project Planning**: Read `docs/planning/MIGRATION_PLAN.md` to understand the current phase.
 3. **Reference Code**: Read `docs/reference/` for API or legacy component references.
 4. **Content**: Read `docs/content/CONTENT_INVENTORY.md` before generating dummy text.
+5. **React Icon Components**: NEVER pass an arrow function mapping an icon name when defining icon properties in an array (e.g. `icon: Target => <Target size={28} />` is FATAL because it shadows the component into an empty props object). ALWAYS pass the component reference directly: `icon: Target`, and render it dynamically inside the map loop: `<IconComponent size={28} />`.
 
 Failure to follow `DESIGN.md` will result in hallucinated dark modes or invalid Tailwind classes. This is a strict Light Theme B2B Premium project.

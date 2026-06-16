@@ -18,7 +18,7 @@ export function Curriculum({ eyebrow, title, description, modules }: CurriculumP
       <div className="container">
         <div className="mb-12 max-w-3xl">
           {eyebrow && <span className="badge mb-4">{eyebrow}</span>}
-          <h2 className="mt-3 text-4xl font-black tracking-tight text-[#091338] sm:text-5xl">
+          <h2 className="mt-3 text-4xl font-black tracking-tight text-[#04091A] sm:text-5xl">
             {title}
           </h2>
           {description && (

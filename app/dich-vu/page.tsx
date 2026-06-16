@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
 import Link from "next/link";
-import { ArrowRight, Search, BarChart, Settings, Share2, MonitorPlay } from "lucide-react";
+import { ArrowRight, Search, BarChart, Settings, Share2, MonitorPlay, PenTool, Link2 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Dịch vụ Digital Marketing chuyên sâu | SEOSONA",
@@ -44,6 +44,18 @@ const services = [
         description: "Quy trình từ brief, audit, proposal, roadmap, triển khai, báo cáo đến nghiệm thu và duy trì.",
         href: "/quy-trinh-seo/",
         icon: <MonitorPlay className="h-6 w-6 text-[#1D4ED8]" />
+      },
+      {
+        title: "Content SEO Mastery",
+        description: "Giải pháp trọn gói: Nghiên cứu Keyword, Research Content và sản xuất nội dung chuyên sâu chuẩn Semantic SEO.",
+        href: "/dich-vu-viet-bai-chuan-seo/",
+        icon: <PenTool className="h-6 w-6 text-[#1D4ED8]" />
+      },
+      {
+        title: "Dịch vụ Backlink",
+        description: "Xây dựng Link Profile chất lượng cao từ Báo chí, Guest Post và hệ sinh thái Social Entity an toàn.",
+        href: "/dich-vu-backlink/",
+        icon: <Link2 className="h-6 w-6 text-[#1D4ED8]" />
       },
       {
         title: "Tài nguyên SEO",

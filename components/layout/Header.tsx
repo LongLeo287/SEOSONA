@@ -102,21 +102,49 @@ export function Header() {
                     </Link>
                     {/* Dropdown Box */}
                     <div className="absolute top-full left-0 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-50">
-                      <div className="w-[260px] rounded-2xl bg-white border border-slate-100 p-2 shadow-[0_12px_40px_rgba(0,0,0,0.08)] flex flex-col gap-1 relative overflow-hidden">
-                        {item.children.map(child => {
-                          const isChildActive = pathname === child.href;
-                          return (
-                            <Link
-                              key={child.href}
-                              href={child.href}
-                              className={`px-4 py-2.5 text-[14px] font-semibold rounded-xl transition-colors ${
-                                isChildActive ? "bg-[#F0F6FF] text-[#1D4ED8]" : "text-slate-600 hover:bg-[#F0F6FF] hover:text-[#1D4ED8]"
-                              }`}
-                            >
-                              {child.label}
-                            </Link>
-                          );
-                        })}
+                      <div className={`rounded-2xl bg-white border border-slate-100 shadow-[0_12px_40px_rgba(0,0,0,0.08)] flex relative overflow-hidden ${
+                        item.children.some(c => c.children) ? "w-[480px] flex-row p-5 gap-6" : "w-[260px] flex-col p-2 gap-1"
+                      }`}>
+                        {item.children.some(c => c.children) ? (
+                          <div className="grid grid-cols-2 gap-6 w-full">
+                            {item.children.map((columnGroup, colIdx) => (
+                              <div key={colIdx} className="flex flex-col gap-1.5">
+                                <h4 className="text-[12px] font-black uppercase tracking-wider text-slate-400 mb-2 px-3">
+                                  {columnGroup.label}
+                                </h4>
+                                {columnGroup.children?.map(subChild => {
+                                  const isChildActive = pathname === subChild.href;
+                                  return (
+                                    <Link
+                                      key={subChild.href}
+                                      href={subChild.href}
+                                      className={`px-3 py-2.5 text-[14px] font-semibold rounded-xl transition-colors ${
+                                        isChildActive ? "bg-[#F0F6FF] text-[#1D4ED8]" : "text-slate-600 hover:bg-[#F0F6FF] hover:text-[#1D4ED8]"
+                                      }`}
+                                    >
+                                      {subChild.label}
+                                    </Link>
+                                  );
+                                })}
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          item.children.map(child => {
+                            const isChildActive = pathname === child.href;
+                            return (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                className={`px-4 py-2.5 text-[14px] font-semibold rounded-xl transition-colors ${
+                                  isChildActive ? "bg-[#F0F6FF] text-[#1D4ED8]" : "text-slate-600 hover:bg-[#F0F6FF] hover:text-[#1D4ED8]"
+                                }`}
+                              >
+                                {child.label}
+                              </Link>
+                            );
+                          })
+                        )}
                       </div>
                     </div>
                   </div>
@@ -207,20 +235,45 @@ export function Header() {
                       <span>{item.label}</span>
                     </div>
                     <div className="flex flex-col gap-1 pl-4 pr-2 border-l-2 border-slate-100 ml-4 mb-2 mt-1">
-                      {item.children.map(child => {
-                        const isChildActive = pathname === child.href;
-                        return (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            onClick={() => setOpen(false)}
-                            className={`px-4 py-2.5 text-[14px] font-semibold rounded-xl transition-colors ${
-                              isChildActive ? "bg-[#F0F6FF] text-[#1D4ED8]" : "text-slate-600 hover:bg-[#F0F6FF] hover:text-[#1D4ED8]"
-                            }`}
-                          >
-                            {child.label}
-                          </Link>
-                        );
+                      {item.children.map((child, childIdx) => {
+                        if (child.children) {
+                          return (
+                            <div key={childIdx} className="flex flex-col mb-3">
+                              <span className="text-[12px] font-bold uppercase tracking-wider text-slate-400 mb-2 px-4 mt-2">
+                                {child.label}
+                              </span>
+                              {child.children.map(subChild => {
+                                const isChildActive = pathname === subChild.href;
+                                return (
+                                  <Link
+                                    key={subChild.href}
+                                    href={subChild.href}
+                                    onClick={() => setOpen(false)}
+                                    className={`px-4 py-2 text-[14px] font-semibold rounded-xl transition-colors ${
+                                      isChildActive ? "bg-[#F0F6FF] text-[#1D4ED8]" : "text-slate-600 hover:bg-[#F0F6FF] hover:text-[#1D4ED8]"
+                                    }`}
+                                  >
+                                    {subChild.label}
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          );
+                        } else {
+                          const isChildActive = pathname === child.href;
+                          return (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              onClick={() => setOpen(false)}
+                              className={`px-4 py-2.5 text-[14px] font-semibold rounded-xl transition-colors ${
+                                isChildActive ? "bg-[#F0F6FF] text-[#1D4ED8]" : "text-slate-600 hover:bg-[#F0F6FF] hover:text-[#1D4ED8]"
+                              }`}
+                            >
+                              {child.label}
+                            </Link>
+                          );
+                        }
                       })}
                     </div>
                   </div>

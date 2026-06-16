@@ -78,7 +78,7 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
       <div className="container py-12 lg:py-20 flex flex-col lg:flex-row lg:items-start gap-12">
         <article className="flex-1 min-w-0 mx-auto max-w-3xl w-full">
           <header className="mb-12 text-center">
-            <h1 className="text-3xl font-black text-[#091338] sm:text-4xl md:text-5xl leading-tight tracking-tight text-balance">
+            <h1 className="text-3xl font-black text-[#04091A] sm:text-4xl md:text-5xl leading-tight tracking-tight text-balance">
               {page.meta.title}
             </h1>
           </header>
@@ -97,13 +97,13 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
           )}
 
           <div className="prose prose-lg prose-slate max-w-none 
-            prose-headings:font-black prose-headings:text-[#091338] 
+            prose-headings:font-black prose-headings:text-[#04091A] 
             prose-h2:text-3xl prose-h2:border-b prose-h2:border-slate-200 prose-h2:pb-4 prose-h2:mt-12
             prose-h3:text-2xl prose-h3:text-[#003566]
             prose-a:text-[#003566] prose-a:no-underline prose-a:font-bold hover:prose-a:text-[#46FF00] hover:prose-a:underline
             prose-img:rounded-2xl prose-img:shadow-md
             prose-table:w-full prose-table:border-collapse prose-table:rounded-xl prose-table:overflow-hidden prose-table:shadow-sm
-            prose-th:bg-[#091338] prose-th:text-white prose-th:p-4
+            prose-th:bg-[#04091A] prose-th:text-white prose-th:p-4
             prose-td:border prose-td:border-slate-200 prose-td:p-4
             prose-blockquote:border-l-4 prose-blockquote:border-[#46FF00] prose-blockquote:bg-slate-50 prose-blockquote:p-6 prose-blockquote:italic prose-blockquote:rounded-r-xl
             prose-li:marker:text-[#003566] prose-ul:list-disc

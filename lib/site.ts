@@ -60,12 +60,26 @@ export const navItems: NavItem[] = [
     label: "Dịch Vụ",
     href: "/dich-vu/",
     children: [
-      { label: "SEO Tổng thể", href: "/dich-vu-seo/" },
-      { label: "Tư vấn SEO", href: "/tu-van-seo-chuyen-sau/" },
-      { label: "Audit SEO", href: "/audit-seo/" },
-      { label: "SEO Option", href: "/option-seo/" },
-      { label: "Quy trình SEO", href: "/quy-trinh-seo/" },
-      { label: "Thiết kế Website", href: "/dich-vu-thiet-ke-website/" }
+      {
+        label: "Chiến lược Cốt lõi",
+        href: "#",
+        children: [
+          { label: "SEO Tổng thể", href: "/dich-vu-seo-tong-the/" },
+          { label: "Tư vấn SEO chuyên sâu", href: "/tu-van-seo-chuyen-sau/" },
+          { label: "Thiết kế Website", href: "/dich-vu-thiet-ke-website/" },
+          { label: "Quy trình SEO", href: "/quy-trinh-seo/" }
+        ]
+      },
+      {
+        label: "SEO Option",
+        href: "#",
+        children: [
+          { label: "Dịch vụ SEO Option", href: "/option-seo/" },
+          { label: "Audit SEO", href: "/audit-seo/" },
+          { label: "Content SEO Mastery", href: "/dich-vu-viet-bai-chuan-seo/" },
+          { label: "Dịch vụ Backlink", href: "/dich-vu-backlink/" }
+        ]
+      }
     ]
   },
   {
@@ -126,6 +140,9 @@ export const navItems: NavItem[] = [
 
 export const coreRoutes = [
   "/",
+  "/dich-vu-seo-tong-the/",
+  "/dich-vu-viet-bai-chuan-seo/",
+  "/dich-vu-backlink/",
   "/dich-vu/",
   "/dich-vu/seo-tong-the/",
   "/dich-vu/thiet-ke-website/",

@@ -26,6 +26,8 @@ const footerColumns = [
       { label: "Audit SEO", href: "/dich-vu/audit-seo/" },
       { label: "SEO Option", href: "/dich-vu/seo-option/" },
       { label: "Quy trình SEO", href: "/dich-vu/quy-trinh-seo/" },
+      { label: "Content SEO Mastery", href: "/dich-vu-viet-bai-chuan-seo/" },
+      { label: "Dịch vụ Backlink", href: "/dich-vu-backlink/" },
       { label: "Thiết kế Website", href: "/dich-vu/thiet-ke-website/" },
       { label: "Báo giá SEO", href: "/bao-gia-seo/" },
     ],
