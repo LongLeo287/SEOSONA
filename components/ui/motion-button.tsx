@@ -18,19 +18,19 @@ export const MotionButton: FC<Props> = ({ label, classes, as: Component = "butto
     <Component
       href={href}
       className={cn(
-        'group relative h-auto w-[200px] cursor-pointer rounded-full border border-slate-200 bg-white p-1 outline-none transition-all hover:border-blue-600 hover:shadow-lg hover:shadow-blue-500/25 block',
+        'group relative h-auto w-[200px] cursor-pointer rounded-full bg-white p-1 outline-none transition-all hover:shadow-lg hover:shadow-blue-500/25 block border-none',
         classes
       )}
       {...props}
     >
       <span
-        className='m-0 block h-10 w-10 overflow-hidden rounded-full bg-[#1D4ED8] transition-all duration-500 group-hover:w-[calc(100%-8px)]'
+        className='m-0 block h-11 w-11 overflow-hidden rounded-full bg-[#1D4ED8] transition-all duration-500 ease-out group-hover:w-full'
         aria-hidden='true'
       ></span>
-      <div className='absolute left-3 top-1/2 -translate-y-1/2 transition-all duration-500 group-hover:translate-x-[0.2rem]'>
+      <div className='absolute left-[18px] top-1/2 -translate-y-1/2 transition-all duration-500 ease-out group-hover:translate-x-1'>
         <ArrowRight className='size-5 text-white' />
       </div>
-      <span className='absolute left-1/2 top-1/2 ml-4 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-center text-[15px] font-bold tracking-tight text-slate-700 transition-colors duration-500 group-hover:text-white'>
+      <span className='absolute left-1/2 top-1/2 ml-4 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-center text-[15px] font-bold tracking-tight text-slate-700 transition-colors duration-500 ease-out group-hover:text-white'>
         {label}
       </span>
     </Component>
