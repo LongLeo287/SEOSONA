@@ -20,5 +20,13 @@ This project is bound to SEOSONA OS through `seosona.project.json`.
 
 TASK COMPLETED
 
-## Design Guidelines
-- DO NOT use dark colors (e.g., #04091A) as background colors. Always use light colors for backgrounds.
+## Documentation Map & Rules
+
+When assigned a task in this project, DO NOT start writing code until you have verified the following rules:
+
+1. **Design System**: Always read `DESIGN.md` in the root folder. It contains strict guidelines on Colors, Typography, Spacing, and Animations. NEVER hallucinate colors or styles outside of `DESIGN.md`.
+2. **Project Planning**: Read `docs/planning/MIGRATION_PLAN.md` to understand the current phase.
+3. **Reference Code**: Read `docs/reference/` for API or legacy component references.
+4. **Content**: Read `docs/content/CONTENT_INVENTORY.md` before generating dummy text.
+
+Failure to follow `DESIGN.md` will result in hallucinated dark modes or invalid Tailwind classes. This is a strict Light Theme B2B Premium project.

@@ -1,29 +1,53 @@
-# SEOSONA Design System
+# Website SEOSONA Design System
 
-## 1. Sidebar Navigation Pattern (`PostSidebarNav` Style)
-This is the unified design pattern for vertical sidebar navigations across the SEOSONA website (Knowledge Hubs, Blog Posts, and Case Studies).
+This file serves as the strict, single source of truth for all UI/UX Agent tasks in this repository. All generated components MUST adhere to the tokens and patterns defined below, extracted directly from `globals.css` and `BRAND_GUIDE.md`.
 
-### Components
+## Direction & Theme
+- **Theme:** Premium B2B Light Theme.
+- **Vibe:** Clean SaaS/agency layout, large whitespace, trustworthy, technical.
+- **NEVER** use dark backgrounds for full sections unless explicitly requested.
 
-**1. Header Dropdown Box**
-Used to indicate the current category or context.
-- **Container**: `border border-[#E2E8F0] rounded-xl shadow-sm bg-white`
-- **Hover State**: `hover:bg-[#F0F6FF] transition-all duration-200`
-- **Icon Wrapper**: `w-6 h-6 rounded-md bg-[#F0F6FF] text-[#3BA6F1] flex items-center justify-center`
-- **Text**: `text-[14px] font-bold !text-[#04091A]`
+## Colors
 
-**2. Navigation Links / Accordion Items**
-Used for listing articles or sub-categories.
-- **Base State**: `text-[13px] !text-[#64748B] font-normal px-2.5 py-[6px] rounded-md transition-all duration-200`
-- **Hover State**: `hover:bg-[#F8FAFC] hover:!text-[#3BA6F1] hover:translate-x-1`
-- **Active State**: `bg-[#F0F6FF] !text-[#3BA6F1] font-semibold shadow-sm ring-1 ring-[#3BA6F1]/10`
+- **Canvas Base:** `#FFFFFF` (Pure white for background)
+- **Canvas Surface:** `#F8FAFC` (Elevated surface, cards)
+- **Canvas Elevated:** `#F1F5F9` (Higher elevated surface)
+- **Text Ink:** `#04091A` (Dark Navy/Black for strong contrast headers)
+- **Text Slate:** `#64748B` (Neutral Gray for secondary text)
+- **Text Muted:** `#94A3B8` (Lighter gray for tertiary text)
+- **Signal Primary:** `#1D4ED8` (Technical, trustworthy Blue)
+- **Signal Hover:** `#2B8FD4`
+- **Border Pearl:** `rgba(255, 255, 255, 0.12)` (Standard borders often fallback to `border-slate-100` or `border-slate-200`)
 
-### Rules
-- **No Dark Boxes**: Do not use the dark theme (`#04091A` backgrounds) for sidebar containers. Always stick to the light, border-driven approach.
-- **Animation**: Always use `translate-x-1` for link hovers to provide a subtle interactive feel.
-- **Colors**: 
-  - Primary Accent: `#3BA6F1` (Blue)
-  - Light Hover Background: `#F0F6FF`
-  - Text Active: `#3BA6F1`
-  - Text Inactive: `#64748B`
-  - Text Header: `#04091A`
+## Typography
+
+- **Heading Font:** `var(--font-poppins)` (Poppins). Use negative letter-spacing for confident statements (`tracking-tight`).
+- **Sans Font:** `var(--font-inter)` (Inter).
+- **Headings:** Very bold and tight (e.g., `text-[32px] font-black leading-tight tracking-tight text-[#04091A]`).
+- **Body:** Relaxed and medium (e.g., `text-[15px] font-medium leading-relaxed text-slate-500`).
+
+## Spacing & Layout
+
+- **Container:** `container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8`.
+- **Vertical Spacing:** Generous. E.g., `py-16 lg:py-24`.
+- **Whitespace:** Emphasize padding around cards `p-8 md:p-10`.
+
+## Components & Patterns
+
+- **Border Radius:** Very soft and organic.
+  - Large cards: `rounded-[32px]` or `rounded-[40px]`.
+  - Buttons/Badges: `rounded-full` / `radius-pill`.
+- **Shadows & Hover (Hover elevation):**
+  - Use smooth translation and shadow on hover for cards: `transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.1)] hover:bg-white`.
+- **Buttons:**
+  - **Primary:** `btn-primary` (Dark Ink background, pill radius, hover to Signal Primary).
+  - **Secondary:** `btn-secondary` (Surface background, pill radius, border).
+- **Badges:** `badge-premium` (pill shape, border, slate text).
+- **Animations:**
+  - Lightweight only. Use `.reveal` class (fade-up).
+  - Glow effects should be extremely subtle and placed behind cards (e.g., `blur-[80px]` with low opacity).
+
+## Guidelines for AI Agents
+1. **NO HALLUCINATION:** Do not invent colors. Stick to `#04091A` for text, `#1D4ED8` for accents, and `#F8FAFC` for backgrounds.
+2. **RESPONSIVENESS:** Always use Tailwind breakpoints (`md:`, `lg:`).
+3. **TEXT WRAPPING:** Use `.text-balance` for headers and `.text-pretty` for paragraphs to ensure perfect typographic rag.
