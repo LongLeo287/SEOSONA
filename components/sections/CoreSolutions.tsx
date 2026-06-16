@@ -5,6 +5,7 @@ import { ArrowRight, Target, TrendingUp, Megaphone, GraduationCap, Bot, Sparkles
 import Link from "next/link";
 import { SectionBadge } from "@/components/ui/SectionBadge";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { MotionButton } from "@/components/ui/motion-button";
 import { AnimatePresence, motion } from "framer-motion";
 
 const solutions = [
@@ -155,13 +156,11 @@ export function CoreSolutions() {
                     </div>
                     
                     <div className="mt-auto">
-                      <Link 
+                      <MotionButton 
+                        label="Khám phá chi tiết"
+                        as={Link}
                         href={solutions[activeIndex].href}
-                        className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-blue-600 px-8 text-[15px] font-bold text-white transition-all duration-300 hover:bg-blue-700 hover:shadow-[0_8px_20px_rgba(37,99,235,0.2)] hover:-translate-y-0.5 group"
-                      >
-                        Khám phá chi tiết 
-                        <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
-                      </Link>
+                      />
                     </div>
                   </motion.div>
                 </AnimatePresence>

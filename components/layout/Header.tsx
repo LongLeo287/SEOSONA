@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { X, Menu, ArrowRight, ChevronDown, Bot, GraduationCap, ExternalLink } from "lucide-react";
 import { BrandLogo } from "@/components/layout/BrandLogo";
-import { MotionButton } from "@/components/ui/motion-button";
 import { Badge } from "@/components/ui/new-badge";
 import { navItems } from "@/lib/site";
 
@@ -183,13 +182,12 @@ export function Header() {
 
           {/* Desktop CTA */}
           <div className="flex items-center gap-4">
-            <div className="hidden sm:block">
-               <MotionButton 
-                  label="Liên hệ chuyên gia" 
-                  as={Link} 
-                  href="/lien-he/" 
-               />
-            </div>
+            <Link
+              href="/lien-he/"
+              className="hidden sm:flex h-11 items-center justify-center gap-2 rounded-full bg-[#1D4ED8] px-6 text-[14px] font-bold text-white transition-all hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25 group"
+            >
+              Liên hệ chuyên gia
+            </Link>
 
             {/* Mobile hamburger */}
             <button
