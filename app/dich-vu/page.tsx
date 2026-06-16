@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
 import Link from "next/link";
-import { ArrowRight, Search, BarChart, Settings, Share2, MonitorPlay, PenTool, Link2 } from "lucide-react";
+import { ArrowRight, Search, BarChart, Settings, Share2, MonitorPlay, PenTool, Link2, CheckCircle2, Target, ShieldCheck, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Dịch vụ Digital Marketing chuyên sâu | SEOSONA",
@@ -144,6 +144,138 @@ export default function Page() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Selection Guide */}
+      <section className="py-20 bg-slate-50 border-y border-slate-200">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">Bạn chưa biết nên chọn dịch vụ nào?</h2>
+            <p className="text-lg text-slate-600">Đừng lo lắng, hãy đối chiếu hiện trạng của bạn với các nhóm giải pháp dưới đây để tìm ra phương án tối ưu nhất.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm relative overflow-hidden">
+               <div className="absolute top-0 right-0 w-24 h-24 bg-blue-100 rounded-bl-full -mr-4 -mt-4 opacity-50 pointer-events-none"></div>
+               <Target className="w-10 h-10 text-blue-600 mb-6" />
+               <h3 className="text-xl font-bold text-slate-900 mb-4">Mới bắt đầu / Chưa có In-house</h3>
+               <ul className="space-y-4 mb-8">
+                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" /> Cần xây dựng nền móng Traffic từ con số 0.</li>
+                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" /> Muốn giao khoán toàn bộ KPI cho Agency.</li>
+               </ul>
+               <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3">Đề xuất:</div>
+               <Link href="/dich-vu-seo/" className="flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700">
+                 SEO Tổng Thể <ArrowRight className="w-4 h-4" />
+               </Link>
+            </div>
+            
+            <div className="bg-white p-8 rounded-3xl border border-blue-200 shadow-md ring-1 ring-blue-50 relative overflow-hidden transform md:-translate-y-4">
+               <div className="absolute top-0 right-0 px-4 py-1 bg-blue-500 text-white text-xs font-bold rounded-bl-lg">Phổ biến nhất</div>
+               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -mr-8 -mt-8 opacity-50 pointer-events-none"></div>
+               <ShieldCheck className="w-10 h-10 text-blue-600 mb-6 relative z-10" />
+               <h3 className="text-xl font-bold text-slate-900 mb-4 relative z-10">Đã có Team nhưng kẹt TOP</h3>
+               <ul className="space-y-4 mb-8 relative z-10">
+                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" /> Traffic dậm chân tại chỗ, đối thủ vượt mặt.</li>
+                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" /> Cần chuyên gia gỡ lỗi Technical và lập Roadmap.</li>
+               </ul>
+               <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3 relative z-10">Đề xuất:</div>
+               <Link href="/tu-van-seo-chuyen-sau/" className="flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700 relative z-10">
+                 Tư vấn SEO & Audit <ArrowRight className="w-4 h-4" />
+               </Link>
+            </div>
+
+            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm relative overflow-hidden">
+               <div className="absolute top-0 right-0 w-24 h-24 bg-purple-100 rounded-bl-full -mr-4 -mt-4 opacity-50 pointer-events-none"></div>
+               <Zap className="w-10 h-10 text-purple-600 mb-6" />
+               <h3 className="text-xl font-bold text-slate-900 mb-4">Cần tăng cường sức mạnh</h3>
+               <ul className="space-y-4 mb-8">
+                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" /> Web đã chuẩn SEO nhưng thiếu độ Trust.</li>
+                  <li className="flex gap-3 text-slate-600"><CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" /> Thiếu nguồn lực viết bài chất lượng cao số lượng lớn.</li>
+               </ul>
+               <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3">Đề xuất:</div>
+               <div className="flex flex-col gap-2">
+                 <Link href="/dich-vu-backlink/" className="flex items-center gap-2 text-purple-600 font-bold hover:text-purple-700">
+                   Backlink & Entity <ArrowRight className="w-4 h-4" />
+                 </Link>
+                 <Link href="/dich-vu-viet-bai-chuan-seo/" className="flex items-center gap-2 text-rose-600 font-bold hover:text-rose-700">
+                   Content SEO Mastery <ArrowRight className="w-4 h-4" />
+                 </Link>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Ecosystem */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/3 h-full bg-slate-50/50 rounded-l-[100px] pointer-events-none"></div>
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+             <div className="lg:w-1/2">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 font-bold text-sm mb-6 border border-blue-100">
+                   Lợi thế cạnh tranh
+                </div>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-6 leading-[1.2]">Tại sao nên chọn hệ sinh thái SEOSONA?</h2>
+                <p className="text-lg text-slate-600 mb-8 text-pretty">Thay vì phải làm việc với nhiều Agency phân mảnh cho từng hạng mục (Website, SEO, Ads), chúng tôi cung cấp chuỗi giải pháp khép kín giúp bạn tối ưu chi phí và kiểm soát dòng chảy dữ liệu đồng nhất.</p>
+                <div className="space-y-6">
+                   <div className="flex gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
+                         <Search className="w-6 h-6 text-blue-600" />
+                      </div>
+                      <div>
+                         <h4 className="text-xl font-bold text-slate-900 mb-2">Đồng nhất thông điệp</h4>
+                         <p className="text-slate-600">Từ Ads kéo Traffic đến Content SEO và trang đích chuyển đổi, mọi điểm chạm đều mang một thông điệp thương hiệu xuyên suốt.</p>
+                      </div>
+                   </div>
+                   <div className="flex gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center shrink-0">
+                         <BarChart className="w-6 h-6 text-emerald-600" />
+                      </div>
+                      <div>
+                         <h4 className="text-xl font-bold text-slate-900 mb-2">Tracking Dữ liệu tập trung</h4>
+                         <p className="text-slate-600">Hệ thống Tracking & Automation gắn kết Data từ mọi kênh, giúp bạn biết chính xác 1 đồng Marketing tạo ra bao nhiêu doanh thu.</p>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             <div className="lg:w-1/2 relative">
+                <div className="aspect-square rounded-full bg-blue-500/5 blur-3xl absolute inset-0"></div>
+                <div className="grid grid-cols-2 gap-4 relative z-10">
+                   <div className="space-y-4 pt-12">
+                      <div className="bg-white p-6 rounded-3xl shadow-lg border border-slate-100 flex flex-col items-center text-center">
+                         <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+                            <MonitorPlay className="w-8 h-8 text-blue-600" />
+                         </div>
+                         <div className="font-bold text-slate-900 mb-1">Thiết kế Web</div>
+                         <div className="text-xs text-slate-500">Chuẩn SEO, UX/UI</div>
+                      </div>
+                      <div className="bg-slate-900 p-6 rounded-3xl shadow-lg flex flex-col items-center text-center text-white transform hover:scale-105 transition-transform">
+                         <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-4">
+                            <Search className="w-8 h-8 text-white" />
+                         </div>
+                         <div className="font-bold text-white mb-1">SEO Tổng Thể</div>
+                         <div className="text-xs text-slate-400">Tăng trưởng Organic</div>
+                      </div>
+                   </div>
+                   <div className="space-y-4">
+                      <div className="bg-white p-6 rounded-3xl shadow-lg border border-slate-100 flex flex-col items-center text-center transform hover:scale-105 transition-transform">
+                         <div className="w-16 h-16 rounded-full bg-rose-100 flex items-center justify-center mb-4">
+                            <PenTool className="w-8 h-8 text-rose-600" />
+                         </div>
+                         <div className="font-bold text-slate-900 mb-1">Content Mastery</div>
+                         <div className="text-xs text-slate-500">Đúng Search Intent</div>
+                      </div>
+                      <div className="bg-white p-6 rounded-3xl shadow-lg border border-slate-100 flex flex-col items-center text-center">
+                         <div className="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mb-4">
+                            <Share2 className="w-8 h-8 text-amber-600" />
+                         </div>
+                         <div className="font-bold text-slate-900 mb-1">Performance Ads</div>
+                         <div className="text-xs text-slate-500">Google & Meta Ads</div>
+                      </div>
+                   </div>
+                </div>
+             </div>
           </div>
         </div>
       </section>
