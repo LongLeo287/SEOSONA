@@ -7,7 +7,7 @@ import { forwardRef, type HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 import { MotionConfig, useReducedMotion } from "motion/react";
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 interface ReducedMotionProp {
   reducedMotion?: boolean;
@@ -18,9 +18,14 @@ const ReducedMotionOverrideContext = createContext(false);
 function useResolvedReducedMotion(reducedMotion?: boolean) {
   const reducedMotionOverride = useContext(ReducedMotionOverrideContext);
   const prefersReducedMotion = useReducedMotion() ?? false;
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return Boolean(
-    reducedMotion || reducedMotionOverride || prefersReducedMotion
+    reducedMotion || reducedMotionOverride || (mounted && prefersReducedMotion)
   );
 }
 

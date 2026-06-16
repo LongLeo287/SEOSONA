@@ -1,10 +1,10 @@
 'use client'
 
-import { FC, ElementType, ReactNode } from 'react'
+import { FC, ElementType } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-function cn(...inputs: any[]) { return twMerge(clsx(inputs)) }
+function cn(...inputs: any[]) { return twMerge(clsx(inputs)) } // eslint-disable-line @typescript-eslint/no-explicit-any
 
 interface Props {
   label: string
@@ -18,21 +18,22 @@ export const MotionButton: FC<Props> = ({ label, classes, as: Component = "butto
     <Component
       href={href}
       className={cn(
-        'group relative h-auto w-[200px] cursor-pointer rounded-full bg-white p-1 outline-none transition-all hover:shadow-lg hover:shadow-blue-500/25 block border-none',
+        'bg-white group relative h-auto w-50 cursor-pointer rounded-full border-[none] p-1 outline-none',
         classes
       )}
       {...props}
     >
       <span
-        className='m-0 block h-11 w-11 overflow-hidden rounded-full bg-[#1D4ED8] transition-all duration-500 ease-out group-hover:w-full'
+        className='m-0 block h-12 w-12 overflow-hidden rounded-full bg-[#1D4ED8] duration-500 group-hover:w-full'
         aria-hidden='true'
       ></span>
-      <div className='absolute left-[18px] top-1/2 -translate-y-1/2 transition-all duration-500 ease-out group-hover:translate-x-1'>
-        <ArrowRight className='size-5 text-white' />
+      <div className='absolute top-1/2 left-4 translate-x-0 -translate-y-1/2 duration-500 group-hover:translate-x-[0.4rem]'>
+        <ArrowRight className='text-white size-6' />
       </div>
-      <span className='absolute left-1/2 top-1/2 ml-4 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-center text-[15px] font-bold tracking-tight text-slate-700 transition-colors duration-500 ease-out group-hover:text-white'>
+      <span className='absolute top-2/4 left-2/4 ml-4 -translate-x-2/4 -translate-y-2/4 text-center text-lg font-medium tracking-tight whitespace-nowrap duration-500 text-slate-700 group-hover:text-white'>
         {label}
       </span>
     </Component>
   )
 }
+
