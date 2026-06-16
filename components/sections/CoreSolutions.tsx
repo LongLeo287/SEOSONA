@@ -62,7 +62,7 @@ export function CoreSolutions() {
               Hệ sinh thái <span className="text-blue-600">tăng trưởng toàn diện</span>
             </h2>
             <p className="mt-5 text-[17px] leading-relaxed text-slate-500 max-w-2xl mx-auto">
-              Chúng tôi không cung cấp dịch vụ rập khuôn. Mỗi giải pháp được thiết kế "đo ni đóng giày" dựa trên dữ liệu thực tế của doanh nghiệp bạn.
+              Chúng tôi không cung cấp dịch vụ rập khuôn. Mỗi giải pháp được thiết kế &quot;đo ni đóng giày&quot; dựa trên dữ liệu thực tế của doanh nghiệp bạn.
             </p>
           </RevealOnScroll>
         </div>

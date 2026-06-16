@@ -39,24 +39,24 @@ export default function QuyTrinhSeoPage() {
   return (
     <main className="bg-slate-50">
       {/* SaaS Light Mode Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-slate-900 border-b border-slate-800">
+      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-emerald-500/20 blur-[120px] rounded-full pointer-events-none" />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px]" />
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-emerald-100/50 blur-[120px] rounded-full pointer-events-none" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:32px_32px] opacity-40" />
         
         <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-sm mb-8 animate-in slide-in-from-bottom-4 fade-in duration-700 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 font-bold text-sm mb-8 animate-in slide-in-from-bottom-4 fade-in duration-700 shadow-sm">
             <Route size={16} /> Quy trình chuẩn hóa
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white tracking-tight mb-6 animate-in slide-in-from-bottom-6 fade-in duration-700 delay-100 text-balance leading-[1.1]">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 tracking-tight mb-6 animate-in slide-in-from-bottom-6 fade-in duration-700 delay-100 text-balance leading-[1.1]">
             Quy Trình SEO <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Từ Brief Đến Tăng Trưởng</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500">Từ Brief Đến Tăng Trưởng</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 animate-in slide-in-from-bottom-8 fade-in duration-700 delay-200 text-pretty">
+          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-10 animate-in slide-in-from-bottom-8 fade-in duration-700 delay-200 text-pretty">
             Chúng tôi tuân thủ một chu trình làm việc nghiêm ngặt, minh bạch trong từng giai đoạn từ nhận yêu cầu, chẩn đoán cho đến khi bàn giao báo cáo nghiệm thu.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-10 fade-in duration-700 delay-300">
-            <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-emerald-500 text-white font-bold text-[15px] flex items-center justify-center hover:bg-emerald-600 transition-all shadow-xl hover:shadow-emerald-500/25 hover:-translate-y-1">
+            <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-emerald-600 text-white font-bold text-[15px] flex items-center justify-center hover:bg-emerald-700 transition-all shadow-xl hover:shadow-emerald-500/25 hover:-translate-y-1">
               Bắt Đầu Dự Án Ngay
             </Link>
           </div>
@@ -68,48 +68,41 @@ export default function QuyTrinhSeoPage() {
                 <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
                    <defs>
                       <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                         <stop offset="0%" stopColor="#34d399" stopOpacity="0.5" />
-                         <stop offset="100%" stopColor="#2dd4bf" stopOpacity="0.5" />
+                         <stop offset="0%" stopColor="#10b981" stopOpacity="0.8" />
+                         <stop offset="100%" stopColor="#14b8a6" stopOpacity="0.8" />
                       </linearGradient>
-                      <filter id="glow">
-                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                        <feMerge>
-                          <feMergeNode in="coloredBlur"/>
-                          <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
-                      </filter>
                    </defs>
                    <path d="M 150 200 C 250 200, 300 100, 450 100 C 600 100, 650 300, 800 300 C 900 300, 950 200, 1000 200" 
-                         fill="none" stroke="url(#lineGrad)" strokeWidth="3" strokeDasharray="8 8" className="animate-[dash_3s_linear_infinite]" filter="url(#glow)"/>
+                         fill="none" stroke="url(#lineGrad)" strokeWidth="3" strokeDasharray="8 8" className="animate-[dash_3s_linear_infinite]" />
                 </svg>
                 
                 {/* Nodes */}
                 <div className="absolute left-[5%] top-1/2 -translate-y-1/2 z-10 text-center group cursor-pointer">
-                   <div className="w-16 h-16 rounded-2xl bg-slate-800 border-2 border-emerald-500/50 flex items-center justify-center mb-3 shadow-[0_0_20px_rgba(52,211,153,0.3)] group-hover:scale-110 group-hover:border-emerald-400 transition-all">
-                      <Target size={24} className="text-emerald-400" />
+                   <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 group-hover:border-emerald-400 group-hover:shadow-md transition-all">
+                      <Target size={24} className="text-emerald-500" />
                    </div>
-                   <div className="text-white font-bold text-sm">Brief</div>
+                   <div className="text-slate-900 font-bold text-sm">Brief</div>
                 </div>
 
                 <div className="absolute left-[35%] top-[15%] -translate-y-1/2 z-10 text-center group cursor-pointer">
-                   <div className="w-16 h-16 rounded-2xl bg-slate-800 border-2 border-emerald-500/50 flex items-center justify-center mb-3 shadow-[0_0_20px_rgba(52,211,153,0.3)] group-hover:scale-110 group-hover:border-emerald-400 transition-all">
-                      <Search size={24} className="text-emerald-400" />
+                   <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 group-hover:border-emerald-400 group-hover:shadow-md transition-all">
+                      <Search size={24} className="text-emerald-500" />
                    </div>
-                   <div className="text-white font-bold text-sm">Audit</div>
+                   <div className="text-slate-900 font-bold text-sm">Audit</div>
                 </div>
 
                 <div className="absolute left-[65%] top-[85%] -translate-y-1/2 z-10 text-center group cursor-pointer">
-                   <div className="w-16 h-16 rounded-2xl bg-slate-800 border-2 border-teal-500/50 flex items-center justify-center mb-3 shadow-[0_0_20px_rgba(45,212,191,0.3)] group-hover:scale-110 group-hover:border-teal-400 transition-all">
-                      <Workflow size={24} className="text-teal-400" />
+                   <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 group-hover:border-teal-400 group-hover:shadow-md transition-all">
+                      <Workflow size={24} className="text-teal-500" />
                    </div>
-                   <div className="text-white font-bold text-sm">Execute</div>
+                   <div className="text-slate-900 font-bold text-sm">Execute</div>
                 </div>
 
                 <div className="absolute right-[5%] top-1/2 -translate-y-1/2 z-10 text-center group cursor-pointer">
-                   <div className="w-16 h-16 rounded-2xl bg-slate-800 border-2 border-teal-500/50 flex items-center justify-center mb-3 shadow-[0_0_20px_rgba(45,212,191,0.3)] group-hover:scale-110 group-hover:border-teal-400 transition-all">
-                      <BarChart3 size={24} className="text-teal-400" />
+                   <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 group-hover:border-teal-400 group-hover:shadow-md transition-all">
+                      <BarChart3 size={24} className="text-teal-500" />
                    </div>
-                   <div className="text-white font-bold text-sm">Report</div>
+                   <div className="text-slate-900 font-bold text-sm">Report</div>
                 </div>
                 
                 {/* Floating particle animation */}

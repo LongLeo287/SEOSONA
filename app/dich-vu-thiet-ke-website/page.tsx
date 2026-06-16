@@ -88,25 +88,25 @@ export default function ThietKeWebsitePage() {
 
   return (
     <main className="bg-slate-50">
-      {/* SaaS Dark Mode Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-900 border-b border-slate-800">
+      {/* SaaS Light Mode Hero Section */}
+      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:48px_48px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-cyan-100/50 blur-[120px] rounded-full pointer-events-none" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:48px_48px] opacity-40" />
         
         <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-bold text-sm mb-8 animate-in slide-in-from-bottom-4 fade-in duration-700 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-50 border border-cyan-100 text-cyan-600 font-bold text-sm mb-8 animate-in slide-in-from-bottom-4 fade-in duration-700 shadow-sm">
             <Code2 size={16} /> Web Development & UX
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white tracking-tight mb-6 animate-in slide-in-from-bottom-6 fade-in duration-700 delay-100 text-balance leading-[1.1]">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 tracking-tight mb-6 animate-in slide-in-from-bottom-6 fade-in duration-700 delay-100 text-balance leading-[1.1]">
             Thiết Kế Website <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Chuẩn SEO & Tối Ưu Chuyển Đổi</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-500">Chuẩn SEO & Tối Ưu Chuyển Đổi</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 animate-in slide-in-from-bottom-8 fade-in duration-700 delay-200 text-pretty">
+          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-10 animate-in slide-in-from-bottom-8 fade-in duration-700 delay-200 text-pretty">
             Chúng tôi không chỉ "vẽ" một trang web đẹp. Chúng tôi lập trình một cỗ máy Marketing hoàn chỉnh, chuẩn SEO ngay từ nền móng và sẵn sàng tạo ra doanh thu.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-10 fade-in duration-700 delay-300">
-            <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-blue-500 text-white font-bold text-[15px] flex items-center justify-center hover:bg-blue-600 transition-all shadow-xl hover:shadow-blue-500/25 hover:-translate-y-1">
+            <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-cyan-600 text-white font-bold text-[15px] flex items-center justify-center hover:bg-cyan-700 transition-all shadow-xl hover:shadow-cyan-500/25 hover:-translate-y-1">
               Bắt đầu dự án Web
             </Link>
           </div>
@@ -115,17 +115,17 @@ export default function ThietKeWebsitePage() {
           <div className="mt-20 relative mx-auto max-w-5xl animate-in fade-in slide-in-from-bottom-24 duration-1000 delay-500">
              <div className="relative w-full aspect-[16/9] flex items-center justify-center perspective-1000">
                 {/* Desktop Mockup */}
-                <div className="absolute w-[80%] h-[90%] left-0 top-0 bg-slate-800 rounded-t-xl border-x-4 border-t-4 border-slate-700 shadow-2xl overflow-hidden transform-gpu hover:scale-[1.02] transition-transform duration-500">
-                   <div className="h-8 bg-slate-900 border-b border-slate-700 flex items-center px-4 gap-2">
-                      <div className="w-2.5 h-2.5 rounded-full bg-rose-500"></div>
-                      <div className="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
-                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
-                      <div className="ml-4 h-4 w-1/2 bg-slate-800 rounded flex items-center px-2">
-                         <div className="text-[10px] text-slate-500 font-mono">seosona.com</div>
+                <div className="absolute w-[80%] h-[90%] left-0 top-0 bg-white rounded-t-xl border-x border-t border-slate-200 shadow-2xl overflow-hidden transform-gpu hover:scale-[1.02] transition-transform duration-500">
+                   <div className="h-8 bg-slate-100 border-b border-slate-200 flex items-center px-4 gap-2">
+                      <div className="w-2.5 h-2.5 rounded-full bg-rose-400"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
+                      <div className="ml-4 h-5 w-1/2 bg-white border border-slate-200 rounded flex items-center px-2">
+                         <div className="text-[10px] text-slate-400 font-mono">seosona.com</div>
                       </div>
                    </div>
                    <div className="p-6 bg-slate-50 h-full w-full flex flex-col">
-                      <div className="w-3/4 h-10 bg-blue-100 rounded-lg mb-6"></div>
+                      <div className="w-3/4 h-10 bg-cyan-100 rounded-lg mb-6"></div>
                       <div className="w-1/2 h-4 bg-slate-200 rounded mb-2"></div>
                       <div className="w-2/3 h-4 bg-slate-200 rounded mb-8"></div>
                       <div className="grid grid-cols-3 gap-4">
@@ -137,23 +137,23 @@ export default function ThietKeWebsitePage() {
                 </div>
 
                 {/* Mobile Mockup overlapping */}
-                <div className="absolute w-[25%] h-[95%] right-[5%] bottom-0 bg-slate-800 rounded-[30px] border-[8px] border-slate-900 shadow-[0_30px_60px_rgba(0,0,0,0.4)] overflow-hidden transform-gpu hover:-translate-y-4 transition-transform duration-500 z-20">
+                <div className="absolute w-[25%] h-[95%] right-[5%] bottom-0 bg-slate-50 rounded-[30px] border-[8px] border-slate-800 shadow-[0_30px_60px_rgba(0,0,0,0.15)] overflow-hidden transform-gpu hover:-translate-y-4 transition-transform duration-500 z-20">
                    <div className="absolute top-0 inset-x-0 h-6 flex justify-center bg-transparent z-10">
-                      <div className="w-1/2 h-4 bg-slate-900 rounded-b-xl"></div>
+                      <div className="w-1/2 h-4 bg-slate-800 rounded-b-xl"></div>
                    </div>
-                   <div className="h-full w-full bg-slate-50 p-4 pt-8 overflow-hidden">
-                      <div className="w-full h-8 bg-blue-100 rounded mb-4"></div>
+                   <div className="h-full w-full bg-white p-4 pt-8 overflow-hidden">
+                      <div className="w-full h-8 bg-cyan-100 rounded mb-4"></div>
                       <div className="w-3/4 h-3 bg-slate-200 rounded mb-2"></div>
                       <div className="w-full h-3 bg-slate-200 rounded mb-6"></div>
                       <div className="flex flex-col gap-3">
-                         <div className="h-16 bg-white border border-slate-200 rounded shadow-sm"></div>
-                         <div className="h-16 bg-white border border-slate-200 rounded shadow-sm"></div>
+                         <div className="h-16 bg-slate-50 border border-slate-100 rounded shadow-sm"></div>
+                         <div className="h-16 bg-slate-50 border border-slate-100 rounded shadow-sm"></div>
                       </div>
                    </div>
                 </div>
              </div>
              {/* Soft Glow under mockup */}
-             <div className="absolute -inset-x-20 -bottom-20 h-[50%] bg-gradient-to-t from-slate-900 to-transparent z-20 pointer-events-none" />
+             <div className="absolute -inset-x-20 -bottom-20 h-[50%] bg-gradient-to-t from-white to-transparent z-20 pointer-events-none" />
           </div>
         </div>
       </section>

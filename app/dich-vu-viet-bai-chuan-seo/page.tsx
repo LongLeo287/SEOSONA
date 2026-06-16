@@ -104,7 +104,7 @@ export default function ContentSeoPage() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-pink-600">Research & Viết Bài Chuẩn SEO</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-10 animate-in slide-in-from-bottom-8 fade-in duration-700 delay-200 text-pretty">
-            Không chỉ là "sản xuất chữ". Chúng tôi cung cấp giải pháp trọn gói từ <strong>Research Keyword</strong>, <strong>Research Content</strong> đến thiết lập dàn ý và viết bài chuyên sâu <InlineHighlight highlightColor="#e11d48" className="font-bold">chạm đúng Search Intent</InlineHighlight>.
+            Không chỉ là &quot;sản xuất chữ&quot;. Chúng tôi cung cấp giải pháp trọn gói từ <strong>Research Keyword</strong>, <strong>Research Content</strong> đến thiết lập dàn ý và viết bài chuyên sâu <InlineHighlight highlightColor="#e11d48" className="font-bold">chạm đúng Search Intent</InlineHighlight>.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-10 fade-in duration-700 delay-300">
             <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-rose-600 text-white font-bold text-[15px] flex items-center justify-center hover:bg-rose-700 transition-all shadow-xl hover:shadow-rose-500/25 hover:-translate-y-1">

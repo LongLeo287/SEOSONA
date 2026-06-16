@@ -75,7 +75,7 @@ export const navItems: NavItem[] = [
         label: "SEO Option",
         href: "#",
         children: [
-          { label: "Dịch vụ SEO Option", href: "/option-seo/" },
+          { label: "Dịch vụ SEO Option", href: "/seo-option/" },
           { label: "Audit SEO", href: "/audit-seo/" },
           { label: "Content SEO Mastery", href: "/dich-vu-viet-bai-chuan-seo/" },
           { label: "Dịch vụ Backlink", href: "/dich-vu-backlink/" }

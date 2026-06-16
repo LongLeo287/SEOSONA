@@ -7,7 +7,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Các Option dịch vụ SEO theo giai đoạn | SEOSONA",
   description: "Các option triển khai SEO tại SEOSONA: audit độc lập, tư vấn SEO chuyên sâu, SEO tổng thể, website chuẩn SEO và đào tạo in-house.",
-  alternates: { canonical: "/dich-vu/seo-option/" }
+  alternates: { canonical: "/seo-option/" }
 };
 
 export default function SeoOptionPage() {
@@ -57,28 +57,89 @@ export default function SeoOptionPage() {
   return (
     <main className="bg-slate-50">
       {/* SaaS Light Mode Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-slate-900 border-b border-slate-800">
+      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}
-        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-indigo-500/20 blur-[100px] rounded-full pointer-events-none" />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px]" />
+        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-100/50 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-indigo-100/50 blur-[100px] rounded-full pointer-events-none" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:32px_32px] opacity-40" />
         
         <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-bold text-sm mb-8 animate-in slide-in-from-bottom-4 fade-in duration-700 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-bold text-sm mb-8 animate-in slide-in-from-bottom-4 fade-in duration-700 shadow-sm">
             <Layers size={16} /> Phương án linh hoạt
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white tracking-tight mb-6 animate-in slide-in-from-bottom-6 fade-in duration-700 delay-100 text-balance leading-[1.1]">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 tracking-tight mb-6 animate-in slide-in-from-bottom-6 fade-in duration-700 delay-100 text-balance leading-[1.1]">
             Chọn Option SEO <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Đúng Giai Đoạn, Trúng Mục Tiêu</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Đúng Giai Đoạn, Trúng Mục Tiêu</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 animate-in slide-in-from-bottom-8 fade-in duration-700 delay-200 text-pretty">
+          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-10 animate-in slide-in-from-bottom-8 fade-in duration-700 delay-200 text-pretty">
             Không ép một mô hình cho mọi doanh nghiệp. Chúng tôi tách rõ các phương án triển khai để bạn đầu tư đúng chỗ dựa trên hiện trạng và nguồn lực thực tế.
           </p>
+          
+          {/* Interactive Option Builder Mockup */}
+          <div className="mt-20 relative mx-auto max-w-4xl animate-in fade-in slide-in-from-bottom-24 duration-1000 delay-500 hidden sm:block">
+            <div className="rounded-2xl border border-slate-200 bg-white p-3 shadow-[0_30px_60px_rgba(0,0,0,0.08)] relative z-10 text-left flex gap-6">
+                
+                {/* Mockup Sidebar */}
+                <div className="w-1/3 bg-slate-50 rounded-xl border border-slate-100 p-5 flex flex-col gap-4">
+                   <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Build Your Plan</div>
+                   <div className="flex items-center justify-between bg-white p-3 rounded-lg border border-indigo-200 shadow-sm ring-1 ring-indigo-50 cursor-pointer">
+                      <div className="flex items-center gap-3">
+                         <Stethoscope size={18} className="text-indigo-600" />
+                         <span className="text-sm font-bold text-slate-900">Audit Website</span>
+                      </div>
+                      <div className="w-4 h-4 rounded-full bg-indigo-500 border-[3px] border-indigo-100"></div>
+                   </div>
+                   <div className="flex items-center justify-between bg-white p-3 rounded-lg border border-slate-200 hover:border-indigo-200 cursor-pointer transition-all">
+                      <div className="flex items-center gap-3">
+                         <ShieldCheck size={18} className="text-slate-400" />
+                         <span className="text-sm font-bold text-slate-600">Team Coaching</span>
+                      </div>
+                      <div className="w-4 h-4 rounded-full border-2 border-slate-300"></div>
+                   </div>
+                   <div className="flex items-center justify-between bg-white p-3 rounded-lg border border-slate-200 hover:border-indigo-200 cursor-pointer transition-all">
+                      <div className="flex items-center gap-3">
+                         <Zap size={18} className="text-slate-400" />
+                         <span className="text-sm font-bold text-slate-600">Full Execution</span>
+                      </div>
+                      <div className="w-4 h-4 rounded-full border-2 border-slate-300"></div>
+                   </div>
+                   <div className="mt-auto">
+                      <div className="h-10 bg-indigo-600 rounded-lg text-white font-bold text-sm flex items-center justify-center">Generate Proposal</div>
+                   </div>
+                </div>
+
+                {/* Mockup Preview Area */}
+                <div className="flex-1 p-2 flex flex-col justify-center">
+                   <div className="inline-flex px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-bold rounded mb-4 w-fit">Recommended for You</div>
+                   <h3 className="text-2xl font-black text-slate-900 mb-2">Giai đoạn Khám Bệnh & Lập Kế Hoạch</h3>
+                   <p className="text-sm text-slate-500 mb-6 leading-relaxed">Dựa trên việc bạn chưa từng làm SEO, chúng tôi đề xuất thực hiện Audit kỹ thuật 1 lần để tìm lỗi, kết hợp cố vấn chiến lược cho team content nội bộ.</p>
+                   
+                   <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                         <CheckCircle2 size={18} className="text-emerald-500" />
+                         <span className="text-sm font-medium text-slate-700">Rà soát 200+ tiêu chí Technical SEO</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                         <CheckCircle2 size={18} className="text-emerald-500" />
+                         <span className="text-sm font-medium text-slate-700">Phân tích Content Gap so với đối thủ</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                         <CheckCircle2 size={18} className="text-emerald-500" />
+                         <span className="text-sm font-medium text-slate-700">Họp trình bày file Audit (2 hours)</span>
+                      </div>
+                   </div>
+                </div>
+
+            </div>
+            {/* Soft Glow under mockup */}
+            <div className="absolute -inset-x-20 -bottom-20 h-[50%] bg-gradient-to-t from-white to-transparent z-20 pointer-events-none" />
+          </div>
+
         </div>
       </section>
 
       {/* Interactive Pricing Cards */}
-      <section className="relative -mt-16 z-20 pb-24">
+      <section className="relative mt-16 lg:mt-24 z-20 pb-24">
          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                {pricingOptions.map((opt, idx) => {

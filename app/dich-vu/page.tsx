@@ -36,7 +36,7 @@ const services = [
       {
         title: "Option SEO",
         description: "Chọn hướng triển khai phù hợp: audit, tư vấn, SEO tổng thể, website chuẩn SEO hoặc đào tạo in-house.",
-        href: "/option-seo/",
+        href: "/seo-option/",
         icon: <Settings className="h-6 w-6 text-[#1D4ED8]" />
       },
       {
