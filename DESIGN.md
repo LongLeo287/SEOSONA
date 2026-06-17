@@ -1,53 +1,59 @@
-# Website SEOSONA Design System
+---
+type: "KnowledgeItem"
+uuid: "seosona-core-design-system"
+version: "8.0"
+title: "Website SEOSONA Design System (SINGLE SOURCE OF TRUTH)"
+description: "Authoritative UI/UX standard for Website SEOSONA"
+category: "frontend_engineering"
+authority_level: "Tier-1"
+---
 
-This file serves as the strict, single source of truth for all UI/UX Agent tasks in this repository. All generated components MUST adhere to the tokens and patterns defined below, extracted directly from `globals.css` and `BRAND_GUIDE.md`.
+# Website SEOSONA Design System (SINGLE SOURCE OF TRUTH)
 
-## Direction & Theme
+> **CRITICAL RULE FOR ALL AI AGENTS:** This file is the STRICT, absolute single source of truth for the SEOSONA website design. You MUST NEVER use colors, backgrounds, or patterns outside of these defined tokens. Forget any "Dark Navy", "Neon Green", or "Cyberpunk Glassmorphism" rules from previous or hallucinated iterations. 
+
+## 1. Direction & Theme
 - **Theme:** Premium B2B Light Theme.
-- **Vibe:** Clean SaaS/agency layout, large whitespace, trustworthy, technical.
-- **NEVER** use dark backgrounds for full sections unless explicitly requested.
+- **Vibe:** Clean SaaS/agency layout, large whitespace, trustworthy, technical, data-driven.
+- **Background Rule:** NEVER use dark backgrounds (`bg-[#001833]`, `bg-[#04091A]`, `bg-black`) for full sections. The website relies entirely on white and light slate canvases. 
 
-## Colors
+## 2. Color Tokens (from globals.css)
+*You must use exactly these values or their closest tailwind equivalents when custom hex is needed.*
 
-- **Canvas Base:** `#FFFFFF` (Pure white for background)
-- **Canvas Surface:** `#F8FAFC` (Elevated surface, cards)
-- **Canvas Elevated:** `#F1F5F9` (Higher elevated surface)
-- **Text Ink:** `#04091A` (Dark Navy/Black for strong contrast headers)
-- **Text Slate:** `#64748B` (Neutral Gray for secondary text)
-- **Text Muted:** `#94A3B8` (Lighter gray for tertiary text)
-- **Signal Primary:** `#1D4ED8` (Technical, trustworthy Blue)
+### Backgrounds
+- **Canvas Base (Pure White):** `#FFFFFF`
+- **Canvas Surface (Elevated):** `#F8FAFC` (`slate-50`)
+- **Canvas Elevated:** `#F1F5F9` (`slate-100`)
+
+### Typography
+- **Text Ink (Headers):** `#04091A` - NEVER use pure black `#000000`.
+- **Text Slate (Body):** `#64748B` (`slate-500`)
+- **Text Muted:** `#94A3B8` (`slate-400`)
+
+### Accents & Interactions
+- **Signal Primary (Blue):** `#1D4ED8` (`blue-600`) - The ONLY primary accent color for buttons, highlights.
 - **Signal Hover:** `#2B8FD4`
-- **Border Pearl:** `rgba(255, 255, 255, 0.12)` (Standard borders often fallback to `border-slate-100` or `border-slate-200`)
+- **Secondary Accents:** ONLY use tiny icon accents (`indigo-500`, `amber-500`). NEVER large color blocks.
 
-## Typography
+### Borders
+- **Standard Borders:** `border-slate-200` or `border-slate-100`.
 
-- **Heading Font:** `var(--font-poppins)` (Poppins). Use negative letter-spacing for confident statements (`tracking-tight`).
-- **Sans Font:** `var(--font-inter)` (Inter).
-- **Headings:** Very bold and tight (e.g., `text-[32px] font-black leading-tight tracking-tight text-[#04091A]`).
-- **Body:** Relaxed and medium (e.g., `text-[15px] font-medium leading-relaxed text-slate-500`).
+## 3. Typography Rules
+- **Heading Font:** `var(--font-poppins)` (`font-black`, `tracking-tight`, `leading-tight`).
+- **Sans Font:** `var(--font-inter)` (`font-medium`, `leading-relaxed`).
+- **Text Wrapping:** `text-balance` (headers), `text-pretty` (body).
 
-## Spacing & Layout
+## 4. Spacing & Layout
+- **Safe Area Container:** `container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8`.
+- **Vertical Spacing:** Generous (`py-16 lg:py-24`).
+- **Whitespace:** `p-6 md:p-8 lg:p-10` for cards.
 
-- **Container:** `container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8`.
-- **Vertical Spacing:** Generous. E.g., `py-16 lg:py-24`.
-- **Whitespace:** Emphasize padding around cards `p-8 md:p-10`.
+## 5. UI Components
+- **Corner Radius:** Soft (`rounded-[28px]` to `rounded-[40px]`). NO sharp corners. Buttons are `rounded-full`.
+- **Shadows & Hover:** `border border-slate-200 bg-white shadow-sm`. Hover floats upward: `transition-all duration-500 hover:-translate-y-1.5 hover:shadow-lg hover:border-blue-300`.
+- **Buttons:** Primary (`bg-[#04091A]` hover `bg-[#1D4ED8]`), Secondary (Surface background, text Ink).
 
-## Components & Patterns
-
-- **Border Radius:** Very soft and organic.
-  - Large cards: `rounded-[32px]` or `rounded-[40px]`.
-  - Buttons/Badges: `rounded-full` / `radius-pill`.
-- **Shadows & Hover (Hover elevation):**
-  - Use smooth translation and shadow on hover for cards: `transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.1)] hover:bg-white`.
-- **Buttons:**
-  - **Primary:** `btn-primary` (Dark Ink background, pill radius, hover to Signal Primary).
-  - **Secondary:** `btn-secondary` (Surface background, pill radius, border).
-- **Badges:** `badge-premium` (pill shape, border, slate text).
-- **Animations:**
-  - Lightweight only. Use `.reveal` class (fade-up).
-  - Glow effects should be extremely subtle and placed behind cards (e.g., `blur-[80px]` with low opacity).
-
-## Guidelines for AI Agents
-1. **NO HALLUCINATION:** Do not invent colors. Stick to `#04091A` for text, `#1D4ED8` for accents, and `#F8FAFC` for backgrounds.
-2. **RESPONSIVENESS:** Always use Tailwind breakpoints (`md:`, `lg:`).
-3. **TEXT WRAPPING:** Use `.text-balance` for headers and `.text-pretty` for paragraphs to ensure perfect typographic rag.
+## 6. Prohibited Actions (The "NO" List)
+1. **NO Dark Mode:** Never convert sections to dark themes.
+2. **NO Neon Green:** `#46FF00` or `#00FF00` are strictly prohibited.
+3. **NO Arbitrary Colors:** Do not invent hex codes.

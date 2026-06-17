@@ -1,6 +1,6 @@
 "use client";
 
-import { Bot, Sparkles, Cpu, PenTool, Search, CheckCircle2, Lock, Mic, Plus, ArrowUp, ArrowRight, Database, Shield, Network, LineChart } from "lucide-react";
+import { Bot, Sparkles, Cpu, PenTool, Search, CheckCircle2, Lock, Mic, Plus, ArrowUp, ArrowRight, Database, Shield, Network, LineChart, Mail, UserPlus, GitBranch, MessageCircle } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { TextShimmer } from "@/components/ui/shimmer-text";
@@ -516,125 +516,113 @@ function TechnicalUI() {
 
 function DataAutomationUI() {
   return (
-    <div className="w-full h-full bg-white flex flex-col relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 animate-in fade-in zoom-in-[0.98] duration-500">
+    <div className="w-full h-full bg-slate-50 flex flex-col relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 animate-in fade-in zoom-in-[0.98] duration-500">
       {/* Grid Background */}
-      <div className="absolute inset-0 pointer-events-none opacity-50" style={{ backgroundImage: 'linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+      <div className="absolute inset-0 pointer-events-none opacity-60" style={{ backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
       
       {/* Header */}
-      <div className="absolute top-0 left-0 w-full h-14 flex items-center justify-between px-5 z-30">
-        {/* macOS Dots */}
+      <div className="absolute top-0 left-0 w-full h-14 flex items-center justify-between px-5 z-30 border-b border-slate-200/50 bg-white/60 backdrop-blur-md">
         <div className="flex gap-2">
           <div className="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
           <div className="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
           <div className="w-3 h-3 rounded-full bg-[#27C93F]"></div>
         </div>
-        {/* Title */}
-        <div className="flex items-center gap-2 text-slate-500 font-semibold text-[13px] bg-white/80 px-3 py-1.5 rounded-full backdrop-blur-sm border border-slate-100 shadow-sm">
-          <Shield className="w-4 h-4 text-blue-500" />
-          Server-Side Data Stream
+        <div className="flex items-center gap-2 text-slate-600 font-semibold text-[13px]">
+          <Network className="w-4 h-4 text-indigo-500" />
+          Customer Journey Automation
         </div>
       </div>
 
-      <div className="flex-1 relative w-full h-full min-h-[400px]">
-        {/* SVG Animated Paths Layer */}
+      <div className="flex-1 relative w-full h-full min-h-[400px] mt-14">
+        {/* SVG Animated Paths */}
         <svg className="absolute inset-0 w-full h-full z-10 pointer-events-none" viewBox="0 0 1000 600" preserveAspectRatio="none">
           <style>{`
-            @keyframes dash-anim {
+            @keyframes flow-anim {
               to { stroke-dashoffset: -24; }
             }
-            .path-dashed {
-              animation: dash-anim 2s linear infinite;
+            .path-flow {
+              animation: flow-anim 1.5s linear infinite;
             }
           `}</style>
           
-          {/* Connecting Dashed Lines */}
-          <path d="M 240 150 L 280 150 C 380 150, 380 300, 440 300" stroke="#93C5FD" strokeWidth="2.5" strokeDasharray="6 6" fill="none" className="path-dashed" />
-          <path d="M 240 300 L 440 300" stroke="#A78BFA" strokeWidth="2.5" strokeDasharray="6 6" fill="none" className="path-dashed" />
-          <path d="M 240 450 L 280 450 C 380 450, 380 300, 440 300" stroke="#F472B6" strokeWidth="2.5" strokeDasharray="6 6" fill="none" className="path-dashed" />
-          <path d="M 560 300 L 740 300" stroke="#3B82F6" strokeWidth="3" strokeDasharray="8 8" fill="none" className="path-dashed" />
+          <path d="M 240 300 L 400 300" stroke="#94a3b8" strokeWidth="2" strokeDasharray="6 6" fill="none" className="path-flow" />
+          <path d="M 520 300 C 600 300, 600 180, 700 180" stroke="#10b981" strokeWidth="2.5" strokeDasharray="6 6" fill="none" className="path-flow" />
+          <path d="M 520 300 C 600 300, 600 420, 700 420" stroke="#3b82f6" strokeWidth="2.5" strokeDasharray="6 6" fill="none" className="path-flow" />
 
-          {/* Dots along paths */}
-          {/* GA Path */}
-          <circle r="4.5" fill="#F97316" filter="drop-shadow(0 0 4px #F97316)"><animateMotion dur="2.5s" begin="0s" repeatCount="indefinite" path="M 240 150 L 280 150 C 380 150, 380 300, 440 300" /></circle>
-          <circle r="4.5" fill="#3B82F6" filter="drop-shadow(0 0 4px #3B82F6)"><animateMotion dur="2.5s" begin="1.25s" repeatCount="indefinite" path="M 240 150 L 280 150 C 380 150, 380 300, 440 300" /></circle>
-
-          {/* FB Path */}
-          <circle r="4.5" fill="#3B82F6" filter="drop-shadow(0 0 4px #3B82F6)"><animateMotion dur="2s" begin="0.5s" repeatCount="indefinite" path="M 240 300 L 440 300" /></circle>
-          <circle r="4.5" fill="#8B5CF6" filter="drop-shadow(0 0 4px #8B5CF6)"><animateMotion dur="2s" begin="1.5s" repeatCount="indefinite" path="M 240 300 L 440 300" /></circle>
-
-          {/* TikTok Path */}
-          <circle r="4.5" fill="#EC4899" filter="drop-shadow(0 0 4px #EC4899)"><animateMotion dur="2.2s" begin="0.2s" repeatCount="indefinite" path="M 240 450 L 280 450 C 380 450, 380 300, 440 300" /></circle>
-          <circle r="4.5" fill="#3B82F6" filter="drop-shadow(0 0 4px #3B82F6)"><animateMotion dur="2.2s" begin="1.3s" repeatCount="indefinite" path="M 240 450 L 280 450 C 380 450, 380 300, 440 300" /></circle>
-
-          {/* sGTM to BQ Path */}
-          <circle r="5.5" fill="#2563EB" filter="drop-shadow(0 0 6px #2563EB)"><animateMotion dur="1.5s" begin="0s" repeatCount="indefinite" path="M 560 300 L 740 300" /></circle>
-          <circle r="5.5" fill="#60A5FA" filter="drop-shadow(0 0 6px #60A5FA)"><animateMotion dur="1.5s" begin="0.75s" repeatCount="indefinite" path="M 560 300 L 740 300" /></circle>
+          <circle r="4" fill="#64748b"><animateMotion dur="2s" begin="0s" repeatCount="indefinite" path="M 240 300 L 400 300" /></circle>
+          <circle r="4" fill="#34d399"><animateMotion dur="2s" begin="0s" repeatCount="indefinite" path="M 520 300 C 600 300, 600 180, 700 180" /></circle>
+          <circle r="4" fill="#34d399"><animateMotion dur="2s" begin="1s" repeatCount="indefinite" path="M 520 300 C 600 300, 600 180, 700 180" /></circle>
+          <circle r="4" fill="#60a5fa"><animateMotion dur="2s" begin="0.5s" repeatCount="indefinite" path="M 520 300 C 600 300, 600 420, 700 420" /></circle>
+          <circle r="4" fill="#60a5fa"><animateMotion dur="2s" begin="1.5s" repeatCount="indefinite" path="M 520 300 C 600 300, 600 420, 700 420" /></circle>
         </svg>
 
-        {/* HTML Node Overlays */}
-        
-        {/* GA Box */}
-        <div className="absolute top-[25%] left-[20%] -translate-x-1/2 -translate-y-1/2 z-20">
-          <div className="w-[72px] h-[72px] md:w-20 md:h-20 bg-white rounded-[20px] shadow-xl border border-slate-100 flex items-center justify-center animate-in zoom-in duration-500 delay-100">
-            <div className="flex items-end gap-[5px] h-8">
-               <div className="w-[7px] h-4 bg-[#F97316] rounded-sm"></div>
-               <div className="w-[7px] h-6 bg-[#F97316] rounded-sm"></div>
-               <div className="w-[7px] h-8 bg-[#F97316] rounded-sm"></div>
-            </div>
+        {/* Trigger Node */}
+        <div className="absolute top-[50%] left-[16%] -translate-x-1/2 -translate-y-1/2 z-20">
+          <div className="w-48 bg-white rounded-xl shadow-lg border border-slate-200 flex flex-col overflow-hidden animate-in zoom-in duration-500 delay-100">
+             <div className="bg-slate-100 px-3 py-2 border-b border-slate-200 flex items-center gap-2">
+                <div className="w-6 h-6 rounded-md bg-slate-800 text-white flex items-center justify-center">
+                   <UserPlus className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-xs font-bold text-slate-700">Trigger</span>
+             </div>
+             <div className="p-3">
+                <div className="text-[13px] font-semibold text-slate-800 mb-1">New Lead Form</div>
+                <div className="text-[11px] text-slate-500">Source: Website SEO</div>
+             </div>
           </div>
         </div>
 
-        {/* FB Box */}
-        <div className="absolute top-[50%] left-[20%] -translate-x-1/2 -translate-y-1/2 z-20">
-          <div className="w-[72px] h-[72px] md:w-20 md:h-20 bg-white rounded-[20px] shadow-xl border border-slate-100 flex items-center justify-center animate-in zoom-in duration-500 delay-200">
-            <div className="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center text-white font-bold text-2xl leading-none font-serif italic pr-1 pb-1">
-              f
-            </div>
+        {/* Condition Node */}
+        <div className="absolute top-[50%] left-[46%] -translate-x-1/2 -translate-y-1/2 z-20">
+          <div className="relative w-40 bg-white rounded-xl shadow-xl shadow-indigo-500/10 border-2 border-indigo-100 flex flex-col overflow-hidden animate-in zoom-in duration-500 delay-300">
+             <div className="bg-indigo-50 px-3 py-2 border-b border-indigo-100 flex items-center gap-2">
+                <div className="w-6 h-6 rounded-md bg-indigo-500 text-white flex items-center justify-center">
+                   <GitBranch className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-xs font-bold text-indigo-700">Condition</span>
+             </div>
+             <div className="p-3 text-center">
+                <div className="text-[13px] font-bold text-slate-800">{"Lead Score > 80?"}</div>
+             </div>
+          </div>
+          {/* Branch Labels (Outside of overflow-hidden box) */}
+          <div className="absolute -top-3 -right-2 text-[10px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded shadow-sm z-30 animate-in zoom-in duration-500 delay-500">YES</div>
+          <div className="absolute -bottom-3 -right-2 text-[10px] font-bold text-blue-600 bg-blue-50 border border-blue-200 px-1.5 py-0.5 rounded shadow-sm z-30 animate-in zoom-in duration-500 delay-500">NO</div>
+        </div>
+
+        {/* Action 1: Zalo */}
+        <div className="absolute top-[30%] left-[80%] -translate-x-1/2 -translate-y-1/2 z-20">
+          <div className="w-48 bg-white rounded-xl shadow-lg border-l-4 border-l-emerald-500 border-y border-r border-slate-200 flex flex-col overflow-hidden animate-in zoom-in duration-500 delay-500">
+             <div className="p-3">
+                <div className="flex items-center gap-2 mb-2">
+                   <div className="w-7 h-7 rounded-full bg-blue-500 flex items-center justify-center">
+                      <MessageCircle className="w-4 h-4 text-white" />
+                   </div>
+                   <span className="text-[13px] font-bold text-slate-800">Gửi Zalo ZNS</span>
+                </div>
+                <div className="text-[11px] text-slate-500">Template: Khách V.I.P</div>
+                <div className="mt-2 w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                   <div className="h-full bg-emerald-500 w-full animate-pulse"></div>
+                </div>
+             </div>
           </div>
         </div>
 
-        {/* TikTok Box */}
-        <div className="absolute top-[75%] left-[20%] -translate-x-1/2 -translate-y-1/2 z-20">
-          <div className="w-[72px] h-[72px] md:w-20 md:h-20 bg-white rounded-[20px] shadow-xl border border-slate-100 flex items-center justify-center animate-in zoom-in duration-500 delay-300">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-9 h-9 text-black">
-              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"/>
-            </svg>
-          </div>
-        </div>
-
-        {/* sGTM Hub Box */}
-        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-20">
-          <div className="w-28 h-28 md:w-[136px] md:h-[136px] bg-blue-50/90 backdrop-blur-md rounded-[28px] shadow-2xl border-2 border-blue-100 flex flex-col items-center justify-center animate-in zoom-in duration-500 delay-500">
-            <Network className="w-10 h-10 md:w-12 md:h-12 text-blue-600 mb-2" strokeWidth={2.5} />
-            <span className="text-[14px] md:text-[15px] font-bold text-blue-800">sGTM Hub</span>
-          </div>
-        </div>
-
-        {/* BigQuery Box */}
-        <div className="absolute top-[50%] left-[80%] -translate-x-1/2 -translate-y-1/2 z-20">
-          <div className="w-24 h-24 md:w-[120px] md:h-[120px] bg-white rounded-[24px] shadow-xl shadow-blue-900/5 border-2 border-slate-100 flex flex-col items-center justify-center animate-in zoom-in duration-500 delay-700 relative overflow-hidden">
-            <div className="absolute inset-0 pointer-events-none opacity-40" style={{ backgroundImage: 'linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)', backgroundSize: '12px 12px' }}></div>
-            <Database className="w-9 h-9 md:w-11 md:h-11 text-[#3BA6F1] mb-2 relative z-10" strokeWidth={2} />
-            <span className="text-[12px] md:text-[13px] font-bold text-slate-700 tracking-wider relative z-10">BIGQUERY</span>
-          </div>
-        </div>
-
-        {/* Bottom Left: Processing Events */}
-        <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 z-20">
-          <div className="bg-white px-4 py-2.5 md:px-5 md:py-3 rounded-[14px] shadow-lg border border-slate-100 flex items-center gap-3 animate-in slide-in-from-bottom-4 duration-500 delay-500">
-            <div className="w-3 h-3 rounded-full bg-blue-500 animate-pulse shadow-[0_0_8px_#3b82f6]"></div>
-            <span className="text-[14px] md:text-[15px] font-semibold text-slate-700">Processing Events</span>
-          </div>
-        </div>
-
-        {/* Bottom Right: Match Rate */}
-        <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 z-20">
-          <div className="bg-[#2563EB] px-5 py-3 md:px-6 md:py-4 rounded-[16px] shadow-xl shadow-blue-500/30 flex flex-col gap-1 animate-in slide-in-from-bottom-4 duration-500 delay-700">
-            <span className="text-[12px] md:text-[13px] text-blue-100 font-semibold">Match Rate</span>
-            <div className="flex items-center gap-2">
-               <LineChart className="w-4 h-4 md:w-5 md:h-5 text-white" strokeWidth={3} />
-               <span className="text-[20px] md:text-[24px] font-bold text-white leading-none">99.8%</span>
-            </div>
+        {/* Action 2: Email */}
+        <div className="absolute top-[70%] left-[80%] -translate-x-1/2 -translate-y-1/2 z-20">
+          <div className="w-48 bg-white rounded-xl shadow-lg border-l-4 border-l-blue-500 border-y border-r border-slate-200 flex flex-col overflow-hidden animate-in zoom-in duration-500 delay-700">
+             <div className="p-3">
+                <div className="flex items-center gap-2 mb-2">
+                   <div className="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center border border-slate-200">
+                      <Mail className="w-4 h-4 text-slate-600" />
+                   </div>
+                   <span className="text-[13px] font-bold text-slate-800">Email Nurturing</span>
+                </div>
+                <div className="text-[11px] text-slate-500">Drip Campaign: 3 ngày</div>
+                <div className="mt-2 w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                   <div className="h-full bg-blue-500 w-full animate-pulse"></div>
+                </div>
+             </div>
           </div>
         </div>
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Faq } from "@/components/sections/Faq";
 import { Process } from "@/components/sections/Process";
-import { Share2, Route, Workflow, BarChart3, Presentation, Search, Target, CheckCircle2 } from "lucide-react";
+import { Route, Workflow, BarChart3, Search, Target, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -77,28 +77,28 @@ export default function QuyTrinhSeoPage() {
                 </svg>
                 
                 {/* Nodes */}
-                <div className="absolute left-[5%] top-1/2 -translate-y-1/2 z-10 text-center group cursor-pointer">
+                <div className="absolute left-[5%] top-1/2 -translate-y-1/2 z-10 text-center group">
                    <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 group-hover:border-emerald-400 group-hover:shadow-md transition-all">
                       <Target size={24} className="text-emerald-500" />
                    </div>
                    <div className="text-slate-900 font-bold text-sm">Brief</div>
                 </div>
 
-                <div className="absolute left-[35%] top-[15%] -translate-y-1/2 z-10 text-center group cursor-pointer">
+                <div className="absolute left-[35%] top-[15%] -translate-y-1/2 z-10 text-center group">
                    <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 group-hover:border-emerald-400 group-hover:shadow-md transition-all">
                       <Search size={24} className="text-emerald-500" />
                    </div>
                    <div className="text-slate-900 font-bold text-sm">Audit</div>
                 </div>
 
-                <div className="absolute left-[65%] top-[85%] -translate-y-1/2 z-10 text-center group cursor-pointer">
+                <div className="absolute left-[65%] top-[85%] -translate-y-1/2 z-10 text-center group">
                    <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 group-hover:border-teal-400 group-hover:shadow-md transition-all">
                       <Workflow size={24} className="text-teal-500" />
                    </div>
                    <div className="text-slate-900 font-bold text-sm">Execute</div>
                 </div>
 
-                <div className="absolute right-[5%] top-1/2 -translate-y-1/2 z-10 text-center group cursor-pointer">
+                <div className="absolute right-[5%] top-1/2 -translate-y-1/2 z-10 text-center group">
                    <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 group-hover:border-teal-400 group-hover:shadow-md transition-all">
                       <BarChart3 size={24} className="text-teal-500" />
                    </div>

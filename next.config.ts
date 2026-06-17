@@ -19,7 +19,8 @@ const nextConfig: NextConfig = {
     unoptimized: isGitHubPages,
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
-      { protocol: "https", hostname: "seosona.com" }
+      { protocol: "https", hostname: "seosona.com" },
+      { protocol: "https", hostname: "images.unsplash.com" }
     ]
   },
   ...(isGitHubPages

@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
-import { CheckCircle2 } from "lucide-react";
+import { Process } from "@/components/sections/Process";
+import { Faq } from "@/components/sections/Faq";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { CheckCircle2, BookOpen, UserCheck, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "In-house Training | SEOSONA",
@@ -39,28 +42,39 @@ export default function Page() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((item, index) => (
-              <div key={index} className="p-8 rounded-[24px] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:border-[#1D4ED8]/30 transition-all duration-300">
-                <div className="h-12 w-12 rounded-xl bg-white text-[#1D4ED8] shadow-sm border border-slate-100 flex items-center justify-center mb-6">
-                  <CheckCircle2 size={24} />
+              <div key={index} className="group p-8 rounded-[32px] bg-white border border-slate-200 hover:border-blue-200 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-500">
+                <div className="h-14 w-14 rounded-2xl bg-blue-50 text-blue-600 shadow-inner flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+                  {index === 0 ? <BookOpen size={28} /> : index === 1 ? <UserCheck size={28} /> : <TrendingUp size={28} />}
                 </div>
-                <h3 className="text-[20px] font-bold text-[#04091A] mb-4">{item.title}</h3>
-                <p className="text-[15px] text-slate-500 leading-relaxed font-medium">
+                <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">{item.title}</h3>
+                <p className="text-[15px] text-slate-600 leading-relaxed font-medium">
                   {item.desc}
                 </p>
               </div>
             ))}
           </div>
-          
-          {/* Placeholder cho Nội dung chi tiết */}
-          <div className="mt-20 p-12 border-2 border-dashed border-slate-200 rounded-[32px] bg-slate-50/50 text-center flex flex-col items-center justify-center">
-            <div className="w-16 h-16 bg-slate-200 rounded-full mb-6 animate-pulse"></div>
-            <h3 className="text-xl font-bold text-slate-400 mb-2">Đang chờ cập nhật chi tiết...</h3>
-            <p className="text-slate-400 max-w-lg">
-              [Vị trí này dành cho Team Content điền thêm các sections như: Bảng giá, Quy trình làm việc, Khách hàng tiêu biểu, FAQ...]
-            </p>
-          </div>
         </div>
       </section>
+
+      <Process 
+        steps={[
+          { title: "Khảo sát Doanh nghiệp", description: "Đánh giá mô hình kinh doanh, nguồn lực nhân sự, năng lực cạnh tranh và mục tiêu SEO của doanh nghiệp." },
+          { title: "Thiết kế Giáo trình", description: "Biên soạn nội dung đào tạo riêng biệt, lược bỏ lý thuyết thừa, tập trung vào kỹ năng cần thiết cho dự án." },
+          { title: "Đào tạo Trực tiếp", description: "Chuyên gia SEOSONA đến tận văn phòng huấn luyện, cầm tay chỉ việc, sửa bài trực tiếp trên website của công ty." },
+          { title: "Theo dõi & Đánh giá", description: "Giao KPIs thực hành, đánh giá năng lực từng nhân sự sau khóa học và nghiệm thu kết quả tăng trưởng dự án." }
+        ]}
+        description="Lộ trình In-house Training bài bản, bám sát thực tiễn để đội ngũ nhân sự có thể tự chủ dự án SEO."
+      />
+
+      <Testimonials />
+
+      <Faq 
+        items={[
+          { question: "Doanh nghiệp tôi cần bao nhiêu người để học In-house?", answer: "Không giới hạn số lượng. SEOSONA thiết kế chương trình cho cả phòng Marketing hoặc chỉ 1-2 nhân sự nòng cốt." },
+          { question: "Thời gian đào tạo thường kéo dài bao lâu?", answer: "Tùy thuộc vào yêu cầu của doanh nghiệp, thông thường từ 4 đến 8 buổi học thực chiến, mỗi buổi 3 tiếng." },
+          { question: "Học xong nhân sự có thể tự làm được không?", answer: "Chắc chắn. Phương pháp đào tạo của SEOSONA là học thật, làm thật trên dự án của chính doanh nghiệp bạn." }
+        ]}
+      />
 
       <CtaBand />
     </main>

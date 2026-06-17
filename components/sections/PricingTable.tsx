@@ -18,11 +18,12 @@ interface PricingTableProps {
   title: string;
   description?: string;
   plans: PricingPlan[];
+  id?: string;
 }
 
-export function PricingTable({ eyebrow, title, description, plans }: PricingTableProps) {
+export function PricingTable({ eyebrow, title, description, plans, id }: PricingTableProps) {
   return (
-    <section className="bg-slate-50 py-12 lg:py-16">
+    <section id={id} className="bg-slate-50 py-12 lg:py-16">
       <div className="container">
         <div className="mx-auto max-w-2xl text-center">
           {eyebrow && <span className="badge mb-4">{eyebrow}</span>}

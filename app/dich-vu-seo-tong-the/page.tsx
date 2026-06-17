@@ -4,7 +4,7 @@ import { Faq } from "@/components/sections/Faq";
 import { Process } from "@/components/sections/Process";
 import { PricingTable } from "@/components/sections/PricingTable";
 import { FunnelChart } from "@/components/ui/funnel-chart";
-import { LineChart, BarChart3, TrendingUp, Search, Activity, Target, Zap, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { BarChart3, TrendingUp, Search, Activity, Zap, ShieldCheck, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -140,28 +140,28 @@ export default function SeoTongThePage() {
 
                   {/* Metrics Row */}
                   <div className="grid grid-cols-2 md:grid-cols-4 border-b border-slate-100 bg-white">
-                     <div className="p-4 md:p-6 border-r border-b md:border-b-0 border-slate-100 cursor-pointer hover:bg-blue-50/50 transition-colors">
+                     <div className="p-4 md:p-6 border-r border-b md:border-b-0 border-slate-100 hover:bg-blue-50/50 transition-colors">
                         <div className="flex items-center gap-2 mb-2">
                            <div className="w-3 h-3 bg-blue-500 rounded-sm" />
                            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Clicks</span>
                         </div>
                         <div className="text-2xl md:text-3xl font-black text-slate-900">1.24M</div>
                      </div>
-                     <div className="p-4 md:p-6 border-r border-b md:border-b-0 border-slate-100 cursor-pointer hover:bg-indigo-50/50 transition-colors">
+                     <div className="p-4 md:p-6 border-r border-b md:border-b-0 border-slate-100 hover:bg-indigo-50/50 transition-colors">
                         <div className="flex items-center gap-2 mb-2">
                            <div className="w-3 h-3 bg-indigo-500 rounded-sm" />
                            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Impressions</span>
                         </div>
                         <div className="text-2xl md:text-3xl font-black text-slate-900">28.5M</div>
                      </div>
-                     <div className="p-4 md:p-6 border-r border-slate-100 cursor-pointer hover:bg-emerald-50/50 transition-colors">
+                     <div className="p-4 md:p-6 border-r border-slate-100 hover:bg-emerald-50/50 transition-colors">
                         <div className="flex items-center gap-2 mb-2">
                            <div className="w-3 h-3 bg-emerald-500 rounded-sm" />
                            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Average CTR</span>
                         </div>
                         <div className="text-2xl md:text-3xl font-black text-slate-900">4.3%</div>
                      </div>
-                     <div className="p-4 md:p-6 cursor-pointer hover:bg-amber-50/50 transition-colors">
+                     <div className="p-4 md:p-6 hover:bg-amber-50/50 transition-colors">
                         <div className="flex items-center gap-2 mb-2">
                            <div className="w-3 h-3 bg-amber-500 rounded-sm" />
                            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Average Position</span>
@@ -225,8 +225,8 @@ export default function SeoTongThePage() {
                         />
                         
                         {/* Data Points */}
-                        <circle cx="300" cy="130" r="5" fill="#fff" stroke="#3b82f6" strokeWidth="3" className="hover:r-8 transition-all cursor-pointer" />
-                        <circle cx="600" cy="60" r="5" fill="#fff" stroke="#0ea5e9" strokeWidth="3" className="hover:r-8 transition-all cursor-pointer" />
+                        <circle cx="300" cy="130" r="5" fill="#fff" stroke="#3b82f6" strokeWidth="3" className="hover:r-8 transition-all" />
+                        <circle cx="600" cy="60" r="5" fill="#fff" stroke="#0ea5e9" strokeWidth="3" className="hover:r-8 transition-all" />
                         <circle cx="800" cy="10" r="6" fill="#fff" stroke="#0284c7" strokeWidth="3" className="animate-[ping_2s_infinite]" />
                         <circle cx="800" cy="10" r="4" fill="#0284c7" />
                      </svg>

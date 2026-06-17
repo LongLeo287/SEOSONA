@@ -61,7 +61,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="card grid gap-4 p-8 bg-white/90">
+    <form onSubmit={handleSubmit} className="grid gap-5">
       <div className="grid gap-1">
         <label htmlFor="name" className="text-sm font-bold text-slate-700">Họ và tên <span className="text-red-500">*</span></label>
         <input
@@ -71,7 +71,7 @@ export function ContactForm() {
           disabled={loading}
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="rounded-2xl border border-slate-200 p-4 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 disabled:bg-slate-50 transition"
+          className="rounded-[20px] border-2 border-transparent bg-slate-50 p-4 font-medium outline-none focus:border-blue-500 focus:bg-white disabled:bg-slate-100 transition-all duration-300"
           placeholder="Ví dụ: Nguyễn Văn A"
         />
       </div>
@@ -85,7 +85,7 @@ export function ContactForm() {
           disabled={loading}
           value={formData.contact}
           onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
-          className="rounded-2xl border border-slate-200 p-4 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 disabled:bg-slate-50 transition"
+          className="rounded-[20px] border-2 border-transparent bg-slate-50 p-4 font-medium outline-none focus:border-blue-500 focus:bg-white disabled:bg-slate-100 transition-all duration-300"
           placeholder="Ví dụ: 0909xxxxxx hoặc contact@email.com"
         />
       </div>
@@ -97,7 +97,7 @@ export function ContactForm() {
           disabled={loading}
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          className="min-h-32 rounded-2xl border border-slate-200 p-4 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 disabled:bg-slate-50 transition"
+          className="min-h-32 rounded-[20px] border-2 border-transparent bg-slate-50 p-4 font-medium outline-none focus:border-blue-500 focus:bg-white disabled:bg-slate-100 transition-all duration-300 resize-none"
           placeholder="Hãy mô tả ngắn gọn hiện trạng website và mục tiêu kinh doanh của bạn..."
         />
       </div>
@@ -111,7 +111,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={loading}
-        className="rounded-full bg-blue-600 px-6 py-4 font-bold text-white shadow-lg shadow-blue-600/15 hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition flex items-center justify-center gap-2"
+        className="mt-2 rounded-full bg-blue-600 px-6 py-4 font-bold text-white shadow-[0_8px_30px_-10px_rgba(37,99,235,0.5)] hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-[0_12px_40px_-12px_rgba(37,99,235,0.7)] disabled:bg-slate-300 disabled:shadow-none disabled:cursor-not-allowed disabled:transform-none transition-all duration-300 flex items-center justify-center gap-2"
       >
         {loading && <Loader2 size={18} className="animate-spin" />}
         Gửi thông tin

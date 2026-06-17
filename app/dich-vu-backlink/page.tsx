@@ -3,7 +3,8 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Faq } from "@/components/sections/Faq";
 import { Process } from "@/components/sections/Process";
 import { PricingTable } from "@/components/sections/PricingTable";
-import { Link2, ShieldCheck, TrendingUp, Network, Zap, CheckCircle2, Globe, Activity, Share2 } from "lucide-react";
+import { Link2, ShieldCheck, Network, CheckCircle2, Globe, Activity, Share2 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default function BacklinkPage() {
-  const features = [
+  const features: Array<{ title: string; desc: string; icon: LucideIcon }> = [
     { title: "Backlink Báo Trắng", desc: "Liên kết từ các đầu báo lớn, uy tín tại Việt Nam (VnExpress, Dân Trí, Tuổi Trẻ...) giúp website nhận được nguồn Trust cực lớn từ Google.", icon: Globe },
     { title: "Social Entity & Profile", desc: "Xây dựng hệ sinh thái mạng xã hội đồng nhất, khai báo Schema chuẩn xác để xác thực thực thể doanh nghiệp trên Internet.", icon: Network },
     { title: "Guest Post Cùng Ngách", desc: "Hệ thống Guest Post chọn lọc khắt khe, có traffic thật, cùng lĩnh vực hoạt động để đảm bảo tính Relevant (Liên quan) tối đa.", icon: Link2 },
@@ -166,41 +167,41 @@ export default function BacklinkPage() {
                      </svg>
 
                      {/* Satellite Nodes (Backlink Sources) */}
-                     <div className="absolute top-[30%] left-[20%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+                     <div className="absolute top-[30%] left-[20%] -translate-x-1/2 -translate-y-1/2 group">
                         <div className="w-12 h-12 rounded-full bg-blue-500 border-2 border-white shadow-sm flex items-center justify-center group-hover:scale-125 transition-transform">
                            <span className="text-white font-bold text-xs">VnE</span>
                         </div>
                         <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-white border border-slate-200 text-slate-600 shadow-sm text-[10px] px-2 py-1 rounded whitespace-nowrap">DR: 89 • Traffic: 5M+</div>
                      </div>
 
-                     <div className="absolute top-[20%] left-[80%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+                     <div className="absolute top-[20%] left-[80%] -translate-x-1/2 -translate-y-1/2 group">
                         <div className="w-16 h-16 rounded-full bg-emerald-500 border-2 border-white shadow-sm flex items-center justify-center group-hover:scale-125 transition-transform">
                            <span className="text-white font-bold text-sm">Tuổi Trẻ</span>
                         </div>
                         <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-white border border-slate-200 text-slate-600 shadow-sm text-[10px] px-2 py-1 rounded whitespace-nowrap">DR: 85 • Traffic: 4.2M+</div>
                      </div>
 
-                     <div className="absolute top-[70%] left-[15%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+                     <div className="absolute top-[70%] left-[15%] -translate-x-1/2 -translate-y-1/2 group">
                         <div className="w-10 h-10 rounded-full bg-amber-500 border-2 border-white shadow-sm flex items-center justify-center group-hover:scale-125 transition-transform">
                            <Network size={16} className="text-white" />
                         </div>
                         <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-white border border-slate-200 text-slate-600 shadow-sm text-[10px] px-2 py-1 rounded whitespace-nowrap">Guest Post • DR: 45</div>
                      </div>
 
-                     <div className="absolute top-[80%] left-[75%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+                     <div className="absolute top-[80%] left-[75%] -translate-x-1/2 -translate-y-1/2 group">
                         <div className="w-14 h-14 rounded-full bg-indigo-500 border-2 border-white shadow-sm flex items-center justify-center group-hover:scale-125 transition-transform">
                            <span className="text-white font-bold text-xs">Dân Trí</span>
                         </div>
                         <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-white border border-slate-200 text-slate-600 shadow-sm text-[10px] px-2 py-1 rounded whitespace-nowrap">DR: 88 • Traffic: 4.8M+</div>
                      </div>
 
-                     <div className="absolute top-[15%] left-[45%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+                     <div className="absolute top-[15%] left-[45%] -translate-x-1/2 -translate-y-1/2 group">
                         <div className="w-8 h-8 rounded-full bg-rose-500 border-2 border-white shadow-sm flex items-center justify-center group-hover:scale-125 transition-transform">
                            <Share2 size={12} className="text-white" />
                         </div>
                      </div>
 
-                     <div className="absolute top-[85%] left-[60%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+                     <div className="absolute top-[85%] left-[60%] -translate-x-1/2 -translate-y-1/2 group">
                         <div className="w-10 h-10 rounded-full bg-cyan-500 border-2 border-white shadow-sm flex items-center justify-center group-hover:scale-125 transition-transform">
                            <Link2 size={16} className="text-white" />
                         </div>
@@ -229,7 +230,7 @@ export default function BacklinkPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
             {features.map((item, index) => {
-               const IconComponent = item.icon as any;
+               const IconComponent = item.icon;
                return (
               <div key={index} className="p-8 rounded-3xl bg-white border border-slate-200 hover:shadow-xl hover:border-purple-300 transition-all duration-300 flex flex-col gap-5 group">
                 <div className="h-14 w-14 rounded-2xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform">

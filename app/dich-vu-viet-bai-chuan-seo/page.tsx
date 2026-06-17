@@ -3,7 +3,8 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Faq } from "@/components/sections/Faq";
 import { Process } from "@/components/sections/Process";
 import { PricingTable } from "@/components/sections/PricingTable";
-import { Sparkles, PenTool, Search, ArrowRight, BarChart3, CheckCircle2, Type, ListChecks, LayoutTemplate, Layers, Target, FileText } from "lucide-react";
+import { Sparkles, PenTool, CheckCircle2, Type, ListChecks, LayoutTemplate, Layers, Target, FileText } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { MarkerHighlight } from "@/components/ui/marker-highlight";
 import { InlineHighlight } from "@/components/ui/inline-highlight";
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default function ContentSeoPage() {
-  const features = [
+  const features: Array<{ title: string; desc: string; icon: LucideIcon }> = [
     { title: "Nghiên cứu Search Intent", desc: "Phân tích kỹ lưỡng ý định tìm kiếm của người dùng (Informational, Navigational, Transactional) để viết đúng trọng tâm, đáp ứng chính xác thứ khách hàng cần.", icon: Target },
     { title: "Chuẩn hóa Semantic SEO", desc: "Không chỉ nhồi nhét từ khóa. Bài viết được cấu trúc khoa học với các LSI Keywords, thực thể (Entity) giúp Google dễ dàng hiểu rõ chủ đề cốt lõi.", icon: Layers },
     { title: "Chất lượng 100% Unique", desc: "Nội dung được viết mới hoàn toàn bởi các Content Writer có chuyên môn. Cam kết vượt qua mọi bài kiểm tra đạo văn và AI Detection.", icon: FileText },
@@ -162,7 +163,7 @@ export default function ContentSeoPage() {
                      <div className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-400"><ListChecks size={16}/></div>
                      <div className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-400"><LayoutTemplate size={16}/></div>
                      <div className="h-6 w-px bg-slate-200 mx-2"></div>
-                     <div className="flex items-center gap-2 px-3 py-1.5 bg-rose-50 text-rose-600 rounded-lg font-bold text-sm cursor-pointer hover:bg-rose-100 transition-colors">
+                     <div className="flex items-center gap-2 px-3 py-1.5 bg-rose-50 text-rose-600 rounded-lg font-bold text-sm hover:bg-rose-100 transition-colors">
                         <Sparkles size={14} /> Tối ưu Semantic
                      </div>
                   </div>
@@ -174,7 +175,7 @@ export default function ContentSeoPage() {
                      Trong thời đại Digital Marketing, <span className="bg-rose-100 text-rose-800 px-1 rounded font-medium">nội dung chất lượng</span> chính là cầu nối vững chắc nhất giữa doanh nghiệp và khách hàng. Một bài viết được đầu tư kỹ lưỡng không chỉ giúp website <MarkerHighlight markerColor="#fda4af" delay={0.5}>leo top Google dễ dàng</MarkerHighlight>, mà còn giữ chân người dùng ở lại lâu hơn.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-4 text-sm md:text-base">
-                     Tại SEOSONA, chúng tôi không "sản xuất chữ". Đội ngũ Copywriter phân tích sâu sắc <span className="text-blue-600 font-medium cursor-help" title="Ý định tìm kiếm">Search Intent</span> của người dùng trước khi đặt bút, đảm bảo bài viết giải quyết triệt để vấn đề của họ...
+                     Tại SEOSONA, chúng tôi không &quot;sản xuất chữ&quot;. Đội ngũ Copywriter phân tích sâu sắc <span className="text-blue-600 font-medium cursor-help" title="Ý định tìm kiếm">Search Intent</span> của người dùng trước khi đặt bút, đảm bảo bài viết giải quyết triệt để vấn đề của họ...
                   </p>
                   
                   {/* Fake Image Placeholder */}
@@ -204,7 +205,7 @@ export default function ContentSeoPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
             {features.map((item, index) => {
-               const IconComponent = item.icon as any;
+               const IconComponent = item.icon;
                return (
               <div key={index} className="p-8 rounded-3xl bg-white border border-slate-200 hover:shadow-xl hover:border-rose-300 transition-all duration-300 flex flex-col gap-5 group">
                 <div className="h-14 w-14 rounded-2xl bg-rose-50 border border-rose-100 text-rose-600 flex items-center justify-center group-hover:scale-110 transition-transform">

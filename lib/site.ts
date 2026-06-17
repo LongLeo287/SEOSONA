@@ -113,7 +113,7 @@ export const navItems: NavItem[] = [
       { label: "Khóa học Content", href: "/khoa-hoc-content-seo/" },
       { label: "Mentor 1:1", href: "/chi-quyet-academy/mentor/" },
       { label: "In-house Training", href: "/chi-quyet-academy/in-house/" },
-      { label: "Hình ảnh sự kiện", href: "/p/about-team" },
+      { label: "Hình ảnh sự kiện", href: "/chi-quyet-academy/#hinh-anh-su-kien" },
       { label: "Thống kê học viên", href: "/case-study/" }
     ]
   },

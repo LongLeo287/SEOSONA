@@ -19,3 +19,10 @@ This project is bound to SEOSONA OS through `seosona.project.json`.
 - Publish/deploy actions require explicit user intent.
 
 TASK COMPLETED
+
+## STRICT DESIGN SYSTEM ENFORCEMENT
+Whenever you perform UI/UX tasks, frontend styling, or component creation, you MUST READ AND STRICTLY ADHERE TO the design system defined in `DESIGN.md`.
+- **Primary Source of Truth:** `DESIGN.md`
+- Do NOT use Dark Navy backgrounds, Neon Green accents, or any tokens outside the B2B Light Theme specified in the design document.
+- Failure to comply with `DESIGN.md` is a critical violation of the startup contract.
+

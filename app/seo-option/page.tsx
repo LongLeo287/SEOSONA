@@ -82,21 +82,21 @@ export default function SeoOptionPage() {
                 {/* Mockup Sidebar */}
                 <div className="w-1/3 bg-slate-50 rounded-xl border border-slate-100 p-5 flex flex-col gap-4">
                    <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Build Your Plan</div>
-                   <div className="flex items-center justify-between bg-white p-3 rounded-lg border border-indigo-200 shadow-sm ring-1 ring-indigo-50 cursor-pointer">
+                   <div className="flex items-center justify-between bg-white p-3 rounded-lg border border-indigo-200 shadow-sm ring-1 ring-indigo-50">
                       <div className="flex items-center gap-3">
                          <Stethoscope size={18} className="text-indigo-600" />
                          <span className="text-sm font-bold text-slate-900">Audit Website</span>
                       </div>
                       <div className="w-4 h-4 rounded-full bg-indigo-500 border-[3px] border-indigo-100"></div>
                    </div>
-                   <div className="flex items-center justify-between bg-white p-3 rounded-lg border border-slate-200 hover:border-indigo-200 cursor-pointer transition-all">
+                   <div className="flex items-center justify-between bg-white p-3 rounded-lg border border-slate-200 hover:border-indigo-200 transition-all">
                       <div className="flex items-center gap-3">
                          <ShieldCheck size={18} className="text-slate-400" />
                          <span className="text-sm font-bold text-slate-600">Team Coaching</span>
                       </div>
                       <div className="w-4 h-4 rounded-full border-2 border-slate-300"></div>
                    </div>
-                   <div className="flex items-center justify-between bg-white p-3 rounded-lg border border-slate-200 hover:border-indigo-200 cursor-pointer transition-all">
+                   <div className="flex items-center justify-between bg-white p-3 rounded-lg border border-slate-200 hover:border-indigo-200 transition-all">
                       <div className="flex items-center gap-3">
                          <Zap size={18} className="text-slate-400" />
                          <span className="text-sm font-bold text-slate-600">Full Execution</span>

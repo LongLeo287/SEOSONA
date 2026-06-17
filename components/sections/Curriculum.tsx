@@ -10,11 +10,12 @@ type CurriculumProps = {
   title: string;
   description?: string;
   modules: ModuleProps[];
+  id?: string;
 };
 
-export function Curriculum({ eyebrow, title, description, modules }: CurriculumProps) {
+export function Curriculum({ eyebrow, title, description, modules, id }: CurriculumProps) {
   return (
-    <section className="bg-white py-12 lg:py-16 border-y border-slate-100">
+    <section id={id} className="bg-white py-12 lg:py-16 border-y border-slate-100">
       <div className="container">
         <div className="mb-12 max-w-3xl">
           {eyebrow && <span className="badge mb-4">{eyebrow}</span>}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/PageHero";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { Process } from "@/components/sections/Process";
+import { PricingTable } from "@/components/sections/PricingTable";
 import { Faq } from "@/components/sections/Faq";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -95,6 +96,52 @@ export default function Page() {
       <Process
         steps={curriculum}
         description="Chương trình 6 module từ nền tảng đến triển khai, kết hợp lý thuyết và bài tập thực hành trên dự án thật."
+      />
+      <PricingTable 
+        id="pricing"
+        eyebrow="Bảng giá ưu đãi"
+        title="Đầu tư cho kiến thức thực chiến"
+        description="Lựa chọn gói học phù hợp với nhu cầu và mục tiêu của bạn."
+        plans={[
+          {
+            name: "Học trực tuyến (Video)",
+            price: "2.900.000đ",
+            description: "Phù hợp cho người bận rộn muốn chủ động thời gian học tập.",
+            features: [
+              "Truy cập 6 Module video mãi mãi",
+              "Bộ tài liệu, Checklist & Biểu mẫu",
+              "Tham gia Group kín hỗ trợ học viên",
+              "Hỗ trợ giải đáp thắc mắc 24/7"
+            ],
+            ctaText: "Đăng ký Online"
+          },
+          {
+            name: "Lớp học Zoom Trực tiếp",
+            price: "5.900.000đ",
+            description: "Học trực tiếp qua Zoom với Giảng viên, tương tác hỏi đáp ngay tại lớp.",
+            isPopular: true,
+            features: [
+              "Tất cả quyền lợi của gói Online",
+              "10 buổi học Zoom trực tiếp",
+              "Sửa bài tập ngay tại lớp",
+              "Cấp chứng chỉ tốt nghiệp SEOSONA"
+            ],
+            ctaText: "Đăng ký Lớp Zoom"
+          },
+          {
+            name: "Đào tạo Doanh nghiệp",
+            price: "Liên hệ",
+            period: "",
+            description: "Thiết kế riêng theo quy mô và lĩnh vực của doanh nghiệp.",
+            features: [
+              "Giáo trình thiết kế riêng (Customize)",
+              "Cầm tay chỉ việc trên dự án công ty",
+              "Tư vấn lộ trình KPI nhân sự",
+              "Hỗ trợ In-house team 3 tháng sau khóa"
+            ],
+            ctaText: "Nhận báo giá Doanh nghiệp"
+          }
+        ]}
       />
       <Faq items={faq} />
       <CtaBand />

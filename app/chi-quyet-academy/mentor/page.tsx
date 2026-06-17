@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
-import { CheckCircle2 } from "lucide-react";
+import { Process } from "@/components/sections/Process";
+import { Faq } from "@/components/sections/Faq";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { CheckCircle2, TrendingUp, Target, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Cố vấn Mentor 1:1 | SEOSONA",
@@ -39,28 +42,39 @@ export default function Page() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((item, index) => (
-              <div key={index} className="p-8 rounded-[24px] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-[0_12px_40px_rgba(59,166,241,0.12)] hover:border-[#1D4ED8]/30 transition-all duration-300">
-                <div className="h-12 w-12 rounded-xl bg-white text-[#1D4ED8] shadow-sm border border-slate-100 flex items-center justify-center mb-6">
-                  <CheckCircle2 size={24} />
+              <div key={index} className="group p-8 rounded-[32px] bg-white border border-slate-200 hover:border-blue-200 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-500">
+                <div className="h-14 w-14 rounded-2xl bg-blue-50 text-blue-600 shadow-inner flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+                  {index === 0 ? <TrendingUp size={28} /> : index === 1 ? <Target size={28} /> : <ShieldCheck size={28} />}
                 </div>
-                <h3 className="text-[20px] font-bold text-[#04091A] mb-4">{item.title}</h3>
-                <p className="text-[15px] text-slate-500 leading-relaxed font-medium">
+                <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">{item.title}</h3>
+                <p className="text-[15px] text-slate-600 leading-relaxed font-medium">
                   {item.desc}
                 </p>
               </div>
             ))}
           </div>
-          
-          {/* Placeholder cho Nội dung chi tiết */}
-          <div className="mt-20 p-12 border-2 border-dashed border-slate-200 rounded-[32px] bg-slate-50/50 text-center flex flex-col items-center justify-center">
-            <div className="w-16 h-16 bg-slate-200 rounded-full mb-6 animate-pulse"></div>
-            <h3 className="text-xl font-bold text-slate-400 mb-2">Đang chờ cập nhật chi tiết...</h3>
-            <p className="text-slate-400 max-w-lg">
-              [Vị trí này dành cho Team Content điền thêm các sections như: Bảng giá, Quy trình làm việc, Khách hàng tiêu biểu, FAQ...]
-            </p>
-          </div>
         </div>
       </section>
+
+      <Process 
+        steps={[
+          { title: "Giai đoạn 1: Audit Toàn diện", description: "Đánh giá chi tiết website, nguồn lực, thị trường và đối thủ để tìm ra điểm nghẽn." },
+          { title: "Giai đoạn 2: Lập Kế hoạch & KPIs", description: "Xây dựng chiến lược SEO 6-12 tháng, giao việc cụ thể cho team In-house và thống nhất KPIs." },
+          { title: "Giai đoạn 3: Triển khai & Đo lường", description: "Theo sát tiến độ hàng tuần, giải quyết các vấn đề phát sinh và tối ưu chiến lược liên tục." },
+          { title: "Giai đoạn 4: Nghiệm thu & Chuyển giao", description: "Đánh giá kết quả, chuyển giao toàn bộ quy trình để doanh nghiệp có thể tự vận hành mượt mà." }
+        ]}
+        description="Quy trình cố vấn chuyên nghiệp, bám sát thực tiễn doanh nghiệp để mang lại hiệu quả đo lường được."
+      />
+
+      <Testimonials />
+
+      <Faq 
+        items={[
+          { question: "Mentor 1:1 có cam kết kết quả không?", answer: "Có. Chúng tôi cam kết các chỉ số KPIs tăng trưởng rõ ràng (Traffic, Ranking, Conversion) dựa trên bản kế hoạch chiến lược đã thống nhất ban đầu." },
+          { question: "Thời gian cố vấn là bao lâu?", answer: "Thông thường kéo dài từ 3 đến 6 tháng, tùy thuộc vào quy mô dự án và mục tiêu của doanh nghiệp." },
+          { question: "Doanh nghiệp cần chuẩn bị gì?", answer: "Doanh nghiệp cần có nhân sự (In-house team hoặc Freelancer) để thực thi các chiến lược mà Mentor đưa ra. Mentor sẽ đóng vai trò là SEO Manager định hướng và kiểm soát chất lượng." }
+        ]}
+      />
 
       <CtaBand />
     </main>

@@ -1,176 +1,335 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowRight, Target, TrendingUp, Megaphone, GraduationCap, Bot, Sparkles } from "lucide-react";
+import { useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { SectionBadge } from "@/components/ui/SectionBadge";
-import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { MotionButton } from "@/components/ui/motion-button";
-import { AnimatePresence, motion } from "framer-motion";
-
-const solutions = [
-  {
-    title: "Dịch Vụ SEO Toàn Diện",
-    description: "Xây dựng nền móng Organic vững chắc, phủ sóng hàng ngàn từ khóa và chiếm lĩnh đỉnh cao tìm kiếm Google một cách bền vững. Chiến lược an toàn, cam kết KPI rõ ràng.",
-    href: "/dich-vu-seo-tong-the/",
-    icon: TrendingUp,
-    metrics: ["+300% Organic Traffic", "Top 1-3 Keywords"]
-  },
-  {
-    title: "Quảng Cáo Ads Đa Kênh",
-    description: "Tối ưu hóa phễu chuyển đổi qua Google, Facebook, Youtube. Tiếp cận đúng khách hàng mục tiêu với chi phí tối ưu nhất, dễ dàng scale up ngân sách an toàn.",
-    href: "/dich-vu-ads/google/",
-    icon: Megaphone,
-    metrics: ["-40% CPA", "ROI tối đa"]
-  },
-  {
-    title: "Giải Pháp AI",
-    description: "Ứng dụng trí tuệ nhân tạo để phân tích hành vi người dùng, vẽ bản đồ hành trình siêu cá nhân hóa và tự động hóa khâu sản xuất hàng ngàn nội dung chuẩn SEO.",
-    href: "/giai-phap/ai-customer-journey/",
-    icon: Bot,
-    metrics: ["Tự động hóa 80%", "Nội dung chuẩn E-E-A-T"]
-  },
-  {
-    title: "Data & Automation",
-    description: "Thiết lập hệ thống Tracking nâng cao theo chuẩn quốc tế. Trực quan hóa dữ liệu qua Power BI Dashboard và tự động hóa quy trình CSKH bằng Zalo 2BS.",
-    href: "/giai-phap/tracking-automation/",
-    icon: Target,
-    metrics: ["Tracking chính xác 99%", "Dashboard Real-time"]
-  },
-  {
-    title: "Chí Quyết Academy",
-    description: "Hệ thống đào tạo thực chiến kết hợp cố vấn Mentor 1:1, chuyển giao công nghệ quy trình SEO giúp đội ngũ In-house tự chủ vận hành cỗ máy Marketing.",
-    href: "/chi-quyet-academy/",
-    icon: GraduationCap,
-    metrics: ["Mentor 1:1", "Chuyển giao công nghệ"]
-  }
-];
+import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  Bot,
+  GraduationCap,
+  Megaphone,
+  Network,
+  TrendingUp,
+  Plus,
+  Sparkles,
+  BarChart3,
+  MousePointerClick,
+  CheckSquare,
+  Search,
+  MessageSquare
+} from "lucide-react";
 
 export function CoreSolutions() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "start start"]
+  });
+
+  // Timeline mapped exactly to Hero Parallax progress
+  const arcOpacity = useTransform(scrollYProgress, [0.55, 0.85], [0, 1]);
+  
+  const titleOpacity = useTransform(scrollYProgress, [0.65, 0.90], [0, 1]);
+  const titleY = useTransform(scrollYProgress, [0.65, 0.90], [30, 0]);
+  
+  // Timeline mapped for the Bento grid to slide up and fade in
+  const gridOpacity = useTransform(scrollYProgress, [0.75, 0.95], [0, 1]);
+  const gridY = useTransform(scrollYProgress, [0.75, 0.95], [50, 0]);
 
   return (
-    <section className="relative overflow-hidden bg-white py-20 lg:py-32">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+    <section ref={sectionRef} className="relative z-20 overflow-hidden bg-[#F8FAFC] mt-[-100vh] pt-[160px] pb-20 font-sans border-t border-slate-200/60 shadow-[0_-20px_40px_-20px_rgba(0,0,0,0.03)]">
+      
+      {/* Background subtle grid pattern */}
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#04091A08_1px,transparent_1px),linear-gradient(to_bottom,#04091A08_1px,transparent_1px)] bg-[size:28px_28px]" />
+
+      <div className="container relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 z-10">
         
-        {/* Header - Clean B2B */}
-        <div className="mb-16 flex flex-col items-center text-center">
-          <RevealOnScroll direction="up">
-            <SectionBadge live={false} className="bg-blue-50 border-blue-100 text-blue-600 mb-6">
-              <Sparkles size={14} className="mr-1 inline-block" /> Giải pháp cốt lõi
-            </SectionBadge>
-            <h2 className="text-[32px] font-black leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-[46px] text-balance max-w-3xl mx-auto">
-              Hệ sinh thái <span className="text-blue-600">tăng trưởng toàn diện</span>
-            </h2>
-            <p className="mt-5 text-[17px] leading-relaxed text-slate-500 max-w-2xl mx-auto">
-              Chúng tôi không cung cấp dịch vụ rập khuôn. Mỗi giải pháp được thiết kế &quot;đo ni đóng giày&quot; dựa trên dữ liệu thực tế của doanh nghiệp bạn.
-            </p>
-          </RevealOnScroll>
+        {/* --- TOP SECTION: TITLE & PARABOLA --- */}
+        <div className="flex flex-col items-center text-center mb-8">
+          <motion.h2 style={{ opacity: titleOpacity, y: titleY }} className="text-balance text-[28px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl lg:text-[42px] max-w-3xl">
+            Tăng trưởng doanh thu bằng <br className="hidden sm:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1D4ED8] to-[#3B82F6]">
+              Hệ Sinh Thái SEOSONA
+            </span> trong các nền tảng số
+          </motion.h2>
+
+          <motion.div style={{ opacity: arcOpacity }} className="relative mt-[120px] w-full max-w-[800px] h-[160px] flex justify-center">
+             
+             {/* Background Glow Layers */}
+             <div className="absolute left-1/2 top-[40px] -translate-x-1/2 -translate-y-1/2 w-[400px] h-[160px] bg-blue-500/10 blur-[60px] rounded-[100%] pointer-events-none" />
+             <div className="absolute left-1/2 top-[40px] -translate-x-1/2 -translate-y-1/2 w-[200px] h-[80px] bg-blue-400/30 blur-[30px] rounded-[100%] pointer-events-none" />
+
+             {/* The Arc/Parabola Line */}
+             <svg
+               className="absolute inset-0 w-full h-full pointer-events-none"
+               viewBox="0 0 800 160"
+               preserveAspectRatio="none"
+             >
+                {/* Thick blurry background stroke */}
+                <path
+                  d="M 50 140 Q 400 -60 750 140"
+                  fill="none"
+                  stroke="url(#arcGradientGlow)"
+                  strokeWidth="12"
+                  filter="url(#blurArc)"
+                />
+                {/* Crisp foreground stroke */}
+                <path
+                  d="M 50 140 Q 400 -60 750 140"
+                  fill="none"
+                  stroke="url(#arcGradientCore)"
+                  strokeWidth="3"
+                />
+                <defs>
+                  <linearGradient id="arcGradientGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="rgba(59, 130, 246, 0)" />
+                    <stop offset="30%" stopColor="rgba(59, 130, 246, 0.4)" />
+                    <stop offset="50%" stopColor="rgba(29, 78, 216, 0.8)" />
+                    <stop offset="70%" stopColor="rgba(59, 130, 246, 0.4)" />
+                    <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
+                  </linearGradient>
+                  <linearGradient id="arcGradientCore" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="rgba(59, 130, 246, 0)" />
+                    <stop offset="35%" stopColor="rgba(96, 165, 250, 0.6)" />
+                    <stop offset="50%" stopColor="rgba(37, 99, 235, 1)" />
+                    <stop offset="65%" stopColor="rgba(96, 165, 250, 0.6)" />
+                    <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
+                  </linearGradient>
+                  <filter id="blurArc" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="6" />
+                  </filter>
+                </defs>
+             </svg>
+
+             {/* 4-Point Star Sparkle (Chubby) */}
+             <div className="absolute left-1/2 top-[40px] -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_0_20px_rgba(37,99,235,0.6)]">
+                <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M40 0 C40 24 56 40 80 40 C56 40 40 56 40 80 C40 56 24 40 0 40 C24 40 40 24 40 0 Z"
+                    fill="url(#starGradient)"
+                  />
+                  <defs>
+                    <linearGradient id="starGradient" x1="20" y1="0" x2="60" y2="80" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#60A5FA" />
+                      <stop offset="1" stopColor="#1D4ED8" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+             </div>
+
+          </motion.div>
         </div>
 
-        {/* Interactive Tabs Layout - Clean & Refined */}
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+        {/* --- BOTTOM SECTION: BENTO GRID --- */}
+        <motion.div style={{ opacity: gridOpacity, y: gridY }} className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
           
-          {/* LEFT: Tabs Navigation */}
-          <RevealOnScroll direction="left" className="lg:col-span-5 flex flex-col gap-3">
-            {solutions.map((item, index) => {
-              const Icon = item.icon;
-              const isActive = activeIndex === index;
-              
-              return (
-                <button
-                  key={item.title}
-                  type="button"
-                  aria-pressed={isActive}
-                  onClick={() => setActiveIndex(index)}
-                  className={`relative flex items-center gap-4 w-full p-5 rounded-2xl text-left transition-all duration-300 border focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 ${
-                    isActive 
-                      ? 'bg-white border-blue-100 shadow-[0_8px_30px_rgba(59,166,241,0.08)] ring-1 ring-blue-50' 
-                      : 'border-transparent hover:bg-slate-50 text-slate-500'
-                  }`}
-                >
-                  <div className={`shrink-0 flex h-12 w-12 items-center justify-center rounded-xl transition-colors duration-300 ${
-                    isActive ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'bg-slate-100 text-slate-400'
-                  }`}>
-                    <Icon size={20} strokeWidth={2} />
+          {/* Card 1: SEO */}
+          <div className="h-full">
+            <Link href="/dich-vu-seo-tong-the/" className="group relative flex flex-col h-full bg-white border border-slate-200 shadow-sm rounded-[32px] p-8 overflow-hidden hover:-translate-y-1.5 hover:shadow-lg hover:border-blue-300 transition-all duration-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">
+               {/* Mockup area */}
+               <div className="relative w-full h-[180px] bg-slate-50 rounded-2xl mb-8 p-5 border border-slate-200 shadow-inner overflow-hidden flex flex-col justify-end">
+                  <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent pointer-events-none" />
+                  {/* Fake UI */}
+                  <div className="flex items-end gap-3 h-full opacity-90">
+                     <div className="w-1/6 bg-slate-200 h-[40%] rounded-t-sm" />
+                     <div className="w-1/6 bg-slate-200 h-[60%] rounded-t-sm" />
+                     <div className="w-1/6 bg-slate-300 h-[30%] rounded-t-sm" />
+                     <div className="w-1/6 bg-slate-200 h-[80%] rounded-t-sm" />
+                     <div className="w-1/6 bg-slate-300 h-[50%] rounded-t-sm" />
+                     <div className="w-1/6 bg-blue-500 h-[100%] rounded-t-sm shadow-[0_0_15px_rgba(59,130,246,0.3)] relative">
+                        <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#04091A] text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm">+180%</div>
+                     </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className={`text-[17px] font-bold transition-colors duration-300 ${
-                      isActive ? 'text-blue-600' : 'text-slate-700'
-                    }`}>
-                      {item.title}
-                    </h3>
+                  {/* Floating Icon */}
+                  <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-white flex items-center justify-center border border-slate-200 shadow-sm backdrop-blur-md">
+                     <TrendingUp className="w-5 h-5 text-blue-600" />
                   </div>
+               </div>
+
+               {/* Content */}
+               <div className="flex-1 flex flex-col items-start pr-12 relative z-10">
+                  <div className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 mb-4 shadow-sm">
+                     <span className="text-[12px] font-bold text-blue-700">Dịch vụ SEO Tổng thể</span>
+                  </div>
+                  <h3 className="text-[20px] md:text-[22px] font-black leading-[1.3] text-[#04091A] text-balance transition-colors group-hover:text-blue-600">
+                     Được hỗ trợ theo nhu cầu doanh nghiệp để chiếm lĩnh thứ hạng và tăng trưởng traffic tự nhiên
+                  </h3>
+               </div>
+
+               {/* Plus Button */}
+               <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-[#1D4ED8] group-hover:text-white group-hover:shadow-[0_8px_20px_rgba(29,78,216,0.25)]">
+                  <Plus className="w-5 h-5" />
+               </div>
+            </Link>
+          </div>
+
+          {/* Card 2: Ads */}
+          <div className="h-full">
+            <Link href="/dich-vu-ads/" className="group relative flex flex-col h-full bg-white border border-slate-200 shadow-sm rounded-[32px] p-8 overflow-hidden hover:-translate-y-1.5 hover:shadow-lg hover:border-amber-300 transition-all duration-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-amber-100">
+               {/* Mockup area */}
+               <div className="relative w-full h-[180px] bg-slate-50 rounded-2xl mb-8 p-5 border border-slate-200 shadow-inner overflow-hidden flex flex-col">
+                  <div className="absolute inset-0 bg-gradient-to-b from-amber-50 to-transparent pointer-events-none" />
+                  {/* Fake UI */}
+                  <div className="w-full bg-white rounded-lg p-3 mb-3 border border-slate-200 shadow-sm">
+                     <div className="w-1/3 h-2 bg-slate-200 rounded-full mb-2" />
+                     <div className="flex justify-between items-center">
+                        <div className="w-1/2 h-4 bg-amber-400 rounded-md shadow-[0_0_10px_rgba(251,191,36,0.3)]" />
+                        <span className="text-[10px] text-emerald-600 font-bold">+12.4% ROI</span>
+                     </div>
+                  </div>
+                  <div className="w-full bg-white rounded-lg p-3 border border-slate-200 shadow-sm">
+                     <div className="w-1/4 h-2 bg-slate-200 rounded-full mb-2" />
+                     <div className="w-2/3 h-4 bg-slate-100 rounded-md" />
+                  </div>
+                  {/* Floating Icon */}
+                  <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-white flex items-center justify-center border border-slate-200 shadow-sm">
+                     <MousePointerClick className="w-5 h-5 text-amber-500" />
+                  </div>
+               </div>
+
+               {/* Content */}
+               <div className="flex-1 flex flex-col items-start pr-12 relative z-10">
+                  <div className="inline-flex items-center gap-1.5 rounded-full border border-amber-200 bg-amber-50 px-3 py-1 mb-4 shadow-sm">
+                     <span className="text-[12px] font-bold text-amber-700">Quảng Cáo Đa Kênh</span>
+                  </div>
+                  <h3 className="text-[20px] md:text-[22px] font-black leading-[1.3] text-[#04091A] text-balance transition-colors group-hover:text-amber-500">
+                     Bắt đầu nhanh chóng với các chiến dịch chạy Ads được tối ưu hóa chuyển đổi liên tục
+                  </h3>
+               </div>
+
+               {/* Plus Button */}
+               <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-[#1D4ED8] group-hover:text-white group-hover:shadow-[0_8px_20px_rgba(29,78,216,0.25)]">
+                  <Plus className="w-5 h-5" />
+               </div>
+            </Link>
+          </div>
+
+          {/* Card 3: AI */}
+          <div className="h-full">
+            <Link href="/giai-phap/ai-customer-journey/" className="group relative flex flex-col h-full bg-white border border-slate-200 shadow-sm rounded-[32px] p-8 overflow-hidden hover:-translate-y-1.5 hover:shadow-lg hover:border-violet-300 transition-all duration-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-violet-100">
+               {/* Mockup area */}
+               <div className="relative w-full h-[180px] bg-slate-50 rounded-2xl mb-8 p-4 border border-slate-200 shadow-inner overflow-hidden flex flex-col">
+                  <div className="absolute inset-0 bg-gradient-to-b from-violet-50 to-transparent pointer-events-none" />
+                  {/* Fake Chat UI */}
+                  <div className="w-[80%] bg-white rounded-2xl rounded-tl-sm p-3 mb-3 border border-slate-200 shadow-sm text-[9px] text-slate-400">
+                     <div className="w-full h-1.5 bg-slate-200 rounded-full mb-1.5" />
+                     <div className="w-3/4 h-1.5 bg-slate-200 rounded-full" />
+                  </div>
+                  <div className="w-[70%] self-end bg-violet-50 rounded-2xl rounded-tr-sm p-3 border border-violet-100 text-[9px]">
+                     <div className="w-full h-1.5 bg-violet-200 rounded-full mb-1.5" />
+                     <div className="w-1/2 h-1.5 bg-violet-200 rounded-full" />
+                  </div>
+                  {/* Floating Icon */}
+                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white flex items-center justify-center border border-slate-200 shadow-sm">
+                     <Bot className="w-5 h-5 text-violet-500" />
+                  </div>
+               </div>
+
+               {/* Content */}
+               <div className="flex-1 flex flex-col items-start pr-12 relative z-10">
+                  <div className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-3 py-1 mb-4 shadow-sm">
+                     <Sparkles className="w-3 h-3 text-violet-500" fill="currentColor"/>
+                     <span className="text-[12px] font-bold text-violet-700">Giải Pháp AI</span>
+                  </div>
+                  <h3 className="text-[20px] md:text-[22px] font-black leading-[1.3] text-[#04091A] text-balance transition-colors group-hover:text-violet-500">
+                     Ưu tiên cá nhân hóa trải nghiệm và xây dựng kịch bản chăm sóc khách hàng tự động
+                  </h3>
+               </div>
+
+               {/* Plus Button */}
+               <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-[#1D4ED8] group-hover:text-white group-hover:shadow-[0_8px_20px_rgba(29,78,216,0.25)]">
+                  <Plus className="w-5 h-5" />
+               </div>
+            </Link>
+          </div>
+
+          {/* Card 4: Data & Tracking */}
+          <div className="h-full">
+            <Link href="/giai-phap/tracking-automation/" className="group relative flex flex-col h-full bg-white border border-slate-200 shadow-sm rounded-[32px] p-8 overflow-hidden hover:-translate-y-1.5 hover:shadow-lg hover:border-emerald-300 transition-all duration-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-emerald-100">
+               {/* Mockup area */}
+               <div className="relative w-full h-[180px] bg-slate-50 rounded-2xl mb-8 p-5 border border-slate-200 shadow-inner overflow-hidden flex items-center justify-center">
+                  <div className="absolute inset-0 bg-gradient-to-b from-emerald-50 to-transparent pointer-events-none" />
+                  {/* Fake Grid UI */}
+                  <div className="w-[80%] h-[70%] border border-slate-200 rounded-lg grid grid-cols-3 grid-rows-2 gap-2 p-2 bg-white shadow-sm">
+                     <div className="bg-slate-100 rounded border border-slate-100" />
+                     <div className="bg-slate-100 rounded border border-slate-100" />
+                     <div className="bg-slate-100 rounded border border-slate-100" />
+                     <div className="bg-slate-100 rounded border border-slate-100" />
+                     <div className="bg-emerald-50 rounded border border-emerald-200 flex items-center justify-center shadow-sm">
+                        <Search className="w-4 h-4 text-emerald-500" />
+                     </div>
+                     <div className="bg-slate-100 rounded border border-slate-100" />
+                  </div>
+                  {/* Floating Icon */}
+                  <div className="absolute bottom-4 left-4 w-10 h-10 rounded-2xl bg-white flex items-center justify-center border border-slate-200 shadow-sm">
+                     <Network className="w-5 h-5 text-emerald-500" />
+                  </div>
+               </div>
+
+               {/* Content */}
+               <div className="flex-1 flex flex-col items-start pr-12 relative z-10">
+                  <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 mb-4 shadow-sm">
+                     <span className="text-[12px] font-bold text-emerald-700">Data & Automation</span>
+                  </div>
+                  <h3 className="text-[20px] md:text-[22px] font-black leading-[1.3] text-[#04091A] text-balance transition-colors group-hover:text-emerald-500">
+                     Tìm câu trả lời chuyên sâu từ kho dữ liệu Tracking Server-side chuẩn xác
+                  </h3>
+               </div>
+
+               {/* Plus Button */}
+               <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-[#1D4ED8] group-hover:text-white group-hover:shadow-[0_8px_20px_rgba(29,78,216,0.25)]">
+                  <Plus className="w-5 h-5" />
+               </div>
+            </Link>
+          </div>
+
+          {/* Card 5: Academy (Full width) */}
+          <div className="md:col-span-2 h-full">
+            <Link href="/chi-quyet-academy/" className="group relative flex flex-col md:flex-row h-full bg-white border border-slate-200 shadow-sm rounded-[32px] p-8 overflow-hidden hover:-translate-y-1.5 hover:shadow-lg hover:border-rose-300 transition-all duration-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-rose-100">
+               
+               {/* Left Content */}
+               <div className="flex-1 flex flex-col items-start md:pr-16 relative z-10 order-2 md:order-1 mt-8 md:mt-0 justify-center">
+                  <div className="inline-flex items-center gap-1.5 rounded-full border border-rose-200 bg-rose-50 px-3 py-1 mb-4 shadow-sm">
+                     <span className="text-[12px] font-bold text-rose-700">Chi Quyết Academy</span>
+                  </div>
+                  <h3 className="text-[20px] md:text-[28px] font-black leading-[1.3] text-[#04091A] text-balance transition-colors group-hover:text-rose-500">
+                     Giao phó danh sách đào tạo nhân sự In-house cho các chuyên gia thực chiến
+                  </h3>
+               </div>
+
+               {/* Right Mockup area */}
+               <div className="relative w-full md:w-[45%] h-[200px] md:h-[240px] bg-slate-50 rounded-2xl p-4 border border-slate-200 shadow-inner overflow-hidden flex flex-col order-1 md:order-2 shrink-0">
+                  <div className="absolute inset-0 bg-gradient-to-l from-rose-50 to-transparent pointer-events-none" />
                   
-                  {/* Subtle active indicator arrow */}
-                  <div className={`transition-all duration-300 ${isActive ? 'opacity-100 translate-x-0 text-blue-600' : 'opacity-0 -translate-x-4'}`}>
-                    <ArrowRight size={18} />
+                  {/* Fake UI Task List */}
+                  <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-sm h-full w-full flex flex-col gap-3">
+                     <div className="flex items-center justify-between mb-2">
+                        <div className="w-1/3 h-3 bg-slate-200 rounded-full" />
+                        <GraduationCap className="w-4 h-4 text-rose-500" />
+                     </div>
+                     <div className="flex items-center gap-2">
+                        <CheckSquare className="w-4 h-4 text-rose-400" />
+                        <div className="w-2/3 h-2 bg-slate-100 rounded-full" />
+                     </div>
+                     <div className="flex items-center gap-2">
+                        <CheckSquare className="w-4 h-4 text-rose-400" />
+                        <div className="w-3/4 h-2 bg-slate-100 rounded-full" />
+                     </div>
+                     <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 border-2 border-slate-200 rounded-sm" />
+                        <div className="w-1/2 h-2 bg-slate-100 rounded-full" />
+                     </div>
                   </div>
-                </button>
-              );
-            })}
-          </RevealOnScroll>
+               </div>
 
-          {/* RIGHT: Active Content Window */}
-          <RevealOnScroll direction="right" className="lg:col-span-7 h-full">
-            <div className="relative h-full min-h-[400px] w-full bg-[#F8FAFC] border border-slate-100 rounded-[32px] overflow-hidden flex flex-col">
-              
-              {/* Decorative Subtle Background */}
-              <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none transition-all duration-500 transform scale-150 translate-x-1/4 -translate-y-1/4">
-                {(() => {
-                  const ActiveIcon = solutions[activeIndex].icon;
-                  return <ActiveIcon size={400} strokeWidth={1} />;
-                })()}
-              </div>
-              
-              <div className="relative z-10 p-8 sm:p-12 flex flex-col h-full justify-center">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeIndex}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -15 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="flex flex-col h-full max-w-xl"
-                  >
-                    <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200/60 bg-blue-50/50 px-3 py-1.5 backdrop-blur-sm">
-                      <span className="text-[13px] font-bold tracking-wide text-blue-600 uppercase">
-                        Giải pháp 0{activeIndex + 1}
-                      </span>
-                    </div>
-                    
-                    <h3 className="text-3xl sm:text-4xl font-black text-slate-900 mb-6 tracking-tight">
-                      {solutions[activeIndex].title}
-                    </h3>
-                    
-                    <p className="text-[17px] text-slate-600 leading-relaxed mb-10">
-                      {solutions[activeIndex].description}
-                    </p>
+               {/* Plus Button */}
+               <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-[#1D4ED8] group-hover:text-white group-hover:shadow-[0_8px_20px_rgba(29,78,216,0.25)]">
+                  <Plus className="w-5 h-5" />
+               </div>
+            </Link>
+          </div>
 
-                    {/* Metrics/Highlights */}
-                    <div className="grid grid-cols-2 gap-4 mb-10">
-                      {solutions[activeIndex].metrics.map((metric, i) => (
-                        <div key={i} className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
-                          <span className="text-[15px] font-medium text-slate-700">{metric}</span>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <div className="mt-auto">
-                      <MotionButton 
-                        label="Khám phá chi tiết"
-                        as={Link}
-                        href={solutions[activeIndex].href}
-                      />
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </div>
-          </RevealOnScroll>
-
-        </div>
+        </motion.div>
       </div>
     </section>
   );

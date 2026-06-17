@@ -30,7 +30,7 @@ export function PageHero({
         i < arr.length - 1 ? (
           <span key={i}>
             {part}
-            <span className="text-[#1D4ED8]">{accentWord}</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600">{accentWord}</span>
           </span>
         ) : (
           <span key={i}>{part}</span>
@@ -54,28 +54,27 @@ export function PageHero({
           </SectionBadge>
 
           {/* Headline */}
-          <h1 className="mx-auto mt-4 max-w-4xl text-balance text-4xl font-black leading-tight tracking-tight text-[#04091A] sm:text-5xl md:text-[54px]">
+          <h1 className="mx-auto mt-6 max-w-4xl text-balance text-4xl font-extrabold leading-[1.15] tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
             {renderedTitle}
           </h1>
 
           {/* Description */}
-          <p className="mx-auto mt-5 max-w-2xl text-pretty text-[17px] font-medium leading-relaxed text-slate-500">
+          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg font-medium leading-relaxed text-slate-600">
             {description}
           </p>
 
           {/* CTAs */}
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             {primaryHref && (
-              <Link href={primaryHref} className="flex h-14 items-center justify-center gap-2 rounded-full bg-[#1D4ED8] px-8 text-[15px] font-bold text-white transition-all hover:scale-105 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25 w-full sm:w-auto">
+              <Link href={primaryHref} className="group flex h-14 items-center justify-center gap-2 rounded-full bg-blue-600 px-8 font-bold text-white shadow-[0_8px_30px_-10px_rgba(37,99,235,0.4)] transition-all hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-[0_12px_40px_-12px_rgba(37,99,235,0.6)] w-full sm:w-auto">
                 {primaryCta}
-                <ArrowRight size={18} />
+                <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </Link>
             )}
 
             {secondaryHref && secondaryCta && (
-              <Link href={secondaryHref} className="flex h-14 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-[15px] font-bold text-[#04091A] transition-all hover:border-[#1D4ED8] hover:text-[#1D4ED8] w-full sm:w-auto group">
+              <Link href={secondaryHref} className="group flex h-14 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 font-semibold text-slate-700 shadow-sm transition-all hover:border-blue-200 hover:bg-slate-50 hover:text-blue-600 w-full sm:w-auto">
                 {secondaryCta}
-                <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </Link>
             )}
           </div>
