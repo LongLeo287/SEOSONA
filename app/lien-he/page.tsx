@@ -201,8 +201,8 @@ export default function Page() {
             </ScrollReveal>
             <ScrollReveal delay={100}>
                <div className="w-full h-[500px] rounded-3xl overflow-hidden shadow-xl border border-slate-200">
-                  <iframe 
-                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d3918.99612325151!2d106.62629117675512!3d10.811607958540323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752949592357f3%3A0xd828a5a185f8a656!2sSeosona!5e0!3m2!1sen!2s!4v1781605190460!5m2!1sen!2s" 
+                  <iframe
+                     src="https://www.google.com/maps?q=71%2F2%20Che%20Lan%20Vien%2C%20Tan%20Phu%2C%20TPHCM&output=embed"
                      width="100%" 
                      height="100%" 
                      style={{ border: 0 }} 

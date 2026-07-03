@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { clsx } from 'clsx'
+import type { ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-function cn(...inputs: any[]) { return twMerge(clsx(inputs)) }
+function cn(...inputs: ClassValue[]) { return twMerge(clsx(inputs)) }
 
 type Direction = 'TOP' | 'LEFT' | 'BOTTOM' | 'RIGHT'
 
@@ -39,23 +40,21 @@ function HoverBorderGradient({
   const [hovered, setHovered] = useState<boolean>(false)
   const [direction, setDirection] = useState<Direction>('BOTTOM')
 
-  const rotateDirection = (currentDirection: Direction): Direction => {
-    const directions: Direction[] = ['TOP', 'LEFT', 'BOTTOM', 'RIGHT']
-    const currentIndex = directions.indexOf(currentDirection)
-    const nextIndex = clockwise
-      ? (currentIndex - 1 + directions.length) % directions.length
-      : (currentIndex + 1) % directions.length
-    return directions[nextIndex]
-  }
-
   useEffect(() => {
     if (!hovered) {
+      const directions: Direction[] = ['TOP', 'LEFT', 'BOTTOM', 'RIGHT']
       const interval = setInterval(() => {
-        setDirection((prevState) => rotateDirection(prevState))
+        setDirection((prevState) => {
+          const currentIndex = directions.indexOf(prevState)
+          const nextIndex = clockwise
+            ? (currentIndex - 1 + directions.length) % directions.length
+            : (currentIndex + 1) % directions.length
+          return directions[nextIndex]
+        })
       }, duration * 1000)
       return () => clearInterval(interval)
     }
-  }, [hovered])
+  }, [clockwise, duration, hovered])
   return (
     <Element
       onMouseEnter={() => setHovered(true)}

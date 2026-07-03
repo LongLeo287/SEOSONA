@@ -43,9 +43,10 @@ function TypewriterEffect({ words }: { words: string[] }) {
 
     if (isDeleting) {
       if (displayText.length === 0) {
-        setIsDeleting(false);
-        setWordIndex((prev) => (prev + 1) % words.length);
-        timeout = setTimeout(() => {}, 400); // pause before typing next
+        timeout = setTimeout(() => {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length);
+        }, 400); // pause before typing next
       } else {
         timeout = setTimeout(() => {
           setDisplayText(currentWord.substring(0, displayText.length - 1));
@@ -186,7 +187,7 @@ export function Hero() {
   const ring2Ref = useRef<HTMLDivElement>(null);
   
   const [progress, setProgress] = useState(0);
-  const reduceMotion = useReducedMotion();
+  useReducedMotion();
 
   useEffect(() => {
     // Generate random layout once on client mount
@@ -226,8 +227,7 @@ export function Hero() {
     
     if (zone.y === 0) {
        // Mid Side zone: x must be outside safeX, y near center
-       const minX = Math.min(safeX, Math.max(safeX, maxPx)); 
-       px = zone.x * (safeX + Math.random() * Math.max(0, maxPx - safeX));
+        px = zone.x * (safeX + Math.random() * Math.max(0, maxPx - safeX));
        py = (Math.random() - 0.5) * (safeY * 0.5); 
     } else {
        // Corner zones
@@ -255,7 +255,7 @@ export function Hero() {
 }(heroNodes.length, window.innerWidth, window.innerHeight);
 
     let frame: number;
-    let startTime = Date.now();
+    const startTime = Date.now();
 
     const update = () => {
       const section = sectionRef.current;
@@ -270,13 +270,13 @@ export function Hero() {
       // Timeline: sequential phases that do NOT overlap
       const w = window.innerWidth;
       const h = window.innerHeight;
-      
+
       // Phase 1: Intro text fades out (0.00 → 0.25)
       const introExit = easeInOut(clamp(rawProgress / 0.25));
       const introOpacity = 1 - introExit;
       const introY = lerp(0, -60, introExit);
       const introScale = lerp(1, 0.97, introExit);
-      
+
       // Phase 2: Scattered pills gather into orbit (0.05 → 0.45)
       const gather = easeInOut(clamp((rawProgress - 0.05) / 0.40));
       
@@ -292,19 +292,19 @@ export function Hero() {
       // Dynamic Y-Tracking:
       // CoreSolutions overlaps by 100vh. It slides up as rawProgress goes 0 -> 1.
       // So its top is at `(1 - rawProgress) * h` relative to the viewport.
-      // The Parabola SVG curve peak in CoreSolutions is at 420px from its top.
-      const targetParabolaY = (1 - rawProgress) * h + 420;
+      // The Parabola SVG curve peak in CoreSolutions is at 320px offset to mathematically reach CoreSolutions Parabola peak
+      const targetParabolaY = (1 - rawProgress) * h + 320;
       const dropY = targetParabolaY - (h / 2);
       
       // Move down to align with Parabola SVG
       const currentDropY = lerp(0, dropY, parabolaProgress);
       
       const logoOpacity = easeInOut(clamp((rawProgress - 0.1) / 0.2));
-      const logoScaleFinal = lerp(1, 0.35, parabolaProgress);
-      const logoYOffset = lerp(0, -40, parabolaProgress); // Moves logo exactly to the peak of the parabola
-      
+      const logoScaleFinal = lerp(1, 0.35, parabolaProgress); // Moves logo exactly to the peak of the parabola
+      const logoYOffset = lerp(0, -70, parabolaProgress);
+
       const ringOpacity = easeInOut(clamp((rawProgress - 0.1) / 0.2)) * (1 - parabolaProgress);
-      
+
       const t = (Date.now() - startTime) / 1000;
       
       const isMobile = w < 640;
@@ -337,8 +337,8 @@ export function Hero() {
          
          const rand = randomPositions[i];
          
-         let startX = rand.px * w;
-         let startY = rand.py * h;
+          const startX = rand.px * w;
+          const startY = rand.py * h;
 
          const currentDepth = lerp(rand.depth, 1, gather);
          const scale = currentDepth;
@@ -362,10 +362,10 @@ export function Hero() {
          const circleY = Math.sin(currentAngle) * node.orbit.radius * orbitScaleMultiplier;
          
          // Target Parabola coordinates
-         const spread = Math.min(w * 0.38, 350);
+         const spread = Math.min(w * 0.4, 350);
          const parabolaXList = [-spread, -spread * 0.5, 0, spread * 0.5, spread];
          // Downward opening arch
-         const parabolaYList = [100, 30, -50, 30, 100];
+         const parabolaYList = [150, 37.5, 0, 37.5, 150];
          
          const targetX = lerp(circleX, parabolaXList[i], parabolaProgress);
          const targetY = lerp(circleY, parabolaYList[i], parabolaProgress);

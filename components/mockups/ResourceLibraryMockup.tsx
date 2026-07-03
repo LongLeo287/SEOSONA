@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { SVGProps } from "react";
 import { Download, FileText, LayoutTemplate, Video, FolderOpen } from "lucide-react";
 
 export function ResourceLibraryMockup() {
@@ -90,7 +91,7 @@ export function ResourceLibraryMockup() {
   );
 }
 
-function BookOpenIcon(props: any) {
+function BookOpenIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

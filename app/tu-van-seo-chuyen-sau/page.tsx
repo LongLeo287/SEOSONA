@@ -3,7 +3,7 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Faq } from "@/components/sections/Faq";
 import { Process } from "@/components/sections/Process";
 import { PricingTable } from "@/components/sections/PricingTable";
-import { CheckCircle2, ShieldAlert, Target, Users, BookOpen, LineChart, Stethoscope, SearchCode, Database, Activity } from "lucide-react";
+import { CheckCircle2, ShieldAlert, Target, Users, BookOpen, Stethoscope, SearchCode, Database, Activity } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {

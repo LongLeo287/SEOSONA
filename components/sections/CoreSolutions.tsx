@@ -7,16 +7,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Bot,
   GraduationCap,
-  Megaphone,
   Network,
   TrendingUp,
   Plus,
   Sparkles,
-  BarChart3,
   MousePointerClick,
   CheckSquare,
-  Search,
-  MessageSquare
+  Search
 } from "lucide-react";
 
 export function CoreSolutions() {
@@ -29,7 +26,6 @@ export function CoreSolutions() {
   // Timeline mapped exactly to Hero Parallax progress
   const arcOpacity = useTransform(scrollYProgress, [0.55, 0.85], [0, 1]);
   
-  const titleOpacity = useTransform(scrollYProgress, [0.65, 0.90], [0, 1]);
   const titleY = useTransform(scrollYProgress, [0.65, 0.90], [30, 0]);
   
   // Timeline mapped for the Bento grid to slide up and fade in
@@ -46,28 +42,37 @@ export function CoreSolutions() {
         
         {/* --- TOP SECTION: TITLE & PARABOLA --- */}
         <div className="flex flex-col items-center text-center mb-8">
-          <motion.h2 style={{ opacity: titleOpacity, y: titleY }} className="text-balance text-[28px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl lg:text-[42px] max-w-3xl">
-            Tăng trưởng doanh thu bằng <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1D4ED8] to-[#3B82F6]">
-              Hệ Sinh Thái SEOSONA
-            </span> trong các nền tảng số
+          <motion.h2
+             style={{ opacity: arcOpacity, y: titleY }}
+             className="text-[28px] sm:text-4xl lg:text-[42px] leading-tight font-bold z-10 relative drop-shadow-sm flex flex-col items-center"
+          >
+            <span className="text-slate-800">Tăng trưởng doanh thu bằng</span>
+            <span className="bg-gradient-to-r from-[#1D4ED8] to-[#3B82F6] text-transparent bg-clip-text mt-1 pb-1">Hệ Sinh Thái SEOSONA <span className="text-slate-800">trong các nền</span></span>
+            <span className="text-slate-800">tảng số</span>
           </motion.h2>
 
-          <motion.div style={{ opacity: arcOpacity }} className="relative mt-[120px] w-full max-w-[800px] h-[160px] flex justify-center">
+          <motion.div style={{ opacity: arcOpacity }} className="relative mt-[60px] w-[700px] h-[150px] mx-auto flex justify-center">
              
-             {/* Background Glow Layers */}
-             <div className="absolute left-1/2 top-[40px] -translate-x-1/2 -translate-y-1/2 w-[400px] h-[160px] bg-blue-500/10 blur-[60px] rounded-[100%] pointer-events-none" />
-             <div className="absolute left-1/2 top-[40px] -translate-x-1/2 -translate-y-1/2 w-[200px] h-[80px] bg-blue-400/30 blur-[30px] rounded-[100%] pointer-events-none" />
+             {/* Background Glow Image */}
+             <div className="absolute left-1/2 top-[0px] -translate-x-1/2 -translate-y-[45%] pointer-events-none w-[1000px] max-w-none flex justify-center z-[-1] opacity-90">
+                <Image
+                  src="/images/parabola-glow.png"
+                  alt="Parabola Glow"
+                  width={1000}
+                  height={500}
+                  className="w-full h-auto object-contain"
+                />
+             </div>
 
              {/* The Arc/Parabola Line */}
              <svg
                className="absolute inset-0 w-full h-full pointer-events-none"
-               viewBox="0 0 800 160"
+               viewBox="0 0 700 150"
                preserveAspectRatio="none"
              >
                 {/* Thick blurry background stroke */}
                 <path
-                  d="M 50 140 Q 400 -60 750 140"
+                  d="M 0 150 Q 350 -150 700 150"
                   fill="none"
                   stroke="url(#arcGradientGlow)"
                   strokeWidth="12"
@@ -75,7 +80,7 @@ export function CoreSolutions() {
                 />
                 {/* Crisp foreground stroke */}
                 <path
-                  d="M 50 140 Q 400 -60 750 140"
+                  d="M 0 150 Q 350 -150 700 150"
                   fill="none"
                   stroke="url(#arcGradientCore)"
                   strokeWidth="3"
@@ -100,23 +105,6 @@ export function CoreSolutions() {
                   </filter>
                 </defs>
              </svg>
-
-             {/* 4-Point Star Sparkle (Chubby) */}
-             <div className="absolute left-1/2 top-[40px] -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_0_20px_rgba(37,99,235,0.6)]">
-                <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M40 0 C40 24 56 40 80 40 C56 40 40 56 40 80 C40 56 24 40 0 40 C24 40 40 24 40 0 Z"
-                    fill="url(#starGradient)"
-                  />
-                  <defs>
-                    <linearGradient id="starGradient" x1="20" y1="0" x2="60" y2="80" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#60A5FA" />
-                      <stop offset="1" stopColor="#1D4ED8" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-             </div>
-
           </motion.div>
         </div>
 

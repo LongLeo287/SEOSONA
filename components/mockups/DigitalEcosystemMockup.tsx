@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, MonitorPlay, PenTool, Share2, Target, BarChart, Database, Network } from "lucide-react";
+import { Search, MonitorPlay, PenTool, Share2, Target, Database, Network } from "lucide-react";
 
 export function DigitalEcosystemMockup() {
   const nodes = [

@@ -1,6 +1,6 @@
 "use client";
 
-import { Bot, Sparkles, Cpu, PenTool, Search, CheckCircle2, Lock, Mic, Plus, ArrowUp, ArrowRight, Database, Shield, Network, LineChart, Mail, UserPlus, GitBranch, MessageCircle } from "lucide-react";
+import { Bot, Sparkles, Cpu, PenTool, Search, CheckCircle2, Lock, Mic, Plus, ArrowUp, ArrowRight, Database, Network, Mail, UserPlus, GitBranch, MessageCircle } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { TextShimmer } from "@/components/ui/shimmer-text";

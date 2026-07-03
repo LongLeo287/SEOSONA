@@ -4,8 +4,7 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { siteConfig } from "@/lib/site";
-import Image from "next/image";
-import { CheckCircle2, Target, Eye, ShieldCheck, Heart, Users, LineChart } from "lucide-react";
+import { Target, Eye, ShieldCheck, Heart, Users, LineChart } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Về SEOSONA — Google Marketing Agency Việt Nam",
@@ -118,7 +117,7 @@ export default function Page() {
                   Đồng hành cùng sự thịnh vượng của đối tác
                 </h2>
                 <p className="text-lg text-slate-600 mb-10 text-pretty">
-                  Trong một thế giới Digital Marketing ngày càng phân mảnh và phức tạp, SEOSONA đóng vai trò là một "Hệ điều hành" kết nối mọi điểm chạm: từ tối ưu công cụ tìm kiếm, quảng cáo, đến phân tích hành vi người dùng bằng Data và AI.
+                  Trong một thế giới Digital Marketing ngày càng phân mảnh và phức tạp, SEOSONA đóng vai trò là một hệ sinh thái vận hành marketing kết nối mọi điểm chạm: từ tối ưu công cụ tìm kiếm, quảng cáo, đến phân tích hành vi người dùng bằng Data và AI.
                 </p>
                 
                 <div className="space-y-8">

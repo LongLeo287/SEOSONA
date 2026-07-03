@@ -205,7 +205,7 @@ export default function AuditSeoPage() {
 
           <div className="text-center mb-12 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">
-              Các chỉ số "ẩn" sẽ được bóc tách
+              Các chỉ số &quot;ẩn&quot; sẽ được bóc tách
             </h2>
           </div>
 

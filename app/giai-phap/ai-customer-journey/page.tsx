@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import type { SVGProps } from "react";
 import { CtaBand } from "@/components/sections/CtaBand";
-import { Network, Zap, Bot, BarChart } from "lucide-react";
+import { Network, Zap, BarChart } from "lucide-react";
 import Link from "next/link";
 import { AiCustomerJourneyMockup } from "@/components/mockups/AiCustomerJourneyMockup";
 
@@ -90,7 +91,7 @@ export default function AiCustomerJourneyPage() {
   );
 }
 
-function DatabaseIcon(props: any) {
+function DatabaseIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

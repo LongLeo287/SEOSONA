@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageSquare, ShieldCheck, Zap, User, ArrowRight } from "lucide-react";
+import { MessageSquare, ShieldCheck, Zap, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export function Zalo2BsMockup() {

@@ -1,6 +1,6 @@
-# SEOSONA Project Rules
+# SEOSONA Website Project Rules
 
-This project is bound to SEOSONA OS through `seosona.project.json`.
+This repository is a web application implementation target. It is not SEOSONA OS and it is not the autonomous UX/UI design-system workspace.
 
 ## Startup Contract
 
@@ -11,6 +11,13 @@ This project is bound to SEOSONA OS through `seosona.project.json`.
 5. Check project memory at `~/.seosona/3_MEMORY/projects/website-seosona/`.
 6. Run project health with `npm run seosona:doctor` when available.
 
+## Web-Only Boundary
+
+- Keep this repo focused on Next.js routes, React components, content, data, public assets, SEO metadata, schema, redirects, sitemap, robots, tests, and deployment config.
+- Do not store reusable OS, agent, workflow, or design-system source-of-truth files here.
+- Put reusable UI/UX system decisions, design tokens, component library patterns, and website design profiles in the SEOSONA UX-UI project.
+- Local web files may implement a design, but the reusable design-system brain belongs to SEOSONA UX-UI.
+
 ## Project Connector
 
 - Manifest: `seosona.project.json`
@@ -19,10 +26,3 @@ This project is bound to SEOSONA OS through `seosona.project.json`.
 - Publish/deploy actions require explicit user intent.
 
 TASK COMPLETED
-
-## STRICT DESIGN SYSTEM ENFORCEMENT
-Whenever you perform UI/UX tasks, frontend styling, or component creation, you MUST READ AND STRICTLY ADHERE TO the design system defined in `DESIGN.md`.
-- **Primary Source of Truth:** `DESIGN.md`
-- Do NOT use Dark Navy backgrounds, Neon Green accents, or any tokens outside the B2B Light Theme specified in the design document.
-- Failure to comply with `DESIGN.md` is a critical violation of the startup contract.
-

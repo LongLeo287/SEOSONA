@@ -103,7 +103,7 @@ export default function ThietKeWebsitePage() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-500">Chuẩn SEO & Tối Ưu Chuyển Đổi</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-10 animate-in slide-in-from-bottom-8 fade-in duration-700 delay-200 text-pretty">
-            Chúng tôi không chỉ "vẽ" một trang web đẹp. Chúng tôi lập trình một cỗ máy Marketing hoàn chỉnh, chuẩn SEO ngay từ nền móng và sẵn sàng tạo ra doanh thu.
+            Chúng tôi không chỉ &quot;vẽ&quot; một trang web đẹp. Chúng tôi lập trình một cỗ máy Marketing hoàn chỉnh, chuẩn SEO ngay từ nền móng và sẵn sàng tạo ra doanh thu.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-10 fade-in duration-700 delay-300">
             <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-cyan-600 text-white font-bold text-[15px] flex items-center justify-center hover:bg-cyan-700 transition-all shadow-xl hover:shadow-cyan-500/25 hover:-translate-y-1">
