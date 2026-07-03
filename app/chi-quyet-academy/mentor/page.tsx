@@ -4,7 +4,7 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Process } from "@/components/sections/Process";
 import { Faq } from "@/components/sections/Faq";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { CheckCircle2, TrendingUp, Target, ShieldCheck } from "lucide-react";
+import { TrendingUp, Target, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Cố vấn Mentor 1:1 | SEOSONA",

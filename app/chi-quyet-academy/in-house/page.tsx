@@ -4,7 +4,7 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Process } from "@/components/sections/Process";
 import { Faq } from "@/components/sections/Faq";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { CheckCircle2, BookOpen, UserCheck, TrendingUp } from "lucide-react";
+import { BookOpen, UserCheck, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "In-house Training | SEOSONA",

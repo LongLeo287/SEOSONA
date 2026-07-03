@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe, Database, BarChart3, ArrowRight, ShieldCheck, Activity } from "lucide-react";
+import { Globe, Database, BarChart3, ShieldCheck, Activity } from "lucide-react";
 
 export function TrackingAutomationMockup() {
   return (

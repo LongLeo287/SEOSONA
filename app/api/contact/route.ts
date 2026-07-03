@@ -13,10 +13,21 @@ export async function POST(request: Request) {
       return invalid("Nội dung gửi quá lớn. Vui lòng rút gọn thông tin tư vấn.", 413);
     }
 
-    const body = JSON.parse(rawBody || "{}");
-    const name = String(body.name || "").trim();
-    const contact = String(body.contact || "").trim();
-    const message = String(body.message || "").trim();
+    let body: unknown;
+    try {
+      body = JSON.parse(rawBody || "{}");
+    } catch {
+      return invalid("Dữ liệu gửi lên không đúng định dạng JSON.");
+    }
+
+    if (!body || typeof body !== "object") {
+      return invalid("Dữ liệu gửi lên không hợp lệ.");
+    }
+
+    const payload = body as Record<string, unknown>;
+    const name = String(payload.name || "").trim();
+    const contact = String(payload.contact || "").trim();
+    const message = String(payload.message || "").trim();
 
     if (!name || !contact) {
       return invalid("Vui lòng nhập họ tên và thông tin liên hệ.");

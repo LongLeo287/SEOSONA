@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 import { ArrowUpRight, Activity, Users, CreditCard } from "lucide-react";
 
 export function ServicePerformanceMockup() {
@@ -124,7 +125,16 @@ export function ServicePerformanceMockup() {
   );
 }
 
-function MetricCard({ title, value, growth, icon, delay, positiveIsDown = false }: any) {
+type MetricCardProps = {
+  title: string;
+  value: string;
+  growth: string;
+  icon: ReactNode;
+  delay: number;
+  positiveIsDown?: boolean;
+};
+
+function MetricCard({ title, value, growth, icon, delay, positiveIsDown = false }: MetricCardProps) {
   const isPositive = positiveIsDown ? growth.startsWith("-") : growth.startsWith("+");
   const colorClass = isPositive ? "text-emerald-600 bg-emerald-50" : "text-rose-600 bg-rose-50";
 

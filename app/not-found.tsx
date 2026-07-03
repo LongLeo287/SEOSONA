@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Search, TrendingUp, Home, LibraryBig, ChevronRight, BarChart3, FileText, BookOpen, PenTool, Link2, Share2, Globe, Target, Edit3, Network } from "lucide-react";
+import { Search, TrendingUp, Home, ChevronRight, BarChart3, FileText, BookOpen, PenTool, Link2, Share2, Globe, Target, Edit3, Network } from "lucide-react";
 
 export default function NotFound() {
   return (

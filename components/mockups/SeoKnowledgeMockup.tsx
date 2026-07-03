@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BookOpen, Search, ArrowRight, Eye, ThumbsUp } from "lucide-react";
+import { BookOpen, Search, Eye } from "lucide-react";
 
 export function SeoKnowledgeMockup() {
   return (

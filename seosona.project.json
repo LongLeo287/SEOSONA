@@ -32,9 +32,9 @@
   "workflows": [
     "project-doctor",
     "portable-rule-sync",
-    "project-memory-logging",
-    "seo-migration-audit",
-    "nextjs-build-verification"
+    "nextjs-build-verification",
+    "seo-metadata-validation",
+    "web-content-management"
   ],
   "ruleFiles": [
     "AGENTS.md",

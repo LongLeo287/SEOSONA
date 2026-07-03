@@ -4,7 +4,7 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { ServiceTabs } from "@/components/sections/ServiceTabs";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import Link from "next/link";
-import { ArrowRight, Search, BarChart, CheckCircle2, Target, ShieldCheck, Zap, MonitorPlay, PenTool, Share2 } from "lucide-react";
+import { ArrowRight, Search, BarChart, CheckCircle2, Target, ShieldCheck, Zap } from "lucide-react";
 import { DigitalEcosystemMockup } from "@/components/mockups/DigitalEcosystemMockup";
 import { ServicePerformanceMockup } from "@/components/mockups/ServicePerformanceMockup";
 
