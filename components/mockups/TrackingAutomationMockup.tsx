@@ -147,7 +147,7 @@ export function TrackingAutomationMockup() {
           className="mt-4 flex items-center gap-4 bg-emerald-50 text-emerald-700 border border-emerald-100 px-5 py-2.5 rounded-full text-sm font-medium"
         >
           <ShieldCheck size={18} />
-          <span>Server-Side Tracking Active • Data Accuracy 99.8%</span>
+          <span>Server-Side Tracking Active • Data quality monitored</span>
         </motion.div>
 
       </div>

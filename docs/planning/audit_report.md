@@ -2,7 +2,24 @@
 
 Date: 2026-06-13
 Scope: Technical SEO, frontend architecture, MDX content architecture, homepage refactor cleanup
-Status: Audit only. No source code changes executed.
+Status: Historical audit snapshot. This file records the 2026-06-13 baseline and is not current acceptance evidence.
+
+## Current reconciliation — 2026-10-18
+
+The H1 sitemap gap described below has been resolved in the current rebuild: `app/sitemap.ts` now reads `getAllPosts()` and `getAllPages()`, filters noindex pages, and deduplicates canonical URLs. Use the current automated gates instead of treating the historical findings below as unresolved:
+
+```bash
+npm run audit:security
+npm run audit:seo
+npm run audit:performance
+npm run audit:release
+npm run audit:staging
+npm run lint
+npm run typecheck
+npm run build
+```
+
+Current evidence is tracked in `.superpowers/sdd/migration-plan/progress.md`; physical-device, authorized staging, analytics/GSC and production-launch checks remain external gates.
 
 ## 1. SEOSONA OS Bootstrap
 

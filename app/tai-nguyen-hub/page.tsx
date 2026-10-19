@@ -5,9 +5,11 @@ import Link from "next/link";
 import { ArrowRight, BookOpen, Download } from "lucide-react";
 import { SeoKnowledgeMockup } from "@/components/mockups/SeoKnowledgeMockup";
 import { ResourceLibraryMockup } from "@/components/mockups/ResourceLibraryMockup";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { collectionPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Tài nguyên & Kiến thức SEO | SEOSONA",
+  title: "Tài nguyên SEO & Kiến thức thực chiến | SEOSONA",
   description:
     "Kho tài nguyên SEO lớn nhất Việt Nam: Bài viết chuyên sâu, Template, Ebook, Checklist và Video hướng dẫn độc quyền từ SEOSONA.",
   alternates: { canonical: "/tai-nguyen-hub/" }
@@ -35,8 +37,19 @@ const resourcesHub = [
 ];
 
 export default function ResourceHubPage() {
+  const jsonLd = collectionPageSchema({
+    name: "Tài nguyên SEO và kiến thức thực chiến",
+    description: "Kho bài viết, template, ebook, checklist và tài liệu SEO thực chiến từ SEOSONA.",
+    path: "/tai-nguyen-hub/",
+    items: [
+      { name: "Thư viện Kiến thức SEO", path: "/seo/" },
+      { name: "Kho Tài nguyên Miễn phí", path: "/tai-nguyen/" }
+    ]
+  });
+
   return (
     <main className="bg-slate-50 relative overflow-hidden">
+      <JsonLd data={jsonLd} />
       <PageHero 
         eyebrow="Tài nguyên & Kiến thức" 
         title="Nâng tầm năng lực với kho tài nguyên vô tận" 

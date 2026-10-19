@@ -5,6 +5,8 @@ import { Process } from "@/components/sections/Process";
 import { PricingTable } from "@/components/sections/PricingTable";
 import { Search, ShieldAlert, FileCode2, Terminal, ChevronRight, BarChart3, Fingerprint, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Audit SEO chuyên sâu cho doanh nghiệp | SEOSONA",
@@ -13,6 +15,13 @@ export const metadata: Metadata = {
 };
 
 export default function AuditSeoPage() {
+  const jsonLd = serviceSchema({
+    name: "Audit SEO chuyên sâu cho doanh nghiệp | SEOSONA",
+    description: "Audit SEO chuyên sâu: technical SEO, content gap, indexation, analytics, chuyển đổi và roadmap ưu tiên sau audit.",
+    path: "/audit-seo/",
+    serviceType: "SEO audit"
+  });
+
   const auditItems = [
     { title: "Technical Health", desc: "Kiểm tra crawl, index, sitemap, robots, canonical, redirect, schema, Core Web Vitals và lỗi template.", icon: FileCode2 },
     { title: "Content Gap", desc: "Đối chiếu search intent, topical authority, internal link, thin content và khoảng trống nội dung so với đối thủ.", icon: Search },
@@ -88,6 +97,7 @@ export default function AuditSeoPage() {
 
   return (
     <main className="bg-slate-50">
+      <JsonLd data={jsonLd} />
       {/* SaaS Light Mode Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}

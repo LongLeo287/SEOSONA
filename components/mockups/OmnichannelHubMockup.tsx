@@ -24,13 +24,13 @@ export const OmnichannelHubMockup = () => {
        </div>
 
        {/* Connection Lines (SVGs) */}
-       <svg className="absolute inset-0 w-full h-full z-10 pointer-events-none" preserveAspectRatio="none">
+       <svg className="absolute inset-0 w-full h-full z-10 pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
           {/* Facebook to Hub */}
           <motion.path 
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
             transition={{ duration: 2, ease: "easeInOut" }}
-            d="M 15% 25% Q 50% 10% 50% 50%" 
+            d="M 15 25 Q 50 10 50 50"
             fill="none" 
             stroke="url(#indigo-grad)" 
             strokeWidth="3" 
@@ -42,7 +42,7 @@ export const OmnichannelHubMockup = () => {
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
             transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }}
-            d="M 85% 25% Q 50% 10% 50% 50%" 
+            d="M 85 25 Q 50 10 50 50"
             fill="none" 
             stroke="url(#blue-grad)" 
             strokeWidth="3" 
@@ -54,7 +54,7 @@ export const OmnichannelHubMockup = () => {
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
             transition={{ duration: 2, delay: 1, ease: "easeInOut" }}
-            d="M 50% 85% Q 50% 85% 50% 50%" 
+            d="M 50 85 Q 50 85 50 50"
             fill="none" 
             stroke="url(#rose-grad)" 
             strokeWidth="3" 

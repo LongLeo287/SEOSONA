@@ -2,13 +2,20 @@
 
 import { motion } from "framer-motion";
 import { Sparkles, FileText, CheckCircle2, Settings2, PenTool } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useIsInView } from "@/components/ui/use-is-in-view";
+import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion";
 
 export function AiContentGeneratorMockup() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useIsInView(containerRef);
+  const reduceMotion = useStableReducedMotion();
   const [progress, setProgress] = useState(0);
   const [stage, setStage] = useState(0);
 
   useEffect(() => {
+    if (!isInView || reduceMotion) return;
+
     const timer = setInterval(() => {
       setProgress((p) => {
         if (p >= 100) {
@@ -21,7 +28,10 @@ export function AiContentGeneratorMockup() {
       });
     }, 50);
     return () => clearInterval(timer);
-  }, []);
+  }, [isInView, reduceMotion]);
+
+  const visualProgress = reduceMotion ? 100 : progress;
+  const visualStage = reduceMotion ? 3 : stage;
 
   const stages = [
     { label: "Analyzing Entity...", percent: 30 },
@@ -31,7 +41,7 @@ export function AiContentGeneratorMockup() {
   ];
 
   return (
-    <div className="w-full max-w-5xl mx-auto bg-white rounded-[24px] border border-slate-200 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col md:flex-row font-sans relative h-[500px]">
+    <div ref={containerRef} className="w-full max-w-5xl mx-auto bg-white rounded-[24px] border border-slate-200 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col md:flex-row font-sans relative h-[500px]">
       
       {/* Sidebar - Prompts & Settings */}
       <div className="w-full md:w-80 bg-slate-50 border-r border-slate-200 p-6 flex flex-col gap-6 shrink-0 relative z-10">
@@ -70,16 +80,16 @@ export function AiContentGeneratorMockup() {
           {/* Progress */}
           <div>
             <div className="flex justify-between text-xs font-bold mb-2">
-              <span className={progress === 100 ? "text-emerald-600" : "text-indigo-600"}>
-                {stages[stage].label}
+                <span className={visualProgress === 100 ? "text-emerald-600" : "text-indigo-600"}>
+                {stages[visualStage].label}
               </span>
-              <span className="text-slate-500">{progress}%</span>
+              <span className="text-slate-500">{visualProgress}%</span>
             </div>
             <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
               <motion.div 
                 className={`h-full ${progress === 100 ? 'bg-emerald-500' : 'bg-indigo-500'}`}
                 initial={{ width: 0 }}
-                animate={{ width: `${progress}%` }}
+                animate={{ width: `${visualProgress}%` }}
                 transition={{ duration: 0.1 }}
               />
             </div>
@@ -108,17 +118,17 @@ export function AiContentGeneratorMockup() {
             animate={{ opacity: 1 }}
             className="prose prose-sm prose-slate max-w-none"
           >
-            <h1 className="text-3xl font-black text-slate-800 mb-6 flex items-center gap-2">
+            <h2 className="text-3xl font-black text-slate-800 mb-6 flex items-center gap-2">
               Dịch vụ SEO Tổng Thể: Giải pháp x10 Traffic Bền Vững
-            </h1>
+            </h2>
             
-            {progress > 10 && (
+            {visualProgress > 10 && (
               <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-slate-600 leading-relaxed text-base mb-4">
                 Trong kỷ nguyên Digital Marketing, việc sở hữu một website chuẩn SEO không còn là lựa chọn mà là sự sống còn. SEOSONA tự hào mang đến giải pháp SEO tổng thể ứng dụng AI giúp phân tích dữ liệu chuyên sâu và dự đoán hành vi người dùng.
               </motion.p>
             )}
 
-            {progress > 30 && (
+            {visualProgress > 30 && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-4">
                 <h2 className="text-xl font-bold text-slate-800 mb-3">Tại sao doanh nghiệp cần SEO Tổng Thể?</h2>
                 <ul className="space-y-2">
@@ -138,7 +148,7 @@ export function AiContentGeneratorMockup() {
               </motion.div>
             )}
 
-            {progress > 60 && (
+            {visualProgress > 60 && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <h2 className="text-xl font-bold text-slate-800 mb-3">Quy trình triển khai 6 bước</h2>
                 <div className="bg-slate-50 border border-slate-100 rounded-xl p-4 text-sm text-slate-600 border-l-4 border-l-indigo-500">
@@ -150,7 +160,7 @@ export function AiContentGeneratorMockup() {
             )}
 
             {/* Typewriter cursor */}
-            {progress < 100 && (
+            {visualProgress < 100 && (
               <motion.div 
                 className="w-1.5 h-5 bg-indigo-500 mt-2 inline-block align-middle"
                 animate={{ opacity: [1, 0, 1] }}

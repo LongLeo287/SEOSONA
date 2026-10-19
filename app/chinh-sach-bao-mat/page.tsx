@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Chính sách bảo mật | SEOSONA",
+  title: "Chính sách bảo mật thông tin khách hàng | SEOSONA",
   description:
     "Chính sách bảo mật thông tin khi khách hàng truy cập website, gửi biểu mẫu tư vấn hoặc tương tác với các kênh chính thức của SEOSONA.",
   alternates: { canonical: "/chinh-sach-bao-mat/" }

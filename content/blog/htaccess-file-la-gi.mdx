@@ -1,0 +1,220 @@
+---
+title: "File .htaccess là gì? Cấu hình & chỉnh sửa .htaccess file cơ bản"
+slug: htaccess-file-la-gi
+date: 2024-06-13
+categorySlug: thuat-ngu
+coverImage: "https://seosona.com/wp-content/uploads/2023/12/file-htaccess-1.jpg"
+excerpt: "File .htaccess đóng vai trò quan trọng trong việc tối ưu hóa website và điều hướng URL linh hoạt, là công cụ không thể thiếu cho các lập trình viên web. Bài…"
+meta_description: "File .htaccess đóng vai trò quan trọng trong việc tối ưu hóa website và điều hướng URL linh hoạt, là công cụ không thể thiếu cho các lập trình viên web. Bài…"
+---
+[**File .htaccess**](https://seosona.com/seo/thuat-ngu/htaccess-file-la-gi/) đóng vai trò quan trọng trong việc tối ưu hóa website và điều hướng URL linh hoạt, là công cụ không thể thiếu cho các lập trình viên web. Bài viết này sẽ cung cấp cho bạn kiến thức chuyên sâu về file .htaccess, đồng thời hướng dẫn cách chỉnh sửa và cấu hình file một cách bài bản.
+
+## **1\. File .htaccess là gì?**
+
+File .htaccess, hay còn được biết đến với tên gọi Hypertext Access, là một tập tin cấu hình được sử dụng cho máy chủ web chạy trên nền tảng Apache.
+
+Chức năng chính của tập tin này là cho phép quản lý và điều hướng các yêu cầu từ người dùng đến máy chủ, cung cấp tính linh hoạt trong việc kích hoạt hoặc vô hiệu hóa các tính năng cụ thể hoặc bảo vệ các phần nhất định của trang web.
+
+![file htaccess 1](https://seosona.com/wp-content/uploads/2023/12/file-htaccess-1.jpg ".htaccess File 1")
+
+Tập tin .htaccess có ảnh hưởng đến thư mục hiện tại và tất cả các thư mục con của nó. Nó được sử dụng để định cấu hình các tùy chọn như việc thực thi hay vô hiệu hóa các tính năng cụ thể, quản lý quyền truy cập vào trang web một cách linh hoạt và hiệu quả.
+
+## **2\. File .htaccess nằm ở đâu?**
+
+Vị trí của file .htaccess phụ thuộc vào cấu hình server và cách bạn cài đặt website. Tuy nhiên, thông thường file .htaccess sẽ nằm ở thư mục gốc public\_html cùng cấp với các tập tin HTML, CSS và các tập tin khác của trang web.
+
+![file htaccess 20](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 2")
+
+Bạn có thể truy cập vào file .htaccess bằng cách khác nhau từ quản lý file tài khoản hosting của bạn như:
+
+-   **Host DirectAdmin:** chọn File > Chọn public\_html > Chọn .htaccess.
+-   **Host Cpanel:** chọn File manager > Chọn public\_html > Chọn .htaccess.
+
+## **3\. Chức năng của file .htaccess**
+
+File .htaccess đóng vai trò quan trọng trong việc tối ưu hóa và bảo mật website, được ví như “cỗ máy đa năng” với vô số chức năng mạnh mẽ. Dưới đây là một số chức năng chính của file .htaccess:
+
+![file htaccess 3](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 3")
+
+-   **Điều hướng URL:** Tạo URL thân thiện, chuyển hướng URL cũ, ẩn phần mở rộng tập tin, tạo URL ảo.
+-   **Bảo mật website:** Bảo vệ thư mục bằng mật khẩu, chặn IP độc hại, hạn chế truy cập theo phương thức, ẩn tệp tin nhạy cảm.
+-   **Tối ưu hóa hiệu suất:** Bật nén gzip, cài đặt bộ nhớ cache trình duyệt, hạn chế truy cập tệp tin, tối ưu hóa hình ảnh.
+-   **Quản lý nội dung:** Tự động thay đổi định dạng trang web, tạo trang lỗi tùy chỉnh, chặn truy cập nội dung, thêm thông tin tiêu đề/meta description.
+-   **Cấu hình server:** Thay đổi cài đặt mặc định, kích hoạt tính năng nâng cao, tùy chỉnh cấu hình ngôn ngữ, cài đặt module mở rộng.
+
+**Lưu ý:** Trước khi thực hiện cấu hình file .htaccess bạn nên backup lại file .htaccess và toàn bộ website của bạn.
+
+## **4\. Cách tạo file .htaccess toàn tập**
+
+Để tạo tập tin .htaccess, bạn có thể sử dụng bất kỳ trình soạn thảo văn bản nào mà bạn thích, như Notepad trên Windows hoặc TextEdit trên macOS.
+
+Dưới đây là các bước cơ bản để tạo một tập tin .htaccess:
+
+-   **Bước 1:** Mở trình soạn thảo văn bản của bạn. Bạn có thể sử dụng bất kỳ trình soạn thảo nào mà bạn quen thuộc.
+-   **Bước 2:** Nhập đoạn code bên dưới:
+
+![file htaccess 4](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 4")
+
+-   **Bước 3:** Lưu tập tin mới với tên là “.htaccess”. Lưu ý rằng bạn cần phải sử dụng dấu chấm trước tên tập tin để tạo một tập tin ẩn. Ví dụ: “.htaccess”.
+-   **Bước 4:** Lưu tập tin .htaccess và đóng trình soạn thảo văn bản của bạn.
+
+Sau khi bạn đã tạo và cấu hình tập tin .htaccess theo ý muốn của mình, bạn có thể tải lên tập tin này lên máy chủ web của mình thông qua giao diện quản lý tệp hoặc giao diện dòng lệnh của máy chủ. 
+
+Đảm bảo rằng tập tin .htaccess được đặt ở vị trí thích hợp trong cấu trúc thư mục của trang web của bạn và có quyền truy cập phù hợp để máy chủ web có thể đọc và áp dụng các cấu hình trong tập tin này.
+
+## **5\. Hướng dẫn cấu hình file .htaccess cơ bản**
+
+Sau đây là một số hướng dẫn cách cấu hình cơ bản cho tệp .htaccess:
+
+### **Bắt buộc dùng https**
+
+Cấu hình bắt buộc sử dụng HTTPS cho website bạn có thể sử dụng đoạn code sau vào file .htaccess
+
+![file htaccess 5](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 5")
+
+### **Tự động chèn hoặc xóa www trong domain**
+
+Các bạn có thể cấu hình trong tệp tin .htaccess để tự động thêm hoặc xóa www khỏi domain bằng đoạn code sau:
+
+-   **Thêm www vào domain:**
+
+![file htaccess 6](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 6")
+
+-   **Xóa www khỏi domain:**
+
+![file htaccess 7](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 7")
+
+### **Tự động redirect**
+
+Để thực hiện cấu hình tự động redirect cho website trong tệp .htaccess bạn copy đoạn mã sau:
+
+![file htaccess 8](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 8")
+
+Trong đó:
+
+-   status là mã trạng thái HTTP (ví dụ: 301 cho chuyển hướng vĩnh viễn).
+-   URL-path-đích là URL mà bạn muốn chuyển hướng đến.
+
+Ví dụ: Bạn muốn chuyển hướng từ “/seo” đến “http://www.domain.com/kien-thuc-seo”, bạn có thể sử dụng mã sau trong tập tin .htaccess:
+
+![file htaccess 9](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 9")
+
+### **Thay đổi trang báo lỗi với .htaccess**
+
+Bạn có thể cấu hình tùy chỉnh trang thông báo lỗi trên file .htaccess bằng ErrorDocument như sau:
+
+![file htaccess 11](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 10")
+
+Trong đó:
+
+-   ErrorDocument là chỉ thị để định rõ trang báo lỗi tùy chỉnh.
+-   404 là mã lỗi HTTP (Không tìm thấy).
+-   /error-404.html là đường dẫn của trang HTML tùy chỉnh mà bạn muốn hiển thị.
+
+Một số mã lỗi phổ biến khi thực hiện cấu hình file .htaccess:
+
+-   400: Bad request (Lỗi do yêu cầu).
+-   401: Authorization Required (Cần password để truy nhập)
+-   403: Forbidden (Không được vào).
+-   404: Wrong page (Lỗi trang, không tìm thấy,…).
+-   500: Internal Server Error (Lỗi server).
+
+### **Tùy biến đuôi tập tin**
+
+Để tùy biến đuôi của các tập tin trên trang web của bạn bằng tập tin .htaccess, bạn có thể sử dụng RewriteRule để điều hướng các yêu cầu từ một đuôi tập tin sang một đuôi khác hoặc đến một trang xử lý tùy chỉnh. 
+
+**Dưới đây là cách thực hiện:**
+
+Đầu tiên, bạn cần xác định quy tắc RewriteRule trong tập tin .htaccess để tùy biến đuôi của các tập tin.
+
+Ví dụ, để chuyển hướng tất cả các yêu cầu đến các tập tin có đuôi “.htm” đến các tập tin có đuôi “.html”, bạn có thể sử dụng mã sau:
+
+![file htaccess 12](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 11")
+
+Trong đó:
+
+-   RewriteEngine On bật module rewrite.
+-   ^(.\*)\\.htm$ là mẫu URL phù hợp với các tập tin có đuôi “.htm”.
+-   $1.html là URL mà yêu cầu sẽ được chuyển hướng đến, với đuôi “.htm” được thay thế bằng “.html”.
+-   \[L,R=301\] là các cờ cho biết rằng đây là một chuyển hướng vĩnh viễn (301) và quy tắc này là cuối cùng (L).
+
+### **Cấm IP truy cập**
+
+Để cấm một địa chỉ IP cụ thể truy cập vào trang web của bạn bằng tập tin .htaccess, bạn có thể sử dụng chỉ thị Deny trong một tập tin .htaccess trong thư mục mà bạn muốn áp dụng quy tắc cấm. 
+
+Cách thực hiện:
+
+Ví dụ bạn muốn cấm IP:192.168.1.100 truy cập.
+
+![file htaccess 13](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 12")
+
+Ngược lại để cho phép IP truy cập bạn thay “Deny from” thành “ Allow from” vào file .htaccess
+
+![file htaccess 14](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 13")
+
+### **Tự động load trang index**
+
+Để cấu hình tự động load trang index của trang web của bạn khi người dùng truy cập vào thư mục mà không chỉ định tên tập tin cụ thể, bạn có thể sử dụng tập tin .htaccess để đặt trang index mặc định. 
+
+Thêm dòng sau vào tập tin .htaccess:
+
+![file htaccess 15](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 14")
+
+### **Ngăn việc hiện các tập tin trong thư mục**
+
+Tiếp theo để ngăn việc hiển thị danh sách các tập tin trong một thư mục khi không có index file được cung cấp, bạn có thể sử dụng tập tin .htaccess để tắt tính năng này. 
+
+Điều này đảm bảo rằng khi người dùng truy cập vào một thư mục mà không có tập tin index được chỉ định, họ sẽ không nhìn thấy danh sách các tệp trong thư mục đó. 
+
+Hãy thêm dòng sau vào tập tin .htaccess:
+
+![file htaccess 16](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 15")
+
+### **Chống ăn cắp băng thông**
+
+Cuối cùng để ngăn chặn việc ăn cắp băng thông bằng tệp .htaccess, bạn có thể sử dụng các quy tắc RewriteCond và RewriteRule để chỉ cho phép truy cập từ các tên miền được xác định của bạn và chặn các yêu cầu từ các tên miền khác. 
+
+Thêm các dòng sau vào tập tin .htaccess để ngăn chặn ăn cắp băng thông:
+
+![file htaccess 17](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 16")
+
+Trong đó:
+
+-   **RewriteEngine On:** Bật module rewrite.
+-   **RewriteCond %{HTTP\_REFERER} !^$:** Kiểm tra xem trường Referer trong yêu cầu HTTP có tồn tại không.
+-   **RewriteCond %{HTTP\_REFERER} !^http(s)?://(www\\.)?yourdomain.com \[NC\]:** Kiểm tra xem trường Referer có chứa tên miền của bạn không. Thay yourdomain.com bằng tên miền của bạn.
+-   **RewriteRule \\.(jpg|jpeg|png|gif)$ – \[NC,F\]:** Áp dụng quy tắc chặn cho các yêu cầu truy cập đến các tệp hình ảnh (jpg, jpeg, png, gif) từ các tên miền không phải của bạn. Yêu cầu từ các tên miền này sẽ bị chuyển hướng về trang lỗi (HTTP status code 403 – Forbidden).
+
+## **6\. Cách chỉnh sửa file .htaccess**
+
+Khi cài đặt WordPress, file .htaccess sẽ được tạo tự động và nằm trong thư mục gốc của WordPress. 
+
+Để chỉnh sửa bạn có thể mở nó bằng bất kỳ trình soạn thảo văn bản nào như Notepad, Notepad++ hoặc các ứng dụng tương tự.
+
+![file htaccess 18](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 17")  
+**Lưu ý:** 
+
+-   Không chỉnh sửa hay thêm bất cứ câu lệnh nào vào dòng #BEGIN và #END, hãy thêm mã mới vào phía dưới.
+-   Lưu tệp .htaccess lại mỗi khi thêm một đoạn mã mới
+-   Không nên thêm nhiều đoạn mã code khác nhau vào tệp .htaccess cùng một lúc
+-   Khi sửa mã code trong .htaccess, hãy thực hiện sửa từng đoạn một để dễ dàng xác định được nguyên nhân và vị trí đoạn mã bị lỗi.
+
+## **7\. Một số lưu ý khi sử dụng file .htaccess**
+
+File .htaccess là một công cụ mạnh mẽ cho phép bạn tinh chỉnh nhiều cài đặt trong WordPress. 
+
+Tuy nhiên, việc sử dụng file này không đúng cách có thể dẫn đến các vấn đề về hiệu suất và bảo mật cho trang web của bạn. 
+
+![file htaccess 19](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E ".htaccess File 18")
+
+Do đó, điều quan trọng là phải tuân thủ một số lưu ý sau đây:
+
+-   File .htaccess thường chỉ chứa duy nhất dòng lệnh RewriteEngine On để kích hoạt chức năng viết lại URL (URL rewriting). Do tầm quan trọng của file này, trước khi thêm bất kỳ đoạn mã mới nào, bạn nên sử dụng tổ hợp phím Ctrl + F để kiểm tra xem đoạn mã RewriteEngine On đã có trong file hay chưa. Việc này giúp đảm bảo tính nhất quán và tránh xảy ra lỗi khi chỉnh sửa file .htaccess.
+-   File .htaccess đóng vai trò quan trọng trong việc cấu hình máy chủ web, vì vậy cần được bảo mật cẩn thận để tránh người khác truy cập và chỉnh sửa gây ra lỗi hệ thống.
+-   Việc chỉnh sửa file .htaccess có thể ảnh hưởng trực tiếp đến cấu hình và hoạt động của website. Do đó, để đảm bảo an toàn và có thể khôi phục lại trạng thái ban đầu nếu có lỗi xảy ra, bạn luôn nên tạo bản sao lưu (backup) toàn bộ nội dung của file .htaccess trước khi thực hiện bất kỳ thay đổi nào.
+
+Bài viết đã cung cấp cho bạn những kiến thức cơ bản về file .htaccess, bao gồm chức năng, cách thức hoạt động và hướng dẫn chỉnh sửa, cấu hình file .htaccess. 
+
+Hy vọng những thông tin này hữu ích và giúp bạn có thể tự tin quản lý và tối ưu hóa website của mình.
+
+Theo dõi [**SEOSONA**](https://seosona.com/) để cập nhật các kiến thức về SEO và quản trị website WordPress mới nhất nhé,

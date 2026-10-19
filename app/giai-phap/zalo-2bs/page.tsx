@@ -3,13 +3,23 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { MessageSquare, Users, Repeat, BellRing, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { Zalo2BsMockup } from "@/components/mockups/Zalo2BsMockup";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Zalo 2BS / ZNS Automation | SEOSONA",
+  title: "Zalo 2BS / ZNS Automation cho doanh nghiệp | SEOSONA",
   description: "Tự động hóa chăm sóc khách hàng bằng Zalo OA và ZNS. Nâng cao tỷ lệ chuyển đổi và giữ chân khách hàng với kịch bản cá nhân hóa.",
+  alternates: { canonical: "/giai-phap/zalo-2bs/" },
 };
 
 export default function ZaloAutomationPage() {
+  const jsonLd = serviceSchema({
+    name: "Zalo 2BS / ZNS Automation cho doanh nghiệp",
+    description: "Tự động hóa chăm sóc khách hàng bằng Zalo OA và ZNS với kịch bản cá nhân hóa.",
+    path: "/giai-phap/zalo-2bs/",
+    serviceType: "Zalo Customer Engagement Automation"
+  });
+
   const features = [
     { title: "Zalo Notification Service (ZNS)", desc: "Gửi tin nhắn thông báo, báo giá, hoặc mã OTP trực tiếp đến số điện thoại khách hàng qua Zalo với chi phí cực thấp, tỷ lệ mở lên đến 95%.", icon: BellRing },
     { title: "Kịch bản Chăm sóc Tự động", desc: "Thiết lập các kịch bản nuôi dưỡng (Lead Nurturing) dựa trên hành vi của khách hàng trên Website hoặc CRM.", icon: Repeat },
@@ -19,6 +29,7 @@ export default function ZaloAutomationPage() {
 
   return (
     <main className="bg-slate-50 relative overflow-hidden">
+      <JsonLd data={jsonLd} />
       {/* SaaS Light Mode Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}

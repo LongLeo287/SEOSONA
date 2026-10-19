@@ -6,14 +6,23 @@ import { PricingTable } from "@/components/sections/PricingTable";
 import { FunnelChart } from "@/components/ui/funnel-chart";
 import { BarChart3, TrendingUp, Search, Activity, Zap, ShieldCheck, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Dịch vụ SEO tổng thể chuyên nghiệp | SEOSONA",
   description: "Dịch vụ SEO tổng thể SEOSONA: technical SEO, content SEO, entity, authority, offpage và đo lường tăng trưởng organic bền vững cho doanh nghiệp.",
-  alternates: { canonical: "/dich-vu-seo/" }
+  alternates: { canonical: "/dich-vu-seo-tong-the/" }
 };
 
 export default function SeoTongThePage() {
+  const jsonLd = serviceSchema({
+    name: "Dịch vụ SEO tổng thể chuyên nghiệp",
+    description: "Dịch vụ SEO tổng thể gồm technical SEO, content, entity, authority, offpage và đo lường tăng trưởng organic.",
+    path: "/dich-vu-seo-tong-the/",
+    serviceType: "Full-service SEO"
+  });
+
   const features = [
     { title: "Technical SEO", desc: "Audit toàn diện cấu trúc code, tối ưu hóa tốc độ tải trang (Core Web Vitals), thiết lập Indexing và Schema Markup chuẩn chỉnh để Google Bot thu thập dữ liệu dễ dàng.", icon: Zap },
     { title: "Topical Authority", desc: "Phân tích Search Intent, xây dựng cấu trúc Topic Cluster chuyên sâu bao phủ toàn bộ ngách ngành, biến website thành 'chuyên gia' trong mắt Google.", icon: Activity },
@@ -26,7 +35,7 @@ export default function SeoTongThePage() {
     { title: "Onpage & Content Chuẩn SEO", desc: "Mỗi bài viết đều được tối ưu Heading, Mật độ từ khóa, Hình ảnh và Semantic Keywords." },
     { title: "Xử lý Lỗi Kỹ Thuật (Toxic)", desc: "Dọn dẹp triệt để lỗi 404, Redirect Loop, Zombie Page và Content ăn thịt nhau." },
     { title: "Báo cáo Data-Driven", desc: "Theo dõi qua Dashboard Real-time: Traffic, Ranking, Tỷ lệ Click (CTR) và số lượng Lead." },
-    { title: "Chiến lược An Toàn", desc: "Tuân thủ 100% nguyên tắc của Google (White-hat), bảo vệ website khỏi các bản cập nhật thuật toán." },
+    { title: "Chiến lược An Toàn", desc: "Ưu tiên nguyên tắc Google và phương pháp White-hat, giảm rủi ro trước các bản cập nhật thuật toán." },
     { title: "Cam kết KPI Rõ Ràng", desc: "Thống nhất mục tiêu Traffic / Doanh thu từ đầu, lộ trình báo cáo tiến độ minh bạch hàng tuần." }
   ];
 
@@ -87,6 +96,7 @@ export default function SeoTongThePage() {
 
   return (
     <main className="bg-slate-50">
+      <JsonLd data={jsonLd} />
       {/* SaaS Light Mode Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}

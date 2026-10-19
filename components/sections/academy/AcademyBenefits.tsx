@@ -1,5 +1,3 @@
-"use client";
-
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { Wrench, Sparkles, Files, Map, Activity, Brain, Rocket, FileText, TrendingUp, MonitorPlay, Target } from "lucide-react";
 
@@ -22,7 +20,7 @@ const benefits = [
 
 export function AcademyBenefits() {
   return (
-    <section id="curriculum" className="bg-slate-50 py-12 lg:py-16 overflow-hidden scroll-m-24">
+    <section id="academy-benefits" className="bg-slate-50 py-12 lg:py-16 overflow-hidden scroll-m-24">
       <div className="container">
         
         {/* Part 1: What you will learn - Bento Grid Light */}

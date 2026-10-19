@@ -160,6 +160,7 @@ export default function Footer() {
                     <li key={link.href}>
                       <Link
                         href={link.href}
+                        prefetch={link.href !== "/doi-ngu-nhan-su/"}
                         className="text-sm font-semibold leading-6 text-slate-600 transition-colors hover:text-[#1D4ED8]"
                       >
                         {link.label}

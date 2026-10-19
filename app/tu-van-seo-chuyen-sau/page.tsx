@@ -5,6 +5,8 @@ import { Process } from "@/components/sections/Process";
 import { PricingTable } from "@/components/sections/PricingTable";
 import { CheckCircle2, ShieldAlert, Target, Users, BookOpen, Stethoscope, SearchCode, Database, Activity } from "lucide-react";
 import Link from "next/link";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Tư vấn SEO chuyên sâu cho doanh nghiệp | SEOSONA",
@@ -13,6 +15,13 @@ export const metadata: Metadata = {
 };
 
 export default function TuVanSeoPage() {
+  const jsonLd = serviceSchema({
+    name: "Tư vấn SEO chuyên sâu cho doanh nghiệp | SEOSONA",
+    description: "Dịch vụ tư vấn SEO chuyên sâu: audit hiện trạng, lập SEO roadmap, cố vấn triển khai và review định kỳ cho đội marketing in-house.",
+    path: "/tu-van-seo-chuyen-sau/",
+    serviceType: "SEO consulting"
+  });
+
   const auditItems = [
     { title: "Technical Diagnosis", desc: "Tìm lỗi crawl, index, canonical, redirect, performance, schema và các điểm nghẽn kỹ thuật.", icon: SearchCode },
     { title: "Content Benchmark", desc: "Đối chiếu topical map, search intent, content gap, và chất lượng bài viết với đối thủ trực tiếp.", icon: BookOpen },
@@ -88,6 +97,7 @@ export default function TuVanSeoPage() {
 
   return (
     <main className="bg-slate-50">
+      <JsonLd data={jsonLd} />
       {/* SaaS Light Mode Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-100">
          {/* Background Effects */}

@@ -3,13 +3,23 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Activity, Server, BarChart3, Fingerprint, Target } from "lucide-react";
 import Link from "next/link";
 import { TrackingAutomationMockup } from "@/components/mockups/TrackingAutomationMockup";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Tracking Data Chuyên Sâu | SEOSONA",
+  title: "Tracking Data & Automation chuyên sâu | SEOSONA",
   description: "Lắp 'mắt thần' cho website của bạn. Theo dõi chính xác mọi điểm chạm, sự kiện và luồng chuyển đổi bằng GTM và GA4 nâng cao.",
+  alternates: { canonical: "/giai-phap/tracking-automation/" },
 };
 
 export default function TrackingAutomationPage() {
+  const jsonLd = serviceSchema({
+    name: "Tracking Data & Automation chuyên sâu",
+    description: "Theo dõi chính xác mọi điểm chạm, sự kiện và luồng chuyển đổi bằng GTM, GA4 và server-side tracking.",
+    path: "/giai-phap/tracking-automation/",
+    serviceType: "Marketing Tracking and Automation"
+  });
+
   const features = [
     { title: "Server-Side Tracking (CAPI)", desc: "Xử lý dữ liệu trực tiếp trên Server (GTM Server-Side, Facebook CAPI, TikTok S2S) giúp vượt qua rào cản Ad-blockers và iOS 14+.", icon: Server },
     { title: "E-commerce Tracking", desc: "Đo lường chính xác từng đồng doanh thu, lượt thêm vào giỏ hàng, và tỷ lệ bỏ trang để tối ưu hóa ROI cho các chiến dịch Ads/SEO.", icon: BarChart3 },
@@ -19,6 +29,7 @@ export default function TrackingAutomationPage() {
 
   return (
     <main className="bg-slate-50 relative overflow-hidden">
+      <JsonLd data={jsonLd} />
       {/* SaaS Light Mode Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}
@@ -35,11 +46,11 @@ export default function TrackingAutomationPage() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500">Doanh nghiệp của bạn</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto mb-10 animate-in slide-in-from-bottom-8 fade-in duration-700 delay-200 text-pretty">
-            Không còn &quot;đốt tiền&quot; mù quáng vào quảng cáo. Hệ thống Tracking Server-Side của chúng tôi giúp bạn ghi nhận chính xác 100% dữ liệu chuyển đổi bất chấp mọi rào cản bảo mật.
+            Không còn &quot;đốt tiền&quot; mù quáng vào quảng cáo. Hệ thống Tracking Server-Side giúp bạn cải thiện độ chính xác dữ liệu chuyển đổi và giảm thất thoát do các rào cản bảo mật.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-10 fade-in duration-700 delay-300">
             <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-blue-600 text-white font-bold text-[15px] flex items-center justify-center hover:bg-blue-700 transition-all shadow-[0_0_40px_rgba(37,99,235,0.2)] hover:shadow-[0_0_60px_rgba(37,99,235,0.4)] hover:-translate-y-1">
-              Kiểm tra tình trạng Tracking
+              Đăng ký kiểm tra Tracking
             </Link>
           </div>
 

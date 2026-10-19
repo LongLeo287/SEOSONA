@@ -5,13 +5,23 @@ import { Process } from "@/components/sections/Process";
 import { Faq } from "@/components/sections/Faq";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { TrendingUp, Target, ShieldCheck } from "lucide-react";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Cố vấn Mentor 1:1 | SEOSONA",
-  description: "Chương trình cố vấn độc quyền 1 kèm 1 với chuyên gia Trần Chí Quyết dành cho chủ doanh nghiệp và SEO Manager.",
+  title: "Mentor SEO 1:1 cho chủ doanh nghiệp | SEOSONA",
+  description: "Chương trình cố vấn độc quyền 1 kèm 1 với chuyên gia Trần Chí Quyết dành cho chủ doanh nghiệp và SEO Manager, theo sát dự án thực tế.",
+  alternates: { canonical: "/chi-quyet-academy/mentor/" },
 };
 
 export default function Page() {
+  const jsonLd = serviceSchema({
+    name: "Mentor SEO 1:1 cho chủ doanh nghiệp",
+    description: "Chương trình cố vấn SEO 1 kèm 1 với chuyên gia Trần Chí Quyết, theo sát dự án thực tế.",
+    path: "/chi-quyet-academy/mentor/",
+    serviceType: "One-to-one SEO Mentoring"
+  });
+
   const features = [
     { title: "Chẩn đoán Doanh nghiệp", desc: "Phân tích trực tiếp dự án đang gặp khó khăn và tìm ra nút thắt cần tháo gỡ." },
     { title: "Định hướng Chiến lược", desc: "Lập bản đồ chiến lược dài hạn, quy hoạch nguồn lực và thời gian triển khai chuẩn xác." },
@@ -20,6 +30,7 @@ export default function Page() {
 
   return (
     <main>
+      <JsonLd data={jsonLd} />
       <PageHero 
         eyebrow="Đào tạo & Cố vấn" 
         title="Cố vấn Mentor 1:1" 

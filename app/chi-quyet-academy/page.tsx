@@ -5,21 +5,31 @@ import { AcademyBenefits } from "@/components/sections/academy/AcademyBenefits";
 import { EventGallery } from "@/components/sections/academy/EventGallery";
 import { Curriculum } from "@/components/sections/Curriculum";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { courseSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Khóa học SEO All In One - Chí Quyết Academy | SEOSONA",
-  description: "Khóa học truyền nghề SEO thực chiến đúc kết 7+ năm kinh nghiệm từ Trần Chí Quyết. Lộ trình SEO All In One từ cơ bản đến nâng cao giúp bạn tự triển khai và kiếm tiền từ nghề SEO.",
+  description: "Khóa học SEO thực chiến từ Trần Chí Quyết: lộ trình All In One từ nền tảng đến nâng cao, giúp bạn tự triển khai dự án và phát triển nghề SEO.",
+  alternates: { canonical: "/chi-quyet-academy/" },
   openGraph: {
     title: "Khóa học SEO All In One - Chí Quyết Academy | SEOSONA",
-    description: "Khóa học truyền nghề SEO thực chiến đúc kết 7+ năm kinh nghiệm từ Trần Chí Quyết. Lộ trình SEO All In One từ cơ bản đến nâng cao giúp bạn tự triển khai và kiếm tiền từ nghề SEO.",
+    description: "Khóa học SEO thực chiến từ Trần Chí Quyết: lộ trình All In One từ nền tảng đến nâng cao, giúp bạn tự triển khai dự án và phát triển nghề SEO.",
     url: "https://seosona.com/chi-quyet-academy/",
     type: "website",
   },
 };
 
 export default function AcademyPage() {
+  const jsonLd = courseSchema({
+    name: "Khóa học SEO All In One - Chí Quyết Academy",
+    description: "Khóa học SEO thực chiến từ nền tảng đến nâng cao, giúp học viên tự triển khai dự án và phát triển nghề SEO.",
+    path: "/chi-quyet-academy/"
+  });
+
   return (
     <main>
+      <JsonLd data={jsonLd} />
       <AcademyHero />
       <AcademyInstructor />
       <AcademyBenefits />

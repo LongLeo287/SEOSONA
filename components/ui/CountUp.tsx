@@ -18,6 +18,7 @@ export function CountUp({
   className = ""
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
+  const frameRef = useRef<number | null>(null);
   const [count, setCount] = useState(0);
   const [started, setStarted] = useState(false);
 
@@ -41,6 +42,20 @@ export function CountUp({
   useEffect(() => {
     if (!started) return;
 
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) {
+      frameRef.current = requestAnimationFrame(() => {
+        setCount(end);
+        frameRef.current = null;
+      });
+      return () => {
+        if (frameRef.current !== null) {
+          cancelAnimationFrame(frameRef.current);
+          frameRef.current = null;
+        }
+      };
+    }
+
     const startTime = performance.now();
 
     const tick = (now: number) => {
@@ -49,10 +64,21 @@ export function CountUp({
       // Ease-out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.round(eased * end));
-      if (progress < 1) requestAnimationFrame(tick);
+      if (progress < 1) {
+        frameRef.current = requestAnimationFrame(tick);
+      } else {
+        frameRef.current = null;
+      }
     };
 
-    requestAnimationFrame(tick);
+    frameRef.current = requestAnimationFrame(tick);
+
+    return () => {
+      if (frameRef.current !== null) {
+        cancelAnimationFrame(frameRef.current);
+        frameRef.current = null;
+      }
+    };
   }, [started, end, duration]);
 
   return (

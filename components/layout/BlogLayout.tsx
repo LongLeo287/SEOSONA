@@ -27,7 +27,7 @@ export function BlogLayout({ children, activeSlug }: { children: React.ReactNode
                 </div>
 
                 {/* List of Categories using Accordion link style */}
-                <div className="max-h-[calc(100vh-14rem)] overflow-y-auto custom-scrollbar pr-2 flex flex-col gap-1">
+                <div data-lenis-prevent className="max-h-[calc(100vh-14rem)] overflow-y-auto custom-scrollbar pr-2 flex flex-col gap-1">
                   {/* "All" Link */}
                   <Link
                     href="/seo/"

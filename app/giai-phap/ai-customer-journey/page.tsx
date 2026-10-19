@@ -4,13 +4,23 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Network, Zap, BarChart } from "lucide-react";
 import Link from "next/link";
 import { AiCustomerJourneyMockup } from "@/components/mockups/AiCustomerJourneyMockup";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "AI Customer Journey Mapping | SEOSONA",
+  title: "AI Customer Journey cho doanh nghiệp | SEOSONA",
   description: "Vẽ lại toàn bộ hành trình trải nghiệm của khách hàng nhờ năng lực phân tích dữ liệu khổng lồ của Trí tuệ Nhân tạo (AI).",
+  alternates: { canonical: "/giai-phap/ai-customer-journey/" },
 };
 
 export default function AiCustomerJourneyPage() {
+  const jsonLd = serviceSchema({
+    name: "AI Customer Journey cho doanh nghiệp",
+    description: "Vẽ lại toàn bộ hành trình trải nghiệm khách hàng bằng AI và phân tích dữ liệu đa điểm chạm.",
+    path: "/giai-phap/ai-customer-journey/",
+    serviceType: "AI Customer Journey Analytics"
+  });
+
   const features = [
     { title: "Phân tích Dữ liệu Lớn (Big Data)", desc: "AI tổng hợp dữ liệu từ CRM, Website, Social để vẽ ra chân dung khách hàng 360 độ một cách chuẩn xác.", icon: DatabaseIcon },
     { title: "Dự đoán Hành vi", desc: "Sử dụng Machine Learning để dự đoán bước đi tiếp theo của khách hàng, từ đó đưa ra thông điệp phù hợp.", icon: Zap },
@@ -20,6 +30,7 @@ export default function AiCustomerJourneyPage() {
 
   return (
     <main className="bg-slate-50 relative overflow-hidden">
+      <JsonLd data={jsonLd} />
       {/* SaaS Light Mode Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden border-b border-slate-200 bg-white">
          {/* Background Effects */}

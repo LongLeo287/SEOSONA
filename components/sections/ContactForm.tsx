@@ -41,7 +41,7 @@ export function ContactForm() {
 
   if (success) {
     return (
-      <div className="card flex flex-col items-center justify-center p-8 text-center bg-emerald-50/50 border-emerald-200">
+      <div className="card flex flex-col items-center justify-center p-8 text-center bg-emerald-50/50 border-emerald-200" role="status" aria-live="polite">
         <div className="grid h-16 w-16 place-items-center rounded-full bg-emerald-100 text-emerald-600 mb-4">
           ✓
         </div>
@@ -66,7 +66,9 @@ export function ContactForm() {
         <label htmlFor="name" className="text-sm font-bold text-slate-700">Họ và tên <span className="text-red-500">*</span></label>
         <input
           id="name"
+          name="name"
           type="text"
+          autoComplete="name"
           required
           disabled={loading}
           value={formData.name}
@@ -80,7 +82,9 @@ export function ContactForm() {
         <label htmlFor="contact" className="text-sm font-bold text-slate-700">Số điện thoại / Email <span className="text-red-500">*</span></label>
         <input
           id="contact"
+          name="contact"
           type="text"
+          autoComplete="email tel"
           required
           disabled={loading}
           value={formData.contact}
@@ -94,6 +98,8 @@ export function ContactForm() {
         <label htmlFor="message" className="text-sm font-bold text-slate-700">Nhu cầu tư vấn</label>
         <textarea
           id="message"
+          name="message"
+          autoComplete="off"
           disabled={loading}
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -103,7 +109,7 @@ export function ContactForm() {
       </div>
 
       {success === false && (
-        <div className="rounded-2xl bg-red-50 border border-red-150 p-4 text-sm font-medium text-red-700">
+        <div className="rounded-2xl bg-red-50 border border-red-150 p-4 text-sm font-medium text-red-700" role="alert" aria-live="assertive">
           ⚠️ {errorMsg}
         </div>
       )}

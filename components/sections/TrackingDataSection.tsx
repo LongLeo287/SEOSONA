@@ -5,6 +5,8 @@ import { SectionBadge } from "@/components/ui/SectionBadge";
 import { Database, LineChart, Server, Activity, ArrowRight, ShieldCheck, Zap, Workflow } from "lucide-react";
 import Link from "next/link";
 import { SiGoogleanalytics, SiFacebook, SiTiktok } from "react-icons/si";
+import { useRef } from "react";
+import { useIsInView } from "@/components/ui/use-is-in-view";
 
 const features = [
   {
@@ -25,8 +27,15 @@ const features = [
 ];
 
 export function TrackingDataSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useIsInView(sectionRef);
+
   return (
-    <section className="relative overflow-hidden bg-[#F8FAFC] py-24 lg:py-32">
+    <section
+      ref={sectionRef}
+      data-motion-active={isInView ? "true" : "false"}
+      className="relative overflow-hidden bg-[#F8FAFC] py-24 lg:py-32"
+    >
       {/* Background Decor */}
       <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 w-[1000px] h-[500px] bg-[radial-gradient(ellipse_at_top,#e2e8f0_0%,transparent_70%)] opacity-50" />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:32px_32px] opacity-40" />
@@ -119,43 +128,51 @@ export function TrackingDataSection() {
                      {/* Google Analytics → sGTM Hub */}
                      <path d="M 105 110 C 180 110, 180 250, 250 250" fill="none" stroke="url(#streamGrad1)" strokeWidth="3" opacity="0.25" vectorEffect="non-scaling-stroke" />
                      <path d="M 105 110 C 180 110, 180 250, 250 250" fill="none" stroke="url(#streamGrad1)" strokeWidth="3" strokeDasharray="8 6" vectorEffect="non-scaling-stroke"
+                        className="tracking-flow"
                         style={{ animation: "dash 1.5s linear infinite" }} />
 
                      {/* Facebook → sGTM Hub (Slight curve to prevent 0-height bounding box bug with gradients) */}
                      <path d="M 105 250 Q 175 250.5, 250 250" fill="none" stroke="url(#streamGrad2)" strokeWidth="3" opacity="0.25" vectorEffect="non-scaling-stroke" />
                      <path d="M 105 250 Q 175 250.5, 250 250" fill="none" stroke="url(#streamGrad2)" strokeWidth="3" strokeDasharray="8 6" vectorEffect="non-scaling-stroke"
+                        className="tracking-flow"
                         style={{ animation: "dash 1.8s linear infinite" }} />
 
                      {/* TikTok → sGTM Hub */}
                      <path d="M 105 390 C 180 390, 180 250, 250 250" fill="none" stroke="url(#streamGrad3)" strokeWidth="3" opacity="0.25" vectorEffect="non-scaling-stroke" />
                      <path d="M 105 390 C 180 390, 180 250, 250 250" fill="none" stroke="url(#streamGrad3)" strokeWidth="3" strokeDasharray="8 6" vectorEffect="non-scaling-stroke"
+                        className="tracking-flow"
                         style={{ animation: "dash 2s linear infinite" }} />
                      
                      {/* sGTM Hub → BigQuery (Slight curve to prevent 0-height bounding box bug) */}
                      <path d="M 350 250 Q 410 250.5, 470 250" fill="none" stroke="#1D4ED8" strokeWidth="3" opacity="0.25" vectorEffect="non-scaling-stroke" />
                      <path d="M 350 250 Q 410 250.5, 470 250" fill="none" stroke="#1D4ED8" strokeWidth="3" strokeDasharray="8 6" vectorEffect="non-scaling-stroke"
+                        className="tracking-flow"
                         style={{ animation: "dash 1.2s linear infinite" }} />
 
                      {/* Animated data particles flowing along paths */}
-                     <circle r="4" fill="#3b82f6" opacity="0.8">
-                        <animateMotion dur="2.5s" repeatCount="indefinite" path="M 105 110 C 180 110, 180 250, 250 250" />
-                     </circle>
-                     <circle r="4" fill="#8b5cf6" opacity="0.8">
-                        <animateMotion dur="2.8s" repeatCount="indefinite" path="M 105 250 Q 175 250.5, 250 250" />
-                     </circle>
-                     <circle r="4" fill="#f43f5e" opacity="0.8">
-                        <animateMotion dur="3s" repeatCount="indefinite" path="M 105 390 C 180 390, 180 250, 250 250" />
-                     </circle>
-                     <circle r="4" fill="#1D4ED8" opacity="0.8">
-                        <animateMotion dur="1.5s" repeatCount="indefinite" path="M 350 250 Q 410 250.5, 470 250" />
-                     </circle>
+                     {isInView && (
+                       <>
+                         <circle className="motion-particle" r="4" fill="#3b82f6" opacity="0.8">
+                           <animateMotion dur="2.5s" repeatCount="indefinite" path="M 105 110 C 180 110, 180 250, 250 250" />
+                         </circle>
+                         <circle className="motion-particle" r="4" fill="#8b5cf6" opacity="0.8">
+                           <animateMotion dur="2.8s" repeatCount="indefinite" path="M 105 250 Q 175 250.5, 250 250" />
+                         </circle>
+                         <circle className="motion-particle" r="4" fill="#f43f5e" opacity="0.8">
+                           <animateMotion dur="3s" repeatCount="indefinite" path="M 105 390 C 180 390, 180 250, 250 250" />
+                         </circle>
+                         <circle className="motion-particle" r="4" fill="#1D4ED8" opacity="0.8">
+                           <animateMotion dur="1.5s" repeatCount="indefinite" path="M 350 250 Q 410 250.5, 470 250" />
+                         </circle>
+                       </>
+                     )}
                   </svg>
 
                   {/* Nodes - positioned with absolute + percentage */}
                   {/* Data Sources (Left Column) */}
                   <div className="absolute" style={{ left: "12%", top: "22%", transform: "translate(-50%, -50%)" }}>
                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white border border-slate-200 shadow-md flex items-center justify-center relative">
-                        <SiGoogleanalytics className="text-xl md:text-2xl text-orange-500" />
+                        <SiGoogleanalytics aria-hidden="true" className="text-xl md:text-2xl text-orange-500" />
                         <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border border-slate-200 flex items-center justify-center">
                            <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
                         </div>
@@ -163,7 +180,7 @@ export function TrackingDataSection() {
                   </div>
                   <div className="absolute" style={{ left: "12%", top: "50%", transform: "translate(-50%, -50%)" }}>
                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white border border-slate-200 shadow-md flex items-center justify-center relative">
-                        <SiFacebook className="text-xl md:text-2xl text-blue-600" />
+                        <SiFacebook aria-hidden="true" className="text-xl md:text-2xl text-blue-600" />
                         <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border border-slate-200 flex items-center justify-center">
                            <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" style={{ animationDelay: "0.3s" }} />
                         </div>
@@ -171,7 +188,7 @@ export function TrackingDataSection() {
                   </div>
                   <div className="absolute" style={{ left: "12%", top: "78%", transform: "translate(-50%, -50%)" }}>
                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white border border-slate-200 shadow-md flex items-center justify-center relative">
-                        <SiTiktok className="text-xl md:text-2xl text-black" />
+                        <SiTiktok aria-hidden="true" className="text-xl md:text-2xl text-black" />
                         <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border border-slate-200 flex items-center justify-center">
                            <div className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" style={{ animationDelay: "0.6s" }} />
                         </div>

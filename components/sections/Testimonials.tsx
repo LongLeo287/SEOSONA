@@ -1,5 +1,3 @@
-"use client";
-
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { SectionBadge } from "@/components/ui/SectionBadge";
 import { MessageCircle } from "lucide-react";

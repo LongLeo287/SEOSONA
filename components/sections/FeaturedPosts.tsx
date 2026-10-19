@@ -1,15 +1,27 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { featuredPosts } from "@/data/homepage-assets";
 import { SectionBadge } from "@/components/ui/SectionBadge";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { BrandText } from "@/components/brand/SonatoolsLogo";
+import { useIsInView } from "@/components/ui/use-is-in-view";
+import { useRef } from "react";
 
 export function FeaturedPosts() {
   if (!featuredPosts || featuredPosts.length === 0) return null;
 
+  return <FeaturedPostsContent />;
+}
+
+function FeaturedPostsContent() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useIsInView(sectionRef);
+
   return (
-    <section className="bg-white py-16 lg:py-24">
+    <section ref={sectionRef} data-motion-active={isInView ? "true" : "false"} className="bg-white py-16 lg:py-24">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <RevealOnScroll direction="up" className="mb-12 flex flex-col items-center text-center">
           <SectionBadge live={true} icon={<BookOpen className="h-3.5 w-3.5" />}>
@@ -46,7 +58,7 @@ export function FeaturedPosts() {
                     {featuredPosts[0].category}
                   </div>
                   <h3 className="mb-4 text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-white transition-colors group-hover:text-blue-100 text-balance">
-                    {featuredPosts[0].title}
+                    <BrandText>{featuredPosts[0].title}</BrandText>
                   </h3>
                   <div className="mt-4 flex items-center gap-2">
                     <span className="text-[15px] font-bold text-white transition-colors">
@@ -81,7 +93,7 @@ export function FeaturedPosts() {
                       {post.category}
                     </div>
                     <h3 className="mb-2 text-lg font-bold leading-tight text-[#04091A] transition-colors group-hover:text-[#1D4ED8] line-clamp-2">
-                      {post.title}
+                      <BrandText>{post.title}</BrandText>
                     </h3>
                     <div className="mt-auto flex items-center gap-1.5 text-[13px] font-bold text-[#1D4ED8] opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
                       Đọc ngay <ArrowRight size={14} />

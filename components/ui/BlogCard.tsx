@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { PostMeta } from "@/lib/mdx";
+import { BrandText } from "@/components/brand/SonatoolsLogo";
 
 export function BlogCard({ post }: { post: PostMeta }) {
   const categorySlug = post.categorySlug || 'tong-hop';
@@ -39,7 +40,7 @@ export function BlogCard({ post }: { post: PostMeta }) {
             })}
           </time>
           <h2 className="mt-3 text-[18px] font-bold tracking-tight text-[#04091A] transition-colors duration-300 group-hover:text-[#1D4ED8] line-clamp-3 text-balance leading-[1.4]">
-            {post.title}
+            <BrandText>{post.title}</BrandText>
           </h2>
         </div>
         <div className="mt-6 flex items-center gap-2">

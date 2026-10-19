@@ -77,10 +77,7 @@ const stats = [
   { value: "3–6", label: "Tháng thấy kết quả" },
 ];
 
-export default async function Page() {
-  // Simulate fetching data from a database or API
-  await new Promise((resolve) => setTimeout(resolve, 2500));
-
+export default function Page() {
   const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",

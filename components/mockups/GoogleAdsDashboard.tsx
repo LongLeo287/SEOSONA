@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion"
 import { Search, TrendingUp, Target } from "lucide-react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
+import { useIsInView } from "@/components/ui/use-is-in-view"
+import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion"
 
 type AnimatedCounterProps = {
   from: number;
@@ -11,30 +13,45 @@ type AnimatedCounterProps = {
   prefix?: string;
   suffix?: string;
   decimals?: number;
+  isActive: boolean;
+  reduceMotion: boolean | null;
 };
 
-const AnimatedCounter = ({ from, to, duration, prefix = "", suffix = "", decimals = 0 }: AnimatedCounterProps) => {
+const AnimatedCounter = ({ from, to, duration, prefix = "", suffix = "", decimals = 0, isActive, reduceMotion }: AnimatedCounterProps) => {
   const [count, setCount] = useState(from)
   
   useEffect(() => {
+    if (!isActive || reduceMotion) return;
+
     let startTimestamp: number | null = null;
+    let frame: number | null = null;
     const step = (timestamp: number) => {
       if (!startTimestamp) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / (duration * 1000), 1);
       setCount(from + progress * (to - from));
       if (progress < 1) {
-        window.requestAnimationFrame(step);
+        frame = window.requestAnimationFrame(step);
       }
     };
-    window.requestAnimationFrame(step);
-  }, [from, to, duration]);
+    frame = window.requestAnimationFrame(step);
 
-  return <span>{prefix}{count.toFixed(decimals)}{suffix}</span>
+    return () => {
+      if (frame !== null) window.cancelAnimationFrame(frame);
+    };
+  }, [from, to, duration, isActive, reduceMotion]);
+
+  const displayedCount = !isActive ? from : reduceMotion ? to : count;
+
+  return <span>{prefix}{displayedCount.toFixed(decimals)}{suffix}</span>
 }
 
 export const GoogleAdsDashboard = () => {
+  const rootRef = useRef<HTMLDivElement>(null)
+  const isInView = useIsInView(rootRef)
+  const reduceMotion = useStableReducedMotion()
+
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-2 shadow-[0_30px_60px_rgba(0,0,0,0.08)] relative z-10 text-left">
+    <div ref={rootRef} data-motion-active={isInView ? "true" : "false"} className="rounded-2xl border border-slate-200 bg-white p-2 shadow-[0_30px_60px_rgba(0,0,0,0.08)] relative z-10 text-left">
        <div className="rounded-xl border border-slate-100 bg-slate-50 overflow-hidden flex flex-col font-sans">
           {/* Mockup Header */}
           <div className="h-12 bg-white border-b border-slate-100 flex items-center px-4 gap-4">
@@ -57,7 +74,7 @@ export const GoogleAdsDashboard = () => {
                className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                 <div className="text-slate-500 text-xs font-semibold mb-1">Cost</div>
                 <div className="text-2xl font-bold text-slate-900">
-                  <AnimatedCounter from={0} to={124.5} duration={1.5} decimals={1} suffix="M ₫" />
+                   <AnimatedCounter from={0} to={124.5} duration={1.5} decimals={1} suffix="M ₫" isActive={isInView} reduceMotion={reduceMotion} />
                 </div>
                 <div className="text-emerald-500 text-xs font-medium mt-2 flex items-center gap-1"><TrendingUp size={12}/> +5.2%</div>
              </motion.div>
@@ -70,7 +87,7 @@ export const GoogleAdsDashboard = () => {
                className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                 <div className="text-slate-500 text-xs font-semibold mb-1">Conversions (Leads)</div>
                 <div className="text-2xl font-bold text-slate-900">
-                  <AnimatedCounter from={0} to={842} duration={1.5} />
+                   <AnimatedCounter from={0} to={842} duration={1.5} isActive={isInView} reduceMotion={reduceMotion} />
                 </div>
                 <div className="text-emerald-500 text-xs font-medium mt-2 flex items-center gap-1"><TrendingUp size={12}/> +12.4%</div>
              </motion.div>
@@ -83,7 +100,7 @@ export const GoogleAdsDashboard = () => {
                className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                 <div className="text-slate-500 text-xs font-semibold mb-1">Cost / Conv.</div>
                 <div className="text-2xl font-bold text-slate-900">
-                  <AnimatedCounter from={300} to={147} duration={1.5} suffix="K ₫" />
+                   <AnimatedCounter from={300} to={147} duration={1.5} suffix="K ₫" isActive={isInView} reduceMotion={reduceMotion} />
                 </div>
                 <div className="text-emerald-500 text-xs font-medium mt-2 flex items-center gap-1"><TrendingUp size={12} className="rotate-180"/> -8.1%</div>
              </motion.div>
@@ -98,7 +115,7 @@ export const GoogleAdsDashboard = () => {
                 <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-bl-full -mr-4 -mt-4 transition-transform duration-500" />
                 <div className="text-blue-100 text-xs font-semibold mb-1 relative z-10">ROAS (Return on Ad Spend)</div>
                 <div className="text-3xl font-black text-white relative z-10">
-                  <AnimatedCounter from={0} to={450} duration={2} suffix="%" />
+                   <AnimatedCounter from={0} to={450} duration={2} suffix="%" isActive={isInView} reduceMotion={reduceMotion} />
                 </div>
                 <div className="text-white text-xs font-medium mt-2 flex items-center gap-1 relative z-10"><Target size={12}/> Vượt KPI 15%</div>
              </motion.div>

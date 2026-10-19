@@ -6,14 +6,23 @@ import { PricingTable } from "@/components/sections/PricingTable";
 import { PlayCircle, Users, BarChart3, CheckCircle2, MonitorPlay } from "lucide-react";
 import { YoutubePlayerMockup } from "@/components/mockups/YoutubePlayerMockup";
 import Link from "next/link";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Dịch vụ Quảng cáo YouTube Ads | SEOSONA",
+  title: "Dịch vụ Quảng cáo YouTube Ads chuyên sâu | SEOSONA",
   description: "Dịch vụ YouTube Ads SEOSONA: video funnel, bumper ads, in-stream, remarketing video và đo lường brand/search lift cho doanh nghiệp.",
   alternates: { canonical: "/dich-vu-ads/youtube/" }
 };
 
 export default function YoutubeAdsPage() {
+  const jsonLd = serviceSchema({
+    name: "Dịch vụ Quảng cáo YouTube Ads | SEOSONA",
+    description: "Dịch vụ YouTube Ads SEOSONA: video funnel, bumper ads, in-stream, remarketing video và đo lường brand/search lift cho doanh nghiệp.",
+    path: "/dich-vu-ads/youtube/",
+    serviceType: "YouTube Ads management"
+  });
+
   const auditItems = [
     { title: "Video Funnel", desc: "Xác định video đang phục vụ nhận diện, cân nhắc, remarketing hay chuyển đổi để chọn format đúng.", icon: MonitorPlay },
     { title: "Audience Intent", desc: "Rà topic, placement, custom segment, remarketing viewer và tín hiệu từ Search/Website.", icon: Users },
@@ -85,6 +94,7 @@ export default function YoutubeAdsPage() {
 
   return (
     <main className="bg-slate-50">
+      <JsonLd data={jsonLd} />
       {/* SaaS Light Mode Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}

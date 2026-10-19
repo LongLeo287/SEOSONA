@@ -48,6 +48,16 @@ export const seoHubs = {
     title: "Thuật toán Google",
     description: "Cập nhật và giải thích các thuật toán Google theo hướng dễ hiểu, ứng dụng được vào SEO.",
     topics: ["Core Update", "Helpful Content", "Spam Update", "Page Experience", "E-E-A-T"]
+  },
+  "ranking-factors": {
+    title: "Yếu tố xếp hạng",
+    description: "Phân tích các tín hiệu ảnh hưởng đến thứ hạng tìm kiếm và cách ưu tiên nguồn lực SEO đúng cách.",
+    topics: ["Ranking factors", "Page experience", "Content quality", "Links", "Entity"]
+  },
+  "case-study": {
+    title: "Case Study SEO",
+    description: "Các phân tích và bài học thực tế từ quá trình triển khai SEO, marketing và tăng trưởng organic.",
+    topics: ["Kết quả SEO", "Chiến lược triển khai", "Tăng trưởng traffic", "Conversion", "Bài học thực chiến"]
   }
 } as const;
 

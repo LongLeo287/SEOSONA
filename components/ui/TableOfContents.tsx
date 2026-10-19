@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { requestScroll } from "@/lib/scroll";
 
 interface TocItem {
   id: string;
@@ -53,12 +54,12 @@ export function TableOfContents() {
     <div className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 group flex-col z-[100] items-end py-12 pl-12 pr-2 cursor-default">
       {/* Collapsed View (Dashes) */}
       <div className="flex flex-col items-center justify-center gap-1.5 transition-all duration-300 opacity-100 group-hover:opacity-0 group-hover:invisible group-focus-within:opacity-0 group-focus-within:invisible">
-        {headings.map((heading) => {
+        {headings.map((heading, index) => {
           const isActive = activeId === heading.id;
           return (
             <button
               type="button"
-              key={heading.id}
+              key={`${heading.id}-${index}`}
               className={cn(
                 "h-1.5 rounded-full border-0 p-0 transition-all duration-300 shadow-sm focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100",
                 isActive ? "w-5 bg-[#1D4ED8]" : "w-3 bg-[#E2E8F0] hover:w-4 hover:bg-[#94A3B8]"
@@ -66,8 +67,7 @@ export function TableOfContents() {
               onClick={() => {
                 const target = document.getElementById(heading.id);
                 if (target) {
-                  const y = target.getBoundingClientRect().top + window.scrollY - 100;
-                  window.scrollTo({ top: y, behavior: "smooth" });
+                  requestScroll({ target, offset: -100 });
                 }
               }}
               title={heading.text}
@@ -82,12 +82,12 @@ export function TableOfContents() {
         <h4 className="mb-3 pl-2 text-[10px] font-black uppercase tracking-[0.15em] text-[#94A3B8]">
           Nội dung bài viết
         </h4>
-        <nav className="flex flex-col gap-0.5 max-h-[50vh] overflow-y-auto overscroll-contain pr-1.5 custom-scrollbar">
-          {headings.map((heading) => {
+        <nav data-lenis-prevent className="flex flex-col gap-0.5 max-h-[50vh] overflow-y-auto overscroll-contain pr-1.5 custom-scrollbar">
+          {headings.map((heading, index) => {
             const isActive = activeId === heading.id;
             return (
               <a
-                key={heading.id}
+                key={`${heading.id}-${index}`}
                 href={`#${heading.id}`}
                 className={cn(
                   "block px-2.5 py-1.5 rounded-md text-[12px] transition-all duration-200 leading-snug focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100",
@@ -100,8 +100,7 @@ export function TableOfContents() {
                   e.preventDefault();
                   const target = document.getElementById(heading.id);
                   if (target) {
-                    const y = target.getBoundingClientRect().top + window.scrollY - 100;
-                    window.scrollTo({ top: y, behavior: "smooth" });
+                    requestScroll({ target, offset: -100 });
                   }
                 }}
               >

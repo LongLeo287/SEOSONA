@@ -3,6 +3,7 @@
 import { ArrowUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/site";
+import { requestScroll } from "@/lib/scroll";
 
 const phoneDigits = siteConfig.phone.replace(/\D/g, "");
 
@@ -33,21 +34,18 @@ export function FloatingActions() {
   }, []);
 
   return (
-    <div className="fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] right-3 z-50 flex flex-col items-center gap-2 rounded-full border border-white/70 bg-white/75 p-1.5 shadow-2xl shadow-slate-900/10 backdrop-blur-md sm:bottom-6 sm:right-6 sm:gap-3 sm:p-2">
-      <button
-        type="button"
-        aria-label="Lên đầu trang"
-        aria-hidden={!showBackToTop}
-        tabIndex={showBackToTop ? 0 : -1}
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        style={{
-          opacity: showBackToTop ? 1 : 0,
-        }}
-        className={`group relative grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-lg shadow-slate-900/10 transition duration-200 hover:-translate-y-0.5 hover:scale-105 hover:border-blue-200 hover:text-blue-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-100 active:scale-95 sm:h-12 sm:w-12 ${showBackToTop ? "translate-y-0" : "pointer-events-none translate-y-3"}`}
-      >
-        <ActionTooltip label="Lên đầu trang" />
-        <ArrowUp size={20} className="transition group-hover:-translate-y-0.5" />
-      </button>
+    <div data-floating-actions className="fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] right-3 z-50 flex flex-col items-center gap-1.5 rounded-full border border-white/70 bg-white/75 p-1 shadow-2xl shadow-slate-900/10 backdrop-blur-md sm:bottom-6 sm:right-6 sm:gap-3 sm:p-2">
+      {showBackToTop ? (
+        <button
+          type="button"
+          aria-label="Lên đầu trang"
+          onClick={() => requestScroll({ target: 0 })}
+          className="group relative grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-lg shadow-slate-900/10 transition duration-200 hover:-translate-y-0.5 hover:scale-105 hover:border-blue-200 hover:text-blue-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-100 active:scale-95 sm:h-12 sm:w-12"
+        >
+          <ActionTooltip label="Lên đầu trang" />
+          <ArrowUp size={20} className="transition group-hover:-translate-y-0.5" />
+        </button>
+      ) : null}
 
       <a
         href={`https://zalo.me/${phoneDigits}`}

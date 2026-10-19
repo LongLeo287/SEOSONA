@@ -7,6 +7,9 @@ import { ChatPreview } from "@/components/ui/chat-preview";
 import Image from "next/image";
 import { clientLogos, pressLogos } from "@/data/homepage-assets";
 import { motion } from "framer-motion";
+import { useRef } from "react";
+import { useIsInView } from "@/components/ui/use-is-in-view";
+import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion";
 
 const testimonials = [
   {
@@ -47,7 +50,7 @@ const testimonials = [
   }
 ];
 
-const marqueeLogos = [...clientLogos, ...clientLogos];
+const marqueeLogos = clientLogos;
 
 function LogoCard({ logo }: { logo: { name: string; src: string; href?: string } }) {
   return (
@@ -70,6 +73,9 @@ function LogoCard({ logo }: { logo: { name: string; src: string; href?: string }
 }
 
 export function TrustEcosystem() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useIsInView(sectionRef);
+  const reduceMotion = useStableReducedMotion();
   const testimonialMessages = testimonials.map((t) => ({
     avatar: t.avatar,
     username: `${t.name} - ${t.company}`,
@@ -79,7 +85,11 @@ export function TrustEcosystem() {
   }));
 
   return (
-    <section className="bg-[#F8FAFC] py-16 lg:py-24 overflow-hidden relative">
+    <section
+      ref={sectionRef}
+      data-motion-active={isInView ? "true" : "false"}
+      className="bg-[#F8FAFC] py-16 lg:py-24 overflow-hidden relative"
+    >
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#04091A08_1px,transparent_1px),linear-gradient(to_bottom,#04091A08_1px,transparent_1px)] bg-[size:28px_28px]" />
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -98,7 +108,7 @@ export function TrustEcosystem() {
         </RevealOnScroll>
 
         {/* --- MARQUEE LOGOS --- */}
-        <RevealOnScroll direction="up" delay={100} className="mb-16 max-w-6xl mx-auto">
+        <RevealOnScroll direction="up" delay={100} className="mb-16 w-full max-w-6xl mx-auto overflow-hidden">
           <style dangerouslySetInnerHTML={{__html: `
             @keyframes force-slide {
               from { transform: translateX(0%); }
@@ -113,7 +123,7 @@ export function TrustEcosystem() {
               animation-play-state: paused !important;
             }
           `}} />
-          <div className="relative overflow-hidden py-4 rounded-[28px] bg-white/90 backdrop-blur-md shadow-sm border border-slate-200/60 group/marquee">
+          <div className="relative min-w-0 overflow-hidden py-4 rounded-[28px] bg-white/90 backdrop-blur-md shadow-sm border border-slate-200/60 group/marquee">
             <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-24 bg-gradient-to-r from-white via-white/80 to-transparent" />
             <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-24 bg-gradient-to-l from-white via-white/80 to-transparent" />
             <div className="run-marquee gap-8 pr-8">
@@ -175,17 +185,18 @@ export function TrustEcosystem() {
                 {pressLogos.map((logo, index) => (
                   <motion.a 
                     href={logo.href}
+                    aria-label={`Đọc bài báo trên ${logo.name}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     key={logo.name} 
-                    animate={{ y: ["-4%", "4%"] }}
-                    transition={{
-                      duration: 3 + (index % 3),
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                      ease: "easeInOut",
-                      delay: index * 0.4
-                    }}
+                     animate={isInView && !reduceMotion ? { y: ["-4%", "4%"] } : { y: 0 }}
+                     transition={isInView && !reduceMotion ? {
+                       duration: 3 + (index % 3),
+                       repeat: Infinity,
+                       repeatType: "reverse",
+                       ease: "easeInOut",
+                       delay: index * 0.4
+                     } : { duration: 0.01 }}
                     className="group flex h-[76px] w-[240px] max-w-full items-center justify-center rounded-[20px] bg-slate-50/80 backdrop-blur-sm border border-slate-200/60 shadow-sm transition-all hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg cursor-pointer hover:bg-white mx-auto focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100"
                   >
                     <Image 

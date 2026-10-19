@@ -7,6 +7,8 @@ import Link from "next/link";
 import { ArrowRight, Search, BarChart, CheckCircle2, Target, ShieldCheck, Zap } from "lucide-react";
 import { DigitalEcosystemMockup } from "@/components/mockups/DigitalEcosystemMockup";
 import { ServicePerformanceMockup } from "@/components/mockups/ServicePerformanceMockup";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { collectionPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Dịch vụ Digital Marketing chuyên sâu | SEOSONA",
@@ -19,7 +21,7 @@ const serviceData = [
   {
     category: "SEO & Organic Growth",
     items: [
-      { title: "SEO Tổng thể", description: "Giải pháp SEO All-in-one giúp thống lĩnh thị trường ngách, mang lại hàng trăm nghìn traffic tự nhiên bền vững.", href: "/dich-vu-seo/", iconName: "Search" },
+      { title: "SEO Tổng thể", description: "Giải pháp SEO All-in-one giúp thống lĩnh thị trường ngách, mang lại hàng trăm nghìn traffic tự nhiên bền vững.", href: "/dich-vu-seo-tong-the/", iconName: "Search" },
       { title: "Tư vấn SEO chuyên sâu", description: "Dành cho doanh nghiệp đã có team in-house cần Audit, lập Roadmap và định hướng chiến lược.", href: "/tu-van-seo-chuyen-sau/", iconName: "BarChart" },
       { title: "Audit SEO", description: "Chẩn đoán technical, content, indexation, tracking và conversion để biết chính xác điểm nghẽn.", href: "/audit-seo/", iconName: "BarChart" },
       { title: "Option SEO", description: "Chọn hướng triển khai phù hợp: audit, tư vấn, SEO tổng thể, website chuẩn SEO hoặc đào tạo in-house.", href: "/seo-option/", iconName: "Settings" },
@@ -46,8 +48,16 @@ const serviceData = [
 ];
 
 export default function Page() {
+  const jsonLd = collectionPageSchema({
+    name: "Dịch vụ Digital Marketing chuyên sâu | SEOSONA",
+    description: "Hệ sinh thái dịch vụ SEOSONA: SEO Tổng thể, Google Ads, Facebook Ads, Youtube Ads, Tracking & Automation giúp doanh nghiệp tăng trưởng đột phá.",
+    path: "/dich-vu/",
+    items: serviceData.flatMap((group) => group.items.map((item) => ({ name: item.title, path: item.href })))
+  });
+
   return (
     <main>
+      <JsonLd data={jsonLd} />
       <PageHero 
         eyebrow="Hệ sinh thái Dịch vụ" 
         title="Tăng trưởng bền vững bằng Dữ liệu và Trải nghiệm" 
@@ -87,7 +97,7 @@ export default function Page() {
                     <li className="flex gap-3 text-slate-600 leading-relaxed"><CheckCircle2 className="w-6 h-6 text-blue-500 shrink-0" /> Muốn giao khoán toàn bộ KPI cho Agency.</li>
                  </ul>
                  <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4 relative z-10">Đề xuất giải pháp:</div>
-                 <Link href="/dich-vu-seo/" className="inline-flex h-12 px-6 rounded-full items-center justify-center gap-2 bg-slate-100 text-blue-600 font-bold hover:bg-blue-600 hover:text-white transition-colors relative z-10 group/link w-full sm:w-auto">
+                 <Link href="/dich-vu-seo-tong-the/" className="inline-flex h-12 px-6 rounded-full items-center justify-center gap-2 bg-slate-100 text-blue-600 font-bold hover:bg-blue-600 hover:text-white transition-colors relative z-10 group/link w-full sm:w-auto">
                    SEO Tổng Thể <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
                  </Link>
               </div>

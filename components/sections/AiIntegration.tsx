@@ -1,9 +1,11 @@
 "use client";
 
 import { Bot, Sparkles, Cpu, PenTool, Search, CheckCircle2, Lock, Mic, Plus, ArrowUp, ArrowRight, Database, Network, Mail, UserPlus, GitBranch, MessageCircle } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type KeyboardEvent } from "react";
+import { useReducedMotion } from "framer-motion";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { TextShimmer } from "@/components/ui/shimmer-text";
+import { SonatoolsLogo } from "@/components/brand/SonatoolsLogo";
 
 const aiFeatures = [
   {
@@ -175,7 +177,7 @@ const technicalScenarios = [
 
 // --- 3 OUTER UI COMPONENTS ---
 
-function SgeUI() {
+function SgeUI({ motionEnabled }: { motionEnabled: boolean }) {
   const [activeLines, setActiveLines] = useState<number[]>([]);
   const [scenarioIndex, setScenarioIndex] = useState<number | null>(null);
   const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
@@ -194,12 +196,14 @@ function SgeUI() {
   };
 
   useEffect(() => {
+    if (!motionEnabled) return;
+
     const bootstrap = setTimeout(() => triggerSearch(0), 0);
     return () => {
       clearTimeout(bootstrap);
       timeoutsRef.current.forEach(clearTimeout);
     };
-  }, []);
+  }, [motionEnabled]);
 
   return (
     <div className="w-full h-full bg-white flex flex-col relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 animate-in fade-in zoom-in-[0.98] duration-500">
@@ -215,7 +219,7 @@ function SgeUI() {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto overflow-x-hidden no-scrollbar relative flex flex-col w-full">
+      <div data-lenis-prevent className="flex-1 overflow-y-auto overscroll-contain overflow-x-hidden no-scrollbar relative flex flex-col w-full">
         {scenarioIndex === null ? (
           // Google Home Page Look
           <div className="flex-1 flex flex-col items-center justify-center px-6 animate-in fade-in duration-500 pb-12">
@@ -230,7 +234,7 @@ function SgeUI() {
 
             <div className="w-full max-w-xl relative mb-8 hover:shadow-md transition-shadow rounded-full">
               <div className="absolute left-4 top-1/2 -translate-y-1/2"><Search className="w-4 h-4 text-slate-500" /></div>
-              <input readOnly placeholder="Chọn truy vấn để mô phỏng AI Search" className="w-full h-12 rounded-full border border-slate-200 pl-12 pr-12 outline-none text-[14px] cursor-default bg-white" />
+              <input aria-label="Truy vấn mô phỏng AI Search" readOnly placeholder="Chọn truy vấn để mô phỏng AI Search" className="w-full h-12 rounded-full border border-slate-200 pl-12 pr-12 outline-none text-[14px] cursor-default bg-white" />
               <div className="absolute right-4 top-1/2 -translate-y-1/2"><Mic className="w-4 h-4 text-[#4285F4]" /></div>
             </div>
 
@@ -284,7 +288,7 @@ function SgeUI() {
   );
 }
 
-function ContentUI() {
+function ContentUI({ motionEnabled }: { motionEnabled: boolean }) {
   const [activeLines, setActiveLines] = useState<number[]>([]);
   const [scenarioIndex, setScenarioIndex] = useState<number | null>(null);
   const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
@@ -303,19 +307,22 @@ function ContentUI() {
   };
 
   useEffect(() => {
+    if (!motionEnabled) return;
+
     const bootstrap = setTimeout(() => triggerChat(0), 0);
     return () => {
       clearTimeout(bootstrap);
       timeoutsRef.current.forEach(clearTimeout);
     };
-  }, []);
+  }, [motionEnabled]);
 
   return (
     <div className="w-full h-full bg-white flex relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 animate-in fade-in zoom-in-[0.98] duration-500">
       {/* Sidebar (ChatGPT style) */}
       <div className="hidden md:flex w-56 bg-slate-50 border-r border-slate-100 flex-col p-3 shrink-0">
         <button type="button" onClick={() => setScenarioIndex(null)} className="bg-white hover:bg-slate-100 text-slate-800 flex items-center gap-3 px-3 py-2.5 rounded-lg text-[14px] font-medium transition-colors mb-4 border border-slate-200 shadow-sm focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100">
-          <Bot className="w-4 h-4 text-blue-600" /> Sonatools Content AI
+          <Bot className="w-4 h-4 text-blue-600" />
+          <SonatoolsLogo size="compact" className="h-4 max-w-[6.5rem]" /> Content AI
           <Plus className="w-4 h-4 ml-auto text-slate-400" />
         </button>
         <div className="text-xs font-semibold text-slate-500 px-3 mb-2 mt-2">Today</div>
@@ -329,7 +336,7 @@ function ContentUI() {
 
       {/* Main Chat Area */}
       <div className="flex-1 flex flex-col relative bg-white min-w-0">
-        <div className="flex-1 overflow-y-auto overflow-x-hidden no-scrollbar p-4 md:p-8 flex flex-col gap-6 w-full">
+        <div data-lenis-prevent className="flex-1 overflow-y-auto overscroll-contain overflow-x-hidden no-scrollbar p-4 md:p-8 flex flex-col gap-6 w-full">
           {scenarioIndex === null ? (
             <div className="flex-1 flex flex-col items-center justify-center animate-in fade-in duration-500">
               <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-5 shadow-lg">
@@ -390,19 +397,23 @@ function ContentUI() {
 
         <div className="p-4 md:p-6 bg-slate-50 shrink-0 border-t border-slate-100">
           <div className="w-full max-w-3xl mx-auto bg-white rounded-2xl flex items-center px-4 py-3 border border-slate-200 shadow-sm">
-            <span className="text-[15px] text-slate-500 flex-1">Message Sonatools Content AI...</span>
+            <span className="text-[15px] text-slate-500 flex-1 inline-flex items-center gap-1.5 min-w-0">
+              Message <SonatoolsLogo size="compact" className="h-4 max-w-[6.5rem] shrink-0" /> Content AI...
+            </span>
             <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center transition-colors">
               <ArrowUp className="w-5 h-5 text-blue-600" />
             </div>
           </div>
-          <div className="text-center text-[11px] text-slate-500 mt-3">Sonatools AI can make mistakes. Consider verifying important information.</div>
+          <div className="text-center text-[11px] text-slate-500 mt-3 inline-flex items-center justify-center gap-1">
+            <SonatoolsLogo size="compact" className="h-3.5 max-w-[5.5rem]" /> AI can make mistakes. Consider verifying important information.
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-function TechnicalUI() {
+function TechnicalUI({ motionEnabled }: { motionEnabled: boolean }) {
   const [activeLines, setActiveLines] = useState<number[]>([]);
   const [scenarioIndex, setScenarioIndex] = useState<number | null>(null);
   const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
@@ -421,12 +432,14 @@ function TechnicalUI() {
   };
 
   useEffect(() => {
+    if (!motionEnabled) return;
+
     const bootstrap = setTimeout(() => triggerAudit(0), 0);
     return () => {
       clearTimeout(bootstrap);
       timeoutsRef.current.forEach(clearTimeout);
     };
-  }, []);
+  }, [motionEnabled]);
 
   return (
     <div className="w-full h-full bg-white flex flex-col relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 animate-in fade-in zoom-in-[0.98] duration-500">
@@ -437,7 +450,9 @@ function TechnicalUI() {
           <div className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]" />
           <div className="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]" />
         </div>
-        <span className="text-[12px] text-slate-500 font-sans tracking-wide">sonatools-technical-audit - bash</span>
+        <span className="text-[12px] text-slate-500 font-sans tracking-wide inline-flex items-center gap-1">
+          <SonatoolsLogo size="compact" className="h-3.5 max-w-[5.5rem]" />-technical-audit - bash
+        </span>
       </div>
 
       {/* Terminal Toolbar */}
@@ -457,13 +472,15 @@ function TechnicalUI() {
       </div>
 
       {/* Terminal Window */}
-      <div className="flex-1 p-5 md:p-6 font-mono text-[13.5px] leading-relaxed overflow-y-auto overflow-x-hidden no-scrollbar text-slate-600 w-full min-w-0">
+      <div data-lenis-prevent className="flex-1 p-5 md:p-6 font-mono text-[13.5px] leading-relaxed overflow-y-auto overscroll-contain overflow-x-hidden no-scrollbar text-slate-600 w-full min-w-0">
         {scenarioIndex === null ? (
           <div className="text-slate-500 animate-in fade-in duration-500">
-            <div className="text-[#4EC9B0] mb-2 font-bold">Welcome to Sonatools Technical Audit Environment v3.0</div>
+            <div className="text-[#4EC9B0] mb-2 font-bold inline-flex items-center gap-1 flex-wrap">
+              Welcome to <SonatoolsLogo size="compact" className="h-4 max-w-[6.5rem]" /> Technical Audit Environment v3.0
+            </div>
             <div>Select a script from the toolbar above to execute.</div>
             <div className="mt-4 flex">
-              <span className="text-[#569CD6]">Admin@Sonatools</span>
+              <span className="text-[#569CD6] inline-flex items-center gap-0.5">Admin@<SonatoolsLogo size="compact" className="h-4 max-w-[6.5rem]" /></span>
               <span className="text-slate-600 mx-1">~</span>
               <span className="text-[#DCDCAA]">/audit</span>
               <span className="mx-2">$</span>
@@ -473,7 +490,7 @@ function TechnicalUI() {
         ) : (
           <>
             <div className="mb-3 flex animate-in fade-in duration-300">
-              <span className="text-[#569CD6]">Admin@Sonatools</span>
+              <span className="text-[#569CD6] inline-flex items-center gap-0.5">Admin@<SonatoolsLogo size="compact" className="h-4 max-w-[6.5rem]" /></span>
               <span className="text-slate-600 mx-1">~</span>
               <span className="text-[#DCDCAA]">/audit</span>
               <span className="mx-2">$</span>
@@ -500,7 +517,7 @@ function TechnicalUI() {
             )}
             {activeLines.length === technicalScenarios[scenarioIndex].length && (
               <div className="mt-4 flex animate-in fade-in duration-300">
-                <span className="text-[#569CD6]">Admin@Sonatools</span>
+                <span className="text-[#569CD6] inline-flex items-center gap-0.5">Admin@<SonatoolsLogo size="compact" className="h-4 max-w-[6.5rem]" /></span>
                 <span className="text-slate-600 mx-1">~</span>
                 <span className="text-[#DCDCAA]">/audit</span>
                 <span className="mx-2">$</span>
@@ -549,11 +566,11 @@ function DataAutomationUI() {
           <path d="M 520 300 C 600 300, 600 180, 700 180" stroke="#10b981" strokeWidth="2.5" strokeDasharray="6 6" fill="none" className="path-flow" />
           <path d="M 520 300 C 600 300, 600 420, 700 420" stroke="#3b82f6" strokeWidth="2.5" strokeDasharray="6 6" fill="none" className="path-flow" />
 
-          <circle r="4" fill="#64748b"><animateMotion dur="2s" begin="0s" repeatCount="indefinite" path="M 240 300 L 400 300" /></circle>
-          <circle r="4" fill="#34d399"><animateMotion dur="2s" begin="0s" repeatCount="indefinite" path="M 520 300 C 600 300, 600 180, 700 180" /></circle>
-          <circle r="4" fill="#34d399"><animateMotion dur="2s" begin="1s" repeatCount="indefinite" path="M 520 300 C 600 300, 600 180, 700 180" /></circle>
-          <circle r="4" fill="#60a5fa"><animateMotion dur="2s" begin="0.5s" repeatCount="indefinite" path="M 520 300 C 600 300, 600 420, 700 420" /></circle>
-          <circle r="4" fill="#60a5fa"><animateMotion dur="2s" begin="1.5s" repeatCount="indefinite" path="M 520 300 C 600 300, 600 420, 700 420" /></circle>
+          <circle className="motion-particle" r="4" fill="#64748b"><animateMotion dur="2s" begin="0s" repeatCount="indefinite" path="M 240 300 L 400 300" /></circle>
+          <circle className="motion-particle" r="4" fill="#34d399"><animateMotion dur="2s" begin="0s" repeatCount="indefinite" path="M 520 300 C 600 300, 600 180, 700 180" /></circle>
+          <circle className="motion-particle" r="4" fill="#34d399"><animateMotion dur="2s" begin="1s" repeatCount="indefinite" path="M 520 300 C 600 300, 600 180, 700 180" /></circle>
+          <circle className="motion-particle" r="4" fill="#60a5fa"><animateMotion dur="2s" begin="0.5s" repeatCount="indefinite" path="M 520 300 C 600 300, 600 420, 700 420" /></circle>
+          <circle className="motion-particle" r="4" fill="#60a5fa"><animateMotion dur="2s" begin="1.5s" repeatCount="indefinite" path="M 520 300 C 600 300, 600 420, 700 420" /></circle>
         </svg>
 
         {/* Trigger Node */}
@@ -634,13 +651,32 @@ function DataAutomationUI() {
 // --- Main Component ---
 
 export function AiIntegration() {
+  const sectionRef = useRef<HTMLElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [isInView, setIsInView] = useState(false);
   const isPausedRef = useRef(false);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { rootMargin: "200px 0px", threshold: 0.01 },
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isInView || reduceMotion) return;
+
     const duration = 15000;
-    const interval = 50;
+    // Ten updates per second are enough for the progress indicator while
+    // avoiding a 20 Hz React render loop during page scrolling.
+    const interval = 100;
     const steps = duration / interval;
     const increment = 100 / steps;
 
@@ -657,12 +693,32 @@ export function AiIntegration() {
     }, interval);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [isInView, reduceMotion]);
 
   const handleNodeClick = (index: number) => {
     setActiveIndex(index);
     setProgress(0);
     // User clicks, it stays on the new node for 15s (progress resets to 0), then continues automatically.
+  };
+
+  const handleTabKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    let nextIndex: number | null = null;
+
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      nextIndex = (index + 1) % aiFeatures.length;
+    } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      nextIndex = (index - 1 + aiFeatures.length) % aiFeatures.length;
+    } else if (event.key === "Home") {
+      nextIndex = 0;
+    } else if (event.key === "End") {
+      nextIndex = aiFeatures.length - 1;
+    }
+
+    if (nextIndex === null) return;
+
+    event.preventDefault();
+    handleNodeClick(nextIndex);
+    document.getElementById(`ai-feature-tab-${nextIndex}`)?.focus();
   };
 
   const getProgressWidth = () => {
@@ -674,7 +730,11 @@ export function AiIntegration() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-transparent py-12 lg:py-16">
+    <section
+      ref={sectionRef}
+      data-motion-active={isInView ? "true" : "false"}
+      className="relative overflow-hidden bg-transparent py-12 lg:py-16"
+    >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[500px] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-600/10 via-[#04091A]/0 to-transparent blur-3xl opacity-50 pointer-events-none" />
 
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -685,9 +745,12 @@ export function AiIntegration() {
               <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-600"></span>
             </span>
             <Bot className="h-4 w-4 text-blue-700" />
-            <TextShimmer as="span" className="text-[14px] font-bold [--base-color:#1d4ed8] [--base-gradient-color:#60a5fa] dark:[--base-color:#1d4ed8] dark:[--base-gradient-color:#60a5fa]">
-              Powered by Sonatools
-            </TextShimmer>
+            <span className="inline-flex items-center gap-1 text-[14px] font-bold">
+              <TextShimmer as="span" className="[--base-color:#1d4ed8] [--base-gradient-color:#60a5fa] dark:[--base-color:#1d4ed8] dark:[--base-gradient-color:#60a5fa]">
+                Powered by
+              </TextShimmer>
+              <SonatoolsLogo size="compact" className="h-4 max-w-[6.5rem]" />
+            </span>
           </div>
 
           <h2 className="mx-auto mb-5 max-w-4xl text-[32px] font-black leading-tight tracking-tight text-[#04091A] sm:text-4xl md:text-[44px] text-balance">
@@ -696,14 +759,26 @@ export function AiIntegration() {
           </h2>
           <p className="mx-auto max-w-2xl text-[17px] font-medium leading-relaxed text-slate-500 text-balance">
             Thay vì lo sợ Google Update, chúng tôi làm chủ công nghệ. <br className="hidden md:block" />
-            Tích hợp sức mạnh của Sonatools vào quy trình R&D Content và Data Analysis để mang lại hiệu quả vượt trội.
+            Tích hợp sức mạnh của <SonatoolsLogo size="inline" className="h-[1.45em] max-w-[9rem]" /> vào quy trình R&D Content và Data Analysis để mang lại hiệu quả vượt trội.
           </p>
         </RevealOnScroll>
 
         <div className="flex flex-col gap-10">
 
           {/* Top: Features Row */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative z-20">
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative z-20"
+            role="tablist"
+            aria-label="Tính năng hệ sinh thái công nghệ và dữ liệu"
+            onMouseEnter={() => { isPausedRef.current = true; }}
+            onMouseLeave={() => { isPausedRef.current = false; }}
+            onFocus={() => { isPausedRef.current = true; }}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                isPausedRef.current = false;
+              }
+            }}
+          >
             {/* Background Line */}
             <div className="absolute top-8 left-[12.5%] right-[12.5%] h-px hidden lg:block -z-10">
               <RevealOnScroll delay={100} className="w-full h-full bg-slate-200">
@@ -721,8 +796,13 @@ export function AiIntegration() {
                 <RevealOnScroll key={item.title} direction="up" delay={100 + (i * 100)}>
                   <button
                     type="button"
-                    aria-pressed={isActive}
+                    id={`ai-feature-tab-${i}`}
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-controls="ai-feature-panel"
+                    tabIndex={isActive ? 0 : -1}
                     onClick={() => handleNodeClick(i)}
+                    onKeyDown={(event) => handleTabKeyDown(event, i)}
                     className={`group flex flex-col items-center text-center gap-4 transition-all duration-500 h-full focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 rounded-2xl`}
                   >
                     <div className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-full transition-all duration-500 shadow-md border z-10 ${isActive ? 'bg-white text-blue-600 border-blue-500 scale-110 shadow-[0_0_20px_rgba(37,99,235,0.2)]' : 'bg-white text-slate-500 border-slate-200 hover:border-blue-300 hover:text-blue-500 hover:scale-105'}`}>
@@ -744,10 +824,16 @@ export function AiIntegration() {
 
           {/* Bottom: Dynamic UI Window (Flat) */}
           <RevealOnScroll direction="up" delay={300} className="w-full h-[500px] lg:h-[600px] max-w-5xl mx-auto z-10">
-            <div className="relative w-full h-full transition-opacity duration-500 rounded-2xl border border-slate-200 bg-white p-3 shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
-              {activeIndex === 0 && <SgeUI />}
-              {activeIndex === 1 && <ContentUI />}
-              {activeIndex === 2 && <TechnicalUI />}
+            <div
+              id="ai-feature-panel"
+              role="tabpanel"
+              aria-labelledby={`ai-feature-tab-${activeIndex}`}
+              tabIndex={0}
+              className="relative w-full h-full transition-opacity duration-500 rounded-2xl border border-slate-200 bg-white p-3 shadow-[0_30px_60px_rgba(0,0,0,0.08)]"
+            >
+               {activeIndex === 0 && <SgeUI motionEnabled={isInView} />}
+               {activeIndex === 1 && <ContentUI motionEnabled={isInView} />}
+               {activeIndex === 2 && <TechnicalUI motionEnabled={isInView} />}
               {activeIndex === 3 && <DataAutomationUI />}
             </div>
           </RevealOnScroll>
@@ -759,7 +845,7 @@ export function AiIntegration() {
           <div className="relative group">
             <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 opacity-20 blur transition duration-500 group-hover:opacity-40"></div>
             <a href="https://sonatools.io/" target="_blank" rel="noreferrer" className="relative flex items-center gap-3 rounded-full bg-white border border-slate-200 px-8 py-4 text-[16px] font-bold text-[#04091A] transition-all hover:border-blue-600 hover:text-blue-700 hover:scale-105 active:scale-95 shadow-sm hover:shadow-[0_8px_30px_rgba(29,78,216,0.15)]">
-              Khám phá toàn bộ sức mạnh Sonatools.io
+              <span className="inline-flex items-center gap-1.5">Khám phá toàn bộ sức mạnh <SonatoolsLogo size="compact" className="h-5 max-w-[8rem]" /></span>
               <ArrowRight className="h-5 w-5 text-blue-600 transition-transform group-hover:translate-x-1" />
             </a>
           </div>

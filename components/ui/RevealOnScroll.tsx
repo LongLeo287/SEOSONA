@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import clsx from "clsx";
+import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion";
 
 interface RevealOnScrollProps {
   children: React.ReactNode;
@@ -16,6 +17,7 @@ export function RevealOnScroll({
   className = "",
   direction = "up"
 }: RevealOnScrollProps) {
+  const reduceMotion = useStableReducedMotion();
   const directionVariants = {
     up: { y: 32, opacity: 0 },
     left: { x: -32, opacity: 0 },
@@ -27,13 +29,13 @@ export function RevealOnScroll({
 
   return (
     <motion.div
-      initial={initialVariant}
+      initial={reduceMotion ? false : initialVariant}
       whileInView={{ x: 0, y: 0, opacity: 1 }}
       viewport={{ once: true, amount: 0.12 }}
       transition={{ 
-        duration: 0.7, 
+        duration: reduceMotion ? 0 : 0.55,
         ease: "easeOut", 
-        delay: delay / 1000 
+        delay: reduceMotion ? 0 : Math.min(delay / 1000, 0.25)
       }}
       className={clsx("will-change-transform", className)}
     >

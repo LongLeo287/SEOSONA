@@ -6,6 +6,8 @@ import { PricingTable } from "@/components/sections/PricingTable";
 import { Users, Target, TrendingUp, CheckCircle2, ImageIcon, SplitSquareHorizontal } from "lucide-react";
 import { FacebookAbTestMockup } from "@/components/mockups/FacebookAbTestMockup";
 import Link from "next/link";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Dịch vụ Quảng cáo Facebook Ads | SEOSONA",
@@ -14,6 +16,13 @@ export const metadata: Metadata = {
 };
 
 export default function FacebookAdsPage() {
+  const jsonLd = serviceSchema({
+    name: "Dịch vụ Quảng cáo Facebook Ads | SEOSONA",
+    description: "Dịch vụ Facebook Ads SEOSONA: chiến lược đa điểm chạm, creative testing, lead generation, remarketing và tracking chuyển đổi cho doanh nghiệp.",
+    path: "/dich-vu-ads/facebook/",
+    serviceType: "Facebook Ads management"
+  });
+
   const auditItems = [
     { title: "Funnel Diagnosis", desc: "Xác định mục tiêu campaign theo awareness, consideration, conversion, lead quality hoặc remarketing.", icon: Target },
     { title: "Audience Quality", desc: "Rà tệp cold, warm, lookalike, remarketing, exclusion và mức độ chồng chéo giữa các nhóm.", icon: Users },
@@ -85,6 +94,7 @@ export default function FacebookAdsPage() {
 
   return (
     <main className="bg-slate-50">
+      <JsonLd data={jsonLd} />
       {/* SaaS Light Mode Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}

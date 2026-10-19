@@ -6,14 +6,23 @@ import { PricingTable } from "@/components/sections/PricingTable";
 import { Link2, ShieldCheck, Network, CheckCircle2, Globe, Activity, Share2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Dịch vụ Backlink Báo & Xây dựng Entity | SEOSONA",
-  description: "Dịch vụ Backlink chất lượng cao từ SEOSONA: Backlink Báo chí, Guest Post, Entity Social. Đảm bảo an toàn, tăng sức mạnh Domain và thúc đẩy từ khóa lên Top bền vững.",
+  description: "Dịch vụ Backlink từ SEOSONA: Backlink Báo chí, Guest Post, Entity Social. Tăng sức mạnh Domain và thúc đẩy từ khóa lên Top bền vững.",
   alternates: { canonical: "/dich-vu-backlink/" }
 };
 
 export default function BacklinkPage() {
+  const jsonLd = serviceSchema({
+    name: "Dịch vụ Backlink Báo và Xây dựng Entity",
+    description: "Dịch vụ Backlink báo chí, Guest Post và Entity Social an toàn, minh bạch cho website doanh nghiệp.",
+    path: "/dich-vu-backlink/",
+    serviceType: "SEO backlink and digital authority service"
+  });
+
   const features: Array<{ title: string; desc: string; icon: LucideIcon }> = [
     { title: "Backlink Báo Trắng", desc: "Liên kết từ các đầu báo lớn, uy tín tại Việt Nam (VnExpress, Dân Trí, Tuổi Trẻ...) giúp website nhận được nguồn Trust cực lớn từ Google.", icon: Globe },
     { title: "Social Entity & Profile", desc: "Xây dựng hệ sinh thái mạng xã hội đồng nhất, khai báo Schema chuẩn xác để xác thực thực thể doanh nghiệp trên Internet.", icon: Network },
@@ -48,7 +57,7 @@ export default function BacklinkPage() {
         "Khai báo Google Maps & Business",
         "Tối ưu Schema Organization",
         "Đồng bộ NAP (Name - Address - Phone)",
-        "Ép Index tỷ lệ > 90%"
+        "Theo dõi và hỗ trợ thúc đẩy index theo dữ liệu thực tế"
       ]
     },
     {
@@ -60,7 +69,7 @@ export default function BacklinkPage() {
         "Site có Traffic thật > 1000/tháng",
         "Chỉ số DR > 20, UR > 20",
         "Bao gồm bài viết PR chuẩn SEO",
-        "Bảo hành link trọn đời"
+        "Theo dõi tình trạng link theo thời hạn cam kết"
       ],
       isPopular: true
     },
@@ -87,6 +96,7 @@ export default function BacklinkPage() {
 
   return (
     <main className="bg-slate-50">
+      <JsonLd data={jsonLd} />
       {/* SaaS Light Mode Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}
@@ -103,14 +113,14 @@ export default function BacklinkPage() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600">Thúc Đẩy Domain Trust</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-10 animate-in slide-in-from-bottom-8 fade-in duration-700 delay-200 text-pretty">
-            Bơm nguồn năng lượng khổng lồ cho Website của bạn với hệ thống Backlink Báo chí, Guest Post và Entity độc quyền, an toàn 100% trước thuật toán Google.
+            Tăng sức mạnh cho Website với hệ thống Backlink Báo chí, Guest Post và Entity được chọn lọc, triển khai theo quy trình kiểm duyệt rủi ro.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-10 fade-in duration-700 delay-300">
             <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-purple-600 text-white font-bold text-[15px] flex items-center justify-center hover:bg-purple-700 transition-all shadow-xl hover:shadow-purple-500/25 hover:-translate-y-1">
               Nhận Báo Giá Backlink
             </Link>
             <Link href="/tai-nguyen/" className="h-14 px-8 rounded-full bg-white text-slate-900 border border-slate-200 font-bold text-[15px] flex items-center justify-center hover:bg-slate-50 transition-all hover:-translate-y-1 shadow-sm">
-              Xem Danh Sách Báo
+              Nhận Danh Sách Báo
             </Link>
           </div>
 
@@ -120,21 +130,21 @@ export default function BacklinkPage() {
                <div className="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden relative min-h-[400px]">
                   
                   {/* Dashboard Header */}
-                  <div className="absolute top-0 left-0 right-0 h-16 border-b border-slate-200 bg-white/80 backdrop-blur-md flex items-center px-6 justify-between z-20">
-                     <div className="flex items-center gap-4">
-                        <div className="flex gap-2">
+                  <div className="absolute top-0 left-0 right-0 min-h-16 border-b border-slate-200 bg-white/80 backdrop-blur-md flex items-center gap-3 px-3 py-3 sm:px-6 justify-between z-20">
+                     <div className="flex min-w-0 items-center gap-2 sm:gap-4">
+                        <div className="hidden gap-2 sm:flex">
                            <div className="w-3 h-3 rounded-full bg-slate-300"/>
                            <div className="w-3 h-3 rounded-full bg-slate-300"/>
                            <div className="w-3 h-3 rounded-full bg-slate-300"/>
                         </div>
-                        <div className="h-6 w-px bg-slate-200"></div>
-                        <div className="text-slate-900 font-bold flex items-center gap-2">
+                        <div className="hidden h-6 w-px bg-slate-200 sm:block"></div>
+                        <div className="min-w-0 text-slate-900 font-bold flex items-center gap-2 text-xs sm:text-base">
                            <Activity size={20} className="text-purple-600" /> 
-                           Domain Authority Tracker
+                           <span className="truncate">Domain Authority Tracker</span>
                         </div>
                      </div>
-                     <div className="flex gap-4 items-center">
-                        <div className="text-slate-500 text-sm font-medium">Domain Rating:</div>
+                     <div className="flex shrink-0 gap-2 sm:gap-4 items-center">
+                        <div className="hidden text-slate-500 text-sm font-medium sm:block">Domain Rating:</div>
                         <div className="px-3 py-1 bg-purple-100 text-purple-700 font-black rounded border border-purple-200">72.4</div>
                      </div>
                   </div>

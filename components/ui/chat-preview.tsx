@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { useIsInView } from "@/components/ui/use-is-in-view";
 
 interface Message {
   avatar?: string;
@@ -66,10 +67,15 @@ export function ChatPreview({
   const [visibleMessages, setVisibleMessages] = useState<Message[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const currentIndexRef = useRef(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const isInView = useIsInView(containerRef, { rootMargin: "0px", threshold: 0.1 });
 
   useEffect(() => {
-    if (!messages || messages.length === 0) return;
+    if (!messages || messages.length === 0 || !isInView) {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      intervalRef.current = null;
+      return;
+    }
     
     const addMessage = () => {
       const newMessage = {
@@ -84,33 +90,21 @@ export function ChatPreview({
       intervalRef.current = setInterval(addMessage, newMessage.duration);
     };
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          currentIndexRef.current = 0;
-          setVisibleMessages([]);
-          addMessage();
-        } else {
-          if (intervalRef.current) clearInterval(intervalRef.current);
-          setVisibleMessages([]);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
+    currentIndexRef.current = 0;
+    addMessage();
 
     return () => {
-      observer.disconnect();
       if (intervalRef.current) clearInterval(intervalRef.current);
+      intervalRef.current = null;
     };
-  }, [messages, maxMessages]);
+  }, [isInView, messages, maxMessages]);
+
+  const displayedMessages = isInView ? visibleMessages : [];
 
   return (
     <div
       ref={containerRef}
+      data-motion-active={isInView ? "true" : "false"}
       className={cn(
         "relative w-full",
         variation === "compact" && "max-w-[400px]",
@@ -151,7 +145,7 @@ export function ChatPreview({
           <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white via-white/80 to-transparent pointer-events-none z-10" />
           <div className="flex flex-col justify-end gap-4 sm:gap-5 overflow-hidden">
             <AnimatePresence initial={false} mode="popLayout">
-              {visibleMessages.map((message) => (
+              {displayedMessages.map((message) => (
                 <motion.div
                   layout
                   initial={{ opacity: 0, y: 50, scale: 0.9 }}
@@ -179,6 +173,7 @@ export function ChatPreview({
                         src={message.avatar}
                         alt={message.username}
                         fill
+                        sizes="40px"
                         className="object-cover"
                       />
                     )}

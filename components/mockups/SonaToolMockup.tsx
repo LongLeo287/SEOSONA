@@ -1,10 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Activity, Search, TrendingUp, Filter, Download } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useIsInView } from "@/components/ui/use-is-in-view";
+import { SonatoolsLogo } from "@/components/brand/SonatoolsLogo";
 
 export function SonaToolMockup() {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const isInView = useIsInView(rootRef);
+  const reduceMotion = useReducedMotion();
   const [data, setData] = useState([
     { id: 1, kw: "dịch vụ seo tổng thể", vol: "12,100", pos: 4, change: 0 },
     { id: 2, kw: "công ty seo uy tín", vol: "8,400", pos: 7, change: 0 },
@@ -15,6 +20,8 @@ export function SonaToolMockup() {
 
   // Simulate rank tracking updates
   useEffect(() => {
+    if (!isInView || reduceMotion) return;
+
     const timer = setInterval(() => {
       setData(prev => prev.map(item => {
         // Randomly update positions
@@ -28,10 +35,10 @@ export function SonaToolMockup() {
       }).sort((a, b) => a.pos - b.pos)); // Sort by position
     }, 3000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isInView, reduceMotion]);
 
   return (
-    <div className="w-full max-w-5xl mx-auto bg-white rounded-[24px] border border-slate-200 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col font-sans relative h-[550px]">
+    <div ref={rootRef} data-motion-active={isInView ? "true" : "false"} className="w-full max-w-5xl mx-auto bg-white rounded-[24px] border border-slate-200 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col font-sans relative h-[550px]">
       
       {/* Fake Browser Header */}
       <div className="h-12 bg-slate-50 border-b border-slate-200 flex items-center px-4 gap-4 shrink-0">
@@ -40,8 +47,9 @@ export function SonaToolMockup() {
           <div className="w-3 h-3 rounded-full bg-amber-400" />
           <div className="w-3 h-3 rounded-full bg-emerald-400" />
         </div>
-        <div className="flex-1 max-w-md bg-white border border-slate-200 rounded-md h-7 flex items-center px-3 text-xs text-slate-500 font-mono shadow-sm">
-          app.sonatools.io/rank-tracker
+        <div className="flex-1 max-w-md bg-white border border-slate-200 rounded-md h-7 flex items-center gap-1.5 px-3 text-xs text-slate-500 font-mono shadow-sm">
+          <SonatoolsLogo size="compact" className="h-3.5 max-w-[5.5rem] shrink-0" />
+          <span>/rank-tracker</span>
         </div>
       </div>
 
@@ -50,7 +58,7 @@ export function SonaToolMockup() {
         <div className="w-16 md:w-56 border-r border-slate-200 bg-slate-50 flex flex-col p-4 shrink-0 z-10 relative">
           <div className="flex items-center gap-3 text-blue-600 mb-8 px-2">
             <Activity size={24} className="shrink-0" />
-            <span className="font-bold text-sm hidden md:block">SonaTools</span>
+            <SonatoolsLogo size="compact" className="hidden md:block max-w-[7rem]" />
           </div>
           
           <div className="flex flex-col gap-2">
@@ -110,7 +118,7 @@ export function SonaToolMockup() {
                 <div className="col-span-3 md:col-span-2 text-right">Change</div>
               </div>
               
-              <div className="flex-1 overflow-y-auto relative p-2">
+              <div data-lenis-prevent className="flex-1 overflow-y-auto overscroll-contain relative p-2">
                 {/* We use AnimatePresence for reordering, but simply mapping with layout is enough */}
                 {data.map((item) => (
                   <motion.div 

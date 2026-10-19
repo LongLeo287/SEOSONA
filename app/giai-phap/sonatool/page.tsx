@@ -3,13 +3,23 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Database, Workflow, Sparkles, Activity, Search, BrainCircuit } from "lucide-react";
 import Link from "next/link";
 import { SonaToolMockup } from "@/components/mockups/SonaToolMockup";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "SonaTool - Hệ Sinh Thái Công Cụ SEO Độc Quyền | SEOSONA",
   description: "Khám phá SonaTool - vũ khí bí mật giúp SEOSONA thống lĩnh bảng xếp hạng Google với Rank Tracker, Content Hub và Entity Analyzer.",
+  alternates: { canonical: "/giai-phap/sonatool/" },
 };
 
 export default function SonaToolPage() {
+  const jsonLd = serviceSchema({
+    name: "SonaTool - Hệ sinh thái công cụ SEO",
+    description: "Bộ công cụ SEO độc quyền gồm Rank Tracker, Content Hub, Entity Analyzer và Technical Audit.",
+    path: "/giai-phap/sonatool/",
+    serviceType: "SEO Software Platform"
+  });
+
   const features = [
     { title: "Rank Tracker Tốc Độ Cao", desc: "Cập nhật biến động thứ hạng từ khóa mỗi ngày. Cảnh báo ngay lập tức khi rớt hạng để xử lý kịp thời (Quick win tracking Pos 4-20).", icon: Activity },
     { title: "Session Memory & Entity", desc: "Lưu vết toàn bộ quá trình Audit, học hỏi qua thời gian (time-decay learning) và mapping Keyword vào Entity chuẩn xác.", icon: BrainCircuit },
@@ -21,6 +31,7 @@ export default function SonaToolPage() {
 
   return (
     <main className="bg-slate-50 relative overflow-hidden">
+      <JsonLd data={jsonLd} />
       {/* SaaS Light Mode Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}

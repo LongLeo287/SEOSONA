@@ -41,10 +41,42 @@
 
 @layer base {
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  /* Let Lenis own interpolation while it is active. Keeping native CSS
+     smooth scrolling enabled at the same time can make wheel/anchor input
+     feel sticky because two scroll controllers compete. */
+  html {
+    scroll-behavior: auto;
+    overflow-x: clip;
+  }
+  html:not(.lenis) { scroll-behavior: smooth; }
+  /* Lenis owns the root scroll position while active; keep the document
+     height model stable so the browser does not create a competing scroller. */
+  html.lenis,
+  html.lenis body { height: auto; }
+
+  /* The first-paint loader owns the viewport. Hide the document scroller so
+     the browser scrollbar cannot remain visible beside the full-screen layer. */
+  html.seosona-loading,
+  html.seosona-loading body {
+    overflow: hidden !important;
+    overscroll-behavior: none;
+  }
+
+  /* Cover the pre-hydration window as well: the loader is already in the
+     server-rendered markup before its client effect can add the class. */
+  html:has(.seosona-loader),
+  body:has(.seosona-loader) {
+    overflow: hidden !important;
+    overscroll-behavior: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html, html:not(.lenis) { scroll-behavior: auto; }
+  }
 
   body {
     margin: 0;
+    overflow-x: clip;
     background: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
@@ -62,6 +94,45 @@
 
   a { text-decoration: none; }
   ::selection { background: rgba(59, 166, 241, 0.25); color: #FFFFFF; }
+}
+
+@keyframes seosona-badge-wave {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(200%); }
+}
+
+@keyframes seosona-loader-ring {
+  0%, 100% { transform: scale(0.96); opacity: 0.5; }
+  50% { transform: scale(1.04); opacity: 1; }
+}
+
+@keyframes seosona-loader-progress {
+  from { transform: translateX(-125%); }
+  to { transform: translateX(225%); }
+}
+
+.seosona-loader-ring {
+  animation: seosona-loader-ring 2.4s ease-in-out infinite;
+}
+
+.seosona-loader-ring-delayed {
+  animation-delay: 180ms;
+  animation-duration: 2.8s;
+}
+
+.seosona-loader-progress {
+  animation: seosona-loader-progress 1.25s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seosona-loader-ring,
+  .seosona-loader-progress {
+    animation: none;
+  }
+}
+
+.seosona-badge-wave {
+  animation: seosona-badge-wave 2s ease-in-out 1.5s infinite;
 }
 
 @layer components {
@@ -209,6 +280,37 @@
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
+
+  .seosona-badge-wave { animation: none !important; }
+}
+
+/* Keep compositor-heavy effects quiet when their section is off-screen. */
+[data-motion-active="false"] .run-marquee,
+[data-motion-active="false"] .animate-pulse,
+[data-motion-active="false"] .animate-ping,
+[data-motion-active="false"] .tracking-flow,
+[data-motion-active="false"] .path-flow,
+[data-motion-active="false"] .live-line,
+[data-motion-active="false"] .journey-beam,
+[data-motion-active="false"] .motion-cursor {
+  animation-play-state: paused !important;
+}
+
+[data-motion-active="false"] .motion-particle {
+  display: none;
+}
+
+[data-motion-active="false"] .hero-motion {
+  animation-play-state: paused !important;
+}
+
+/* Touch-primary devices have less headroom for large backdrop surfaces. */
+@media (pointer: coarse) {
+  .backdrop-blur-2xl { --tw-backdrop-blur: blur(12px); }
+  .backdrop-blur-xl { --tw-backdrop-blur: blur(10px); }
+  .backdrop-blur-lg { --tw-backdrop-blur: blur(8px); }
+  .backdrop-blur-md { --tw-backdrop-blur: blur(6px); }
+  .backdrop-blur-sm { --tw-backdrop-blur: blur(4px); }
 }
 
 @keyframes cursor-blink {
@@ -236,6 +338,21 @@
 @keyframes spin-orbit-reverse {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(-360deg); }
+}
+@keyframes hero-pill-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes hero-logo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.hero-pill-float,
+.hero-logo-float {
+  animation: hero-pill-float 4s ease-in-out infinite;
+}
+.hero-logo-float {
+  animation-name: hero-logo-float;
 }
 @keyframes message-appear {
   0% { opacity: 0; transform: translateY(16px); }

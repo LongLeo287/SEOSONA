@@ -5,11 +5,12 @@ import { SectionBadge } from "@/components/ui/SectionBadge";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ResourceCard } from "@/components/ui/ResourceCard";
 import { LeadCaptureModal } from "@/components/ui/LeadCaptureModal";
 import { resources, type Resource } from "@/data/resources";
 import { cn } from "@/lib/utils";
+import { useIsInView } from "@/components/ui/use-is-in-view";
 
 const TiktokSVG = () => (
   <svg width="24" height="24" viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -68,11 +69,13 @@ const ecosystem = [
 const featuredResources = resources.filter((resource) => resource.isFeatured).slice(0, 3);
 
 export function CommunityHub() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useIsInView(sectionRef);
   const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
 
   return (
     <>
-      <section className="relative z-10 overflow-hidden bg-white py-16 lg:py-24">
+      <section ref={sectionRef} data-motion-active={isInView ? "true" : "false"} className="relative z-10 overflow-hidden bg-white py-16 lg:py-24">
         <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
           
           {/* --- MAIN HEADER --- */}
@@ -127,7 +130,7 @@ export function CommunityHub() {
                         
                         {item.image && (
                           <div className="relative h-7 w-7 transition-transform duration-300 group-hover:scale-110">
-                            <Image src={item.image} alt={item.title} fill className="object-contain" />
+                            <Image src={item.image} alt={item.title} fill sizes="28px" className="object-contain" />
                           </div>
                         )}
                         {SVGIcon && (

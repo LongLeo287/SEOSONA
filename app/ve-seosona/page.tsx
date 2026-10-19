@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -87,10 +88,12 @@ export default function Page() {
             <ScrollReveal>
               <div className="relative">
                 <div className="aspect-[4/3] rounded-[40px] overflow-hidden bg-slate-100 relative shadow-2xl">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img 
-                    src="https://seosona.com/wp-content/uploads/2023/10/seosona-logo-final.png" 
-                    alt="Văn phòng SEOSONA" 
+                  <Image
+                    src="/images/brand/Seosona_Logo.png"
+                    alt="Logo SEOSONA"
+                    width={2464}
+                    height={911}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-contain p-20 w-full h-full bg-white"
                   />
                 </div>

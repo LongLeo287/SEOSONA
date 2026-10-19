@@ -2,29 +2,35 @@
 
 import { motion } from "framer-motion";
 import { BarChart2, TrendingUp, Users, DollarSign } from "lucide-react";
+import { useIsInView } from "@/components/ui/use-is-in-view";
+import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion";
+import { useEffect, useRef, useState } from "react";
 
 export function PowerBiDashboardMockup() {
   const bars = [40, 65, 45, 80, 55, 90, 75];
+  const rootRef = useRef<HTMLDivElement>(null);
+  const isInView = useIsInView(rootRef);
+  const reduceMotion = useStableReducedMotion();
   
   return (
-    <div className="w-full max-w-5xl mx-auto bg-[#F8FAFC] rounded-[24px] border border-slate-200 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col font-sans relative">
+    <div ref={rootRef} data-motion-active={isInView ? "true" : "false"} className="w-full max-w-5xl mx-auto bg-[#F8FAFC] rounded-[24px] border border-slate-200 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col font-sans relative">
       {/* Top Bar */}
-      <div className="h-14 bg-white border-b border-slate-200 flex items-center px-6 justify-between shrink-0 shadow-sm z-10">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded bg-yellow-500/10 text-yellow-600 flex items-center justify-center">
+      <div className="min-h-14 bg-white border-b border-slate-200 flex items-center gap-3 px-3 py-3 sm:px-6 justify-between shrink-0 shadow-sm z-10">
+        <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+          <div className="w-8 h-8 shrink-0 rounded bg-yellow-500/10 text-yellow-600 flex items-center justify-center">
             <BarChart2 size={18} />
           </div>
-          <span className="font-bold text-slate-800 text-sm">SEOSONA BI</span>
-          <span className="px-2 py-0.5 bg-slate-100 text-slate-500 text-[10px] rounded-full">Executive Report</span>
+          <span className="truncate font-bold text-slate-800 text-xs sm:text-sm">SEOSONA BI</span>
+          <span className="hidden px-2 py-0.5 bg-slate-100 text-slate-500 text-[10px] rounded-full sm:inline-flex">Executive Report</span>
         </div>
-        <div className="flex gap-2">
+        <div className="hidden shrink-0 gap-2 sm:flex">
           <div className="w-20 h-6 bg-slate-100 rounded-md animate-pulse"></div>
           <div className="w-8 h-6 bg-slate-100 rounded-md animate-pulse"></div>
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-6 md:p-8 flex flex-col gap-6 relative">
+      <div className="p-4 sm:p-6 md:p-8 flex flex-col gap-6 relative">
         
         {/* KPI Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -40,7 +46,7 @@ export function PowerBiDashboardMockup() {
             <div>
               <div className="text-slate-500 text-xs font-medium mb-1">Total Traffic</div>
               <div className="text-2xl font-black text-slate-800">
-                <Counter from={0} to={124500} />
+                <Counter from={0} to={124500} isActive={isInView} reduceMotion={reduceMotion} />
               </div>
             </div>
           </motion.div>
@@ -57,7 +63,7 @@ export function PowerBiDashboardMockup() {
             <div>
               <div className="text-slate-500 text-xs font-medium mb-1">Conversion Rate</div>
               <div className="text-2xl font-black text-slate-800">
-                <Counter from={0} to={4.8} isFloat />%
+                <Counter from={0} to={4.8} isFloat isActive={isInView} reduceMotion={reduceMotion} />%
               </div>
             </div>
           </motion.div>
@@ -74,7 +80,7 @@ export function PowerBiDashboardMockup() {
             <div>
               <div className="text-slate-500 text-xs font-medium mb-1">Revenue</div>
               <div className="text-2xl font-black text-slate-800">
-                $<Counter from={0} to={45200} />
+                $<Counter from={0} to={45200} isActive={isInView} reduceMotion={reduceMotion} />
               </div>
             </div>
           </motion.div>
@@ -180,15 +186,15 @@ export function PowerBiDashboardMockup() {
   );
 }
 
-// Simple counter animation component
-import { useEffect, useState } from "react";
-
-function Counter({ from, to, isFloat = false }: { from: number, to: number, isFloat?: boolean }) {
+function Counter({ from, to, isFloat = false, isActive, reduceMotion }: { from: number, to: number, isFloat?: boolean, isActive: boolean, reduceMotion: boolean | null }) {
   const [count, setCount] = useState(from);
 
   useEffect(() => {
+    if (!isActive || reduceMotion) return;
+
     let startTime: number | null = null;
     const duration = 1500; // 1.5s
+    let frame: number | null = null;
     
     const animate = (currentTime: number) => {
       if (!startTime) startTime = currentTime;
@@ -200,17 +206,22 @@ function Counter({ from, to, isFloat = false }: { from: number, to: number, isFl
       setCount(from + (to - from) * easeProgress);
       
       if (progress < 1) {
-        requestAnimationFrame(animate);
+        frame = requestAnimationFrame(animate);
       }
     };
     
     // Delay start slightly
     const timeout = setTimeout(() => {
-      requestAnimationFrame(animate);
+      frame = requestAnimationFrame(animate);
     }, 500);
     
-    return () => clearTimeout(timeout);
-  }, [from, to]);
+    return () => {
+      clearTimeout(timeout);
+      if (frame !== null) cancelAnimationFrame(frame);
+    };
+  }, [from, to, isActive, reduceMotion]);
 
-  return <span>{isFloat ? count.toFixed(1) : Math.round(count).toLocaleString()}</span>;
+  const displayedCount = !isActive ? from : reduceMotion ? to : count;
+
+  return <span>{isFloat ? displayedCount.toFixed(1) : Math.round(displayedCount).toLocaleString()}</span>;
 }

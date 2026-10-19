@@ -8,14 +8,23 @@ import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { MarkerHighlight } from "@/components/ui/marker-highlight";
 import { InlineHighlight } from "@/components/ui/inline-highlight";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Giải pháp Content SEO Mastery (Research & Viết bài) | SEOSONA",
+  title: "Content SEO Mastery: Research & Viết bài | SEOSONA",
   description: "Dịch vụ Content SEO Mastery trọn gói: Research Keyword, Research Content và sản xuất bài viết chuẩn SEO. Đảm bảo Unique 100%, tối ưu tỷ lệ chuyển đổi.",
   alternates: { canonical: "/dich-vu-viet-bai-chuan-seo/" }
 };
 
 export default function ContentSeoPage() {
+  const jsonLd = serviceSchema({
+    name: "Giải pháp Content SEO Mastery | SEOSONA",
+    description: "Dịch vụ Content SEO Mastery trọn gói: Research Keyword, Research Content và sản xuất bài viết chuẩn SEO. Đảm bảo Unique 100%, tối ưu tỷ lệ chuyển đổi.",
+    path: "/dich-vu-viet-bai-chuan-seo/",
+    serviceType: "Content SEO"
+  });
+
   const features: Array<{ title: string; desc: string; icon: LucideIcon }> = [
     { title: "Nghiên cứu Search Intent", desc: "Phân tích kỹ lưỡng ý định tìm kiếm của người dùng (Informational, Navigational, Transactional) để viết đúng trọng tâm, đáp ứng chính xác thứ khách hàng cần.", icon: Target },
     { title: "Chuẩn hóa Semantic SEO", desc: "Không chỉ nhồi nhét từ khóa. Bài viết được cấu trúc khoa học với các LSI Keywords, thực thể (Entity) giúp Google dễ dàng hiểu rõ chủ đề cốt lõi.", icon: Layers },
@@ -89,6 +98,7 @@ export default function ContentSeoPage() {
 
   return (
     <main className="bg-slate-50">
+      <JsonLd data={jsonLd} />
       {/* SaaS Light Mode Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}
@@ -178,10 +188,27 @@ export default function ContentSeoPage() {
                      Tại SEOSONA, chúng tôi không &quot;sản xuất chữ&quot;. Đội ngũ Copywriter phân tích sâu sắc <span className="text-blue-600 font-medium cursor-help" title="Ý định tìm kiếm">Search Intent</span> của người dùng trước khi đặt bút, đảm bảo bài viết giải quyết triệt để vấn đề của họ...
                   </p>
                   
-                  {/* Fake Image Placeholder */}
-                  <div className="w-full h-40 bg-slate-100 rounded-xl border border-dashed border-slate-300 flex items-center justify-center text-slate-400 flex-col gap-2 mb-4">
-                     <LayoutTemplate size={32} />
-                     <span className="text-sm font-medium">Khu vực chèn Hình ảnh minh họa (Alt text: bảng giá viết bài)</span>
+                  <div className="mb-4 rounded-xl border border-rose-100 bg-gradient-to-br from-rose-50 to-white p-4" aria-label="Bản xem trước cấu trúc bài viết">
+                     <div className="mb-3 flex items-center justify-between gap-3">
+                        <div className="flex items-center gap-2 text-sm font-bold text-slate-700">
+                           <FileText size={16} className="text-rose-500" /> Content brief preview
+                        </div>
+                        <span className="rounded-full bg-emerald-50 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-emerald-600">Ready</span>
+                     </div>
+                     <div className="space-y-2 text-xs font-medium text-slate-500">
+                        <div className="flex items-center gap-3 rounded-lg bg-white/80 px-3 py-2 shadow-sm">
+                           <span className="font-black text-rose-500">H1</span>
+                           <span className="truncate text-slate-700">Giải pháp Content SEO thúc đẩy doanh thu</span>
+                        </div>
+                        <div className="flex items-center gap-3 rounded-lg bg-white/60 px-3 py-2">
+                           <span className="font-black text-rose-400">H2</span>
+                           <span>Search Intent · Semantic · Internal Link</span>
+                        </div>
+                        <div className="flex items-center gap-3 rounded-lg bg-white/60 px-3 py-2">
+                           <span className="font-black text-rose-400">ALT</span>
+                           <span>Hình minh họa dịch vụ viết bài chuẩn SEO</span>
+                        </div>
+                     </div>
                   </div>
                </div>
             </div>

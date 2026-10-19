@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion";
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -21,6 +22,7 @@ export function ScrollReveal({
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const reduceMotion = useStableReducedMotion();
 
   useEffect(() => {
     const el = ref.current;
@@ -72,7 +74,7 @@ export function ScrollReveal({
     <div
       ref={ref}
       className={className}
-      style={isVisible ? visibleStyle : hiddenStyle}
+      style={reduceMotion || isVisible ? visibleStyle : hiddenStyle}
     >
       {children}
     </div>

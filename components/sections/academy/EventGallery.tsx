@@ -62,6 +62,7 @@ export function EventGallery() {
                 src={event.src}
                 alt={event.alt}
                 fill
+                sizes="(min-width: 768px) 50vw, 100vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

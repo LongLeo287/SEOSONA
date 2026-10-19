@@ -31,6 +31,20 @@ npm run build
 npm run start
 ```
 
+## Validation
+
+```bash
+npm run audit:security
+npm run audit:seo
+npm run audit:performance
+npm run audit:release
+npm run audit:staging
+npm run lint
+npm run typecheck
+```
+
+For an authorized staging host, set `SEOSONA_BASE_URL` before `npm run audit:staging`. See [docs/planning/PHASE_STATUS.md](docs/planning/PHASE_STATUS.md) for the current seven-phase evidence ledger and [docs/planning/LAUNCH_CHECKLIST.md](docs/planning/LAUNCH_CHECKLIST.md) for the no-deploy launch gates.
+
 ## Deploy
 
 Chưa khóa hosting mặc định trong repo. Chọn nền tảng deploy rõ ràng trước khi gắn staging/domain production.

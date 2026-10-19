@@ -1,15 +1,20 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { TrendingUp, CheckCircle2, ArrowRight, Activity, Building } from "lucide-react";
 import Link from "next/link";
 import { SectionBadge } from "@/components/ui/SectionBadge";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { useIsInView } from "@/components/ui/use-is-in-view";
+import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion";
 import { motion } from "framer-motion";
 
-const TypewriterText = ({ text }: { text: string }) => {
+const TypewriterText = ({ text, isActive }: { text: string; isActive: boolean }) => {
   const [displayedText, setDisplayedText] = useState("");
+  const reduceMotion = useStableReducedMotion();
 
   useEffect(() => {
+    if (reduceMotion || !isActive) return;
+
     let i = 0;
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setDisplayedText("");
@@ -22,12 +27,16 @@ const TypewriterText = ({ text }: { text: string }) => {
       }
     }, 50);
     return () => clearInterval(interval);
-  }, [text]);
+  }, [isActive, text, reduceMotion]);
+
+  if (reduceMotion) {
+    return <span className="absolute inset-y-0 left-0 flex items-center whitespace-nowrap">{text}</span>;
+  }
 
   return (
     <>
       <span className="invisible h-0 block whitespace-nowrap" aria-hidden="true">{text}</span>
-      <span className="absolute inset-y-0 left-0 flex items-center whitespace-nowrap">{displayedText}<span className="animate-pulse ml-[1px] w-[2px] h-4 bg-[#1D4ED8] inline-block"></span></span>
+      <span className="absolute inset-y-0 left-0 flex items-center whitespace-nowrap">{displayedText}<span className="motion-cursor animate-pulse ml-[1px] w-[2px] h-4 bg-[#1D4ED8] inline-block"></span></span>
     </>
   );
 };
@@ -52,17 +61,22 @@ const caseStudies = [
 
 export function HighTicketCaseStudies() {
   const tags = ["Cho Bất Động Sản", "Cho Y Tế & Sức Khỏe", "Cho Tài Chính Ngân Hàng"];
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useIsInView(sectionRef);
+  const reduceMotion = useStableReducedMotion();
   const [currentTagIndex, setCurrentTagIndex] = useState(0);
 
   useEffect(() => {
+    if (!isInView || reduceMotion) return;
+
     const timer = setInterval(() => {
       setCurrentTagIndex((prev) => (prev + 1) % tags.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, [tags.length]);
+  }, [isInView, reduceMotion, tags.length]);
 
   return (
-    <section className="relative overflow-hidden bg-slate-50 py-12 lg:py-20">
+    <section ref={sectionRef} data-motion-active={isInView ? "true" : "false"} className="relative overflow-hidden bg-slate-50 py-12 lg:py-20">
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         <RevealOnScroll direction="up" className="mb-12 flex flex-col items-center text-center">
@@ -84,7 +98,7 @@ export function HighTicketCaseStudies() {
             <motion.div layout className="relative flex items-center gap-2 rounded-full border border-blue-100 bg-[#F0F6FF] px-5 py-2.5 text-[15px] font-bold text-[#1D4ED8] shadow-sm overflow-hidden">
               <CheckCircle2 className="shrink-0" size={18} />
               <div className="relative h-5 flex items-center transition-all duration-300">
-                <TypewriterText text={tags[currentTagIndex]} />
+                <TypewriterText text={tags[currentTagIndex]} isActive={isInView && !reduceMotion} />
               </div>
             </motion.div>
           </div>

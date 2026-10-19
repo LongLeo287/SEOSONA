@@ -6,14 +6,23 @@ import { PricingTable } from "@/components/sections/PricingTable";
 import { Search, BarChart3, Target, MousePointerClick, CheckCircle2, Zap } from "lucide-react";
 import { GoogleAdsDashboard } from "@/components/mockups/GoogleAdsDashboard";
 import Link from "next/link";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Dịch vụ Quảng cáo Google Ads | SEOSONA",
+  title: "Dịch vụ Quảng cáo Google Ads chuyên sâu | SEOSONA",
   description: "Dịch vụ Google Ads SEOSONA: Tối ưu Search Ads, Performance Max, cài đặt Tracking chuyển đổi chuẩn xác và cam kết ROAS cho doanh nghiệp B2B & B2C.",
   alternates: { canonical: "/dich-vu-ads/google/" }
 };
 
 export default function GoogleAdsPage() {
+  const jsonLd = serviceSchema({
+    name: "Dịch vụ Quảng cáo Google Ads | SEOSONA",
+    description: "Dịch vụ Google Ads SEOSONA: Tối ưu Search Ads, Performance Max, cài đặt Tracking chuyển đổi chuẩn xác và cam kết ROAS cho doanh nghiệp B2B & B2C.",
+    path: "/dich-vu-ads/google/",
+    serviceType: "Google Ads management"
+  });
+
   const auditItems = [
     { title: "Account Structure", desc: "Rà cấu trúc campaign, nhóm quảng cáo, keyword match type, negative list, asset group và lịch sử thay đổi.", icon: Target },
     { title: "Search Intent", desc: "Phân loại truy vấn theo nhu cầu nóng, nhu cầu nghiên cứu, brand, competitor và nhóm từ khóa lãng phí ngân sách.", icon: Search },
@@ -85,6 +94,7 @@ export default function GoogleAdsPage() {
 
   return (
     <main className="bg-slate-50">
+      <JsonLd data={jsonLd} />
       {/* SaaS Light Mode Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}

@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { useId, type ReactNode } from "react";
 import { getPostBySlug, getAllPosts, getPostsByCategory } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { seoHubs, HubSlug } from "@/data/seo-hubs";
 import { TableOfContents } from "@/components/ui/TableOfContents";
 import { PostSidebarNav } from "@/components/ui/PostSidebarNav";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { blogPostingSchema, breadcrumbSchema } from "@/lib/schema";
+import { toLocalContentHref, toSeoDescription, withBrandTitle } from "@/lib/site";
+import { BrandText, renderBrandText, SonatoolsLogo } from "@/components/brand/SonatoolsLogo";
 
 export function generateStaticParams() {
   const posts = getAllPosts();
@@ -20,12 +25,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const resolvedParams = await params;
   const post = getPostBySlug(resolvedParams.post);
   if (!post) return {};
+
+  const canonicalCategory = post.meta.categorySlug || resolvedParams.slug;
+  const canonicalPost = post.meta.slug || resolvedParams.post;
   
   // Apply SEO Skill: Dynamic SEO tags and Canonical URL
   return {
-    title: post.meta.title,
-    description: post.meta.excerpt || post.meta.title,
-    alternates: { canonical: `/seo/${resolvedParams.slug}/${resolvedParams.post}/` }
+    title: withBrandTitle(post.meta.title),
+    description: toSeoDescription(post.meta.metaDescription || post.meta.excerpt || post.meta.title),
+    alternates: { canonical: `/seo/${canonicalCategory}/${canonicalPost}/` }
   };
 }
 
@@ -44,7 +52,20 @@ const slugify = (text: string) =>
     .replace(/\s+/g, '-')
     .replace(/[^\w\-]+/g, '');
 
+function MdxHeading({ level, children, ...props }: { level: "h2" | "h3"; children?: ReactNode; [key: string]: unknown }) {
+  const reactId = useId();
+  const headingId = `${slugify(getText(children))}-${reactId.replace(/:/g, "")}`;
+  const Heading = level;
+
+  return <Heading {...props} id={headingId} className="scroll-mt-24">{renderBrandText(children)}</Heading>;
+}
+
 const mdxComponents = {
+  SonatoolsLogo,
+  p: ({ children, ...props }: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => <p {...props}>{renderBrandText(children)}</p>,
+  strong: ({ children, ...props }: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => <strong {...props}>{renderBrandText(children)}</strong>,
+  em: ({ children, ...props }: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => <em {...props}>{renderBrandText(children)}</em>,
+  li: ({ children, ...props }: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => <li {...props}>{renderBrandText(children)}</li>,
   img: (props: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => (
     // Instead of forcing aspect-video and full width which blows up SVG icons,
     // we use max-w-full and h-auto so images respect their natural aspect ratio.
@@ -52,23 +73,20 @@ const mdxComponents = {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={props.src}
-        alt={props.alt || "SEOSONA Image"}
+        alt={typeof props.alt === "string" ? props.alt : ""}
         className="max-w-full h-auto max-h-[700px] object-contain rounded-2xl shadow-lg border border-slate-100"
         loading="lazy"
       />
     </span>
   ),
-  a: (props: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => (
-    <a {...props} className="text-[#003566] font-bold hover:text-[#46FF00] transition-colors decoration-2 underline-offset-4" />
+  a: ({ children, ...props }: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => (
+    <a {...props} href={toLocalContentHref(props.href)} className="text-[#003566] font-bold hover:text-[#46FF00] transition-colors decoration-2 underline-offset-4">{renderBrandText(children)}</a>
   ),
-  h2: ({ children, ...props }: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => {
-    const slug = slugify(getText(children));
-    return <h2 id={slug} {...props} className="scroll-mt-24">{children}</h2>;
-  },
-  h3: ({ children, ...props }: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => {
-    const slug = slugify(getText(children));
-    return <h3 id={slug} {...props} className="scroll-mt-24">{children}</h3>;
-  }
+  // The post title is the single document H1. Imported Markdown can contain
+  // a second H1, so demote it to an in-content H2 for valid document outline.
+  h1: ({ children, ...props }: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => <MdxHeading level="h2" {...props}>{children}</MdxHeading>,
+  h2: ({ children, ...props }: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => <MdxHeading level="h2" {...props}>{children}</MdxHeading>,
+  h3: ({ children, ...props }: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => <MdxHeading level="h3" {...props}>{children}</MdxHeading>
 };
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string, post: string }> }) {
@@ -78,32 +96,26 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   // Validate that the post belongs to the category slug
   if (post.meta.categorySlug !== resolvedParams.slug) {
-    // Optionally redirect to the correct slug or return 404. Let's just render it for now.
+    permanentRedirect(`/seo/${post.meta.categorySlug}/${post.meta.slug}/`);
   }
 
   const hubName = seoHubs[resolvedParams.slug as HubSlug]?.title || 'Kiến thức SEO';
   const relatedPosts = getPostsByCategory(resolvedParams.slug);
 
-  // Apply SEO Skill: Generate JSON-LD Article Schema
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": post.meta.title,
-    "image": post.meta.coverImage ? [post.meta.coverImage] : [],
-    "datePublished": post.meta.date,
-    "author": [{
-        "@type": "Organization",
-        "name": "SEOSONA",
-        "url": "https://seosona.com"
-      }]
-  };
+  const canonicalPath = `/seo/${resolvedParams.slug}/${post.meta.slug}/`;
+  const jsonLd = [
+    blogPostingSchema({ post: post.meta, canonicalPath, categoryName: hubName }),
+    breadcrumbSchema([
+      { name: "Trang chủ", url: "/" },
+      { name: "Kiến thức SEO", url: "/seo/" },
+      { name: hubName, url: `/seo/${resolvedParams.slug}/` },
+      { name: post.meta.title }
+    ])
+  ];
 
   return (
     <main className="bg-white">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <div className="container pt-8 pb-12 lg:pt-10 lg:pb-20">
         <Link href={`/seo/${resolvedParams.slug}/`} className="inline-flex lg:hidden items-center gap-2 text-sm font-bold text-[#6B7280] hover:text-[#003566] transition-colors mb-6">
           <ArrowLeft size={16} /> Quay lại {hubName}
@@ -131,11 +143,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 })}
               </time>
               <h1 className="mt-4 text-3xl font-black text-[#04091A] sm:text-4xl md:text-5xl leading-tight tracking-tight text-balance">
-                {post.meta.title}
+                <BrandText>{post.meta.title}</BrandText>
               </h1>
             </header>
 
-            <div className="prose prose-lg prose-slate max-w-none 
+            <div className="prose prose-lg prose-slate max-w-none break-words
             prose-headings:font-black prose-headings:text-[#04091A] 
             prose-h2:text-3xl prose-h2:border-b prose-h2:border-slate-200 prose-h2:pb-4 prose-h2:mt-12
             prose-h3:text-2xl prose-h3:text-[#003566]

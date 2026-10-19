@@ -5,13 +5,23 @@ import { Process } from "@/components/sections/Process";
 import { Faq } from "@/components/sections/Faq";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { BookOpen, UserCheck, TrendingUp } from "lucide-react";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "In-house Training | SEOSONA",
-  description: "Chương trình huấn luyện SEO và Digital Marketing thiết kế riêng theo đặc thù ngành nghề của doanh nghiệp bạn.",
+  title: "Đào tạo SEO In-house cho doanh nghiệp | SEOSONA",
+  description: "Chương trình huấn luyện SEO và Digital Marketing thiết kế riêng theo đặc thù ngành nghề của doanh nghiệp bạn, bám sát dự án thực tế.",
+  alternates: { canonical: "/chi-quyet-academy/in-house/" },
 };
 
 export default function Page() {
+  const jsonLd = serviceSchema({
+    name: "Đào tạo SEO In-house cho doanh nghiệp",
+    description: "Chương trình huấn luyện SEO và Digital Marketing thiết kế riêng theo dự án thực tế của doanh nghiệp.",
+    path: "/chi-quyet-academy/in-house/",
+    serviceType: "In-house SEO Training"
+  });
+
   const features = [
     { title: "Tailor-made Curriculum", desc: "Nội dung giáo trình được may đo riêng biệt, giải quyết đúng nỗi đau của đội ngũ." },
     { title: "Thực chiến trên Dự án", desc: "Học viên thực hành trực tiếp trên chính dự án của công ty dưới sự kèm cặp của chuyên gia." },
@@ -20,6 +30,7 @@ export default function Page() {
 
   return (
     <main>
+      <JsonLd data={jsonLd} />
       <PageHero 
         eyebrow="Đào tạo Doanh nghiệp" 
         title="In-house Training" 

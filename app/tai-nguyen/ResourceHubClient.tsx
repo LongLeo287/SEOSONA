@@ -84,13 +84,15 @@ export function ResourceHubClient() {
 
         <section className="py-20 lg:py-32 relative z-20">
           <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
-            <div className="mb-12 flex flex-wrap items-center justify-center gap-3">
+            <div className="mb-12 flex flex-wrap items-center justify-center gap-3" role="group" aria-label="Bộ lọc tài nguyên">
               {filters.map((filter) => {
                 const isActive = activeFilter === filter.key;
                 return (
                   <button
                     key={filter.key}
                     type="button"
+                    aria-pressed={isActive}
+                    aria-label={`${filter.label}: ${filter.description}`}
                     onClick={() => setActiveFilter(filter.key)}
                     className={cn(
                       "rounded-full border px-6 py-2.5 text-[15px] font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500",
@@ -105,7 +107,7 @@ export function ResourceHubClient() {
               })}
             </div>
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8" aria-live="polite">
               {visibleResources.map((resource) => (
                 <ResourceCard
                   key={resource.id}

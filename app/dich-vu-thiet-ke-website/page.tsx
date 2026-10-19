@@ -5,6 +5,8 @@ import { Process } from "@/components/sections/Process";
 import { PricingTable } from "@/components/sections/PricingTable";
 import { Layout, MousePointerClick, Search, Zap, Code2, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Thiết kế Website chuẩn SEO, Tối ưu chuyển đổi | SEOSONA",
@@ -13,6 +15,13 @@ export const metadata: Metadata = {
 };
 
 export default function ThietKeWebsitePage() {
+  const jsonLd = serviceSchema({
+    name: "Thiết kế Website chuẩn SEO và tối ưu chuyển đổi",
+    description: "Dịch vụ thiết kế website với UI/UX hiện đại, tốc độ nhanh, cấu trúc SEO rõ ràng và tracking chuyển đổi.",
+    path: "/dich-vu-thiet-ke-website/",
+    serviceType: "SEO website design and development"
+  });
+
   const features = [
     { title: "UI/UX Tối giản & Hiện đại", desc: "Thiết kế sạch, rõ thông tin, dễ đọc trên mobile và phù hợp với hành vi tiêu dùng của khách hàng B2B/B2C.", icon: Layout },
     { title: "Kiến trúc chuẩn SEO", desc: "Sitemap, URL, heading, schema, breadcrumb và internal link được chuẩn hóa ngay trong quá trình lập trình.", icon: Search },
@@ -88,6 +97,7 @@ export default function ThietKeWebsitePage() {
 
   return (
     <main className="bg-slate-50">
+      <JsonLd data={jsonLd} />
       {/* SaaS Light Mode Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}

@@ -1,9 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import Image from "next/image";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Bot,
   GraduationCap,
@@ -15,101 +13,234 @@ import {
   CheckSquare,
   Search
 } from "lucide-react";
+import { useHeroMotionChannel } from "@/components/hero/HeroMotionContext";
+import { HeroHandoffNode } from "@/components/hero/HeroHandoffNode";
+import { heroNodes } from "@/components/hero/hero-nodes";
+import { StrategyCore } from "@/components/hero/StrategyCore";
+import {
+  getHeroArcPoint,
+  HERO_ARC_CURVE_PEAK,
+  HERO_ARC_PATH,
+  HERO_ARC_SLOTS,
+  HERO_HANDOFF_RESET_THRESHOLD,
+} from "@/components/hero/hero-motion";
+import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion";
+
+function smoothstep(value: number) {
+  const clamped = Math.min(1, Math.max(0, value));
+  return clamped * clamped * (3 - 2 * clamped);
+}
 
 export function CoreSolutions() {
   const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "start start"]
-  });
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const transitionRef = useRef<HTMLDivElement>(null);
+  const handoffLayerRef = useRef<HTMLDivElement>(null);
+  const handoffOffsetRef = useRef<number | null>(null);
+  const motionChannel = useHeroMotionChannel();
+  const reducedMotion = useStableReducedMotion();
 
-  // Timeline mapped exactly to Hero Parallax progress
-  const arcOpacity = useTransform(scrollYProgress, [0.55, 0.85], [0, 1]);
-  
-  const titleY = useTransform(scrollYProgress, [0.65, 0.90], [30, 0]);
-  
-  // Timeline mapped for the Bento grid to slide up and fade in
-  const gridOpacity = useTransform(scrollYProgress, [0.75, 0.95], [0, 1]);
-  const gridY = useTransform(scrollYProgress, [0.75, 0.95], [50, 0]);
+  useEffect(() => {
+    const heroRoot = document.querySelector<HTMLElement>("[data-hero-root]");
+    handoffOffsetRef.current = null;
+    const update = (progress: number, handoffProgress: number) => {
+      // CoreSolutions consumes the Hero's already-damped handoff progress.
+      // Reading raw scroll here would make the static owner race ahead while
+      // Lenis and the Hero are still settling.
+      // Lite/reduced-motion Hero has no staged relay, so it is already a
+      // completed handoff even though its visual dataset stays at progress 0
+      // to keep the static Hero visible.
+      const heroIsStatic = heroRoot?.dataset.heroStatic === "true";
+      const handoffRelayProgress = heroIsStatic
+        ? 1
+        : Math.min(1, Math.max(0, handoffProgress));
+      // The Hero remains solid until the shared geometry settles. The static
+      // owner enters during the final relay with the captured anchor instead
+      // of crossfading the same line, logo and nodes at unrelated positions.
+      // Turn the static owner on slightly before the dynamic Hero is hidden.
+      // Both layers use the same captured centre anchor, so a delayed RAF can
+      // no longer expose a blank frame during the ownership switch.
+      const transitionVisible = heroIsStatic || handoffRelayProgress >= HERO_HANDOFF_RESET_THRESHOLD ? 1 : 0;
+
+      if (handoffRelayProgress < HERO_HANDOFF_RESET_THRESHOLD) {
+        handoffOffsetRef.current = null;
+      } else if (handoffOffsetRef.current === null) {
+        const sectionRect = sectionRef.current?.getBoundingClientRect();
+        const transitionHeight = transitionRef.current?.getBoundingClientRect().height ?? 0;
+        if (sectionRect && transitionHeight > 0) {
+          const staticApexY = sectionRect.top - transitionHeight
+            + transitionHeight * (HERO_ARC_CURVE_PEAK / 240);
+          handoffOffsetRef.current = window.innerHeight / 2 - staticApexY;
+        }
+      }
+      const handoffTransform = handoffOffsetRef.current === null
+        ? "translate3d(0, 0, 0)"
+        : `translate3d(0, ${handoffOffsetRef.current}px, 0)`;
+
+      // The next section is intentionally driven by the same damped relay as
+      // the Hero. This keeps the title/cards hooked to the centre handoff:
+      // as the rail reaches the middle, the next section enters progressively
+      // instead of appearing as an unrelated IntersectionObserver reveal.
+      const revealProgress = reducedMotion ? 1 : smoothstep(handoffRelayProgress / 0.72);
+      const gridRevealProgress = reducedMotion
+        ? 1
+        : smoothstep((handoffRelayProgress - 0.12) / 0.76);
+      if (titleRef.current) {
+        titleRef.current.style.opacity = String(revealProgress);
+        titleRef.current.style.transform = `translate3d(0, ${24 * (1 - revealProgress)}px, 0)`;
+      }
+      if (gridRef.current) {
+        gridRef.current.style.opacity = String(gridRevealProgress);
+        gridRef.current.style.transform = `translate3d(0, ${42 * (1 - gridRevealProgress)}px, 0)`;
+      }
+      if (transitionRef.current) {
+        transitionRef.current.style.opacity = `${transitionVisible}`;
+        transitionRef.current.style.transform = handoffTransform;
+      }
+
+      // The layer follows the same captured geometry as the Hero during the
+      // relay, then continues with the section as the page moves on.
+      if (handoffLayerRef.current) {
+        handoffLayerRef.current.style.opacity = transitionVisible ? "1" : "0";
+        handoffLayerRef.current.style.transform = handoffTransform;
+      }
+      sectionRef.current?.setAttribute("data-motion-progress", progress.toFixed(4));
+    };
+
+    let frame: number | null = null;
+    let latestSignal = { progress: 0, handoffProgress: 0 };
+    const scheduleHandoff = () => {
+      if (frame !== null) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = null;
+        update(latestSignal.progress, latestSignal.handoffProgress);
+      });
+    };
+    window.addEventListener("scroll", scheduleHandoff, { passive: true });
+    window.addEventListener("resize", scheduleHandoff, { passive: true });
+
+    if (!motionChannel) {
+      scheduleHandoff();
+      return () => {
+        window.removeEventListener("scroll", scheduleHandoff);
+        window.removeEventListener("resize", scheduleHandoff);
+        if (frame !== null) window.cancelAnimationFrame(frame);
+      };
+    }
+
+    // The Hero publishes on its own animation frame. Queue the latest signal
+    // instead of mutating this section synchronously for every publish; this
+    // keeps both motion owners inside one browser frame and prevents duplicate
+    // layout/style work during wheel input.
+    const unsubscribe = motionChannel.subscribe((signal) => {
+      latestSignal = signal;
+      scheduleHandoff();
+    });
+    scheduleHandoff();
+    return () => {
+      unsubscribe();
+      window.removeEventListener("scroll", scheduleHandoff);
+      window.removeEventListener("resize", scheduleHandoff);
+      if (frame !== null) window.cancelAnimationFrame(frame);
+    };
+  }, [motionChannel, reducedMotion]);
 
   return (
-    <section ref={sectionRef} className="relative z-20 overflow-hidden bg-[#F8FAFC] mt-[-100vh] pt-[160px] pb-20 font-sans border-t border-slate-200/60 shadow-[0_-20px_40px_-20px_rgba(0,0,0,0.03)]">
+    <section ref={sectionRef} data-core-solutions data-progress-source="hero" className="relative z-0 overflow-visible -mt-[clamp(140px,30vh,396px)] pt-0 pb-20 font-sans border-t-0">
+      {/* One shared transition ribbon. It is the continuation of the Hero
+          orbit and the visual header of this section; no second arc is added. */}
+      <div
+        ref={transitionRef}
+        data-core-solutions-handoff
+        data-core-solutions-transition
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 -top-[clamp(140px,16vw,210px)] z-30 h-[clamp(140px,16vw,210px)]"
+        style={{ opacity: 0, transform: "translate3d(0, 12px, 0)" }}
+      >
+        <span data-core-solutions-transition-anchor className="absolute left-1/2 top-1/2 h-px w-px" />
+        <svg className="h-full w-full" viewBox="0 0 1000 240" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="coreTransitionGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#93C5FD" stopOpacity="0" />
+              <stop offset="28%" stopColor="#60A5FA" stopOpacity="0.34" />
+              <stop offset="50%" stopColor="#2563EB" stopOpacity="0.72" />
+              <stop offset="72%" stopColor="#60A5FA" stopOpacity="0.34" />
+              <stop offset="100%" stopColor="#93C5FD" stopOpacity="0" />
+            </linearGradient>
+            <filter id="coreTransitionBlur" x="-20%" y="-60%" width="140%" height="220%">
+              <feGaussianBlur stdDeviation="8" />
+            </filter>
+          </defs>
+          <path
+            d={HERO_ARC_PATH}
+            fill="none"
+            stroke="url(#coreTransitionGlow)"
+            strokeWidth="18"
+            filter="url(#coreTransitionBlur)"
+          />
+          <path
+            d={HERO_ARC_PATH}
+            fill="none"
+            stroke="url(#coreTransitionGlow)"
+            strokeWidth="3"
+          />
+        </svg>
+      </div>
+
+      <div
+        ref={handoffLayerRef}
+        data-core-solutions-ecosystem
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 -top-[clamp(140px,16vw,210px)] z-40 hidden h-[clamp(140px,16vw,210px)] sm:block"
+        style={{ opacity: 0 }}
+      >
+        <StrategyCore
+          className="!pointer-events-none !absolute !left-1/2 !top-[36.6667%] !-translate-x-1/2 !-translate-y-1/2 !scale-[0.8]"
+        />
+        {heroNodes.map((node) => {
+          const t = HERO_ARC_SLOTS[node.semicircleSlot] ?? 0.5;
+          const { curveY, xPercent } = getHeroArcPoint(t);
+          return (
+            <HeroHandoffNode
+              key={`handoff-${node.label}`}
+              label={node.label}
+              href={node.href}
+              color={node.color}
+              iconPath={node.iconPath}
+              style={{ left: `${xPercent}%`, top: `${(curveY / 240) * 100}%`, transform: "translate(-50%, -50%)" }}
+            />
+          );
+        })}
+      </div>
       
-      {/* Background subtle grid pattern */}
+      {/* A soft continuation from the Hero canvas removes the hard horizontal
+          seam while keeping the CoreSolutions grid legible below the rail. */}
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(248,250,252,0)_0%,rgba(248,250,252,0.78)_14%,#F8FAFC_28%,#F8FAFC_100%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#04091A08_1px,transparent_1px),linear-gradient(to_bottom,#04091A08_1px,transparent_1px)] bg-[size:28px_28px]" />
 
       <div className="container relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 z-10">
         
-        {/* --- TOP SECTION: TITLE & PARABOLA --- */}
+        {/* --- TOP SECTION: TITLE --- */}
         <div className="flex flex-col items-center text-center mb-8">
-          <motion.h2
-             style={{ opacity: arcOpacity, y: titleY }}
+          <h2
+             ref={titleRef}
+             style={{ opacity: 0, transform: "translate3d(0, 24px, 0)", willChange: "opacity, transform" }}
              className="text-[28px] sm:text-4xl lg:text-[42px] leading-tight font-bold z-10 relative drop-shadow-sm flex flex-col items-center"
           >
             <span className="text-slate-800">Tăng trưởng doanh thu bằng</span>
             <span className="bg-gradient-to-r from-[#1D4ED8] to-[#3B82F6] text-transparent bg-clip-text mt-1 pb-1">Hệ Sinh Thái SEOSONA <span className="text-slate-800">trong các nền</span></span>
             <span className="text-slate-800">tảng số</span>
-          </motion.h2>
+          </h2>
 
-          <motion.div style={{ opacity: arcOpacity }} className="relative mt-[60px] w-[700px] h-[150px] mx-auto flex justify-center">
-             
-             {/* Background Glow Image */}
-             <div className="absolute left-1/2 top-[0px] -translate-x-1/2 -translate-y-[45%] pointer-events-none w-[1000px] max-w-none flex justify-center z-[-1] opacity-90">
-                <Image
-                  src="/images/parabola-glow.png"
-                  alt="Parabola Glow"
-                  width={1000}
-                  height={500}
-                  className="w-full h-auto object-contain"
-                />
-             </div>
-
-             {/* The Arc/Parabola Line */}
-             <svg
-               className="absolute inset-0 w-full h-full pointer-events-none"
-               viewBox="0 0 700 150"
-               preserveAspectRatio="none"
-             >
-                {/* Thick blurry background stroke */}
-                <path
-                  d="M 0 150 Q 350 -150 700 150"
-                  fill="none"
-                  stroke="url(#arcGradientGlow)"
-                  strokeWidth="12"
-                  filter="url(#blurArc)"
-                />
-                {/* Crisp foreground stroke */}
-                <path
-                  d="M 0 150 Q 350 -150 700 150"
-                  fill="none"
-                  stroke="url(#arcGradientCore)"
-                  strokeWidth="3"
-                />
-                <defs>
-                  <linearGradient id="arcGradientGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="rgba(59, 130, 246, 0)" />
-                    <stop offset="30%" stopColor="rgba(59, 130, 246, 0.4)" />
-                    <stop offset="50%" stopColor="rgba(29, 78, 216, 0.8)" />
-                    <stop offset="70%" stopColor="rgba(59, 130, 246, 0.4)" />
-                    <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
-                  </linearGradient>
-                  <linearGradient id="arcGradientCore" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="rgba(59, 130, 246, 0)" />
-                    <stop offset="35%" stopColor="rgba(96, 165, 250, 0.6)" />
-                    <stop offset="50%" stopColor="rgba(37, 99, 235, 1)" />
-                    <stop offset="65%" stopColor="rgba(96, 165, 250, 0.6)" />
-                    <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
-                  </linearGradient>
-                  <filter id="blurArc" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation="6" />
-                  </filter>
-                </defs>
-             </svg>
-          </motion.div>
         </div>
 
         {/* --- BOTTOM SECTION: BENTO GRID --- */}
-        <motion.div style={{ opacity: gridOpacity, y: gridY }} className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
+        <div
+          ref={gridRef}
+          style={{ opacity: 0, transform: "translate3d(0, 42px, 0)", willChange: "opacity, transform" }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5"
+        >
           
           {/* Card 1: SEO */}
           <div className="h-full">
@@ -317,7 +448,7 @@ export function CoreSolutions() {
             </Link>
           </div>
 
-        </motion.div>
+        </div>
       </div>
     </section>
   );

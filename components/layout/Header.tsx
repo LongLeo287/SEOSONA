@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useId, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { X, Menu, ArrowRight, ChevronDown } from "lucide-react";
 import { BrandLogo } from "@/components/layout/BrandLogo";
+import { SonatoolsLogo } from "@/components/brand/SonatoolsLogo";
 import { Badge } from "@/components/ui/new-badge";
 import { navItems } from "@/lib/site";
 
@@ -13,6 +14,10 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
+  const mobileMenuTitleId = useId();
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuCloseRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => { 
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -27,8 +32,54 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    const previousOverflow = document.body.style.overflow;
+    if (open) document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = previousOverflow; };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const previousActiveElement = document.activeElement as HTMLElement | null;
+    const restoreButton = mobileMenuButtonRef.current;
+    const focusableSelector = [
+      "button:not([disabled])",
+      "a[href]",
+      "[tabindex]:not([tabindex=\"-1\"])"
+    ].join(",");
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusable = mobileMenuRef.current?.querySelectorAll<HTMLElement>(focusableSelector);
+      if (!focusable?.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    requestAnimationFrame(() => mobileMenuCloseRef.current?.focus());
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      const restoreTarget = restoreButton || previousActiveElement;
+      restoreTarget?.focus();
+    };
   }, [open]);
 
   return (
@@ -60,7 +111,7 @@ export function Header() {
             </div>
 
             {/* Dropdown Panel */}
-            <div className={`absolute top-full left-0 pt-3 origin-top-left transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            {activeDropdown === 'logo' && <div className={`absolute top-full left-0 pt-3 origin-top-left transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               activeDropdown === 'logo' ? 'opacity-100 visible scale-100' : 'opacity-0 invisible scale-95'
             }`}>
               <div className="w-[240px] sm:w-[260px] rounded-[20px] bg-white p-2 shadow-[0_10px_40px_rgb(0,0,0,0.08)] flex flex-col gap-2 relative ring-1 ring-slate-100 border border-slate-100/50">
@@ -70,12 +121,9 @@ export function Header() {
                   {/* Subtle hover effect background */}
                   <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300" />
                   
-                  {/* Standardized Logo Size (Matching SEOSONA) */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/images/brand/sonatools.png" 
-                    alt="Sonatools" 
-                    className="w-[160px] sm:w-[180px] md:w-[200px] h-auto max-h-16 object-contain transition-transform duration-500 group-hover/card:scale-105 relative z-10" 
+                  <SonatoolsLogo
+                    size="card"
+                    className="transition-transform duration-500 group-hover/card:scale-105 relative z-10"
                   />
                 </Link>
 
@@ -89,12 +137,14 @@ export function Header() {
                   <img
                     src="/images/brand/Chi%20Quyet%20Academy%20Mascot%20Logo.png" 
                     alt="CQ Academy" 
+                    loading="lazy"
+                    decoding="async"
                     className="w-[160px] sm:w-[180px] md:w-[200px] h-auto max-h-16 object-contain transition-transform duration-500 group-hover/card:scale-105 relative z-10" 
                   />
                 </Link>
 
               </div>
-            </div>
+            </div>}
           </div>
 
           {/* Desktop Nav */}
@@ -113,10 +163,24 @@ export function Header() {
                     className="relative"
                     onMouseEnter={() => setActiveDropdown(item.href)}
                     onMouseLeave={() => setActiveDropdown(null)}
+                    onBlur={(event) => {
+                      if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                        setActiveDropdown(null);
+                      }
+                    }}
                   >
                     <Link
                       href={item.href}
                       onClick={() => setActiveDropdown(null)}
+                      onFocus={() => setActiveDropdown(item.href)}
+                      aria-haspopup="menu"
+                      aria-expanded={isDropdownOpen}
+                      onKeyDown={(event) => {
+                        if (event.key === "Escape") {
+                          setActiveDropdown(null);
+                          event.currentTarget.focus();
+                        }
+                      }}
                       className={`flex items-center gap-1 rounded-full px-3 xl:px-4 py-2 text-[13px] xl:text-[14px] font-bold transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 ${
                         isActive
                           ? "bg-[#1D4ED8] text-white shadow-md shadow-blue-500/20"
@@ -167,6 +231,7 @@ export function Header() {
                               <Link
                                 key={child.href}
                                 href={child.href}
+                                prefetch={child.href !== "/doi-ngu-nhan-su/"}
                                 onClick={() => setActiveDropdown(null)}
                                 className={`px-4 py-2 text-[14px] font-semibold rounded-xl transition-colors flex items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 whitespace-nowrap min-w-[160px] ${
                                   isChildActive ? "bg-[#F0F6FF] text-[#1D4ED8]" : "text-slate-600 hover:bg-[#F0F6FF] hover:text-[#1D4ED8]"
@@ -224,11 +289,14 @@ export function Header() {
             {/* Mobile hamburger */}
             <button
               type="button"
+              ref={mobileMenuButtonRef}
               aria-label={open ? "Đóng menu" : "Mở menu"}
               aria-controls="mobile-menu"
               aria-expanded={open}
+              aria-hidden={open}
+              tabIndex={open ? -1 : 0}
               onClick={() => setOpen(!open)}
-              className="grid h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white text-[#04091A] transition hover:bg-[#F0F6FF] hover:text-[#1D4ED8] hover:border-[#1D4ED8]/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 lg:hidden shadow-sm"
+              className="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-[#04091A] transition hover:bg-[#F0F6FF] hover:text-[#1D4ED8] hover:border-[#1D4ED8]/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 lg:hidden shadow-sm"
             >
               {open ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -248,25 +316,30 @@ export function Header() {
       {/* Mobile Menu Drawer */}
       <div
         id="mobile-menu"
+        ref={mobileMenuRef}
         className={`fixed right-0 top-0 z-50 flex h-full w-[min(85vw,320px)] flex-col bg-white border-l border-slate-200 shadow-2xl transition-transform duration-300 ease-out lg:hidden ${
           open ? "visible translate-x-0" : "invisible translate-x-full"
         }`}
         role="dialog"
         aria-modal="true"
+        aria-hidden={!open}
+        aria-labelledby={mobileMenuTitleId}
       >
         <div className="flex h-20 items-center justify-between border-b border-slate-100 px-6">
+          <div id={mobileMenuTitleId} className="sr-only">Menu điều hướng chính</div>
           <BrandLogo variant="dark" />
           <button
             type="button"
+            ref={mobileMenuCloseRef}
             aria-label="Đóng menu"
             onClick={() => setOpen(false)}
-            className="grid h-10 w-10 place-items-center rounded-xl bg-slate-50 text-slate-500 transition hover:bg-rose-50 hover:text-rose-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100"
+            className="grid h-11 w-11 place-items-center rounded-xl bg-slate-50 text-slate-500 transition hover:bg-rose-50 hover:text-rose-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100"
           >
             <X size={20} />
           </button>
         </div>
 
-        <nav className="flex-1 overflow-y-auto px-4 py-6" aria-label="Mobile menu">
+        <nav data-lenis-prevent className="flex-1 overflow-y-auto overscroll-contain px-4 py-6" aria-label="Mobile menu">
           <div className="flex flex-col gap-2">
             {navItems.filter(i => i.href !== "/lien-he/").map((item, index) => {
               const isActive =
@@ -311,6 +384,7 @@ export function Header() {
                             <Link
                               key={child.href}
                               href={child.href}
+                              prefetch={child.href !== "/doi-ngu-nhan-su/"}
                               onClick={() => setOpen(false)}
                               className={`px-4 py-2.5 text-[14px] font-semibold rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 ${
                                 isChildActive ? "bg-[#F0F6FF] text-[#1D4ED8]" : "text-slate-600 hover:bg-[#F0F6FF] hover:text-[#1D4ED8]"

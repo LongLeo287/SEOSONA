@@ -3,13 +3,20 @@
 import { motion } from "framer-motion"
 import { PlayCircle, Target, SkipForward } from "lucide-react"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
+import { useIsInView } from "@/components/ui/use-is-in-view"
+import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion"
 
 export const YoutubePlayerMockup = () => {
   const [countdown, setCountdown] = useState(5)
   const [progress, setProgress] = useState(0)
+  const rootRef = useRef<HTMLDivElement>(null)
+  const isInView = useIsInView(rootRef)
+  const reduceMotion = useStableReducedMotion()
 
   useEffect(() => {
+    if (!isInView || reduceMotion) return
+
     const timer = setInterval(() => {
       setCountdown((prev) => (prev > 0 ? prev - 1 : 0))
     }, 1000)
@@ -22,10 +29,13 @@ export const YoutubePlayerMockup = () => {
       clearInterval(timer)
       clearInterval(progressTimer)
     }
-  }, [])
+  }, [isInView, reduceMotion])
+
+  const visualCountdown = reduceMotion ? 0 : countdown
+  const visualProgress = reduceMotion ? 100 : progress
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-2 shadow-[0_30px_60px_rgba(0,0,0,0.08)] relative z-10 text-left">
+    <div ref={rootRef} data-motion-active={isInView ? "true" : "false"} className="rounded-2xl border border-slate-200 bg-white p-2 shadow-[0_30px_60px_rgba(0,0,0,0.08)] relative z-10 text-left">
        <div className="rounded-xl border border-slate-900 bg-slate-900 overflow-hidden flex flex-col font-sans relative">
           
           {/* Floating Metrics (Mocking Ads Data) */}
@@ -61,8 +71,8 @@ export const YoutubePlayerMockup = () => {
                whileInView={{ x: 0, opacity: 1 }}
                transition={{ delay: 1 }}
                className="absolute bottom-16 right-0 bg-white/10 backdrop-blur-md border border-white/20 border-r-0 rounded-l-full py-3 pl-6 pr-4 flex items-center gap-2 transition-colors z-20">
-                {countdown > 0 ? (
-                  <span className="text-white text-sm font-semibold">Skip in {countdown}</span>
+                {visualCountdown > 0 ? (
+                  <span className="text-white text-sm font-semibold">Skip in {visualCountdown}</span>
                 ) : (
                   <>
                     <span className="text-white text-sm font-semibold">Skip Ad</span>
@@ -73,8 +83,8 @@ export const YoutubePlayerMockup = () => {
 
              {/* Progress Bar */}
              <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
-                <div className="absolute top-0 left-0 bottom-0 bg-red-600 transition-all duration-150" style={{ width: `${progress}%` }} />
-                <div className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-red-600 shadow-[0_0_10px_rgba(220,38,38,1)] transition-all duration-150" style={{ left: `calc(${progress}% - 6px)` }} />
+                <div className="absolute top-0 left-0 bottom-0 bg-red-600 transition-all duration-150" style={{ width: `${visualProgress}%` }} />
+                <div className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-red-600 shadow-[0_0_10px_rgba(220,38,38,1)] transition-all duration-150" style={{ left: `calc(${visualProgress}% - 6px)` }} />
              </div>
           </div>
 

@@ -4,10 +4,12 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { FloatingActions } from "@/components/layout/FloatingActions";
+import { LoadingLogo } from "@/components/layout/LoadingLogo";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
+import { MotionConfig } from "framer-motion";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.domain),
   title: {
     default: "SEOSONA - Google Marketing Agency hàng đầu Việt Nam",
-    template: "%s | SEOSONA"
+    template: "%s"
   },
   description: siteConfig.description,
   alternates: { canonical: "/" },
@@ -56,6 +58,11 @@ export const metadata: Metadata = {
     siteName: "SEOSONA",
     locale: "vi_VN",
     type: "website"
+  },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg"
   }
 };
 
@@ -63,13 +70,16 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="vi" id="top">
       <body className={`${poppins.variable} ${inter.variable} font-sans antialiased`}>
-        <SmoothScroll>
-          <JsonLd data={[organizationSchema(), websiteSchema()]} />
-          <Header />
-          {children}
-          <Footer />
-          <FloatingActions />
-        </SmoothScroll>
+        <MotionConfig reducedMotion="user">
+          <SmoothScroll>
+            <LoadingLogo />
+            <JsonLd data={[organizationSchema(), websiteSchema()]} />
+            <Header />
+            {children}
+            <Footer />
+            <FloatingActions />
+          </SmoothScroll>
+        </MotionConfig>
       </body>
     </html>
   );

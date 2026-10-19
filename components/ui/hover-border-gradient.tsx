@@ -1,6 +1,8 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { useIsInView } from '@/components/ui/use-is-in-view'
+import { useStableReducedMotion } from '@/components/ui/use-stable-reduced-motion'
 import { clsx } from 'clsx'
 import type { ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
@@ -39,9 +41,12 @@ function HoverBorderGradient({
 >) {
   const [hovered, setHovered] = useState<boolean>(false)
   const [direction, setDirection] = useState<Direction>('BOTTOM')
+  const containerRef = useRef<HTMLElement>(null)
+  const isInView = useIsInView(containerRef)
+  const reduceMotion = useStableReducedMotion()
 
   useEffect(() => {
-    if (!hovered) {
+    if (!hovered && isInView && !reduceMotion) {
       const directions: Direction[] = ['TOP', 'LEFT', 'BOTTOM', 'RIGHT']
       const interval = setInterval(() => {
         setDirection((prevState) => {
@@ -54,9 +59,11 @@ function HoverBorderGradient({
       }, duration * 1000)
       return () => clearInterval(interval)
     }
-  }, [clockwise, duration, hovered])
+  }, [clockwise, duration, hovered, isInView, reduceMotion])
   return (
     <Element
+      ref={containerRef}
+      data-motion-active={isInView && !reduceMotion ? 'true' : 'false'}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={cn(

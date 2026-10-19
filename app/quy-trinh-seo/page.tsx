@@ -4,6 +4,8 @@ import { Faq } from "@/components/sections/Faq";
 import { Process } from "@/components/sections/Process";
 import { Route, Workflow, BarChart3, Search, Target, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Quy trình SEO từ Brief đến Tăng trưởng | SEOSONA",
@@ -12,6 +14,13 @@ export const metadata: Metadata = {
 };
 
 export default function QuyTrinhSeoPage() {
+  const jsonLd = serviceSchema({
+    name: "Quy trình SEO từ Brief đến Tăng trưởng",
+    description: "Quy trình SEO minh bạch từ nhận brief, audit, lập roadmap, triển khai, báo cáo đến nghiệm thu.",
+    path: "/quy-trinh-seo/",
+    serviceType: "SEO Strategy and Implementation Process"
+  });
+
   const options = [
     { title: "Giai đoạn Research", desc: "Nghiên cứu thị trường ngách, chân dung khách hàng mục tiêu và tìm ra các điểm nghẽn của đối thủ." },
     { title: "Giai đoạn Lập Plan", desc: "Chia nhỏ khối lượng công việc thành từng Sprint theo tuần/tháng, gắn kèm KPI Traffic và Leads." },
@@ -38,6 +47,7 @@ export default function QuyTrinhSeoPage() {
 
   return (
     <main className="bg-slate-50">
+      <JsonLd data={jsonLd} />
       {/* SaaS Light Mode Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}
@@ -113,6 +123,18 @@ export default function QuyTrinhSeoPage() {
                 `}} />
              </div>
           </div>
+
+          <ol className="mx-auto mt-12 grid max-w-xl gap-3 text-left md:hidden" aria-label="Các bước quy trình SEO">
+            {steps.slice(0, 4).map((step, index) => (
+              <li key={step.title} className="flex items-start gap-3 rounded-2xl border border-emerald-100 bg-emerald-50/60 p-4">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-emerald-600 text-sm font-black text-white">{index + 1}</span>
+                <span>
+                  <strong className="block text-sm font-bold text-slate-900">{step.title}</strong>
+                  <span className="mt-1 block text-sm leading-relaxed text-slate-600">{step.description}</span>
+                </span>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

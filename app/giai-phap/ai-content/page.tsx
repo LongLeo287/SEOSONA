@@ -3,13 +3,23 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Bot, FileText, Link as LinkIcon, CheckCircle2, Terminal } from "lucide-react";
 import Link from "next/link";
 import { AiContentGeneratorMockup } from "@/components/mockups/AiContentGeneratorMockup";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "AI Content Automation | SEOSONA",
+  title: "AI Content Automation chuẩn SEO | SEOSONA",
   description: "Xây dựng hệ thống hàng nghìn bài viết chuẩn SEO với tốc độ không tưởng nhờ ứng dụng công nghệ Generative AI (LangChain + Sonatools).",
+  alternates: { canonical: "/giai-phap/ai-content/" },
 };
 
 export default function AiContentPage() {
+  const jsonLd = serviceSchema({
+    name: "AI Content Automation | SEOSONA",
+    description: "Xây dựng hệ thống hàng nghìn bài viết chuẩn SEO với tốc độ cao nhờ ứng dụng Generative AI, tự động hóa outline, content và internal link.",
+    path: "/giai-phap/ai-content/",
+    serviceType: "AI content automation"
+  });
+
   const features = [
     { title: "Tự Động Lên Dàn Ý (Outline)", desc: "AI quét Top 10 đối thủ trên SERPs, tổng hợp sematic keywords và sinh ra dàn ý chi tiết vượt trội về độ phủ nội dung.", icon: FileText },
     { title: "Sản Xuất Nội Dung LangChain", desc: "Tích hợp mô hình ngôn ngữ lớn (LLM) độc quyền từ SEOSONA OS, tự động viết bài tự nhiên, có chiều sâu chuyên môn cao.", icon: Bot },
@@ -19,6 +29,7 @@ export default function AiContentPage() {
 
   return (
     <main className="bg-slate-50 relative overflow-hidden">
+      <JsonLd data={jsonLd} />
       {/* SaaS Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}

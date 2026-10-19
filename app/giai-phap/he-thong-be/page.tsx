@@ -3,13 +3,23 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Database, Workflow, Cpu, ArrowRightLeft, Lock } from "lucide-react";
 import Link from "next/link";
 import { BackendSystemMockup } from "@/components/mockups/BackendSystemMockup";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Tích hợp Hệ thống (BE/CRM) | SEOSONA",
+  title: "Tích hợp hệ thống BE/CRM cho doanh nghiệp | SEOSONA",
   description: "Xây dựng luồng dữ liệu thông suốt giữa Website, CRM, ERP. Tự động hóa quy trình nghiệp vụ và loại bỏ thao tác nhập liệu thủ công.",
+  alternates: { canonical: "/giai-phap/he-thong-be/" },
 };
 
 export default function BackendSystemPage() {
+  const jsonLd = serviceSchema({
+    name: "Tích hợp hệ thống BE/CRM cho doanh nghiệp",
+    description: "Xây dựng luồng dữ liệu thông suốt giữa Website, CRM, ERP và tự động hóa quy trình nghiệp vụ.",
+    path: "/giai-phap/he-thong-be/",
+    serviceType: "Backend, CRM and ERP Integration"
+  });
+
   const features = [
     { title: "Tích Hợp CRM/ERP", desc: "Đẩy dữ liệu Lead từ Website thẳng vào các hệ thống quản trị như Salesforce, Hubspot, Bitrix24, KiotViet không sai sót.", icon: Database },
     { title: "Xây Dựng Webhook/API", desc: "Tạo các Endpoints API và Webhook tùy chỉnh để kết nối bất kỳ hệ thống phần mềm thứ 3 nào mà doanh nghiệp đang sử dụng.", icon: ArrowRightLeft },
@@ -19,6 +29,7 @@ export default function BackendSystemPage() {
 
   return (
     <main className="bg-slate-50 relative overflow-hidden">
+      <JsonLd data={jsonLd} />
       {/* SaaS Light Mode Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}

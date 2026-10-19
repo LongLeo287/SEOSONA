@@ -3,6 +3,8 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Faq } from "@/components/sections/Faq";
 import { Layers, ShieldCheck, Stethoscope, Laptop, GraduationCap, Zap, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Các Option dịch vụ SEO theo giai đoạn | SEOSONA",
@@ -11,6 +13,13 @@ export const metadata: Metadata = {
 };
 
 export default function SeoOptionPage() {
+  const jsonLd = serviceSchema({
+    name: "Các option dịch vụ SEO theo giai đoạn | SEOSONA",
+    description: "Các option triển khai SEO tại SEOSONA: audit độc lập, tư vấn SEO chuyên sâu, SEO tổng thể, website chuẩn SEO và đào tạo in-house.",
+    path: "/seo-option/",
+    serviceType: "SEO services"
+  });
+
   const pricingOptions = [
     {
       title: "Audit Độc lập",
@@ -38,7 +47,7 @@ export default function SeoOptionPage() {
       icon: Zap,
       features: ["Xử lý nền tảng Technical", "Sản xuất Content chuẩn Intent", "Build hệ thống Authority/Entity", "Báo cáo Performance Analytics"],
       color: "rose",
-      href: "/dich-vu-seo/"
+            href: "/dich-vu-seo-tong-the/"
     }
   ];
 
@@ -56,6 +65,7 @@ export default function SeoOptionPage() {
 
   return (
     <main className="bg-slate-50">
+      <JsonLd data={jsonLd} />
       {/* SaaS Light Mode Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}

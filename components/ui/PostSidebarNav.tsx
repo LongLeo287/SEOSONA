@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { BrandText } from "@/components/brand/SonatoolsLogo";
 import { PostMeta } from "@/lib/mdx";
 import { ChevronDown, ChevronRight, FolderOpen } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
@@ -144,7 +145,7 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
               CÁC CHỦ ĐỀ KHÁC
             </span>
           </div>
-          <div className="max-h-[300px] overflow-y-auto custom-scrollbar px-1.5">
+          <div data-lenis-prevent className="max-h-[300px] overflow-y-auto custom-scrollbar px-1.5">
             {Object.entries(seoHubs).map(([slug, hub]) => (
               <Link
                 key={slug}
@@ -164,7 +165,7 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
         </div>
       </div>
 
-      <div className="max-h-[calc(100vh-14rem)] overflow-y-auto custom-scrollbar pr-2 flex flex-col gap-1">
+      <div data-lenis-prevent className="max-h-[calc(100vh-14rem)] overflow-y-auto custom-scrollbar pr-2 flex flex-col gap-1">
         {groupedPosts.map((group, groupIdx) => {
           const isExpanded = expandedGroups[groupIdx];
           
@@ -203,7 +204,7 @@ export function PostSidebarNav({ posts, currentSlug, categorySlug, categoryName 
                         )}
                         title={post.title}
                       >
-                        {post.title}
+                        <BrandText>{post.title}</BrandText>
                       </Link>
                     );
                   })}

@@ -3,6 +3,8 @@ import { PageHero } from "@/components/sections/PageHero";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { webPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Đội ngũ chuyên gia SEOSONA — Google Marketing",
@@ -47,8 +49,16 @@ const leaders = [
 ];
 
 export default function Page() {
+  const jsonLd = webPageSchema({
+    name: "Đội ngũ chuyên gia SEOSONA",
+    description: "Đội ngũ chuyên gia SEO, Google Ads, Content SEO và đào tạo của SEOSONA.",
+    path: "/doi-ngu-nhan-su/",
+    type: "AboutPage"
+  });
+
   return (
     <main className="bg-slate-50">
+      <JsonLd data={jsonLd} />
       <PageHero 
         eyebrow="Đội ngũ SEOSONA" 
         title="Những bộ óc đứng sau sự tăng trưởng của bạn" 

@@ -1,7 +1,10 @@
 node_modules
 .next
 out
+output/
 .vercel
+.playwright-cli/
+.superpowers/
 .env*.local
 .DS_Store
 

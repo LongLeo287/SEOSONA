@@ -5,6 +5,9 @@ import { getPostsByCategory } from "@/lib/mdx";
 import { BlogLayout } from "@/components/layout/BlogLayout";
 import { BlogHero } from "@/components/sections/BlogHero";
 import { BlogCard } from "@/components/ui/BlogCard";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbSchema, collectionPageSchema } from "@/lib/schema";
+import { withBrandTitle } from "@/lib/site";
 
 export function generateStaticParams() {
   return Object.keys(seoHubs).map((slug) => ({ slug }));
@@ -16,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!hub) return {};
 
   return {
-    title: hub.title,
+    title: withBrandTitle(hub.title),
     description: hub.description,
     alternates: { canonical: `/seo/${resolvedParams.slug}/` }
   };
@@ -28,9 +31,26 @@ export default async function HubPage({ params }: { params: Promise<{ slug: stri
   if (!hub) notFound();
 
   const posts = getPostsByCategory(resolvedParams.slug);
+  const jsonLd = [
+    collectionPageSchema({
+      name: hub.title,
+      description: hub.description,
+      path: `/seo/${resolvedParams.slug}/`,
+      items: posts.map((post) => ({
+        name: post.title,
+        path: `/seo/${resolvedParams.slug}/${post.slug}/`
+      }))
+    }),
+    breadcrumbSchema([
+      { name: "Trang chủ", url: "/" },
+      { name: "Kiến thức SEO", url: "/seo/" },
+      { name: hub.title }
+    ])
+  ];
 
   return (
     <BlogLayout activeSlug={resolvedParams.slug}>
+      <JsonLd data={jsonLd} />
       <BlogHero 
         title={hub.title}
         description={hub.description}

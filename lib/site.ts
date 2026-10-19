@@ -1,6 +1,31 @@
+const DEFAULT_SITE_DOMAIN = "https://seosona.com";
+
+function resolveSiteDomain() {
+  const configuredDomain = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (!configuredDomain) return DEFAULT_SITE_DOMAIN;
+
+  try {
+    const parsed = new URL(configuredDomain);
+    if (
+      !["http:", "https:"].includes(parsed.protocol) ||
+      parsed.username ||
+      parsed.password ||
+      parsed.pathname !== "/" ||
+      parsed.search ||
+      parsed.hash
+    ) {
+      return DEFAULT_SITE_DOMAIN;
+    }
+
+    return parsed.origin;
+  } catch {
+    return DEFAULT_SITE_DOMAIN;
+  }
+}
+
 export const siteConfig = {
   name: "SEOSONA",
-  domain: "https://seosona.com",
+  domain: resolveSiteDomain(),
   tagline: "Google Marketing Agency giúp doanh nghiệp tăng trưởng bền vững",
   description: "SEOSONA cung cấp dịch vụ SEO tổng thể, tư vấn SEO chuyên sâu, Google Ads, Content SEO và đào tạo SEO thực chiến.",
   phone: "0909 34 66 60",
@@ -15,6 +40,49 @@ export const siteConfig = {
     twitter: "https://twitter.com/SEOSONA1"
   }
 };
+
+export const withBrandTitle = (title: string) =>
+  title.endsWith("| SEOSONA") ? title : `${title} | SEOSONA`;
+
+export function toLocalContentHref(value: unknown) {
+  if (typeof value !== "string" || !value) return value;
+  if (value.startsWith("#")) return value;
+
+  try {
+    const url = new URL(value, siteConfig.domain);
+    if (url.hostname !== "seosona.com" && url.hostname !== "www.seosona.com") return value;
+
+    const pathname = url.pathname.endsWith("/") ? url.pathname : `${url.pathname}/`;
+    const legacyAliases: Record<string, string> = {
+      "/dich-vu-seo/": "/dich-vu-seo-tong-the/",
+      "/dao-tao-seo/": "/khoa-hoc-seo/",
+      "/khoa-hoc-content-seo-mastery/": "/khoa-hoc-content-seo/",
+      "/gioi-thieu/": "/ve-seosona/",
+      "/about-team/": "/p/about-team/",
+      "/dich-vu-cham-soc-website/": "/p/dich-vu-cham-soc-website/"
+    };
+    const alias = legacyAliases[pathname];
+    const isCurrentRoute = coreRoutes.includes(pathname) || pathname.startsWith("/seo/") || pathname.startsWith("/p/");
+    if (!alias && !isCurrentRoute) return value;
+
+    const localPath = alias || pathname;
+    return `${localPath}${url.search}${url.hash}`;
+  } catch {
+    return value;
+  }
+}
+
+export function toSeoDescription(value: string, maxLength = 160) {
+  const normalized = value.replace(/\s+/g, " ").trim();
+  if (normalized.length <= maxLength) return normalized;
+
+  const clipped = normalized
+    .slice(0, Math.max(1, maxLength - 1))
+    .replace(/\s+\S*$/, "")
+    .trim();
+
+  return `${clipped}…`;
+}
 
 export const socialChannels = [
   {
@@ -153,6 +221,7 @@ export const coreRoutes = [
   "/dich-vu-ads/google/",
   "/dich-vu-ads/facebook/",
   "/dich-vu-ads/youtube/",
+  "/dich-vu-ads/",
   "/giai-phap/",
   "/giai-phap/ai-customer-journey/",
   "/giai-phap/sonatool/",
@@ -166,6 +235,7 @@ export const coreRoutes = [
   "/khoa-hoc-content-seo/",
   "/case-study/",
   "/tai-nguyen/",
+  "/tai-nguyen-hub/",
   "/seo/",
   "/seo/co-ban/",
   "/seo/tong-hop/",
@@ -177,6 +247,8 @@ export const coreRoutes = [
   "/seo/cong-cu/",
   "/seo/thuat-ngu/",
   "/seo/thuat-toan-google/",
+  "/seo/ranking-factors/",
+  "/seo/case-study/",
   "/ve-seosona/",
   "/ve-seosona/fanpage-social/",
   "/doi-ngu-nhan-su/",

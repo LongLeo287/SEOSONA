@@ -16,6 +16,7 @@ export function SeoKnowledgeMockup() {
           <div className="relative w-40 h-8">
             <input 
               type="text" 
+              aria-label="Search articles"
               className="w-full h-full bg-slate-100 rounded-full pl-8 pr-3 text-[11px] outline-none text-slate-600" 
               placeholder="Search articles..."
               readOnly

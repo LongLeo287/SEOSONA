@@ -6,8 +6,9 @@ import { forwardRef, type HTMLAttributes } from "react";
 
 import { cn } from "@/lib/utils";
 
-import { MotionConfig, useReducedMotion } from "motion/react";
+import { MotionConfig } from "motion/react";
 import { createContext, useContext } from "react";
+import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion";
 
 interface ReducedMotionProp {
   reducedMotion?: boolean;
@@ -17,7 +18,7 @@ const ReducedMotionOverrideContext = createContext(false);
 
 function useResolvedReducedMotion(reducedMotion?: boolean) {
   const reducedMotionOverride = useContext(ReducedMotionOverrideContext);
-  const prefersReducedMotion = useReducedMotion() ?? false;
+  const prefersReducedMotion = useStableReducedMotion();
 
   return Boolean(reducedMotion || reducedMotionOverride || prefersReducedMotion);
 }
@@ -176,21 +177,14 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
           {...props}
         >
           {shouldAnimate ? (
-            <motion.span
-              animate={{ x: ["-100%", "200%"] }}
+            <span
               aria-hidden
-              className="pointer-events-none absolute inset-0 rounded-full"
+              className="seosona-badge-wave pointer-events-none absolute inset-0 rounded-full"
               style={{
                 background: `linear-gradient(90deg, transparent 0%, ${
                   waveColor ??
                   "color-mix(in srgb, currentColor 18%, transparent)"
                 } 50%, transparent 100%)`,
-              }}
-              transition={{
-                duration: 2,
-                repeat: Number.POSITIVE_INFINITY,
-                repeatDelay: 1.5,
-                ease: "easeInOut",
               }}
             />
           ) : null}

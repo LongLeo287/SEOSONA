@@ -3,13 +3,23 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { LineChart, Layers, MousePointerClick, RefreshCw, Smartphone } from "lucide-react";
 import Link from "next/link";
 import { PowerBiDashboardMockup } from "@/components/mockups/PowerBiDashboardMockup";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Dashboard Power BI | SEOSONA",
+  title: "Dashboard Power BI cho Marketing | SEOSONA",
   description: "Trực quan hóa dữ liệu Marketing với Power BI. Nắm bắt toàn bộ sức khỏe dự án SEO, Ads và luồng doanh thu theo thời gian thực.",
+  alternates: { canonical: "/giai-phap/power-bi/" },
 };
 
 export default function PowerBiPage() {
+  const jsonLd = serviceSchema({
+    name: "Dashboard Power BI cho Marketing",
+    description: "Trực quan hóa dữ liệu Marketing, SEO và Ads với dashboard Power BI theo thời gian thực.",
+    path: "/giai-phap/power-bi/",
+    serviceType: "Marketing Data Visualization"
+  });
+
   const features = [
     { title: "Báo Cáo Thời Gian Thực", desc: "Dữ liệu được cập nhật tự động 24/7 từ Website, CRM và các nền tảng Ads. Không còn cảnh chờ đợi báo cáo cuối tháng.", icon: RefreshCw },
     { title: "Hợp Nhất Đa Kênh", desc: "Tích hợp số liệu từ SEO, Google Ads, Facebook Ads và Zalo vào một Dashboard duy nhất để nhìn thấy bức tranh tổng thể.", icon: Layers },
@@ -19,6 +29,7 @@ export default function PowerBiPage() {
 
   return (
     <main className="bg-slate-50 relative overflow-hidden">
+      <JsonLd data={jsonLd} />
       {/* SaaS Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-200">
          {/* Background Effects */}
@@ -39,7 +50,7 @@ export default function PowerBiPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-10 fade-in duration-700 delay-300">
             <Link href="/lien-he/" className="h-14 px-8 rounded-full bg-amber-500 text-white font-bold text-[15px] flex items-center justify-center hover:bg-amber-600 transition-all shadow-lg shadow-amber-500/25 hover:-translate-y-1">
-              Xem Demo Dashboard
+              Đăng ký xem Demo Dashboard
             </Link>
           </div>
 

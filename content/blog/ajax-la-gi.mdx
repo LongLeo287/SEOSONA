@@ -1,0 +1,173 @@
+---
+title: "AJAX Là gì? Cách thức hoạt động và lợi ích của nó"
+slug: ajax-la-gi
+date: 2024-06-13
+categorySlug: thuat-ngu
+coverImage: "https://seosona.com/wp-content/uploads/2023/12/ajax-1.jpg"
+excerpt: "AJAX là một kỹ thuật phát triển web tiên tiến, mang đến trải nghiệm người dùng mượt mà, gần gũi với các ứng dụng desktop. Bài viết này cung cấp cho bạn toàn…"
+meta_description: "AJAX là một kỹ thuật phát triển web tiên tiến, mang đến trải nghiệm người dùng mượt mà, gần gũi với các ứng dụng desktop. Bài viết này cung cấp cho bạn toàn…"
+---
+**[AJAX](https://seosona.com/seo/thuat-ngu/ajax-la-gi/)** là một kỹ thuật phát triển web tiên tiến, mang đến trải nghiệm người dùng mượt mà, gần gũi với các ứng dụng desktop. Bài viết này cung cấp cho bạn toàn bộ kiến thức nền tảng cần thiết để bắt đầu sử dụng AJAX.
+
+## **AJAX là gì?**
+
+**AJAX** là viết tắt của **Asynchronous JavaScript and XML**, là một tập hợp các kỹ thuật lập trình được sử dụng để xây dựng trang web và ứng dụng web.
+
+Nó cho phép các trang web cập nhật nội dung một cách **không đồng bộ**, có nghĩa là người dùng không cần phải tải lại toàn bộ trang khi chỉ có một phần nhỏ nội dung cần thay đổi.
+
+![ajax 1](https://seosona.com/wp-content/uploads/2023/12/ajax-1.jpg "AJAX 1")
+
+**Hãy tưởng tượng** bạn đang sử dụng một trang web mua sắm trực tuyến. Khi bạn thêm sản phẩm vào giỏ hàng, thông thường toàn bộ trang sẽ được tải lại để phản ánh thay đổi.
+
+Tuy nhiên, với AJAX, chỉ có phần hiển thị giỏ hàng được cập nhật, giúp cho trải nghiệm người dùng mượt mà và nhanh chóng hơn
+
+## **Cách thức hoạt động của AJAX**
+
+-   **Người dùng thực hiện hành động:** Người dùng nhấp vào nút, nhập văn bản hoặc tương tác với trang web theo một cách nào đó.
+-   **Yêu cầu AJAX được gửi:** JavaScript tạo ra một yêu cầu AJAX và gửi nó đến máy chủ web. Yêu cầu này có thể bao gồm dữ liệu từ người dùng, chẳng hạn như văn bản được nhập vào hộp văn bản.
+
+![ajax 2](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E "AJAX 2")
+
+-   **Máy chủ xử lý yêu cầu:** Máy chủ web xử lý yêu cầu AJAX và trả về dữ liệu dưới dạng XML, JSON hoặc định dạng khác.
+-   **JavaScript cập nhật trang:** JavaScript nhận dữ liệu từ máy chủ và cập nhật nội dung trang web một cách phù hợp.
+
+## **Ưu điểm của việc sử dụng AJAX**
+
+-   **Tăng tốc độ:** AJAX có thể làm cho trang web nhanh hơn vì nó không cần phải tải lại toàn bộ trang mỗi khi người dùng tương tác.
+
+![ajax 3](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E "AJAX 3")
+
+-   **Tăng khả năng tương tác:** AJAX có thể tạo ra các trang web tương tác hơn, cho phép người dùng thực hiện các tác vụ mà không cần tải lại trang.
+-   **Cải thiện trải nghiệm người dùng:** AJAX có thể cải thiện trải nghiệm người dùng bằng cách làm cho trang web phản hồi nhanh hơn và mượt mà hơn.
+
+## **Ví dụ về ứng dụng AJAX**
+
+-   **Tự động hoàn thành:** Khi bạn nhập văn bản vào hộp tìm kiếm, AJAX có thể được sử dụng để đề xuất các kết quả tìm kiếm phù hợp.
+-   **Cập nhật nội dung động:** AJAX có thể được sử dụng để cập nhật nội dung trên trang web mà không cần tải lại toàn bộ trang, chẳng hạn như cập nhật số lượng sản phẩm trong giỏ hàng.
+-   **Trò chuyện trực tiếp:** AJAX có thể được sử dụng để tạo các ứng dụng trò chuyện trực tiếp cho phép người dùng trò chuyện với nhau theo thời gian thực.
+
+![ajax 4](data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E "AJAX 4")
+
+**Ví dụ demo AJAX sử dụng jQuery**
+
+**HTML:**
+
+HTML
+
+<!DOCTYPE **html**\>
+
+<html>
+
+<head>
+
+<title>Ví dụ đơn giản về AJAX</title>
+
+<script src=”https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js”></script>
+
+</head>
+
+<body>
+
+<h1>Ví dụ đơn giản về AJAX</h1>
+
+<button id=”myBtn”>Lấy dữ liệu</button>
+
+<div id=”data”></div>
+
+<script>
+
+$(document).ready(function(){
+
+$(“#myBtn”).click(function(){
+
+$.ajax({
+
+url: “data.txt”, // URL của tệp dữ liệu
+
+dataType: “text”, // Kiểu dữ liệu mong muốn (text, json, html, v.v.)
+
+success: function(data){ // Hàm xử lý khi yêu cầu thành công
+
+$(“#data”).html(data); // Hiển thị dữ liệu trong div “data”
+
+},
+
+error: function(xhr, status, error){ // Hàm xử lý khi yêu cầu thất bại
+
+console.error(“Lỗi:”, xhr, status, error);
+
+}
+
+});
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>
+
+**CSS:**
+
+CSS
+
+body {
+
+font-family: sans-serif;
+
+}
+
+#data {
+
+margin-top: 20px;
+
+}
+
+**data.txt:**
+
+Đây là dữ liệu được lấy từ máy chủ bằng AJAX.
+
+**Giải thích chi tiết:**
+
+1.  **jQuery AJAX:**
+
+-   $.ajax(): Hàm này tạo ra một yêu cầu AJAX. Nó có các tham số sau:
+    -   url: URL của tệp dữ liệu mà bạn muốn lấy.
+    -   dataType: Kiểu dữ liệu bạn mong muốn nhận được từ máy chủ (text, json, html, v.v.).
+    -   success: Hàm được gọi khi yêu cầu thành công. Hàm này nhận dữ liệu được trả về từ máy chủ làm đối số.
+    -   error: Hàm được gọi khi yêu cầu thất bại. Hàm này nhận đối tượng XHR, trạng thái HTTP và thông báo lỗi làm đối số.
+
+2.  **Các bước thực hiện:**
+
+-   **Khi người dùng nhấp vào nút “myBtn”:**
+    -   jQuery AJAX được sử dụng để gửi yêu cầu đến tệp “data.txt”.
+    -   dataType được đặt thành “text” để cho biết bạn muốn nhận dữ liệu dạng văn bản.
+-   **Khi yêu cầu thành công:**
+    -   Hàm success được gọi.
+    -   Dữ liệu được trả về từ máy chủ được truyền vào hàm success dưới dạng đối số data.
+    -   jQuery sử dụng $(“#data”).html(data) để hiển thị dữ liệu trong div “data”.
+-   **Khi yêu cầu thất bại:**
+    -   Hàm error được gọi.
+    -   Thông tin lỗi được ghi vào console.
+
+3.  **Lưu ý:**
+
+-   Ví dụ này sử dụng jQuery để đơn giản hóa việc thực hiện AJAX. Bạn cũng có thể sử dụng JavaScript thuần túy để thực hiện các thao tác AJAX.
+-   Bạn cần thay đổi URL của tệp “data.txt” cho phù hợp với vị trí tệp trên máy chủ của bạn.
+-   Ví dụ này chỉ minh họa cách thực hiện các thao tác AJAX cơ bản. Bạn có thể sử dụng AJAX để thực hiện nhiều tác vụ khác nhau, chẳng hạn như cập nhật nội dung động, gửi dữ liệu đến máy chủ và xử lý các phản hồi từ máy chủ.
+
+4.  **Khảo sát thêm:**
+
+-   Bạn có thể tìm hiểu thêm về jQuery AJAX tại [https://api.jquery.com/jQuery.ajax/](https://api.jquery.com/jQuery.ajax/).
+-   Bạn có thể tìm hiểu thêm về các kỹ thuật AJAX tiên tiến hơn tại [https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous).
+
+**AJAX** là một công nghệ mạnh mẽ có thể được sử dụng để tạo ra các trang web và ứng dụng web động và tương tác hơn.
+
+Ngoài ra, AJAX còn có thể được kết hợp với các công nghệ khác như **HTML5**, **CSS3** và **JavaScript** để tạo ra các ứng dụng web hiện đại và phong phú.
+
+Nếu bạn thấy bài viết này hay và hữu ích? Hãy Share với bạn bè và đồng nghiệp nhé. Đừng quên theo dõi trang web của [SEOSONA](https://seosona.com/) để cập nhật những kiến thức mới nhất về Google Marketing nhé.
+
+Nguồn tham khảo: [https://stackoverflow.com/questions/58073767/mongodb-to-elasticsearch-indexing](https://stackoverflow.com/questions/58073767/mongodb-to-elasticsearch-indexing)

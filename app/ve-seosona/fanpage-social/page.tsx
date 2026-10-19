@@ -7,7 +7,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Fanpage & Social chính thức của SEOSONA",
+  title: "Fanpage & Social chính thức của SEOSONA Việt Nam",
   description:
     "Tổng hợp các kênh Fanpage và Social chính thức của SEOSONA: Facebook, YouTube, LinkedIn, Zalo Community, Telegram và X/Twitter.",
   alternates: { canonical: "/ve-seosona/fanpage-social/" }

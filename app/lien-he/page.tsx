@@ -203,6 +203,7 @@ export default function Page() {
                <div className="w-full h-[500px] rounded-3xl overflow-hidden shadow-xl border border-slate-200">
                   <iframe
                      src="https://www.google.com/maps?q=71%2F2%20Che%20Lan%20Vien%2C%20Tan%20Phu%2C%20TPHCM&output=embed"
+                     title="Bản đồ văn phòng SEOSONA"
                      width="100%" 
                      height="100%" 
                      style={{ border: 0 }} 

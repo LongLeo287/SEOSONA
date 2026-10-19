@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Route } from "lucide-react";
 import { SectionBadge } from "@/components/ui/SectionBadge";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { useAnimate } from "framer-motion";
+import { useIsInView } from "@/components/ui/use-is-in-view";
+import { useAnimate, useReducedMotion } from "framer-motion";
 
 const steps = [
   { title: "Nghiên cứu thị trường", desc: "Đào sâu vào hành vi khách hàng và dữ liệu tìm kiếm để tìm ra cơ hội." },
@@ -14,10 +15,13 @@ const steps = [
 ];
 
 export function CustomerJourney() {
+  const sectionRef = useRef<HTMLElement>(null);
   const [scope, animate] = useAnimate();
+  const isInView = useIsInView(sectionRef);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    if (!scope.current) return;
+    if (!scope.current || !isInView || reduceMotion) return;
 
     let isPlaying = true;
 
@@ -92,10 +96,14 @@ export function CustomerJourney() {
     return () => {
       isPlaying = false;
     };
-  }, [animate, scope]);
+  }, [animate, isInView, reduceMotion, scope]);
 
   return (
-    <section className="relative overflow-hidden border-b border-slate-100 bg-[#F6F9FC] py-16 lg:py-24">
+    <section
+      ref={sectionRef}
+      data-motion-active={isInView ? "true" : "false"}
+      className="relative overflow-hidden border-b border-slate-100 bg-[#F6F9FC] py-16 lg:py-24"
+    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#3BA6F1]/30 to-transparent" />
 
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
@@ -124,7 +132,7 @@ export function CustomerJourney() {
           <div className="md:hidden absolute top-[30px] bottom-[30px] left-[27px] w-1.5 bg-slate-200/60 rounded-full z-0 overflow-hidden">
             <div className="journey-progress-line-y live-line absolute top-0 left-0 w-full h-0 bg-gradient-to-b from-[#3BA6F1] via-[#7DD3FC] to-[#3BA6F1] rounded-full shadow-[0_0_12px_rgba(59,166,241,0.6)]"></div>
             {/* The Beam */}
-            <div className="absolute left-0 w-full h-1/4 bg-gradient-to-b from-transparent via-white to-transparent opacity-80 mix-blend-overlay z-10" style={{ animation: 'light-beam-y 2.5s linear infinite' }}></div>
+            <div className="journey-beam absolute left-0 w-full h-1/4 bg-gradient-to-b from-transparent via-white to-transparent opacity-80 mix-blend-overlay z-10" style={{ animation: 'light-beam-y 2.5s linear infinite' }}></div>
           </div>
 
           <div className="relative z-10 flex flex-col md:flex-row justify-between gap-10 md:gap-6">

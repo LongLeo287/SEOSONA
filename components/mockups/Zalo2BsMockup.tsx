@@ -2,32 +2,52 @@
 
 import { motion } from "framer-motion";
 import { MessageSquare, ShieldCheck, Zap, ArrowRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useIsInView } from "@/components/ui/use-is-in-view";
+import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion";
 
 export function Zalo2BsMockup() {
   const [stage, setStage] = useState(0);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const isInView = useIsInView(rootRef);
+  const reduceMotion = useStableReducedMotion();
 
   useEffect(() => {
-    const sequence = async () => {
-      // Reset
+    if (!isInView || reduceMotion) return;
+
+    let cancelled = false;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+
+    const sequence = () => {
+      if (cancelled) return;
+
       setStage(0);
-      await new Promise(r => setTimeout(r, 1000));
-      // Stage 1: Trigger
-      setStage(1);
-      await new Promise(r => setTimeout(r, 1500));
-      // Stage 2: Typing
-      setStage(2);
-      await new Promise(r => setTimeout(r, 2000));
-      // Stage 3: Sent
-      setStage(3);
-      await new Promise(r => setTimeout(r, 4000)); // Hold for a bit
-      sequence(); // Loop
+      timer = setTimeout(() => {
+        if (cancelled) return;
+        setStage(1);
+        timer = setTimeout(() => {
+          if (cancelled) return;
+          setStage(2);
+          timer = setTimeout(() => {
+            if (cancelled) return;
+            setStage(3);
+            timer = setTimeout(sequence, 4000);
+          }, 2000);
+        }, 1500);
+      }, 1000);
     };
+
     sequence();
-  }, []);
+    return () => {
+      cancelled = true;
+      if (timer) clearTimeout(timer);
+    };
+  }, [isInView, reduceMotion]);
+
+  const visualStage = reduceMotion ? 3 : stage;
 
   return (
-    <div className="w-full max-w-5xl mx-auto bg-[#F8FAFC] rounded-[24px] border border-slate-200 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col md:flex-row font-sans relative">
+    <div ref={rootRef} data-motion-active={isInView ? "true" : "false"} className="w-full max-w-5xl mx-auto bg-[#F8FAFC] rounded-[24px] border border-slate-200 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col md:flex-row font-sans relative">
       
       {/* Sidebar - Trigger Settings */}
       <div className="w-full md:w-80 bg-white border-r border-slate-200 p-6 flex flex-col gap-6 shrink-0 relative z-10">
@@ -61,8 +81,8 @@ export function Zalo2BsMockup() {
             </div>
             <div className="mt-3 text-xs text-slate-500">
               Template: Chào mừng KH mới<br/>
-              Status: <span className={stage >= 3 ? "text-emerald-600 font-bold" : "text-amber-600 font-bold"}>
-                {stage === 0 ? "Waiting..." : stage === 1 ? "Triggered" : stage === 2 ? "Sending..." : "Delivered"}
+              Status: <span className={visualStage >= 3 ? "text-emerald-600 font-bold" : "text-amber-600 font-bold"}>
+                {visualStage === 0 ? "Waiting..." : visualStage === 1 ? "Triggered" : visualStage === 2 ? "Sending..." : "Delivered"}
               </span>
             </div>
           </div>
@@ -76,7 +96,7 @@ export function Zalo2BsMockup() {
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-400/10 rounded-full blur-[80px]" />
 
         {/* Phone Frame */}
-        <div className="w-[300px] h-[550px] bg-white rounded-[40px] shadow-2xl border-[8px] border-slate-800 overflow-hidden flex flex-col relative z-10">
+        <div className="w-[300px] max-w-full h-[550px] bg-white rounded-[40px] shadow-2xl border-[8px] border-slate-800 overflow-hidden flex flex-col relative z-10">
           
           {/* Status Bar */}
           <div className="h-6 bg-blue-600 flex justify-between items-center px-6 text-[10px] text-white font-medium shrink-0">
@@ -112,13 +132,13 @@ export function Zalo2BsMockup() {
             </div>
 
             {/* ZNS Message Appearance */}
-            {stage >= 2 && (
+            {visualStage >= 2 && (
               <motion.div 
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="self-start max-w-[90%] bg-white rounded-2xl rounded-tl-sm shadow-sm overflow-hidden border border-slate-100"
               >
-                {stage === 2 ? (
+                {visualStage === 2 ? (
                   <div className="p-4 flex gap-1 items-center">
                     <motion.div className="w-2 h-2 rounded-full bg-slate-300" animate={{ y: [0, -5, 0] }} transition={{ duration: 0.6, repeat: Infinity, delay: 0 }} />
                     <motion.div className="w-2 h-2 rounded-full bg-slate-300" animate={{ y: [0, -5, 0] }} transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }} />

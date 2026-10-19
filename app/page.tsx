@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { CoreSolutions } from "@/components/sections/CoreSolutions";
+import { HeroMotionProvider } from "@/components/hero/HeroMotionContext";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { webPageSchema } from "@/lib/schema";
 import dynamic from "next/dynamic";
 
 const AiIntegration = dynamic(() => import("@/components/sections/AiIntegration").then(mod => mod.AiIntegration));
@@ -22,8 +25,17 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main>
-      <Hero />
-      <CoreSolutions />
+      <JsonLd
+        data={webPageSchema({
+          name: "SEOSONA - Google Marketing Agency hàng đầu Việt Nam",
+          description: "SEOSONA giúp doanh nghiệp tăng trưởng khách hàng tiềm năng từ Google qua SEO tổng thể, Google Ads, Content SEO và đào tạo đội ngũ nội bộ bài bản.",
+          path: "/"
+        })}
+      />
+      <HeroMotionProvider>
+        <Hero />
+        <CoreSolutions />
+      </HeroMotionProvider>
       <div className="relative overflow-hidden bg-white">
         <AiIntegration />
       </div>

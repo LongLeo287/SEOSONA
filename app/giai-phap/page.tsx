@@ -3,9 +3,11 @@ import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
 import Link from "next/link";
 import { ArrowRight, Bot, MessageCircle, BarChart2, Zap, Sparkles, Workflow, Database } from "lucide-react";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { collectionPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Giải pháp Công nghệ & AI | SEOSONA",
+  title: "Giải pháp Công nghệ, AI & Data | SEOSONA",
   description:
     "Hệ sinh thái giải pháp công nghệ SEOSONA: Zalo 2BS, ZNS, Power BI Dashboard, SonaTool và Ứng dụng AI Customer Journey Mapping.",
   alternates: { canonical: "/giai-phap/" }
@@ -64,8 +66,16 @@ const solutions = [
 ];
 
 export default function Page() {
+  const jsonLd = collectionPageSchema({
+    name: "Giải pháp Công nghệ & AI | SEOSONA",
+    description: "Hệ sinh thái giải pháp công nghệ SEOSONA: Zalo 2BS, ZNS, Power BI Dashboard, SonaTool và Ứng dụng AI Customer Journey Mapping.",
+    path: "/giai-phap/",
+    items: solutions.map((solution) => ({ name: solution.title, path: solution.href }))
+  });
+
   return (
     <main>
+      <JsonLd data={jsonLd} />
       <PageHero 
         eyebrow="Giải pháp Công nghệ" 
         title="Đột phá hiệu suất với Công nghệ & AI" 
