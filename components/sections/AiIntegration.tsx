@@ -3,6 +3,7 @@
 import { Bot, Sparkles, Cpu, PenTool, Search, CheckCircle2, Lock, Mic, Plus, ArrowUp, ArrowRight, Database, Network, Mail, UserPlus, GitBranch, MessageCircle } from "lucide-react";
 import { useState, useRef, useEffect, type KeyboardEvent } from "react";
 import { useReducedMotion } from "framer-motion";
+import { useAdaptiveInterval } from "@/components/motion/use-adaptive-motion";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { TextShimmer } from "@/components/ui/shimmer-text";
 import { SonatoolsLogo } from "@/components/brand/SonatoolsLogo";
@@ -670,30 +671,17 @@ export function AiIntegration() {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (!isInView || reduceMotion) return;
+  useAdaptiveInterval(() => {
+    if (isPausedRef.current) return;
 
-    const duration = 15000;
-    // Ten updates per second are enough for the progress indicator while
-    // avoiding a 20 Hz React render loop during page scrolling.
-    const interval = 100;
-    const steps = duration / interval;
-    const increment = 100 / steps;
+    setProgress((prev) => {
+      const next = prev + 100 / 150;
+      if (next < 100) return next;
 
-    const timer = setInterval(() => {
-      if (isPausedRef.current) return;
-
-      setProgress((prev) => {
-        const next = prev + increment;
-        if (next < 100) return next;
-
-        setActiveIndex((current) => (current + 1) % 4);
-        return 0;
-      });
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, [isInView, reduceMotion]);
+      setActiveIndex((current) => (current + 1) % 4);
+      return 0;
+    });
+  }, 100, { enabled: isInView && !reduceMotion });
 
   const handleNodeClick = (index: number) => {
     setActiveIndex(index);

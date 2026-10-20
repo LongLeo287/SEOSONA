@@ -3,8 +3,11 @@
 import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
 import { SEOSONA_SCROLL_TO_EVENT, type ScrollRequest } from "@/lib/scroll";
+import { useAdaptiveMotion } from "@/components/motion/use-adaptive-motion";
 
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
+  const { subscribe } = useAdaptiveMotion();
+
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (prefersReducedMotion.matches) return;
@@ -51,11 +54,8 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       touchMultiplier: 1,
     });
 
-    let frame: number | null = null;
-
     const startRaf = () => {
-      if (frame !== null) return;
-      frame = requestAnimationFrame(raf);
+      subscription?.setActive(true);
     };
 
     const onScrollRequest = (event: Event) => {
@@ -78,22 +78,24 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     window.addEventListener(SEOSONA_SCROLL_TO_EVENT, onScrollRequest);
     window.addEventListener("wheel", onWheel, { passive: true });
 
-    const raf = (time: number) => {
-      frame = null;
-      lenis.raf(time);
-      if (lenis.isScrolling) startRaf();
-    };
+    const subscription = subscribe(
+      ({ timestamp }) => {
+        lenis.raf(timestamp);
+        if (!lenis.isScrolling) subscription.setActive(false);
+      },
+      { active: false },
+    );
 
     // Prime Lenis once, then remain idle until input or a programmatic scroll.
-    startRaf();
+    subscription.setActive(true);
 
     return () => {
-      if (frame !== null) cancelAnimationFrame(frame);
+      subscription.unsubscribe();
       window.removeEventListener(SEOSONA_SCROLL_TO_EVENT, onScrollRequest);
       window.removeEventListener("wheel", onWheel);
       lenis.destroy();
     };
-  }, []);
+  }, [subscribe]);
 
   return <>{children}</>;
 }

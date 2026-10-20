@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useIsInView } from "@/components/ui/use-is-in-view";
+import { useAdaptiveMotion } from "@/components/motion/use-adaptive-motion";
 
 interface Message {
   avatar?: string;
@@ -67,13 +68,11 @@ export function ChatPreview({
   const [visibleMessages, setVisibleMessages] = useState<Message[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const currentIndexRef = useRef(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const isInView = useIsInView(containerRef, { rootMargin: "0px", threshold: 0.1 });
+  const { subscribe } = useAdaptiveMotion();
 
   useEffect(() => {
     if (!messages || messages.length === 0 || !isInView) {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-      intervalRef.current = null;
       return;
     }
     
@@ -85,19 +84,21 @@ export function ChatPreview({
       currentIndexRef.current = (currentIndexRef.current + 1) % messages.length;
 
       setVisibleMessages((prev) => [...prev, newMessage].slice(-maxMessages));
-
-      if (intervalRef.current) clearInterval(intervalRef.current);
-      intervalRef.current = setInterval(addMessage, newMessage.duration);
     };
 
     currentIndexRef.current = 0;
     addMessage();
+    let elapsed = 0;
+    const subscription = subscribe(({ delta }) => {
+      elapsed += Math.max(0, delta);
+      const nextMessage = messages[currentIndexRef.current];
+      if (!nextMessage || elapsed < nextMessage.duration) return;
+      elapsed = 0;
+      addMessage();
+    }, { element: containerRef.current, active: true });
 
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    };
-  }, [isInView, messages, maxMessages]);
+    return () => subscription.unsubscribe();
+  }, [isInView, messages, maxMessages, subscribe]);
 
   const displayedMessages = isInView ? visibleMessages : [];
 

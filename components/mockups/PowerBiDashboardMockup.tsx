@@ -5,6 +5,7 @@ import { BarChart2, TrendingUp, Users, DollarSign } from "lucide-react";
 import { useIsInView } from "@/components/ui/use-is-in-view";
 import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion";
 import { useEffect, useRef, useState } from "react";
+import { useAdaptiveMotion } from "@/components/motion/use-adaptive-motion";
 
 export function PowerBiDashboardMockup() {
   const bars = [40, 65, 45, 80, 55, 90, 75];
@@ -188,40 +189,36 @@ export function PowerBiDashboardMockup() {
 
 function Counter({ from, to, isFloat = false, isActive, reduceMotion }: { from: number, to: number, isFloat?: boolean, isActive: boolean, reduceMotion: boolean | null }) {
   const [count, setCount] = useState(from);
+  const { snapshot, subscribe } = useAdaptiveMotion();
 
   useEffect(() => {
-    if (!isActive || reduceMotion) return;
+    if (!isActive) return;
 
-    let startTime: number | null = null;
+    const constrained = Boolean(reduceMotion) || snapshot.mode === "lite" || snapshot.mode === "paused";
+    if (constrained) {
+      return;
+    }
+
     const duration = 1500; // 1.5s
-    let frame: number | null = null;
-    
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / duration, 1);
+    const startTime = performance.now() + 500;
+    const subscription = subscribe(({ timestamp }) => {
+      const progress = Math.min(Math.max(timestamp - startTime, 0) / duration, 1);
       
       // Easing function (easeOutExpo)
       const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
       
       setCount(from + (to - from) * easeProgress);
       
-      if (progress < 1) {
-        frame = requestAnimationFrame(animate);
-      }
-    };
-    
-    // Delay start slightly
-    const timeout = setTimeout(() => {
-      frame = requestAnimationFrame(animate);
-    }, 500);
+      if (progress >= 1) subscription.setActive(false);
+    }, { active: true });
     
     return () => {
-      clearTimeout(timeout);
-      if (frame !== null) cancelAnimationFrame(frame);
+      subscription.unsubscribe();
     };
-  }, [from, to, isActive, reduceMotion]);
+  }, [from, to, isActive, reduceMotion, snapshot.mode, subscribe]);
 
-  const displayedCount = !isActive ? from : reduceMotion ? to : count;
+  const constrained = Boolean(reduceMotion) || snapshot.mode === "lite" || snapshot.mode === "paused";
+  const displayedCount = !isActive ? from : constrained ? to : count;
 
   return <span>{isFloat ? displayedCount.toFixed(1) : Math.round(displayedCount).toLocaleString()}</span>;
 }

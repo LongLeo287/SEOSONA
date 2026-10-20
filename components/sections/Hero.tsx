@@ -45,11 +45,20 @@ export function Hero() {
   });
 
   useEffect(() => {
-    const frame = window.requestAnimationFrame(() => {
+    const promote = () => {
       const capability = readHeroCapabilityInput();
       setTier(getHeroDeviceTier(capability));
-    });
-    return () => window.cancelAnimationFrame(frame);
+    };
+    const idleWindow = window as Window & {
+      requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number;
+      cancelIdleCallback?: (handle: number) => void;
+    };
+    if (idleWindow.requestIdleCallback) {
+      const handle = idleWindow.requestIdleCallback(promote, { timeout: 1200 });
+      return () => idleWindow.cancelIdleCallback?.(handle);
+    }
+    const fallback = window.setTimeout(promote, 250);
+    return () => window.clearTimeout(fallback);
   }, []);
 
   const handleSceneError = useCallback(() => {

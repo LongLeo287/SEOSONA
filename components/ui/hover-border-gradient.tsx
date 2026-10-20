@@ -1,8 +1,9 @@
 'use client'
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useIsInView } from '@/components/ui/use-is-in-view'
 import { useStableReducedMotion } from '@/components/ui/use-stable-reduced-motion'
+import { useAdaptiveInterval } from '@/components/motion/use-adaptive-motion'
 import { clsx } from 'clsx'
 import type { ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
@@ -45,21 +46,18 @@ function HoverBorderGradient({
   const isInView = useIsInView(containerRef)
   const reduceMotion = useStableReducedMotion()
 
-  useEffect(() => {
-    if (!hovered && isInView && !reduceMotion) {
-      const directions: Direction[] = ['TOP', 'LEFT', 'BOTTOM', 'RIGHT']
-      const interval = setInterval(() => {
-        setDirection((prevState) => {
-          const currentIndex = directions.indexOf(prevState)
-          const nextIndex = clockwise
-            ? (currentIndex - 1 + directions.length) % directions.length
-            : (currentIndex + 1) % directions.length
-          return directions[nextIndex]
-        })
-      }, duration * 1000)
-      return () => clearInterval(interval)
-    }
-  }, [clockwise, duration, hovered, isInView, reduceMotion])
+  useAdaptiveInterval(() => {
+    const directions: Direction[] = ['TOP', 'LEFT', 'BOTTOM', 'RIGHT']
+    setDirection((prevState) => {
+      const currentIndex = directions.indexOf(prevState)
+      const nextIndex = clockwise
+        ? (currentIndex - 1 + directions.length) % directions.length
+        : (currentIndex + 1) % directions.length
+      return directions[nextIndex]
+    })
+  }, duration * 1000, {
+    enabled: !hovered && isInView && !reduceMotion,
+  })
   return (
     <Element
       ref={containerRef}

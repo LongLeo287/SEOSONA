@@ -16,6 +16,7 @@
     "audit:staging": "node scripts/audit-staging.mjs",
     "audit:browser": "node scripts/audit-browser.mjs",
     "audit:runtime": "node scripts/audit-runtime.mjs",
+    "audit:motion-runtime": "node scripts/audit-motion-runtime.mjs",
     "audit:source-parity": "node scripts/audit-source-parity.mjs",
     "seosona:doctor": "node scripts/seosona-project.mjs doctor",
     "seosona:sync-rules": "node scripts/seosona-project.mjs sync-rules",

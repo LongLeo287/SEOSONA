@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion";
 import { Sparkles, FileText, CheckCircle2, Settings2, PenTool } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { useIsInView } from "@/components/ui/use-is-in-view";
 import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion";
+import { useAdaptiveInterval } from "@/components/motion/use-adaptive-motion";
 
 export function AiContentGeneratorMockup() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,22 +14,17 @@ export function AiContentGeneratorMockup() {
   const [progress, setProgress] = useState(0);
   const [stage, setStage] = useState(0);
 
-  useEffect(() => {
-    if (!isInView || reduceMotion) return;
-
-    const timer = setInterval(() => {
-      setProgress((p) => {
-        if (p >= 100) {
-          setStage(3);
-          return 100;
-        }
-        if (p > 70) setStage(2);
-        else if (p > 30) setStage(1);
-        return p + 1;
-      });
-    }, 50);
-    return () => clearInterval(timer);
-  }, [isInView, reduceMotion]);
+  useAdaptiveInterval(() => {
+    setProgress((p) => {
+      if (p >= 100) {
+        setStage(3);
+        return 100;
+      }
+      if (p > 70) setStage(2);
+      else if (p > 30) setStage(1);
+      return p + 1;
+    });
+  }, 50, { enabled: isInView && !reduceMotion });
 
   const visualProgress = reduceMotion ? 100 : progress;
   const visualStage = reduceMotion ? 3 : stage;

@@ -3,9 +3,10 @@
 import { motion } from "framer-motion"
 import { PlayCircle, Target, SkipForward } from "lucide-react"
 import Link from "next/link"
-import { useState, useEffect, useRef } from "react"
+import { useState, useRef } from "react"
 import { useIsInView } from "@/components/ui/use-is-in-view"
 import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion"
+import { useAdaptiveInterval } from "@/components/motion/use-adaptive-motion"
 
 export const YoutubePlayerMockup = () => {
   const [countdown, setCountdown] = useState(5)
@@ -14,22 +15,13 @@ export const YoutubePlayerMockup = () => {
   const isInView = useIsInView(rootRef)
   const reduceMotion = useStableReducedMotion()
 
-  useEffect(() => {
-    if (!isInView || reduceMotion) return
+  useAdaptiveInterval(() => {
+    setCountdown((prev) => (prev > 0 ? prev - 1 : 0))
+  }, 1000, { enabled: isInView && !reduceMotion })
 
-    const timer = setInterval(() => {
-      setCountdown((prev) => (prev > 0 ? prev - 1 : 0))
-    }, 1000)
-    
-    const progressTimer = setInterval(() => {
-      setProgress((prev) => (prev < 100 ? prev + 1 : 100))
-    }, 150)
-
-    return () => {
-      clearInterval(timer)
-      clearInterval(progressTimer)
-    }
-  }, [isInView, reduceMotion])
+  useAdaptiveInterval(() => {
+    setProgress((prev) => (prev < 100 ? prev + 1 : 100))
+  }, 150, { enabled: isInView && !reduceMotion })
 
   const visualCountdown = reduceMotion ? 0 : countdown
   const visualProgress = reduceMotion ? 100 : progress

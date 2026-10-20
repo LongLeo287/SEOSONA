@@ -5,6 +5,7 @@ import { Search, TrendingUp, Target } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 import { useIsInView } from "@/components/ui/use-is-in-view"
 import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion"
+import { useAdaptiveMotion } from "@/components/motion/use-adaptive-motion"
 
 type AnimatedCounterProps = {
   from: number;
@@ -19,28 +20,28 @@ type AnimatedCounterProps = {
 
 const AnimatedCounter = ({ from, to, duration, prefix = "", suffix = "", decimals = 0, isActive, reduceMotion }: AnimatedCounterProps) => {
   const [count, setCount] = useState(from)
+  const { snapshot, subscribe } = useAdaptiveMotion()
   
   useEffect(() => {
-    if (!isActive || reduceMotion) return;
+    if (!isActive) return;
 
-    let startTimestamp: number | null = null;
-    let frame: number | null = null;
-    const step = (timestamp: number) => {
-      if (!startTimestamp) startTimestamp = timestamp;
+    const constrained = Boolean(reduceMotion) || snapshot.mode === "lite" || snapshot.mode === "paused";
+    if (constrained) {
+      return;
+    }
+
+    const startTimestamp = performance.now();
+    const subscription = subscribe(({ timestamp }) => {
       const progress = Math.min((timestamp - startTimestamp) / (duration * 1000), 1);
       setCount(from + progress * (to - from));
-      if (progress < 1) {
-        frame = window.requestAnimationFrame(step);
-      }
-    };
-    frame = window.requestAnimationFrame(step);
+      if (progress >= 1) subscription.setActive(false);
+    }, { active: true });
 
-    return () => {
-      if (frame !== null) window.cancelAnimationFrame(frame);
-    };
-  }, [from, to, duration, isActive, reduceMotion]);
+    return () => subscription.unsubscribe();
+  }, [from, to, duration, isActive, reduceMotion, snapshot.mode, subscribe]);
 
-  const displayedCount = !isActive ? from : reduceMotion ? to : count;
+  const constrained = Boolean(reduceMotion) || snapshot.mode === "lite" || snapshot.mode === "paused";
+  const displayedCount = !isActive ? from : constrained ? to : count;
 
   return <span>{prefix}{displayedCount.toFixed(decimals)}{suffix}</span>
 }

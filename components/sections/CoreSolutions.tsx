@@ -117,10 +117,9 @@ export function CoreSolutions() {
         update(latestSignal.progress, latestSignal.handoffProgress);
       });
     };
-    window.addEventListener("scroll", scheduleHandoff, { passive: true });
-    window.addEventListener("resize", scheduleHandoff, { passive: true });
-
     if (!motionChannel) {
+      window.addEventListener("scroll", scheduleHandoff, { passive: true });
+      window.addEventListener("resize", scheduleHandoff, { passive: true });
       scheduleHandoff();
       return () => {
         window.removeEventListener("scroll", scheduleHandoff);
@@ -129,20 +128,16 @@ export function CoreSolutions() {
       };
     }
 
-    // The Hero publishes on its own animation frame. Queue the latest signal
-    // instead of mutating this section synchronously for every publish; this
-    // keeps both motion owners inside one browser frame and prevents duplicate
-    // layout/style work during wheel input.
+    // The Hero publishes from the shared adaptive runtime. Apply the latest
+    // signal directly in that same tick; an extra RAF here used to make the
+    // static handoff one frame late and caused a visible blink/jump.
     const unsubscribe = motionChannel.subscribe((signal) => {
       latestSignal = signal;
-      scheduleHandoff();
+      update(signal.progress, signal.handoffProgress);
     });
-    scheduleHandoff();
+    update(latestSignal.progress, latestSignal.handoffProgress);
     return () => {
       unsubscribe();
-      window.removeEventListener("scroll", scheduleHandoff);
-      window.removeEventListener("resize", scheduleHandoff);
-      if (frame !== null) window.cancelAnimationFrame(frame);
     };
   }, [motionChannel, reducedMotion]);
 

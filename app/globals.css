@@ -304,6 +304,19 @@
   animation-play-state: paused !important;
 }
 
+/* The adaptive runtime owns the global quality downgrade. Framer Motion is
+ * reduced through MotionConfig; these selectors cover Tailwind/CSS loops. */
+[data-adaptive-motion-mode="lite"] .animate-pulse,
+[data-adaptive-motion-mode="lite"] .animate-ping,
+[data-adaptive-motion-mode="lite"] .animate-bounce,
+[data-adaptive-motion-mode="lite"] .animate-spin,
+[data-adaptive-motion-mode="paused"] .animate-pulse,
+[data-adaptive-motion-mode="paused"] .animate-ping,
+[data-adaptive-motion-mode="paused"] .animate-bounce,
+[data-adaptive-motion-mode="paused"] .animate-spin {
+  animation-play-state: paused !important;
+}
+
 /* Touch-primary devices have less headroom for large backdrop surfaces. */
 @media (pointer: coarse) {
   .backdrop-blur-2xl { --tw-backdrop-blur: blur(12px); }

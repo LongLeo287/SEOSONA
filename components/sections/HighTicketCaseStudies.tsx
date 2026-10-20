@@ -6,28 +6,35 @@ import { SectionBadge } from "@/components/ui/SectionBadge";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { useIsInView } from "@/components/ui/use-is-in-view";
 import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion";
+import { useAdaptiveInterval } from "@/components/motion/use-adaptive-motion";
 import { motion } from "framer-motion";
 
 const TypewriterText = ({ text, isActive }: { text: string; isActive: boolean }) => {
   const [displayedText, setDisplayedText] = useState("");
+  const characterIndexRef = useRef(0);
+  const completedRef = useRef(false);
   const reduceMotion = useStableReducedMotion();
 
   useEffect(() => {
     if (reduceMotion || !isActive) return;
 
-    let i = 0;
+    characterIndexRef.current = 0;
+    completedRef.current = false;
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setDisplayedText("");
-    const interval = setInterval(() => {
-      if (i <= text.length) {
-        setDisplayedText(text.slice(0, i));
-        i++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 50);
-    return () => clearInterval(interval);
   }, [isActive, text, reduceMotion]);
+
+  useAdaptiveInterval(() => {
+    if (completedRef.current) return;
+
+    const nextIndex = characterIndexRef.current + 1;
+    characterIndexRef.current = nextIndex;
+    setDisplayedText(text.slice(0, nextIndex));
+
+    if (nextIndex >= text.length) {
+      completedRef.current = true;
+    }
+  }, 50, { enabled: isActive && !reduceMotion });
 
   if (reduceMotion) {
     return <span className="absolute inset-y-0 left-0 flex items-center whitespace-nowrap">{text}</span>;
@@ -66,14 +73,9 @@ export function HighTicketCaseStudies() {
   const reduceMotion = useStableReducedMotion();
   const [currentTagIndex, setCurrentTagIndex] = useState(0);
 
-  useEffect(() => {
-    if (!isInView || reduceMotion) return;
-
-    const timer = setInterval(() => {
-      setCurrentTagIndex((prev) => (prev + 1) % tags.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [isInView, reduceMotion, tags.length]);
+  useAdaptiveInterval(() => {
+    setCurrentTagIndex((prev) => (prev + 1) % tags.length);
+  }, 4000, { enabled: isInView && !reduceMotion });
 
   return (
     <section ref={sectionRef} data-motion-active={isInView ? "true" : "false"} className="relative overflow-hidden bg-slate-50 py-12 lg:py-20">

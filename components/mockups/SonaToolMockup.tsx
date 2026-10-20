@@ -2,9 +2,10 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { Activity, Search, TrendingUp, Filter, Download } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { useIsInView } from "@/components/ui/use-is-in-view";
 import { SonatoolsLogo } from "@/components/brand/SonatoolsLogo";
+import { useAdaptiveInterval } from "@/components/motion/use-adaptive-motion";
 
 export function SonaToolMockup() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -19,23 +20,17 @@ export function SonaToolMockup() {
   ]);
 
   // Simulate rank tracking updates
-  useEffect(() => {
-    if (!isInView || reduceMotion) return;
-
-    const timer = setInterval(() => {
-      setData(prev => prev.map(item => {
-        // Randomly update positions
-        if (Math.random() > 0.6) {
-          const change = Math.floor(Math.random() * 5) - 2; // -2 to +2
-          let newPos = item.pos - change; // if change is positive, position decreases (which is good)
-          if (newPos < 1) newPos = 1;
-          return { ...item, pos: newPos, change: change };
-        }
-        return item;
-      }).sort((a, b) => a.pos - b.pos)); // Sort by position
-    }, 3000);
-    return () => clearInterval(timer);
-  }, [isInView, reduceMotion]);
+  useAdaptiveInterval(() => {
+    setData(prev => prev.map(item => {
+      if (Math.random() > 0.6) {
+        const change = Math.floor(Math.random() * 5) - 2;
+        let newPos = item.pos - change;
+        if (newPos < 1) newPos = 1;
+        return { ...item, pos: newPos, change };
+      }
+      return item;
+    }).sort((a, b) => a.pos - b.pos));
+  }, 3000, { enabled: isInView && !reduceMotion });
 
   return (
     <div ref={rootRef} data-motion-active={isInView ? "true" : "false"} className="w-full max-w-5xl mx-auto bg-white rounded-[24px] border border-slate-200 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col font-sans relative h-[550px]">

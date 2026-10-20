@@ -21,6 +21,7 @@ import {
   smoothstep,
 } from "./hero-motion";
 import { useHeroMotionChannel } from "./HeroMotionContext";
+import { useAdaptiveMotion } from "@/components/motion/use-adaptive-motion";
 import type {
   HeroLayoutMetrics,
   HeroMotionState,
@@ -179,6 +180,7 @@ export function useHeroMotion({
   });
   const [isInView, setIsInView] = useState(!reducedMotion);
   const motionChannel = useHeroMotionChannel();
+  const { subscribe: subscribeAdaptiveMotion } = useAdaptiveMotion();
   const handoffViewportRef = useRef<number | null>(null);
   const handoffFrozenRef = useRef(false);
   const handoffCompleteRef = useRef(false);
@@ -222,21 +224,20 @@ export function useHeroMotion({
           ease: "out(3)",
         });
 
-    let frame: number | null = null;
+    let motionSubscription: ReturnType<typeof subscribeAdaptiveMotion> | null = null;
     let idleTimer: number | null = null;
     let scrollActive = false;
     let lastScrollY = window.scrollY;
     let displayedProgress: number | null = null;
     let lastFrameTime = 0;
 
-    const apply = () => {
-      frame = null;
+    const apply = (timestamp = performance.now(), runtimeMode?: HeroTier) => {
       const currentSection = sectionRef.current;
       if (!currentSection) return;
       const rect = currentSection.getBoundingClientRect();
       const total = Math.max(1, rect.height - window.innerHeight);
       const targetProgress = isStatic ? 0 : clamp(-rect.top / total);
-      const now = performance.now();
+      const now = timestamp;
       const deltaMs = lastFrameTime > 0 ? now - lastFrameTime : 0;
       lastFrameTime = now;
       displayedProgress = isStatic
@@ -247,8 +248,9 @@ export function useHeroMotion({
       const progress = displayedProgress;
       const velocity = clamp((window.scrollY - lastScrollY) / 140, -1, 1);
       lastScrollY = window.scrollY;
+      const motionTier = runtimeMode ?? tier;
       const state = getHeroMotionState(progress, {
-        tier,
+        tier: motionTier,
         reducedMotion,
         velocity,
         isScrolling: scrollActive,
@@ -404,12 +406,14 @@ export function useHeroMotion({
       if (stillInHero) {
         sceneRef.current?.render(stateRef.current);
         if (!isStatic && (scrollActive || Math.abs(targetProgress - progress) > 0.0015)) {
-          frame = window.requestAnimationFrame(apply);
+          motionSubscription?.setActive(true);
         } else {
+          motionSubscription?.setActive(false);
           sceneRef.current?.pause();
         }
       } else {
         sceneRef.current?.pause();
+        motionSubscription?.setActive(false);
       }
     };
 
@@ -420,7 +424,7 @@ export function useHeroMotion({
         scrollActive = false;
         idleTimer = null;
       }, 160);
-      if (frame === null) frame = window.requestAnimationFrame(apply);
+      motionSubscription?.setActive(true);
     };
 
     const observer = typeof IntersectionObserver === "undefined"
@@ -443,18 +447,33 @@ export function useHeroMotion({
     observer?.observe(section);
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule, { passive: true });
-    schedule();
+    if (!isStatic) {
+      motionSubscription = subscribeAdaptiveMotion(
+        ({ timestamp, snapshot }) => {
+          const runtimeTier: HeroTier = snapshot.mode === "full"
+            ? tier
+            : snapshot.mode === "balanced"
+              ? "balanced"
+              : "lite";
+          apply(timestamp, runtimeTier);
+        },
+        { active: false, element: section },
+      );
+      schedule();
+    } else {
+      apply();
+    }
 
     return () => {
       observer?.disconnect();
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
-      if (frame !== null) window.cancelAnimationFrame(frame);
+      motionSubscription?.unsubscribe();
       if (idleTimer !== null) window.clearTimeout(idleTimer);
       sceneHandle?.destroy();
       introAnimation?.pause();
     };
-  }, [arcRef, introRef, logoRef, metricsRef, motionChannel, morphRefs, nodeRefs, nodes, reducedMotion, sceneRef, sectionRef, tier]);
+  }, [arcRef, introRef, logoRef, metricsRef, motionChannel, morphRefs, nodeRefs, nodes, reducedMotion, sceneRef, sectionRef, subscribeAdaptiveMotion, tier]);
 
   return { isInView, stateRef };
 }

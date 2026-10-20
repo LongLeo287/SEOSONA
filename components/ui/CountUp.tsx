@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useAdaptiveMotion } from "@/components/motion/use-adaptive-motion";
 
 interface CountUpProps {
   end: number;
@@ -18,9 +19,9 @@ export function CountUp({
   className = ""
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const frameRef = useRef<number | null>(null);
   const [count, setCount] = useState(0);
   const [started, setStarted] = useState(false);
+  const { snapshot, subscribe } = useAdaptiveMotion();
 
   useEffect(() => {
     const el = ref.current;
@@ -42,48 +43,29 @@ export function CountUp({
   useEffect(() => {
     if (!started) return;
 
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion) {
-      frameRef.current = requestAnimationFrame(() => {
-        setCount(end);
-        frameRef.current = null;
-      });
-      return () => {
-        if (frameRef.current !== null) {
-          cancelAnimationFrame(frameRef.current);
-          frameRef.current = null;
-        }
-      };
+    const constrained = snapshot.capabilities.reducedMotion || snapshot.mode === "lite" || snapshot.mode === "paused";
+    if (constrained) {
+      return;
     }
 
     const startTime = performance.now();
-
-    const tick = (now: number) => {
-      const elapsed = now - startTime;
+    const subscription = subscribe(({ timestamp }) => {
+      const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1);
       // Ease-out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.round(eased * end));
-      if (progress < 1) {
-        frameRef.current = requestAnimationFrame(tick);
-      } else {
-        frameRef.current = null;
-      }
-    };
+      if (progress >= 1) subscription.setActive(false);
+    }, { element: ref.current, active: true });
 
-    frameRef.current = requestAnimationFrame(tick);
+    return () => subscription.unsubscribe();
+  }, [started, end, duration, snapshot.capabilities.reducedMotion, snapshot.mode, subscribe]);
 
-    return () => {
-      if (frameRef.current !== null) {
-        cancelAnimationFrame(frameRef.current);
-        frameRef.current = null;
-      }
-    };
-  }, [started, end, duration]);
+  const constrained = snapshot.capabilities.reducedMotion || snapshot.mode === "lite" || snapshot.mode === "paused";
 
   return (
     <span ref={ref} className={className}>
-      {prefix}{count.toLocaleString("vi-VN")}{suffix}
+      {prefix}{(constrained ? end : count).toLocaleString("vi-VN")}{suffix}
     </span>
   );
 }

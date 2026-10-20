@@ -9,7 +9,8 @@ import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
-import { MotionConfig } from "framer-motion";
+import { AdaptiveMotionProvider } from "@/components/motion/AdaptiveMotionProvider";
+import { AdaptiveMotionConfig } from "@/components/motion/AdaptiveMotionConfig";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -70,16 +71,18 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="vi" id="top">
       <body className={`${poppins.variable} ${inter.variable} font-sans antialiased`}>
-        <MotionConfig reducedMotion="user">
-          <SmoothScroll>
-            <LoadingLogo />
-            <JsonLd data={[organizationSchema(), websiteSchema()]} />
-            <Header />
-            {children}
-            <Footer />
-            <FloatingActions />
-          </SmoothScroll>
-        </MotionConfig>
+        <AdaptiveMotionProvider>
+          <AdaptiveMotionConfig>
+            <SmoothScroll>
+              <LoadingLogo />
+              <JsonLd data={[organizationSchema(), websiteSchema()]} />
+              <Header />
+              {children}
+              <Footer />
+              <FloatingActions />
+            </SmoothScroll>
+          </AdaptiveMotionConfig>
+        </AdaptiveMotionProvider>
       </body>
     </html>
   );
