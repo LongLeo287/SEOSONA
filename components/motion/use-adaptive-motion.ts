@@ -31,7 +31,6 @@ export function useAdaptiveMotion() {
 
   return { snapshot, subscribe, runtime };
 }
-
 export function useAdaptiveInterval(
   callback: () => void,
   intervalMs: number,

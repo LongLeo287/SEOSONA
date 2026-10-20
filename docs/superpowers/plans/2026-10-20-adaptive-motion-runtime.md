@@ -115,4 +115,3 @@
 - [x] Add runtime mode publication, hidden-tab pause/recovery, and active-subscriber checks.
 - [x] Run lint, non-incremental typecheck, build, SEO/security/performance/release/source-parity/staging audits, browser audit, runtime audit, and full route crawl.
 - [x] Review the complete diff, commit with Conventional Commit syntax, and push only after all checks and the working tree are clean.
-

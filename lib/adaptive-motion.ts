@@ -71,7 +71,6 @@ function hasWebGLSupport() {
     return false;
   }
 }
-
 function getConnection() {
   return (navigator as Navigator & {
     connection?: {
