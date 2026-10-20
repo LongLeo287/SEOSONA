@@ -80,6 +80,66 @@ async function auditHeroContract(page, viewportName) {
 async function auditHeroLayout(page, viewportName) {
   await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: "instant" }));
   await page.waitForTimeout(180);
+
+  if (viewportName === "desktop" || viewportName === "tablet") {
+    const settled = await page.waitForFunction(
+      () => document.querySelector("[data-hero-root]")?.getAttribute("data-hero-tier") !== "lite",
+      { timeout: 2500 },
+    ).catch(() => null);
+    if (!settled) recordFailure(viewportName + " / Hero capability tier did not settle before motion audit");
+  } else {
+    const contentReady = await page.waitForFunction(
+      () => {
+        const element = document.querySelector("[data-hero-content]");
+        const rect = element?.getBoundingClientRect();
+        return Boolean(
+          rect &&
+          rect.width > 0 &&
+          rect.height > 0 &&
+          Number.parseFloat(getComputedStyle(element).opacity) > 0.8,
+        );
+      },
+      { timeout: 2500 },
+    ).catch(() => null);
+    if (!contentReady) recordFailure(viewportName + " / Hero content did not settle before layout audit");
+  }
+
+  if (viewportName === "desktop") {
+    const originalViewport = page.viewportSize();
+    if (originalViewport) {
+      await page.setViewportSize({ width: originalViewport.width, height: 708 });
+      await page.reload({ waitUntil: "networkidle" });
+      await page.waitForTimeout(180);
+      const shortViewportState = await page.evaluate(() => {
+        const header = document.querySelector("header")?.getBoundingClientRect();
+        const badge = document.querySelector("[data-hero-content] > div > div:first-child");
+        const badgeRect = badge?.getBoundingClientRect();
+        const badgeStyles = badge ? getComputedStyle(badge) : null;
+        return {
+          headerBottom: header?.bottom ?? 0,
+          badgeTop: badgeRect?.top ?? -Infinity,
+          badgeBottom: badgeRect?.bottom ?? -Infinity,
+          badgeVisible: Boolean(
+            badgeRect &&
+            badgeRect.width > 0 &&
+            badgeRect.height > 0 &&
+            badgeStyles?.display !== "none" &&
+            badgeStyles?.visibility !== "hidden" &&
+            Number.parseFloat(badgeStyles?.opacity || "0") > 0.8,
+          ),
+        };
+      });
+      if (!shortViewportState.badgeVisible || shortViewportState.badgeTop < shortViewportState.headerBottom - 1) {
+        recordFailure(
+          viewportName + " / short-height Hero badge is covered: " + JSON.stringify(shortViewportState),
+        );
+      }
+      await page.setViewportSize(originalViewport);
+      await page.reload({ waitUntil: "networkidle" });
+      await page.waitForTimeout(180);
+    }
+  }
+
   const topState = await page.evaluate(() => {
     const nodes = Array.from(document.querySelectorAll("[data-hero-node-label]"));
     const nodeRects = nodes.map((label) => label.closest("a")?.parentElement?.getBoundingClientRect());
@@ -145,21 +205,22 @@ async function auditHeroLayout(page, viewportName) {
     await page.waitForTimeout(220);
     const handoffState = await page.evaluate(() => {
       const nodes = Array.from(document.querySelectorAll("[data-hero-node-label]"));
-      const visibleNodes = nodes.filter((label) => {
+      const isVisible = (element) => {
+        const rect = element.getBoundingClientRect();
+        const styles = getComputedStyle(element);
+        return rect.width > 0 && rect.height > 0 && styles.display !== "none" && styles.visibility !== "hidden" && Number.parseFloat(styles.opacity) > 0.08;
+      };
+      const dynamicVisibleNodes = nodes.filter((label) => {
         const node = label.closest("a")?.parentElement;
-        if (!node) return false;
-        const rect = node.getBoundingClientRect();
-        return rect.width > 0 && rect.height > 0 && Number.parseFloat(getComputedStyle(node).opacity) > 0.08;
+        return Boolean(node && isVisible(node));
       }).length;
-      const core = document.querySelector("[data-strategy-core]");
-      const coreRect = core?.getBoundingClientRect();
-      const coreVisible = Boolean(
-        core &&
-        coreRect &&
-        coreRect.bottom > 0 &&
-        coreRect.top < window.innerHeight &&
-        Number.parseFloat(getComputedStyle(core).opacity) > 0.08,
-      );
+      const staticLayer = document.querySelector("[data-core-solutions-ecosystem]");
+      const staticVisibleNodes = staticLayer
+        ? Array.from(staticLayer.querySelectorAll("a")).filter(isVisible).length
+        : 0;
+      const visibleNodes = staticVisibleNodes > 0 ? staticVisibleNodes : dynamicVisibleNodes;
+      const coreVisible = Array.from(document.querySelectorAll("[data-strategy-core]"))
+        .some((core) => isVisible(core));
       return { visibleNodes, coreVisible };
     });
     // The final composition intentionally keeps the five icon nodes visible
@@ -248,6 +309,45 @@ async function auditHeroLayout(page, viewportName) {
       titleVisible: Boolean(titleRect && titleRect.top < window.innerHeight * 0.94 && titleRect.bottom > 0 && Number.parseFloat(getComputedStyle(title).opacity) > 0.2),
     };
   });
+
+  // Regression guard: the final relay must have exactly one visual owner.
+  // Sampling just before the settled boundary catches the historical bug
+  // where CoreSolutions became visible at 0.96 while Hero stayed visible
+  // until 0.999, creating duplicate logo/node/rail layers.
+  const relayProbeScroll = await page.evaluate(() => {
+    const hero = document.querySelector("[data-hero-root]");
+    if (!hero) return 0;
+    const rect = hero.getBoundingClientRect();
+    return rect.top + window.scrollY + Math.max(0, rect.height - window.innerHeight) * 0.985;
+  });
+  await page.evaluate((top) => window.scrollTo({ top, left: 0, behavior: "instant" }), relayProbeScroll);
+  await page.waitForTimeout(260);
+  const relayOwnership = await page.evaluate(() => {
+    const visibility = (selector) => {
+      const element = document.querySelector(selector);
+      if (!element) return 0;
+      const styles = getComputedStyle(element);
+      const rect = element.getBoundingClientRect();
+      if (styles.display === "none" || styles.visibility === "hidden" || rect.width === 0 || rect.height === 0) return 0;
+      return Number.parseFloat(styles.opacity);
+    };
+    const root = document.querySelector("[data-hero-root]");
+    return {
+      progress: Number.parseFloat(root?.getAttribute("data-hero-motion-progress") || "NaN"),
+      handoffProgress: Number.parseFloat(root?.getAttribute("data-hero-handoff-progress") || "NaN"),
+      dynamicLogo: visibility("[data-hero-root] [data-strategy-core]"),
+      dynamicArc: visibility("[data-hero-arc]"),
+      staticLayer: visibility("[data-core-solutions-ecosystem]"),
+      staticTransition: visibility("[data-core-solutions-transition]"),
+    };
+  });
+  const dynamicOwnerVisible = relayOwnership.dynamicLogo > 0.05 || relayOwnership.dynamicArc > 0.05;
+  const staticOwnerVisible = relayOwnership.staticLayer > 0.05 || relayOwnership.staticTransition > 0.05;
+  if (dynamicOwnerVisible && staticOwnerVisible) {
+    recordFailure(
+      viewportName + " / Hero-CoreSolutions relay has two visible owners: " + JSON.stringify(relayOwnership),
+    );
+  }
 
   // The CoreSolutions surface intentionally takes over the lower part of the
   // sticky Hero during handoff. Keep a bounded takeover budget while allowing

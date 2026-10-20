@@ -22,6 +22,7 @@ import {
   HERO_ARC_CURVE_PEAK,
   HERO_ARC_PATH,
   HERO_ARC_SLOTS,
+  HERO_HANDOFF_COMPLETE_THRESHOLD,
   HERO_HANDOFF_RESET_THRESHOLD,
 } from "@/components/hero/hero-motion";
 import { useStableReducedMotion } from "@/components/ui/use-stable-reduced-motion";
@@ -58,10 +59,16 @@ export function CoreSolutions() {
       // The Hero remains solid until the shared geometry settles. The static
       // owner enters during the final relay with the captured anchor instead
       // of crossfading the same line, logo and nodes at unrelated positions.
-      // Turn the static owner on slightly before the dynamic Hero is hidden.
-      // Both layers use the same captured centre anchor, so a delayed RAF can
-      // no longer expose a blank frame during the ownership switch.
-      const transitionVisible = heroIsStatic || handoffRelayProgress >= HERO_HANDOFF_RESET_THRESHOLD ? 1 : 0;
+      // Use the exact same ownership boundary as the dynamic Hero. Turning
+      // this layer on at the reset threshold made both owners visible during
+      // the final relay frames, producing duplicate logos, nodes and rails.
+      // The Hero publishes this signal after hiding its own layer, so the
+      // static owner can take over in the same channel notification without
+      // a crossfade or a ghost frame.
+      // A lite/reduced-motion Hero already owns its static logo composition;
+      // do not mount a second handoff logo on top of it. The handoff ribbon is
+      // only needed when the full Hero actually transfers ownership.
+      const transitionVisible = !heroIsStatic && handoffRelayProgress >= HERO_HANDOFF_COMPLETE_THRESHOLD ? 1 : 0;
 
       if (handoffRelayProgress < HERO_HANDOFF_RESET_THRESHOLD) {
         handoffOffsetRef.current = null;
