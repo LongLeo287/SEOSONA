@@ -407,6 +407,90 @@ async function auditHomepageAccessibility(page, viewportName) {
   }
 }
 
+async function auditFloatingActions(page, viewportName) {
+  await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: "instant" }));
+  await page.waitForFunction(
+    () => {
+      const button = document.querySelector("[data-floating-back-to-top]");
+      const slot = document.querySelector("[data-floating-back-to-top-slot]");
+      return Boolean(
+        button?.hasAttribute("disabled") &&
+        Number.parseFloat(getComputedStyle(button).opacity) < 0.01 &&
+        (slot?.getBoundingClientRect().height ?? 1) < 1,
+      );
+    },
+    { timeout: 2500 },
+  ).catch(() => null);
+
+  const initial = await page.evaluate(() => {
+    const wrapper = document.querySelector("[data-floating-actions]");
+    const button = document.querySelector("[data-floating-back-to-top]");
+    const slot = document.querySelector("[data-floating-back-to-top-slot]");
+    if (!wrapper || !button || !slot) return null;
+    const buttonStyles = getComputedStyle(button);
+    return {
+      childCount: wrapper.children.length,
+      opacity: Number.parseFloat(buttonStyles.opacity),
+      transitionDuration: buttonStyles.transitionDuration,
+      slotHeight: slot.getBoundingClientRect().height,
+      disabled: button.hasAttribute("disabled"),
+    };
+  });
+
+  if (
+    !initial ||
+    initial.childCount < 3 ||
+    initial.opacity > 0.01 ||
+    initial.transitionDuration === "0s" ||
+    initial.slotHeight > 1 ||
+    !initial.disabled
+  ) {
+    recordFailure(viewportName + " / Back-to-top initial state is not animated/hidden: " + JSON.stringify(initial));
+  }
+
+  await page.evaluate(() => window.scrollTo({ top: 500, left: 0, behavior: "instant" }));
+  await page.waitForFunction(
+    () => {
+      const button = document.querySelector("[data-floating-back-to-top]");
+      const slot = document.querySelector("[data-floating-back-to-top-slot]");
+      return Boolean(
+        button &&
+        !button.hasAttribute("disabled") &&
+        Number.parseFloat(getComputedStyle(button).opacity) > 0.95 &&
+        (slot?.getBoundingClientRect().height ?? 0) > 1,
+      );
+    },
+    { timeout: 2500 },
+  ).catch(() => null);
+  const settled = await page.evaluate(() => {
+    const wrapper = document.querySelector("[data-floating-actions]");
+    const button = document.querySelector("[data-floating-back-to-top]");
+    const slot = document.querySelector("[data-floating-back-to-top-slot]");
+    if (!wrapper || !button || !slot) return null;
+    const buttonStyles = getComputedStyle(button);
+    return {
+      childCount: wrapper.children.length,
+      opacity: Number.parseFloat(buttonStyles.opacity),
+      transitionDuration: buttonStyles.transitionDuration,
+      slotHeight: slot.getBoundingClientRect().height,
+      disabled: button.hasAttribute("disabled"),
+      ariaHidden: button.getAttribute("aria-hidden"),
+    };
+  });
+
+  if (
+    !settled ||
+    settled.childCount < 3 ||
+    settled.opacity < 0.95 ||
+    settled.transitionDuration === "0s" ||
+    settled.slotHeight < 1 ||
+    settled.disabled ||
+    settled.ariaHidden !== "false"
+  ) {
+    recordFailure(viewportName + " / Back-to-top did not settle with a smooth reveal: " + JSON.stringify(settled));
+  }
+}
+
 async function auditOffscreenMotion(page, viewportName) {
   const activeAnimations = await page.evaluate(() => {
     const selectors = [
@@ -485,6 +569,7 @@ async function auditViewport(browser, name, viewport) {
       await auditHeroContract(page, name);
       await auditHeroLayout(page, name);
       await auditHomepageAccessibility(page, name);
+      await auditFloatingActions(page, name);
       await auditOffscreenMotion(page, name);
       await page.mouse.wheel(0, 900);
       await page.waitForTimeout(700);
