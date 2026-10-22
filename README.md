@@ -48,7 +48,7 @@ For an authorized staging host, set `SEOSONA_BASE_URL` before `npm run audit:sta
 ## Deploy
 
 Chưa khóa hosting mặc định trong repo. Chọn nền tảng deploy rõ ràng trước khi gắn staging/domain production.
-Vercel Git auto deployments are disabled in `vercel.json`.
+Vercel Git auto deployments are enabled for the tracked branch. Vercel must still be connected to the `LongLeo287/SEOSONA` repository with `main` as its production branch.
 
 ## Lưu ý bảo mật
 

@@ -5,8 +5,8 @@ const vercelConfig = JSON.parse(fs.readFileSync("vercel.json", "utf8"));
 const envExample = fs.readFileSync(".env.example", "utf8");
 const siteSource = fs.readFileSync("lib/site.ts", "utf8");
 
-if (vercelConfig.git?.deploymentEnabled !== false) {
-  errors.push("vercel.json must keep automatic Git deployments disabled until explicit launch authorization.");
+if (vercelConfig.git?.deploymentEnabled !== true) {
+  errors.push("vercel.json must explicitly enable automatic Git deployments for the authorized Vercel release.");
 }
 
 if (!envExample.includes("SEOSONA_LEAD_WEBHOOK_URL=") || !envExample.includes("SEOSONA_LEAD_WEBHOOK_TOKEN=")) {
@@ -30,4 +30,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("[PASS] Release audit: deployment safety and environment contract are explicit.");
+console.log("[PASS] Release audit: authorized Vercel deployment and environment contract are explicit.");
